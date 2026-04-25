@@ -1,0 +1,25 @@
+{
+  "description": "Scoring methodology (no actual ground truth answers)",
+  "classification_scale": ["TP", "Inc", "FP"],
+  "ordinal_distances": {
+    "TP_to_TP": 0,
+    "TP_to_Inc": 1,
+    "TP_to_FP": 2,
+    "Inc_to_FP": 1
+  },
+  "cw_formula": {
+    "exact_match": "1.0 + confidence/100",
+    "minor_miss": "1.0 - confidence/100",
+    "hard_miss": "-confidence/100"
+  },
+  "priority_score_range": "0-100",
+  "mae_formula": "mean(|ai_score - human_score|)",
+  "rmse_formula": "sqrt(mean((ai_score - human_score)^2))",
+  "seed_findings": {
+    "report_1": 14,
+    "report_2": 7,
+    "report_3": 21,
+    "total": 42
+  },
+  "note": "Actual ground truth classifications and scores are NOT published here. They remain private to prevent gaming the benchmark."
+}

@@ -1,0 +1,233 @@
+[
+  {
+    "model": "gpt-5",
+    "cw_pct": "47.1",
+    "ord_pct": "70.7",
+    "mae": "22.2",
+    "rmse": "28.9",
+    "exact": "18",
+    "minor": "22",
+    "hard": "1",
+    "n": "41"
+  },
+  {
+    "model": "gpt-5-mini",
+    "cw_pct": "46.5",
+    "ord_pct": "70.7",
+    "mae": "28.0",
+    "rmse": "35.4",
+    "exact": "20",
+    "minor": "18",
+    "hard": "3",
+    "n": "41"
+  },
+  {
+    "model": "deepseek-v4-pro",
+    "cw_pct": "46.3",
+    "ord_pct": "69.5",
+    "mae": "25.7",
+    "rmse": "34.1",
+    "exact": "19",
+    "minor": "19",
+    "hard": "3",
+    "n": "41"
+  },
+  {
+    "model": "glm-5.1",
+    "cw_pct": "46.3",
+    "ord_pct": "69.5",
+    "mae": "22.7",
+    "rmse": "31.1",
+    "exact": "19",
+    "minor": "19",
+    "hard": "3",
+    "n": "41"
+  },
+  {
+    "model": "glm-5",
+    "cw_pct": "46.0",
+    "ord_pct": "69.5",
+    "mae": "25.4",
+    "rmse": "33.5",
+    "exact": "21",
+    "minor": "15",
+    "hard": "5",
+    "n": "41"
+  },
+  {
+    "model": "gpt-5-nano",
+    "cw_pct": "45.4",
+    "ord_pct": "70.7",
+    "mae": "23.4",
+    "rmse": "27.7",
+    "exact": "18",
+    "minor": "22",
+    "hard": "1",
+    "n": "41"
+  },
+  {
+    "model": "grok-4.20",
+    "cw_pct": "45.2",
+    "ord_pct": "69.5",
+    "mae": "22.1",
+    "rmse": "28.1",
+    "exact": "21",
+    "minor": "15",
+    "hard": "5",
+    "n": "41"
+  },
+  {
+    "model": "deepseek-v4-flash",
+    "cw_pct": "43.9",
+    "ord_pct": "67.1",
+    "mae": "24.9",
+    "rmse": "33.2",
+    "exact": "18",
+    "minor": "19",
+    "hard": "4",
+    "n": "41"
+  },
+  {
+    "model": "claude-opus-4.6",
+    "cw_pct": "42.8",
+    "ord_pct": "65.9",
+    "mae": "24.8",
+    "rmse": "33.1",
+    "exact": "18",
+    "minor": "18",
+    "hard": "5",
+    "n": "41"
+  },
+  {
+    "model": "gemini-2.5-pro",
+    "cw_pct": "42.8",
+    "ord_pct": "68.3",
+    "mae": "29.6",
+    "rmse": "38.6",
+    "exact": "20",
+    "minor": "16",
+    "hard": "5",
+    "n": "41"
+  },
+  {
+    "model": "grok-4-openrouter",
+    "cw_pct": "42.5",
+    "ord_pct": "68.3",
+    "mae": "22.9",
+    "rmse": "31.7",
+    "exact": "18",
+    "minor": "20",
+    "hard": "3",
+    "n": "41"
+  },
+  {
+    "model": "gemma4-31b",
+    "cw_pct": "42.3",
+    "ord_pct": "68.3",
+    "mae": "26.8",
+    "rmse": "35.7",
+    "exact": "19",
+    "minor": "18",
+    "hard": "4",
+    "n": "41"
+  },
+  {
+    "model": "kimi-k2.6",
+    "cw_pct": "42.0",
+    "ord_pct": "67.1",
+    "mae": "27.6",
+    "rmse": "36.6",
+    "exact": "18",
+    "minor": "19",
+    "hard": "4",
+    "n": "41"
+  },
+  {
+    "model": "claude-sonnet-4.6",
+    "cw_pct": "41.6",
+    "ord_pct": "65.9",
+    "mae": "23.1",
+    "rmse": "31.5",
+    "exact": "17",
+    "minor": "20",
+    "hard": "4",
+    "n": "41"
+  },
+  {
+    "model": "gpt-5.5",
+    "cw_pct": "41.5",
+    "ord_pct": "68.3",
+    "mae": "23.5",
+    "rmse": "32.1",
+    "exact": "18",
+    "minor": "20",
+    "hard": "3",
+    "n": "41"
+  },
+  {
+    "model": "glm-4.7",
+    "cw_pct": "41.3",
+    "ord_pct": "67.1",
+    "mae": "29.8",
+    "rmse": "38.3",
+    "exact": "20",
+    "minor": "15",
+    "hard": "6",
+    "n": "41"
+  },
+  {
+    "model": "claude-opus-4.5",
+    "cw_pct": "40.9",
+    "ord_pct": "64.6",
+    "mae": "26.6",
+    "rmse": "34.7",
+    "exact": "20",
+    "minor": "13",
+    "hard": "8",
+    "n": "41"
+  },
+  {
+    "model": "qwen35-397b",
+    "cw_pct": "40.1",
+    "ord_pct": "67.1",
+    "mae": "25.6",
+    "rmse": "33.3",
+    "exact": "18",
+    "minor": "19",
+    "hard": "4",
+    "n": "41"
+  },
+  {
+    "model": "kimi-k2.5",
+    "cw_pct": "39.7",
+    "ord_pct": "65.9",
+    "mae": "27.9",
+    "rmse": "36.6",
+    "exact": "18",
+    "minor": "18",
+    "hard": "5",
+    "n": "41"
+  },
+  {
+    "model": "gemini-2.5-flash",
+    "cw_pct": "34.7",
+    "ord_pct": "62.2",
+    "mae": "28.8",
+    "rmse": "37.3",
+    "exact": "16",
+    "minor": "19",
+    "hard": "6",
+    "n": "41"
+  },
+  {
+    "model": "deepseek-v3.2",
+    "cw_pct": "33.7",
+    "ord_pct": "61.0",
+    "mae": "24.9",
+    "rmse": "34.0",
+    "exact": "14",
+    "minor": "22",
+    "hard": "5",
+    "n": "41"
+  }
+]
