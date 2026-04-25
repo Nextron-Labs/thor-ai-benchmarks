@@ -14,7 +14,7 @@ Higher is better. Rewards confident correct answers, punishes confident wrong an
 
 ### CW% vs MAE
 
-Top-right = best (high CW%, low MAE).
+Top-left = best (high CW%, low MAE).
 
 ![CW% vs MAE](charts/cw-vs-mae.png)
 
