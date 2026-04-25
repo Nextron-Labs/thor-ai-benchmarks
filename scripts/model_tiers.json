@@ -2,14 +2,16 @@
   "tiers": {
     "closed_source": {
       "label": "Closed Source (Vendor API)",
-      "color": "#E74C3C",
+      "color": "#5b9bd5",
       "marker": "D",
       "models": [
         "gpt-5",
-        "gpt-5-mini", 
+        "gpt-5-mini",
         "gpt-5-nano",
         "gpt-5.4",
         "gpt-5.5",
+        "gpt-5.4-nano",
+        "gpt-oss-120b",
         "claude-opus-4.5",
         "claude-opus-4.6",
         "claude-sonnet-4.6",
@@ -17,12 +19,16 @@
         "gemini-2.5-pro",
         "grok-4-openrouter",
         "grok-4.20",
-        "grok-4.1-fast"
+        "grok-4.1-fast",
+        "minimax-m2.7",
+        "minimax-m2.5",
+        "mimo-v2-pro",
+        "step-3.5-flash"
       ]
     },
     "open_source_pro": {
       "label": "Open Source (Pro Hardware)",
-      "color": "#3498DB",
+      "color": "#3498db",
       "marker": "s",
       "models": [
         "deepseek-v3.2",
@@ -32,16 +38,25 @@
         "glm-5",
         "glm-5.1",
         "qwen35-397b",
+        "qwen3.5-35b-a3b",
         "kimi-k2.5",
-        "kimi-k2.6"
+        "kimi-k2.6",
+        "nemotron-3-super-120b",
+        "llama-3.1-70b",
+        "mistral-nemo"
       ]
     },
     "open_source_consumer": {
       "label": "Open Source (Consumer Hardware <10k)",
-      "color": "#2ECC71",
+      "color": "#2ecc71",
       "marker": "o",
       "models": [
-        "gemma4-31b"
+        "gemma4-31b",
+        "qwen3.6-35b",
+        "qwen3.5-9b",
+        "ministral-14b",
+        "devstral-small",
+        "llama-3.1-8b"
       ]
     }
   }
