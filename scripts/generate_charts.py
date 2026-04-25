@@ -1,28 +1,27 @@
 #!/usr/bin/env python3
-"""Generate leaderboard charts for THOR AI Benchmarks."""
+"""Generate leaderboard charts for THOR AI Benchmarks with model tier markers."""
 
 import json
 import csv
 import sys
 from pathlib import Path
 
-try:
-    import matplotlib
-    matplotlib.use('Agg')
-    import matplotlib.pyplot as plt
-    import matplotlib.ticker as ticker
-    import numpy as np
-except ImportError:
-    print("matplotlib + numpy required: pip install matplotlib numpy")
-    sys.exit(1)
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+import numpy as np
 
-# Load data
-combined_dir = Path(__file__).parent.parent / "combined"
+# Paths
+repo_root = Path(__file__).resolve().parent.parent
+combined_dir = repo_root / "combined"
 csv_path = combined_dir / "leaderboard.csv"
 json_path = combined_dir / "leaderboard.json"
-charts_dir = Path(__file__).parent.parent / "charts"
+charts_dir = repo_root / "charts"
 charts_dir.mkdir(exist_ok=True)
+tiers_path = Path(__file__).resolve().parent / "model_tiers.json"
 
+# Load data
 if json_path.exists():
     with open(json_path) as f:
         models = json.load(f)
@@ -36,7 +35,18 @@ else:
     print("No leaderboard data found")
     sys.exit(1)
 
-# Convert types
+# Load tiers
+with open(tiers_path) as f:
+    tiers_config = json.load(f)["tiers"]
+
+# Build tier lookup
+tier_lookup = {}
+tier_names = list(tiers_config.keys())
+for tier_key, tier_data in tiers_config.items():
+    for m in tier_data["models"]:
+        tier_lookup[m] = tier_key
+
+# Convert types and assign tiers
 for m in models:
     m['rank'] = int(m.get('rank', 0))
     m['cw_pct'] = float(m['cw_pct'])
@@ -47,72 +57,162 @@ for m in models:
     m['minor'] = int(m.get('minor', 0))
     m['hard'] = int(m.get('hard', 0))
     m['n'] = int(m.get('n', 0))
+    m['tier'] = tier_lookup.get(m['model'], 'closed_source')
 
 # Sort by CW% descending
 models.sort(key=lambda x: x['cw_pct'], reverse=True)
 
-# ── Chart 1: CW% Leaderboard ──────────────────────────────────
-fig, ax = plt.subplots(figsize=(12, 8))
+def tier_style(tier_key):
+    t = tiers_config[tier_key]
+    return t['color'], t['marker'], t['label']
+
+def tier_models(models_list, tier_key):
+    return [m for m in models_list if m['tier'] == tier_key]
+
+# ── Chart 1: CW% Leaderboard (with tier colors) ──────────────
+fig, ax = plt.subplots(figsize=(14, 9))
 names = [m['model'] for m in models]
 cw = [m['cw_pct'] for m in models]
-colors = plt.cm.RdYlGn([v/100 for v in cw])
+bar_colors = [tiers_config[m['tier']]['color'] for m in models]
 
-bars = ax.barh(range(len(names)), cw, color=colors, edgecolor='white', linewidth=0.5)
+bars = ax.barh(range(len(names)), cw, color=bar_colors, edgecolor='white', linewidth=0.5)
 ax.set_yticks(range(len(names)))
 ax.set_yticklabels(names, fontsize=10)
 ax.invert_yaxis()
 ax.set_xlabel('Confidence-Weighted Score (%)', fontsize=12)
-ax.set_title('THOR Finding Triage — CW% Leaderboard', fontsize=14, fontweight='bold')
+ax.set_title('THOR Finding Triage — CW% Leaderboard by Model Tier', fontsize=14, fontweight='bold')
 ax.set_xlim(0, 55)
 
 for i, (bar, val) in enumerate(zip(bars, cw)):
     ax.text(val + 0.5, i, f'{val:.1f}%', va='center', fontsize=9, fontweight='bold')
 
+# Legend
+legend_patches = [mpatches.Patch(color=tiers_config[t]['color'], label=tiers_config[t]['label']) for t in tier_names]
+ax.legend(handles=legend_patches, loc='lower right', fontsize=10, framealpha=0.9)
+
 plt.tight_layout()
 fig.savefig(charts_dir / 'cw-leaderboard.png', dpi=150, bbox_inches='tight')
-print(f"✓ {charts_dir / 'cw-leaderboard.png'}")
+print(f"✓ cw-leaderboard.png")
 
-# ── Chart 2: CW% vs MAE Scatter ───────────────────────────────
-fig, ax = plt.subplots(figsize=(10, 8))
-cw_vals = [m['cw_pct'] for m in models]
-mae_vals = [m['mae'] for m in models]
-scatter = ax.scatter(mae_vals, cw_vals, s=100, c=cw_vals, cmap='RdYlGn', edgecolors='gray', linewidths=0.5, zorder=5)
+# ── Chart 2: CW% vs MAE Scatter (with tier markers) ───────────
+fig, ax = plt.subplots(figsize=(11, 9))
 
-for m in models:
-    ax.annotate(m['model'], (m['mae'], m['cw_pct']),
-                textcoords="offset points", xytext=(5, 5), fontsize=8,
-                alpha=0.85)
+for tier_key in tier_names:
+    tm = tier_models(models, tier_key)
+    if not tm:
+        continue
+    color, marker, label = tier_style(tier_key)
+    ax.scatter(
+        [m['mae'] for m in tm],
+        [m['cw_pct'] for m in tm],
+        s=120, c=color, marker=marker, label=label,
+        edgecolors='gray', linewidths=0.5, zorder=5
+    )
+    for m in tm:
+        ax.annotate(m['model'], (m['mae'], m['cw_pct']),
+                    textcoords="offset points", xytext=(6, 4), fontsize=8, alpha=0.85)
 
 ax.set_xlabel('MAE (lower is better →)', fontsize=12)
 ax.set_ylabel('CW% (higher is better ↑)', fontsize=12)
-ax.set_title('CW% vs MAE — Top-Right is Best', fontsize=14, fontweight='bold')
-ax.axhline(y=50, color='gray', linestyle='--', alpha=0.3)
+ax.set_title('CW% vs MAE by Model Tier — Top-Right is Best', fontsize=14, fontweight='bold')
+ax.legend(loc='lower left', fontsize=10, framealpha=0.9)
+ax.axhline(y=45, color='gray', linestyle='--', alpha=0.3)
 ax.axvline(x=25, color='gray', linestyle='--', alpha=0.3)
 
 plt.tight_layout()
 fig.savefig(charts_dir / 'cw-vs-mae.png', dpi=150, bbox_inches='tight')
-print(f"✓ {charts_dir / 'cw-vs-mae.png'}")
+print(f"✓ cw-vs-mae.png")
 
-# ── Chart 3: Classification Accuracy Breakdown ──────────────────
-fig, ax = plt.subplots(figsize=(12, 8))
+# ── Chart 3: Classification Breakdown (with tier colors) ──────
+fig, ax = plt.subplots(figsize=(14, 9))
 y_pos = range(len(names))
 exact = [m['exact'] for m in models]
 minor = [m['minor'] for m in models]
 hard = [m['hard'] for m in models]
 
-ax.barh(y_pos, exact, color='#2ecc71', label='Exact', edgecolor='white', linewidth=0.5)
-ax.barh(y_pos, minor, left=exact, color='#f39c12', label='Minor miss', edgecolor='white', linewidth=0.5)
-ax.barh(y_pos, hard, left=[e+m for e,m in zip(exact,minor)], color='#e74c3c', label='Hard miss', edgecolor='white', linewidth=0.5)
+# Use tier color for the exact-match bar, lighter shade for minor, red for hard
+tier_colors_light = {
+    'closed_source': '#F1948A',
+    'open_source_pro': '#85C1E9',
+    'open_source_consumer': '#82E0AA',
+}
+
+ax.barh(y_pos, exact, color=bar_colors, edgecolor='white', linewidth=0.5)
+ax.barh(y_pos, minor, left=exact, color=[tier_colors_light[m['tier']] for m in models], edgecolor='white', linewidth=0.5)
+ax.barh(y_pos, hard, left=[e+m for e,m in zip(exact,minor)], color='#E74C3C', edgecolor='white', linewidth=0.5, alpha=0.7)
 
 ax.set_yticks(y_pos)
 ax.set_yticklabels(names, fontsize=10)
 ax.invert_yaxis()
 ax.set_xlabel('Number of Findings', fontsize=12)
-ax.set_title('Classification Accuracy Breakdown', fontsize=14, fontweight='bold')
-ax.legend(loc='lower right', fontsize=10)
+ax.set_title('Classification Accuracy Breakdown by Model Tier', fontsize=14, fontweight='bold')
+
+# Custom legend
+legend_items = [mpatches.Patch(color=tiers_config[t]['color'], label=tiers_config[t]['label']) for t in tier_names]
+legend_items += [
+    mpatches.Patch(color='gray', label='Exact match'),
+    mpatches.Patch(color='#E74C3C', alpha=0.7, label='Hard miss'),
+]
+ax.legend(handles=legend_items, loc='lower right', fontsize=9, framealpha=0.9)
 
 plt.tight_layout()
 fig.savefig(charts_dir / 'classification-breakdown.png', dpi=150, bbox_inches='tight')
-print(f"✓ {charts_dir / 'classification-breakdown.png'}")
+print(f"✓ classification-breakdown.png")
 
-print(f"\nGenerated 3 charts in {charts_dir}")
+# ── Per-Tier CW% Charts ────────────────────────────────────────
+for tier_key in tier_names:
+    tm = tier_models(models, tier_key)
+    if not tm:
+        continue
+    color, marker, label = tier_style(tier_key)
+    short_name = tier_key.replace('_', '-')
+
+    fig, ax = plt.subplots(figsize=(10, max(4, len(tm) * 0.5 + 1)))
+    tm.sort(key=lambda x: x['cw_pct'], reverse=True)
+    names_t = [m['model'] for m in tm]
+    cw_t = [m['cw_pct'] for m in tm]
+
+    bars = ax.barh(range(len(names_t)), cw_t, color=color, edgecolor='white', linewidth=0.5)
+    ax.set_yticks(range(len(names_t)))
+    ax.set_yticklabels(names_t, fontsize=10)
+    ax.invert_yaxis()
+    ax.set_xlabel('CW%', fontsize=12)
+    ax.set_title(f'{label} — CW%', fontsize=13, fontweight='bold')
+    ax.set_xlim(0, 55)
+
+    for i, (bar, val) in enumerate(zip(bars, cw_t)):
+        ax.text(val + 0.3, i, f'{val:.1f}%', va='center', fontsize=9, fontweight='bold')
+
+    plt.tight_layout()
+    fig.savefig(charts_dir / f'cw-{short_name}.png', dpi=150, bbox_inches='tight')
+    print(f"✓ cw-{short_name}.png")
+
+# ── Per-Tier MAE Charts ────────────────────────────────────────
+for tier_key in tier_names:
+    tm = tier_models(models, tier_key)
+    if not tm:
+        continue
+    color, marker, label = tier_style(tier_key)
+    short_name = tier_key.replace('_', '-')
+
+    fig, ax = plt.subplots(figsize=(10, max(4, len(tm) * 0.5 + 1)))
+    tm.sort(key=lambda x: x['mae'])
+    names_t = [m['model'] for m in tm]
+    mae_t = [m['mae'] for m in tm]
+
+    bars = ax.barh(range(len(names_t)), mae_t, color=color, edgecolor='white', linewidth=0.5, alpha=0.85)
+    ax.set_yticks(range(len(names_t)))
+    ax.set_yticklabels(names_t, fontsize=10)
+    ax.invert_yaxis()
+    ax.set_xlabel('MAE (lower is better)', fontsize=12)
+    ax.set_title(f'{label} — MAE', fontsize=13, fontweight='bold')
+    ax.set_xlim(0, 35)
+
+    for i, (bar, val) in enumerate(zip(bars, mae_t)):
+        ax.text(val + 0.3, i, f'{val:.1f}', va='center', fontsize=9, fontweight='bold')
+
+    plt.tight_layout()
+    fig.savefig(charts_dir / f'mae-{short_name}.png', dpi=150, bbox_inches='tight')
+    print(f"✓ mae-{short_name}.png")
+
+print(f"\nDone — {3 + 2*len(tier_names)} charts in {charts_dir}")
