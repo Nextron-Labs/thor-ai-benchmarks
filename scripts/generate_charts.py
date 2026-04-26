@@ -123,14 +123,15 @@ plt.tight_layout()
 fig.savefig(charts_dir / 'cw-vs-mae.png', dpi=150, bbox_inches='tight')
 print(f"✓ cw-vs-mae.png")
 
-# ── Chart 3: Classification Breakdown (with tier colors) ──────
+# ── Chart 3: Classification Breakdown (with tier colors + miss/over split) ──────
 fig, ax = plt.subplots(figsize=(14, 9))
 y_pos = range(len(names))
 exact = [m['exact'] for m in models]
 minor = [m['minor'] for m in models]
-hard = [m['hard'] for m in models]
+hard_miss = [int(m.get('hard_miss', 0)) for m in models]   # TP→FP: missed real threat
+hard_over = [int(m.get('hard_over', 0)) for m in models]  # FP→TP: over-called non-threat
 
-# Use tier color for the exact-match bar, lighter shade for minor, red for hard
+# Use tier color for the exact-match bar, lighter shade for minor
 tier_colors_light = {
     'closed_source': '#F1948A',
     'open_source_pro': '#85C1E9',
@@ -139,7 +140,8 @@ tier_colors_light = {
 
 ax.barh(y_pos, exact, color=bar_colors, edgecolor='white', linewidth=0.5)
 ax.barh(y_pos, minor, left=exact, color=[tier_colors_light[m['tier']] for m in models], edgecolor='white', linewidth=0.5)
-ax.barh(y_pos, hard, left=[e+m for e,m in zip(exact,minor)], color='#E74C3C', edgecolor='white', linewidth=0.5, alpha=0.7)
+ax.barh(y_pos, hard_miss, left=[e+m for e,m in zip(exact,minor)], color='#C0392B', edgecolor='white', linewidth=0.5, label='_nolegend_')  # Dark red: missed threats
+ax.barh(y_pos, hard_over, left=[e+m+h for e,m,h in zip(exact,minor,hard_miss)], color='#E67E22', edgecolor='white', linewidth=0.5, alpha=0.85, label='_nolegend_')  # Orange: overcalls
 
 ax.set_yticks(y_pos)
 ax.set_yticklabels(names, fontsize=10)
@@ -151,7 +153,9 @@ ax.set_title('Classification Accuracy Breakdown by Model Tier', fontsize=14, fon
 legend_items = [mpatches.Patch(color=tiers_config[t]['color'], label=tiers_config[t]['label']) for t in tier_names]
 legend_items += [
     mpatches.Patch(color='gray', label='Exact match'),
-    mpatches.Patch(color='#E74C3C', alpha=0.7, label='Hard miss'),
+    mpatches.Patch(color='#F1948A', label='Minor miss (1 step)'),
+    mpatches.Patch(color='#C0392B', label='Missed threat (TP→FP)'),
+    mpatches.Patch(color='#E67E22', alpha=0.85, label='Over-call (FP→TP)'),
 ]
 ax.legend(handles=legend_items, loc='lower right', fontsize=9, framealpha=0.9)
 

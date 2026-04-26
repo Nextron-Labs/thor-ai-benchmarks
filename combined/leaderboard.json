@@ -8,6 +8,8 @@
     "exact": "21",
     "minor": "16",
     "hard": "4",
+    "hard_miss": "2",
+    "hard_over": "2",
     "n": "41",
     "rank": "1",
     "tier": "open_source_consumer"
@@ -21,6 +23,8 @@
     "exact": "20",
     "minor": "18",
     "hard": "3",
+    "hard_miss": "1",
+    "hard_over": "2",
     "n": "41",
     "rank": "2",
     "tier": "open_source_pro"
@@ -34,6 +38,8 @@
     "exact": "20",
     "minor": "16",
     "hard": "5",
+    "hard_miss": "1",
+    "hard_over": "4",
     "n": "41",
     "rank": "3",
     "tier": "closed_source"
@@ -47,6 +53,8 @@
     "exact": "19",
     "minor": "17",
     "hard": "5",
+    "hard_miss": "0",
+    "hard_over": "4",
     "n": "41",
     "rank": "4",
     "tier": "open_source_consumer"
@@ -60,6 +68,8 @@
     "exact": "19",
     "minor": "19",
     "hard": "3",
+    "hard_miss": "1",
+    "hard_over": "2",
     "n": "41",
     "rank": "5",
     "tier": "open_source_pro"
@@ -73,6 +83,8 @@
     "exact": "21",
     "minor": "13",
     "hard": "7",
+    "hard_miss": "3",
+    "hard_over": "4",
     "n": "41",
     "rank": "6",
     "tier": "open_source_pro"
@@ -86,6 +98,8 @@
     "exact": "20",
     "minor": "16",
     "hard": "5",
+    "hard_miss": "2",
+    "hard_over": "3",
     "n": "41",
     "rank": "7",
     "tier": "closed_source"
@@ -99,6 +113,8 @@
     "exact": "20",
     "minor": "16",
     "hard": "5",
+    "hard_miss": "3",
+    "hard_over": "2",
     "n": "41",
     "rank": "8",
     "tier": "open_source_pro"
@@ -112,6 +128,8 @@
     "exact": "19",
     "minor": "17",
     "hard": "5",
+    "hard_miss": "2",
+    "hard_over": "3",
     "n": "41",
     "rank": "9",
     "tier": "closed_source"
@@ -125,6 +143,8 @@
     "exact": "17",
     "minor": "23",
     "hard": "1",
+    "hard_miss": "0",
+    "hard_over": "1",
     "n": "41",
     "rank": "10",
     "tier": "open_source_consumer"
@@ -138,6 +158,8 @@
     "exact": "18",
     "minor": "20",
     "hard": "3",
+    "hard_miss": "1",
+    "hard_over": "2",
     "n": "41",
     "rank": "11",
     "tier": "open_source_consumer"
@@ -151,6 +173,8 @@
     "exact": "17",
     "minor": "22",
     "hard": "2",
+    "hard_miss": "1",
+    "hard_over": "1",
     "n": "41",
     "rank": "12",
     "tier": "closed_source"
@@ -164,6 +188,8 @@
     "exact": "18",
     "minor": "19",
     "hard": "4",
+    "hard_miss": "2",
+    "hard_over": "2",
     "n": "41",
     "rank": "13",
     "tier": "open_source_consumer"
@@ -177,6 +203,8 @@
     "exact": "17",
     "minor": "22",
     "hard": "2",
+    "hard_miss": "1",
+    "hard_over": "1",
     "n": "41",
     "rank": "14",
     "tier": "closed_source"
@@ -190,6 +218,8 @@
     "exact": "18",
     "minor": "18",
     "hard": "5",
+    "hard_miss": "2",
+    "hard_over": "3",
     "n": "41",
     "rank": "15",
     "tier": "closed_source"
@@ -203,6 +233,8 @@
     "exact": "17",
     "minor": "21",
     "hard": "3",
+    "hard_miss": "1",
+    "hard_over": "2",
     "n": "41",
     "rank": "16",
     "tier": "closed_source"
@@ -216,6 +248,8 @@
     "exact": "18",
     "minor": "18",
     "hard": "5",
+    "hard_miss": "2",
+    "hard_over": "3",
     "n": "41",
     "rank": "17",
     "tier": "open_source_pro"
@@ -229,6 +263,8 @@
     "exact": "19",
     "minor": "16",
     "hard": "6",
+    "hard_miss": "4",
+    "hard_over": "2",
     "n": "41",
     "rank": "18",
     "tier": "closed_source"
@@ -242,6 +278,8 @@
     "exact": "17",
     "minor": "20",
     "hard": "4",
+    "hard_miss": "1",
+    "hard_over": "3",
     "n": "41",
     "rank": "19",
     "tier": "closed_source"
@@ -255,6 +293,8 @@
     "exact": "18",
     "minor": "17",
     "hard": "6",
+    "hard_miss": "2",
+    "hard_over": "4",
     "n": "41",
     "rank": "20",
     "tier": "open_source_pro"
@@ -268,6 +308,8 @@
     "exact": "16",
     "minor": "24",
     "hard": "1",
+    "hard_miss": "1",
+    "hard_over": "0",
     "n": "41",
     "rank": "21",
     "tier": "closed_source"
@@ -281,6 +323,8 @@
     "exact": "15",
     "minor": "25",
     "hard": "1",
+    "hard_miss": "0",
+    "hard_over": "1",
     "n": "41",
     "rank": "22",
     "tier": "closed_source"
@@ -294,6 +338,8 @@
     "exact": "18",
     "minor": "16",
     "hard": "7",
+    "hard_miss": "3",
+    "hard_over": "4",
     "n": "41",
     "rank": "23",
     "tier": "closed_source"
@@ -307,6 +353,8 @@
     "exact": "16",
     "minor": "22",
     "hard": "3",
+    "hard_miss": "2",
+    "hard_over": "1",
     "n": "41",
     "rank": "24",
     "tier": "open_source_pro"
@@ -320,6 +368,8 @@
     "exact": "18",
     "minor": "15",
     "hard": "8",
+    "hard_miss": "3",
+    "hard_over": "5",
     "n": "41",
     "rank": "25",
     "tier": "closed_source"
@@ -333,6 +383,8 @@
     "exact": "15",
     "minor": "24",
     "hard": "2",
+    "hard_miss": "1",
+    "hard_over": "1",
     "n": "41",
     "rank": "26",
     "tier": "open_source_pro"
@@ -346,6 +398,8 @@
     "exact": "15",
     "minor": "23",
     "hard": "3",
+    "hard_miss": "1",
+    "hard_over": "2",
     "n": "41",
     "rank": "27",
     "tier": "closed_source"
@@ -359,6 +413,8 @@
     "exact": "15",
     "minor": "23",
     "hard": "3",
+    "hard_miss": "1",
+    "hard_over": "2",
     "n": "41",
     "rank": "28",
     "tier": "closed_source"
@@ -372,6 +428,8 @@
     "exact": "16",
     "minor": "20",
     "hard": "5",
+    "hard_miss": "1",
+    "hard_over": "1",
     "n": "41",
     "rank": "29",
     "tier": "open_source_consumer"
@@ -385,6 +443,8 @@
     "exact": "16",
     "minor": "18",
     "hard": "7",
+    "hard_miss": "2",
+    "hard_over": "5",
     "n": "41",
     "rank": "30",
     "tier": "closed_source"
@@ -398,6 +458,8 @@
     "exact": "17",
     "minor": "18",
     "hard": "6",
+    "hard_miss": "4",
+    "hard_over": "2",
     "n": "41",
     "rank": "31",
     "tier": "open_source_pro"
@@ -411,6 +473,8 @@
     "exact": "18",
     "minor": "14",
     "hard": "9",
+    "hard_miss": "5",
+    "hard_over": "4",
     "n": "41",
     "rank": "32",
     "tier": "open_source_pro"
@@ -424,6 +488,8 @@
     "exact": "14",
     "minor": "24",
     "hard": "3",
+    "hard_miss": "2",
+    "hard_over": "1",
     "n": "41",
     "rank": "33",
     "tier": "closed_source"
@@ -437,6 +503,8 @@
     "exact": "14",
     "minor": "24",
     "hard": "3",
+    "hard_miss": "3",
+    "hard_over": "0",
     "n": "41",
     "rank": "34",
     "tier": "closed_source"
@@ -450,6 +518,8 @@
     "exact": "14",
     "minor": "22",
     "hard": "5",
+    "hard_miss": "1",
+    "hard_over": "2",
     "n": "41",
     "rank": "35",
     "tier": "closed_source"
@@ -463,6 +533,8 @@
     "exact": "16",
     "minor": "11",
     "hard": "14",
+    "hard_miss": "0",
+    "hard_over": "0",
     "n": "41",
     "rank": "36",
     "tier": "closed_source"
@@ -476,6 +548,8 @@
     "exact": "11",
     "minor": "19",
     "hard": "11",
+    "hard_miss": "8",
+    "hard_over": "3",
     "n": "41",
     "rank": "37",
     "tier": "open_source_pro"
