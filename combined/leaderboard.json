@@ -593,22 +593,5 @@
     "rank": "35",
     "tier": "open_source_consumer",
     "incomplete": true
-  },
-  {
-    "model": "gpt-5.5",
-    "cw_pct": "35.4",
-    "ord_pct": "65.2",
-    "mae": "22.5",
-    "rmse": "32.4",
-    "exact": "13",
-    "minor": "17",
-    "hard": "3",
-    "hard_miss": "1",
-    "hard_over": "2",
-    "n_errors": "8",
-    "n": "33",
-    "rank": "36",
-    "tier": "closed_source",
-    "incomplete": true
   }
 ]
