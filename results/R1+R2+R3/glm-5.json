@@ -3,6 +3,8 @@
   "n_exact": 21,
   "n_minor": 13,
   "n_hard": 7,
+  "n_errors": 0,
+  "incomplete": false,
   "ordinal_total": 55,
   "ordinal_max": 82,
   "ordinal_pct": 67.1,
