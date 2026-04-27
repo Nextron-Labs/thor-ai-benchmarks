@@ -12,8 +12,8 @@
   "cw_total": 4.212,
   "cw_max": 12.0,
   "cw_pct": 35.1,
-  "mae": 21.7,
-  "rmse": 24.2,
+  "mae": 26.7,
+  "rmse": 28.9,
   "n_scored": 6,
   "errors": [
     "#6: LLM classification error (excluded from scoring)",

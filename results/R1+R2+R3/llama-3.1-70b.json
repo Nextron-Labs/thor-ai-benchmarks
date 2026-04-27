@@ -11,8 +11,8 @@
   "cw_total": 35.724,
   "cw_max": 80.0,
   "cw_pct": 44.7,
-  "mae": 22.6,
-  "rmse": 29.8,
+  "mae": 23.3,
+  "rmse": 30.4,
   "n_scored": 39,
   "reports": [
     "R1",
