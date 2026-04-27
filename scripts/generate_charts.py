@@ -51,16 +51,22 @@ for m in models:
     m['rank'] = int(m.get('rank', 0))
     m['cw_pct'] = float(m['cw_pct'])
     m['ord_pct'] = float(m['ord_pct'])
-    m['mae'] = float(m['mae'])
-    m['rmse'] = float(m['rmse'])
+    m['mae'] = float(m['mae']) if m.get('mae') and m['mae'] not in ('–', '-', '') else 99.0
+    m['rmse'] = float(m['rmse']) if m.get('rmse') and m['rmse'] not in ('–', '-', '') else 99.0
     m['exact'] = int(m.get('exact', 0))
     m['minor'] = int(m.get('minor', 0))
     m['hard'] = int(m.get('hard', 0))
     m['n'] = int(m.get('n', 0))
+    m['n_errors'] = int(m.get('n_errors', 0))
+    m['incomplete'] = m.get('incomplete', False) in (True, 'True', 'true', 1)
     m['tier'] = tier_lookup.get(m['model'], 'closed_source')
 
-# Sort by CW% descending
-models.sort(key=lambda x: x['cw_pct'], reverse=True)
+# Sort: complete models by CW% descending, then incomplete models at bottom
+complete = [m for m in models if not m.get('incomplete')]
+incomplete_models = [m for m in models if m.get('incomplete')]
+complete.sort(key=lambda x: x['cw_pct'], reverse=True)
+incomplete_models.sort(key=lambda x: x['cw_pct'], reverse=True)
+models = complete + incomplete_models
 
 def tier_style(tier_key):
     t = tiers_config[tier_key]
@@ -71,7 +77,7 @@ def tier_models(models_list, tier_key):
 
 # ── Chart 1: CW% Leaderboard (with tier colors) ──────────────
 fig, ax = plt.subplots(figsize=(14, 9))
-names = [m['model'] for m in models]
+names = [f"{m['model']} ⚠" if m.get('incomplete') else m['model'] for m in models]
 cw = [m['cw_pct'] for m in models]
 bar_colors = [tiers_config[m['tier']]['color'] for m in models]
 
@@ -123,19 +129,30 @@ plt.tight_layout()
 fig.savefig(charts_dir / 'cw-vs-mae.png', dpi=150, bbox_inches='tight')
 print(f"✓ cw-vs-mae.png")
 
-# ── Chart 3: Classification Breakdown (with tier colors + miss/over split) ──────
+# ── Chart 3: Classification Breakdown (with tier colors + miss/over split + error bar) ──────
 fig, ax = plt.subplots(figsize=(14, 9))
 y_pos = range(len(names))
 exact = [m['exact'] for m in models]
 minor = [m['minor'] for m in models]
 hard_miss = [int(m.get('hard_miss', 0)) for m in models]   # TP→FP: missed real threat
 hard_over = [int(m.get('hard_over', 0)) for m in models]  # FP→TP: over-called non-threat
+n_errors = [m.get('n_errors', 0) for m in models]
 
-# Simple, uniform colors: green=exact, blue=minor, yellow=overcall, red=missed threat
+# Compute "other hard" to close the gap: hard - (hard_miss + hard_over)
+other_hard = [max(0, m['hard'] - int(m.get('hard_miss', 0)) - int(m.get('hard_over', 0))) for m in models]
+
+# Stack: exact → minor → hard_over → hard_miss → other_hard → errors
+base1 = [e+m for e,m in zip(exact,minor)]
+base2 = [b+o for b,o in zip(base1,hard_over)]
+base3 = [b+ms for b,ms in zip(base2,hard_miss)]
+base4 = [b+oh for b,oh in zip(base3,other_hard)]
+
 ax.barh(y_pos, exact, color='#2ECC71', edgecolor='white', linewidth=0.5)
 ax.barh(y_pos, minor, left=exact, color='#3498DB', edgecolor='white', linewidth=0.5)
-ax.barh(y_pos, hard_over, left=[e+m for e,m in zip(exact,minor)], color='#F1C40F', edgecolor='white', linewidth=0.5)
-ax.barh(y_pos, hard_miss, left=[e+m+o for e,m,o in zip(exact,minor,hard_over)], color='#E74C3C', edgecolor='white', linewidth=0.5)
+ax.barh(y_pos, hard_over, left=base1, color='#F1C40F', edgecolor='white', linewidth=0.5)
+ax.barh(y_pos, hard_miss, left=base2, color='#E74C3C', edgecolor='white', linewidth=0.5)
+ax.barh(y_pos, other_hard, left=base3, color='#FF6B6B', edgecolor='white', linewidth=0.5, hatch='///')
+ax.barh(y_pos, n_errors, left=base4, color='#95A5A6', edgecolor='white', linewidth=0.5, hatch='xxx')
 
 ax.set_yticks(y_pos)
 ax.set_yticklabels(names, fontsize=10)
@@ -143,12 +160,14 @@ ax.invert_yaxis()
 ax.set_xlabel('Number of Findings', fontsize=12)
 ax.set_title('Classification Accuracy Breakdown by Model', fontsize=14, fontweight='bold')
 
-# Simple legend
+# Legend
 legend_items = [
     mpatches.Patch(color='#2ECC71', label='Exact match'),
     mpatches.Patch(color='#3498DB', label='Minor miss (1 step)'),
     mpatches.Patch(color='#F1C40F', label='Over-call (FP→TP)'),
     mpatches.Patch(color='#E74C3C', label='Missed threat (TP→FP)'),
+    mpatches.Patch(color='#FF6B6B', label='Hard error (undetermined direction)'),
+    mpatches.Patch(color='#95A5A6', label='LLM error (no response)'),
 ]
 ax.legend(handles=legend_items, loc='lower right', fontsize=9, framealpha=0.9)
 
@@ -166,7 +185,7 @@ for tier_key in tier_names:
 
     fig, ax = plt.subplots(figsize=(10, max(4, len(tm) * 0.5 + 1)))
     tm.sort(key=lambda x: x['cw_pct'], reverse=True)
-    names_t = [m['model'] for m in tm]
+    names_t = [f"{m['model']} ⚠" if m.get('incomplete') else m['model'] for m in tm]
     cw_t = [m['cw_pct'] for m in tm]
 
     bars = ax.barh(range(len(names_t)), cw_t, color=color, edgecolor='white', linewidth=0.5)
@@ -194,7 +213,7 @@ for tier_key in tier_names:
 
     fig, ax = plt.subplots(figsize=(10, max(4, len(tm) * 0.5 + 1)))
     tm.sort(key=lambda x: x['mae'])
-    names_t = [m['model'] for m in tm]
+    names_t = [f"{m['model']} ⚠" if m.get('incomplete') else m['model'] for m in tm]
     mae_t = [m['mae'] for m in tm]
 
     bars = ax.barh(range(len(names_t)), mae_t, color=color, edgecolor='white', linewidth=0.5, alpha=0.85)

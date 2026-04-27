@@ -1,0 +1,23 @@
+{
+  "n_findings": 14,
+  "n_matched": 11,
+  "n_exact": 5,
+  "n_minor": 6,
+  "n_hard": 0,
+  "n_errors": 3,
+  "incomplete": true,
+  "ordinal_total": 16,
+  "ordinal_max": 22,
+  "ordinal_pct": 72.7,
+  "cw_total": 10.293,
+  "cw_max": 22.0,
+  "cw_pct": 46.8,
+  "mae": 21.4,
+  "rmse": 29.4,
+  "n_scored": 11,
+  "errors": [
+    "#1: LLM classification error (excluded from scoring)",
+    "#6: LLM classification error (excluded from scoring)",
+    "#7: LLM classification error (excluded from scoring)"
+  ]
+}

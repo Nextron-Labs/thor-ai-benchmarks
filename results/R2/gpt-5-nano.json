@@ -1,0 +1,22 @@
+{
+  "n_findings": 9,
+  "n_matched": 7,
+  "n_exact": 1,
+  "n_minor": 6,
+  "n_hard": 0,
+  "n_errors": 0,
+  "incomplete": false,
+  "ordinal_total": 8,
+  "ordinal_max": 14,
+  "ordinal_pct": 57.1,
+  "cw_total": 2.462,
+  "cw_max": 14.0,
+  "cw_pct": 17.6,
+  "mae": 33.1,
+  "rmse": 37.3,
+  "n_scored": 7,
+  "errors": [
+    "#8: no ground truth for R2",
+    "#9: no ground truth for R2"
+  ]
+}

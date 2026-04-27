@@ -1,0 +1,21 @@
+{
+  "n_matched": 21,
+  "n_exact": 7,
+  "n_minor": 12,
+  "n_hard": 2,
+  "n_errors": 0,
+  "incomplete": false,
+  "ordinal_total": 26,
+  "ordinal_max": 42,
+  "ordinal_pct": 61.9,
+  "cw_total": 11.572,
+  "cw_max": 42.0,
+  "cw_pct": 27.6,
+  "mae": 27.0,
+  "rmse": 34.0,
+  "n_scored": 21,
+  "reports": [
+    "R1",
+    "R2"
+  ]
+}

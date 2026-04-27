@@ -1,0 +1,24 @@
+{
+  "n_findings": 9,
+  "n_matched": 5,
+  "n_exact": 1,
+  "n_minor": 2,
+  "n_hard": 2,
+  "n_errors": 2,
+  "incomplete": true,
+  "ordinal_total": 4,
+  "ordinal_max": 10,
+  "ordinal_pct": 40.0,
+  "cw_total": 0.118,
+  "cw_max": 10.0,
+  "cw_pct": 1.2,
+  "mae": 55.0,
+  "rmse": 61.2,
+  "n_scored": 5,
+  "errors": [
+    "#4: LLM classification error (excluded from scoring)",
+    "#7: LLM classification error (excluded from scoring)",
+    "#8: no ground truth for R2",
+    "#9: no ground truth for R2"
+  ]
+}
