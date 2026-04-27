@@ -120,7 +120,7 @@ for tier_key in tier_names:
 
 ax.set_xlabel('MAE (lower is better →)', fontsize=12)
 ax.set_ylabel('CW% (higher is better ↑)', fontsize=12)
-ax.set_title('CW% vs MAE by Model Tier — Top-Right is Best', fontsize=14, fontweight='bold')
+ax.set_title('CW% vs MAE by Model Tier — Top-Left is Best', fontsize=14, fontweight='bold')
 ax.legend(loc='lower left', fontsize=10, framealpha=0.9)
 ax.axhline(y=45, color='gray', linestyle='--', alpha=0.3)
 ax.axvline(x=25, color='gray', linestyle='--', alpha=0.3)
@@ -138,21 +138,16 @@ hard_miss = [int(m.get('hard_miss', 0)) for m in models]   # TP→FP: missed rea
 hard_over = [int(m.get('hard_over', 0)) for m in models]  # FP→TP: over-called non-threat
 n_errors = [m.get('n_errors', 0) for m in models]
 
-# Compute "other hard" to close the gap: hard - (hard_miss + hard_over)
-other_hard = [max(0, m['hard'] - int(m.get('hard_miss', 0)) - int(m.get('hard_over', 0))) for m in models]
-
-# Stack: exact → minor → hard_over → hard_miss → other_hard → errors
+# Stack: exact → minor → hard_over → hard_miss → errors
 base1 = [e+m for e,m in zip(exact,minor)]
 base2 = [b+o for b,o in zip(base1,hard_over)]
 base3 = [b+ms for b,ms in zip(base2,hard_miss)]
-base4 = [b+oh for b,oh in zip(base3,other_hard)]
 
 ax.barh(y_pos, exact, color='#2ECC71', edgecolor='white', linewidth=0.5)
 ax.barh(y_pos, minor, left=exact, color='#3498DB', edgecolor='white', linewidth=0.5)
 ax.barh(y_pos, hard_over, left=base1, color='#F1C40F', edgecolor='white', linewidth=0.5)
 ax.barh(y_pos, hard_miss, left=base2, color='#E74C3C', edgecolor='white', linewidth=0.5)
-ax.barh(y_pos, other_hard, left=base3, color='#FF6B6B', edgecolor='white', linewidth=0.5, hatch='///')
-ax.barh(y_pos, n_errors, left=base4, color='#95A5A6', edgecolor='white', linewidth=0.5, hatch='xxx')
+ax.barh(y_pos, n_errors, left=base3, color='#95A5A6', edgecolor='white', linewidth=0.5, hatch='///')
 
 ax.set_yticks(y_pos)
 ax.set_yticklabels(names, fontsize=10)
@@ -166,7 +161,6 @@ legend_items = [
     mpatches.Patch(color='#3498DB', label='Minor miss (1 step)'),
     mpatches.Patch(color='#F1C40F', label='Over-call (FP→TP)'),
     mpatches.Patch(color='#E74C3C', label='Missed threat (TP→FP)'),
-    mpatches.Patch(color='#FF6B6B', label='Hard error (undetermined direction)'),
     mpatches.Patch(color='#95A5A6', label='LLM error (no response)'),
 ]
 ax.legend(handles=legend_items, loc='lower right', fontsize=9, framealpha=0.9)
