@@ -101,6 +101,12 @@ Top-left = best (high CW%, low MAE).
 
 ![CW% vs MAE](charts/cw-vs-mae.png)
 
+### Quality vs Cost
+
+Which models deliver the best triage quality for the money? Cost estimated per full benchmark run (41 findings, ~2400 input + 250–400 output tokens per call) using OpenRouter pricing.
+
+![Quality vs Cost](charts/quality-vs-cost.png)
+
 ### Classification Accuracy Breakdown
 
 Green = exact match, blue = one step off (e.g., TP↔Inc), yellow = over-call (FP→TP), red = missed threat (TP→FP).
