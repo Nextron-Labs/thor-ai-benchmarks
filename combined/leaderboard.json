@@ -797,22 +797,5 @@
     "rank": "47",
     "tier": "open_source_pro",
     "incomplete": false
-  },
-  {
-    "model": "ernie-4.5-thinking",
-    "cw_pct": "0",
-    "ord_pct": "0",
-    "mae": "\u2013",
-    "rmse": "\u2013",
-    "exact": "0",
-    "minor": "0",
-    "hard": "0",
-    "hard_miss": "0",
-    "hard_over": "0",
-    "n_errors": "8",
-    "n": "0",
-    "rank": "48",
-    "tier": "closed_source",
-    "incomplete": true
   }
 ]

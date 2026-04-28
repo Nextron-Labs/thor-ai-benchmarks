@@ -46,4 +46,3 @@ rank,model,tier,cw_pct,ord_pct,mae,rmse,exact,minor,hard,hard_miss,hard_over,n_e
 45,mistral-nemo,open_source_pro,32.1,64.3,31.2,35.4,8,11,2,2,1,0,21,False
 46,gpt-5.4-nano,closed_source,27.6,61.9,27.0,34.0,7,12,2,3,0,0,21,False
 47,glm-4.7,open_source_pro,22.6,59.5,28.7,40.0,7,11,3,4,1,0,21,False
-48,ernie-4.5-thinking,closed_source,0,0,–,–,0,0,0,0,0,8,0,True
