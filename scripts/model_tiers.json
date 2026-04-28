@@ -42,6 +42,8 @@
         "glm-5.1",
         "qwen35-397b",
         "qwen3.5-plus-20260420",
+        "qwen3.6-plus",
+        "qwen3.6-flash",
         "kimi-k2.5",
         "kimi-k2.6",
         "nemotron-3-super-120b",
