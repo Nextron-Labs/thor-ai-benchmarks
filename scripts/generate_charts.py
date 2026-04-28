@@ -87,7 +87,8 @@ ax.set_yticklabels(names, fontsize=10)
 ax.invert_yaxis()
 ax.set_xlabel('Confidence-Weighted Score (%)', fontsize=12)
 ax.set_title('THOR Finding Triage — CW% Leaderboard by Model Tier', fontsize=14, fontweight='bold')
-ax.set_xlim(0, 55)
+max_cw = max(cw) if cw else 50
+ax.set_xlim(0, max(max_cw * 1.12, 10))
 
 for i, (bar, val) in enumerate(zip(bars, cw)):
     ax.text(val + 0.5, i, f'{val:.1f}%', va='center', fontsize=9, fontweight='bold')
@@ -138,21 +139,27 @@ hard_miss = [int(m.get('hard_miss', 0)) for m in models]   # TP→FP: missed rea
 hard_over = [int(m.get('hard_over', 0)) for m in models]  # FP→TP: over-called non-threat
 n_errors = [m.get('n_errors', 0) for m in models]
 
-# Stack: exact → minor → hard_over → hard_miss → errors
+# Stack: exact → minor → hard_over → hard_miss → errors → unclassified
 base1 = [e+m for e,m in zip(exact,minor)]
 base2 = [b+o for b,o in zip(base1,hard_over)]
 base3 = [b+ms for b,ms in zip(base2,hard_miss)]
+base4 = [b+ne for b,ne in zip(base3,n_errors)]
+classified_totals = base4
+unclassified = [max(0, m['n'] - ct) for m, ct in zip(models, classified_totals)]
 
 ax.barh(y_pos, exact, color='#2ECC71', edgecolor='white', linewidth=0.5)
 ax.barh(y_pos, minor, left=exact, color='#3498DB', edgecolor='white', linewidth=0.5)
 ax.barh(y_pos, hard_over, left=base1, color='#F1C40F', edgecolor='white', linewidth=0.5)
 ax.barh(y_pos, hard_miss, left=base2, color='#E74C3C', edgecolor='white', linewidth=0.5)
 ax.barh(y_pos, n_errors, left=base3, color='#95A5A6', edgecolor='white', linewidth=0.5, hatch='///')
+ax.barh(y_pos, unclassified, left=base4, color='#D5D8DC', edgecolor='white', linewidth=0.5, alpha=0.5)
 
 ax.set_yticks(y_pos)
 ax.set_yticklabels(names, fontsize=10)
 ax.invert_yaxis()
 ax.set_xlabel('Number of Findings', fontsize=12)
+max_n = max(m['n'] for m in models) if models else 14
+ax.set_xlim(0, max_n * 1.05)
 ax.set_title('Classification Accuracy Breakdown by Model', fontsize=14, fontweight='bold')
 
 # Legend
@@ -162,6 +169,7 @@ legend_items = [
     mpatches.Patch(color='#F1C40F', label='Over-call (FP→TP)'),
     mpatches.Patch(color='#E74C3C', label='Missed threat (TP→FP)'),
     mpatches.Patch(color='#95A5A6', label='LLM error (no response)'),
+    mpatches.Patch(color='#D5D8DC', label='Other (unclassified)'),
 ]
 ax.legend(handles=legend_items, loc='lower right', fontsize=9, framealpha=0.9)
 
@@ -188,7 +196,8 @@ for tier_key in tier_names:
     ax.invert_yaxis()
     ax.set_xlabel('CW%', fontsize=12)
     ax.set_title(f'{label} — CW%', fontsize=13, fontweight='bold')
-    ax.set_xlim(0, 55)
+    max_cw_t = max(cw_t) if cw_t else 50
+    ax.set_xlim(0, max(max_cw_t * 1.12, 10))
 
     for i, (bar, val) in enumerate(zip(bars, cw_t)):
         ax.text(val + 0.3, i, f'{val:.1f}%', va='center', fontsize=9, fontweight='bold')
