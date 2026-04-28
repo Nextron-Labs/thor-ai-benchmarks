@@ -122,6 +122,47 @@
       "#9: no ground truth for R2"
     ]
   },
+  "claude-sonnet-4.5/R1": {
+    "n_findings": 14,
+    "n_matched": 14,
+    "n_exact": 9,
+    "n_minor": 5,
+    "n_hard": 0,
+    "n_errors": 0,
+    "incomplete": false,
+    "ordinal_total": 23,
+    "ordinal_max": 28,
+    "ordinal_pct": 82.1,
+    "cw_total": 17.9,
+    "cw_max": 28.0,
+    "cw_pct": 63.9,
+    "mae": 12.1,
+    "rmse": 16.8,
+    "n_scored": 14,
+    "errors": []
+  },
+  "claude-sonnet-4.5/R2": {
+    "n_findings": 9,
+    "n_matched": 7,
+    "n_exact": 3,
+    "n_minor": 2,
+    "n_hard": 2,
+    "n_errors": 0,
+    "incomplete": false,
+    "ordinal_total": 8,
+    "ordinal_max": 14,
+    "ordinal_pct": 57.1,
+    "cw_total": 3.975,
+    "cw_max": 14.0,
+    "cw_pct": 28.4,
+    "mae": 43.6,
+    "rmse": 54.5,
+    "n_scored": 7,
+    "errors": [
+      "#8: no ground truth for R2",
+      "#9: no ground truth for R2"
+    ]
+  },
   "claude-sonnet-4.6/R1": {
     "n_findings": 14,
     "n_matched": 14,
@@ -366,54 +407,6 @@
     "errors": [
       "#8: no ground truth for R2",
       "#9: no ground truth for R2"
-    ]
-  },
-  "ernie-4.5-thinking/R1": {
-    "n_findings": 4,
-    "n_matched": 0,
-    "n_exact": 0,
-    "n_minor": 0,
-    "n_hard": 0,
-    "n_errors": 4,
-    "incomplete": true,
-    "ordinal_total": 0,
-    "ordinal_max": 0,
-    "ordinal_pct": 0,
-    "cw_total": 0.0,
-    "cw_max": 0.0,
-    "cw_pct": 0,
-    "mae": null,
-    "rmse": null,
-    "n_scored": 0,
-    "errors": [
-      "#1: LLM classification error (excluded from scoring)",
-      "#2: LLM classification error (excluded from scoring)",
-      "#3: LLM classification error (excluded from scoring)",
-      "#4: LLM classification error (excluded from scoring)"
-    ]
-  },
-  "ernie-4.5-thinking/R2": {
-    "n_findings": 4,
-    "n_matched": 0,
-    "n_exact": 0,
-    "n_minor": 0,
-    "n_hard": 0,
-    "n_errors": 4,
-    "incomplete": true,
-    "ordinal_total": 0,
-    "ordinal_max": 0,
-    "ordinal_pct": 0,
-    "cw_total": 0.0,
-    "cw_max": 0.0,
-    "cw_pct": 0,
-    "mae": null,
-    "rmse": null,
-    "n_scored": 0,
-    "errors": [
-      "#1: LLM classification error (excluded from scoring)",
-      "#2: LLM classification error (excluded from scoring)",
-      "#3: LLM classification error (excluded from scoring)",
-      "#4: LLM classification error (excluded from scoring)"
     ]
   },
   "gemini-2.5-flash/R1": {
@@ -1646,6 +1639,47 @@
       "#9: no ground truth for R2"
     ]
   },
+  "nemotron-3-nano-omni/R1": {
+    "n_findings": 14,
+    "n_matched": 14,
+    "n_exact": 8,
+    "n_minor": 6,
+    "n_hard": 0,
+    "n_errors": 0,
+    "incomplete": false,
+    "ordinal_total": 22,
+    "ordinal_max": 28,
+    "ordinal_pct": 78.6,
+    "cw_total": 15.488,
+    "cw_max": 28.0,
+    "cw_pct": 55.3,
+    "mae": 18.6,
+    "rmse": 22.4,
+    "n_scored": 14,
+    "errors": []
+  },
+  "nemotron-3-nano-omni/R2": {
+    "n_findings": 9,
+    "n_matched": 7,
+    "n_exact": 2,
+    "n_minor": 4,
+    "n_hard": 1,
+    "n_errors": 0,
+    "incomplete": false,
+    "ordinal_total": 8,
+    "ordinal_max": 14,
+    "ordinal_pct": 57.1,
+    "cw_total": 2.762,
+    "cw_max": 14.0,
+    "cw_pct": 19.7,
+    "mae": 32.1,
+    "rmse": 42.5,
+    "n_scored": 7,
+    "errors": [
+      "#8: no ground truth for R2",
+      "#9: no ground truth for R2"
+    ]
+  },
   "nemotron-3-super-120b/R1": {
     "n_findings": 14,
     "n_matched": 14,
@@ -2143,6 +2177,27 @@
       "R2"
     ]
   },
+  "claude-sonnet-4.5/R1+R2": {
+    "n_matched": 21,
+    "n_exact": 12,
+    "n_minor": 7,
+    "n_hard": 2,
+    "n_errors": 0,
+    "incomplete": false,
+    "ordinal_total": 31,
+    "ordinal_max": 42,
+    "ordinal_pct": 73.8,
+    "cw_total": 21.875,
+    "cw_max": 42.0,
+    "cw_pct": 52.1,
+    "mae": 22.6,
+    "rmse": 34.3,
+    "n_scored": 21,
+    "reports": [
+      "R1",
+      "R2"
+    ]
+  },
   "claude-sonnet-4.6/R1+R2": {
     "n_matched": 21,
     "n_exact": 12,
@@ -2264,27 +2319,6 @@
     "mae": 23.6,
     "rmse": 29.7,
     "n_scored": 21,
-    "reports": [
-      "R1",
-      "R2"
-    ]
-  },
-  "ernie-4.5-thinking/R1+R2": {
-    "n_matched": 0,
-    "n_exact": 0,
-    "n_minor": 0,
-    "n_hard": 0,
-    "n_errors": 8,
-    "incomplete": true,
-    "ordinal_total": 0,
-    "ordinal_max": 0,
-    "ordinal_pct": 0,
-    "cw_total": 0.0,
-    "cw_max": 0.0,
-    "cw_pct": 0,
-    "mae": null,
-    "rmse": null,
-    "n_scored": 0,
     "reports": [
       "R1",
       "R2"
@@ -2914,6 +2948,27 @@
     "cw_pct": 32.1,
     "mae": 31.2,
     "rmse": 35.4,
+    "n_scored": 21,
+    "reports": [
+      "R1",
+      "R2"
+    ]
+  },
+  "nemotron-3-nano-omni/R1+R2": {
+    "n_matched": 21,
+    "n_exact": 10,
+    "n_minor": 10,
+    "n_hard": 1,
+    "n_errors": 0,
+    "incomplete": false,
+    "ordinal_total": 30,
+    "ordinal_max": 42,
+    "ordinal_pct": 71.4,
+    "cw_total": 18.25,
+    "cw_max": 42.0,
+    "cw_pct": 43.5,
+    "mae": 23.1,
+    "rmse": 30.6,
     "n_scored": 21,
     "reports": [
       "R1",

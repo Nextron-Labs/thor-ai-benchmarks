@@ -136,6 +136,23 @@
     "incomplete": false
   },
   {
+    "model": "claude-sonnet-4.5",
+    "cw_pct": "52.1",
+    "ord_pct": "73.8",
+    "mae": "22.6",
+    "rmse": "34.3",
+    "exact": "12",
+    "minor": "7",
+    "hard": "2",
+    "hard_miss": "2",
+    "hard_over": "4",
+    "n_errors": "0",
+    "n": "21",
+    "rank": "9",
+    "tier": "closed_source",
+    "incomplete": false
+  },
+  {
     "model": "deepseek-v3.1",
     "cw_pct": "52.1",
     "ord_pct": "73.8",
@@ -148,7 +165,7 @@
     "hard_over": "3",
     "n_errors": "0",
     "n": "21",
-    "rank": "9",
+    "rank": "10",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -165,7 +182,7 @@
     "hard_over": "2",
     "n_errors": "0",
     "n": "21",
-    "rank": "10",
+    "rank": "11",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -182,7 +199,7 @@
     "hard_over": "4",
     "n_errors": "0",
     "n": "21",
-    "rank": "11",
+    "rank": "12",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -199,7 +216,7 @@
     "hard_over": "3",
     "n_errors": "0",
     "n": "21",
-    "rank": "12",
+    "rank": "13",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -216,7 +233,7 @@
     "hard_over": "3",
     "n_errors": "0",
     "n": "21",
-    "rank": "13",
+    "rank": "14",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -233,7 +250,7 @@
     "hard_over": "3",
     "n_errors": "0",
     "n": "21",
-    "rank": "14",
+    "rank": "15",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -250,7 +267,7 @@
     "hard_over": "3",
     "n_errors": "0",
     "n": "21",
-    "rank": "15",
+    "rank": "16",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -267,7 +284,7 @@
     "hard_over": "2",
     "n_errors": "0",
     "n": "21",
-    "rank": "16",
+    "rank": "17",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -284,7 +301,7 @@
     "hard_over": "1",
     "n_errors": "0",
     "n": "21",
-    "rank": "17",
+    "rank": "18",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -301,7 +318,7 @@
     "hard_over": "2",
     "n_errors": "0",
     "n": "21",
-    "rank": "18",
+    "rank": "19",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -318,7 +335,7 @@
     "hard_over": "0",
     "n_errors": "0",
     "n": "21",
-    "rank": "19",
+    "rank": "20",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -335,7 +352,7 @@
     "hard_over": "2",
     "n_errors": "0",
     "n": "21",
-    "rank": "20",
+    "rank": "21",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -352,7 +369,7 @@
     "hard_over": "2",
     "n_errors": "0",
     "n": "21",
-    "rank": "21",
+    "rank": "22",
     "tier": "open_source_consumer",
     "incomplete": false
   },
@@ -369,7 +386,7 @@
     "hard_over": "3",
     "n_errors": "0",
     "n": "21",
-    "rank": "22",
+    "rank": "23",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -386,7 +403,7 @@
     "hard_over": "1",
     "n_errors": "0",
     "n": "21",
-    "rank": "23",
+    "rank": "24",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -403,7 +420,7 @@
     "hard_over": "2",
     "n_errors": "0",
     "n": "21",
-    "rank": "24",
+    "rank": "25",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -420,7 +437,7 @@
     "hard_over": "1",
     "n_errors": "0",
     "n": "21",
-    "rank": "25",
+    "rank": "26",
     "tier": "open_source_consumer",
     "incomplete": false
   },
@@ -437,7 +454,7 @@
     "hard_over": "4",
     "n_errors": "0",
     "n": "21",
-    "rank": "26",
+    "rank": "27",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -454,7 +471,7 @@
     "hard_over": "4",
     "n_errors": "0",
     "n": "21",
-    "rank": "27",
+    "rank": "28",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -467,11 +484,11 @@
     "exact": "12",
     "minor": "5",
     "hard": "4",
-    "hard_miss": "4",
+    "hard_miss": "5",
     "hard_over": "2",
     "n_errors": "0",
     "n": "21",
-    "rank": "28",
+    "rank": "29",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -488,7 +505,7 @@
     "hard_over": "2",
     "n_errors": "0",
     "n": "21",
-    "rank": "29",
+    "rank": "30",
     "tier": "open_source_consumer",
     "incomplete": false
   },
@@ -505,7 +522,7 @@
     "hard_over": "5",
     "n_errors": "0",
     "n": "21",
-    "rank": "30",
+    "rank": "31",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -522,7 +539,7 @@
     "hard_over": "2",
     "n_errors": "0",
     "n": "21",
-    "rank": "31",
+    "rank": "32",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -539,8 +556,25 @@
     "hard_over": "3",
     "n_errors": "0",
     "n": "21",
-    "rank": "32",
+    "rank": "33",
     "tier": "closed_source",
+    "incomplete": false
+  },
+  {
+    "model": "nemotron-3-nano-omni",
+    "cw_pct": "43.5",
+    "ord_pct": "71.4",
+    "mae": "23.1",
+    "rmse": "30.6",
+    "exact": "10",
+    "minor": "10",
+    "hard": "1",
+    "hard_miss": "1",
+    "hard_over": "2",
+    "n_errors": "0",
+    "n": "21",
+    "rank": "34",
+    "tier": "open_source_pro",
     "incomplete": false
   },
   {
@@ -556,7 +590,7 @@
     "hard_over": "5",
     "n_errors": "0",
     "n": "21",
-    "rank": "33",
+    "rank": "35",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -573,7 +607,7 @@
     "hard_over": "2",
     "n_errors": "0",
     "n": "21",
-    "rank": "34",
+    "rank": "36",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -590,7 +624,7 @@
     "hard_over": "1",
     "n_errors": "0",
     "n": "21",
-    "rank": "35",
+    "rank": "37",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -607,7 +641,7 @@
     "hard_over": "3",
     "n_errors": "0",
     "n": "21",
-    "rank": "36",
+    "rank": "38",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -624,7 +658,7 @@
     "hard_over": "2",
     "n_errors": "0",
     "n": "21",
-    "rank": "37",
+    "rank": "39",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -641,7 +675,7 @@
     "hard_over": "3",
     "n_errors": "0",
     "n": "21",
-    "rank": "38",
+    "rank": "40",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -658,7 +692,7 @@
     "hard_over": "2",
     "n_errors": "0",
     "n": "21",
-    "rank": "39",
+    "rank": "41",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -675,7 +709,7 @@
     "hard_over": "1",
     "n_errors": "0",
     "n": "21",
-    "rank": "40",
+    "rank": "42",
     "tier": "open_source_consumer",
     "incomplete": false
   },
@@ -692,7 +726,7 @@
     "hard_over": "1",
     "n_errors": "0",
     "n": "21",
-    "rank": "41",
+    "rank": "43",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -709,7 +743,7 @@
     "hard_over": "1",
     "n_errors": "0",
     "n": "21",
-    "rank": "42",
+    "rank": "44",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -726,7 +760,7 @@
     "hard_over": "1",
     "n_errors": "0",
     "n": "21",
-    "rank": "43",
+    "rank": "45",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -743,7 +777,7 @@
     "hard_over": "1",
     "n_errors": "0",
     "n": "21",
-    "rank": "44",
+    "rank": "46",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -760,7 +794,7 @@
     "hard_over": "1",
     "n_errors": "0",
     "n": "21",
-    "rank": "45",
+    "rank": "47",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -777,7 +811,7 @@
     "hard_over": "0",
     "n_errors": "0",
     "n": "21",
-    "rank": "46",
+    "rank": "48",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -794,7 +828,7 @@
     "hard_over": "1",
     "n_errors": "0",
     "n": "21",
-    "rank": "47",
+    "rank": "49",
     "tier": "open_source_pro",
     "incomplete": false
   }
