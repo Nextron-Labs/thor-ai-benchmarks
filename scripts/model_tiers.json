@@ -12,6 +12,9 @@
                         "gpt-5.5",
         "gpt-5.4-nano",
         "gpt-oss-120b",
+        "gpt-oss-20b",
+        "gpt-5.4-mini",
+        "claude-haiku-4.5",
         "claude-opus-4.5",
         "claude-opus-4.6",
         "claude-sonnet-4.6",
@@ -42,7 +45,8 @@
         "kimi-k2.5",
         "kimi-k2.6",
         "nemotron-3-super-120b",
-        "mistral-nemo"
+        "mistral-nemo",
+        "qwen3.6-flash"
       ]
     },
     "open_source_consumer": {
