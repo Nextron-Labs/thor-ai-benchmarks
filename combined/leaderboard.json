@@ -136,6 +136,23 @@
     "incomplete": false
   },
   {
+    "model": "gpt-oss-20b",
+    "cw_pct": "41.2",
+    "ord_pct": "69.5",
+    "mae": "23.4",
+    "rmse": "30.1",
+    "exact": "18",
+    "minor": "21",
+    "hard": "2",
+    "hard_miss": "1",
+    "hard_over": "1",
+    "n_errors": "0",
+    "n": "41",
+    "rank": "9",
+    "tier": "closed_source",
+    "incomplete": false
+  },
+  {
     "model": "grok-4.1-fast",
     "cw_pct": "40.7",
     "ord_pct": "67.1",
@@ -148,7 +165,7 @@
     "hard_over": "3",
     "n_errors": "0",
     "n": "41",
-    "rank": "9",
+    "rank": "10",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -165,7 +182,7 @@
     "hard_over": "1",
     "n_errors": "0",
     "n": "41",
-    "rank": "10",
+    "rank": "11",
     "tier": "open_source_consumer",
     "incomplete": false
   },
@@ -182,7 +199,7 @@
     "hard_over": "2",
     "n_errors": "0",
     "n": "41",
-    "rank": "11",
+    "rank": "12",
     "tier": "open_source_consumer",
     "incomplete": false
   },
@@ -199,7 +216,7 @@
     "hard_over": "1",
     "n_errors": "0",
     "n": "41",
-    "rank": "12",
+    "rank": "13",
     "tier": "open_source_consumer",
     "incomplete": false
   },
@@ -216,7 +233,7 @@
     "hard_over": "2",
     "n_errors": "0",
     "n": "41",
-    "rank": "13",
+    "rank": "14",
     "tier": "open_source_consumer",
     "incomplete": false
   },
@@ -233,7 +250,7 @@
     "hard_over": "1",
     "n_errors": "0",
     "n": "41",
-    "rank": "14",
+    "rank": "15",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -250,7 +267,7 @@
     "hard_over": "3",
     "n_errors": "0",
     "n": "41",
-    "rank": "15",
+    "rank": "16",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -267,7 +284,7 @@
     "hard_over": "2",
     "n_errors": "0",
     "n": "41",
-    "rank": "16",
+    "rank": "17",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -284,7 +301,7 @@
     "hard_over": "3",
     "n_errors": "0",
     "n": "41",
-    "rank": "17",
+    "rank": "18",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -301,7 +318,7 @@
     "hard_over": "3",
     "n_errors": "0",
     "n": "41",
-    "rank": "18",
+    "rank": "19",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -318,7 +335,7 @@
     "hard_over": "2",
     "n_errors": "0",
     "n": "41",
-    "rank": "19",
+    "rank": "20",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -335,7 +352,7 @@
     "hard_over": "3",
     "n_errors": "0",
     "n": "41",
-    "rank": "20",
+    "rank": "21",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -352,7 +369,7 @@
     "hard_over": "4",
     "n_errors": "0",
     "n": "41",
-    "rank": "21",
+    "rank": "22",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -369,7 +386,24 @@
     "hard_over": "0",
     "n_errors": "0",
     "n": "41",
-    "rank": "22",
+    "rank": "23",
+    "tier": "closed_source",
+    "incomplete": false
+  },
+  {
+    "model": "claude-haiku-4.5",
+    "cw_pct": "36.5",
+    "ord_pct": "64.6",
+    "mae": "27.8",
+    "rmse": "34.7",
+    "exact": "18",
+    "minor": "17",
+    "hard": "6",
+    "hard_miss": "3",
+    "hard_over": "3",
+    "n_errors": "0",
+    "n": "41",
+    "rank": "24",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -386,7 +420,7 @@
     "hard_over": "1",
     "n_errors": "0",
     "n": "41",
-    "rank": "23",
+    "rank": "25",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -403,7 +437,7 @@
     "hard_over": "4",
     "n_errors": "0",
     "n": "41",
-    "rank": "24",
+    "rank": "26",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -420,7 +454,7 @@
     "hard_over": "2",
     "n_errors": "0",
     "n": "41",
-    "rank": "25",
+    "rank": "27",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -437,7 +471,7 @@
     "hard_over": "1",
     "n_errors": "0",
     "n": "41",
-    "rank": "26",
+    "rank": "28",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -454,7 +488,7 @@
     "hard_over": "5",
     "n_errors": "0",
     "n": "41",
-    "rank": "27",
+    "rank": "29",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -471,7 +505,7 @@
     "hard_over": "1",
     "n_errors": "0",
     "n": "41",
-    "rank": "28",
+    "rank": "30",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -488,7 +522,7 @@
     "hard_over": "2",
     "n_errors": "0",
     "n": "41",
-    "rank": "29",
+    "rank": "31",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -505,7 +539,7 @@
     "hard_over": "2",
     "n_errors": "0",
     "n": "41",
-    "rank": "30",
+    "rank": "32",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -522,7 +556,7 @@
     "hard_over": "1",
     "n_errors": "0",
     "n": "41",
-    "rank": "31",
+    "rank": "33",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -539,7 +573,24 @@
     "hard_over": "5",
     "n_errors": "0",
     "n": "41",
-    "rank": "32",
+    "rank": "34",
+    "tier": "closed_source",
+    "incomplete": false
+  },
+  {
+    "model": "gpt-5.4-mini",
+    "cw_pct": "32.3",
+    "ord_pct": "63.4",
+    "mae": "23.8",
+    "rmse": "31.1",
+    "exact": "15",
+    "minor": "22",
+    "hard": "4",
+    "hard_miss": "2",
+    "hard_over": "2",
+    "n_errors": "0",
+    "n": "41",
+    "rank": "35",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -556,7 +607,7 @@
     "hard_over": "2",
     "n_errors": "0",
     "n": "41",
-    "rank": "33",
+    "rank": "36",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -573,7 +624,7 @@
     "hard_over": "4",
     "n_errors": "0",
     "n": "41",
-    "rank": "34",
+    "rank": "37",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -590,7 +641,7 @@
     "hard_over": "1",
     "n_errors": "0",
     "n": "41",
-    "rank": "35",
+    "rank": "38",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -607,7 +658,24 @@
     "hard_over": "0",
     "n_errors": "0",
     "n": "41",
-    "rank": "36",
+    "rank": "39",
+    "tier": "closed_source",
+    "incomplete": false
+  },
+  {
+    "model": "qwen3.6-flash",
+    "cw_pct": "28.1",
+    "ord_pct": "59.8",
+    "mae": "25.9",
+    "rmse": "34.8",
+    "exact": "15",
+    "minor": "19",
+    "hard": "7",
+    "hard_miss": "4",
+    "hard_over": "3",
+    "n_errors": "0",
+    "n": "41",
+    "rank": "40",
     "tier": "closed_source",
     "incomplete": false
   }
