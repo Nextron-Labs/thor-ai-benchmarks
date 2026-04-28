@@ -47,4 +47,3 @@ rank,model,tier,cw_pct,ord_pct,mae,rmse,exact,minor,hard,hard_miss,hard_over,n_e
 46,mercury-2,closed_source,30.5,63.4,24.6,30.2,13,26,2,1,1,0,41,False
 47,gpt-5.4-nano,closed_source,29.5,63.4,24.3,29.6,14,24,3,3,0,0,41,False
 48,qwen3.6-flash,open_source_pro,28.1,59.8,25.9,34.8,15,19,7,4,3,0,41,False
-49,glm-4.7,open_source_pro,19.8,56.2,35.4,44.1,10,25,5,2,3,1,40,False

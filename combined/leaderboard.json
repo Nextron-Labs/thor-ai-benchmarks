@@ -814,22 +814,5 @@
     "rank": "48",
     "tier": "open_source_pro",
     "incomplete": false
-  },
-  {
-    "model": "glm-4.7",
-    "cw_pct": "19.8",
-    "ord_pct": "56.2",
-    "mae": "35.4",
-    "rmse": "44.1",
-    "exact": "10",
-    "minor": "25",
-    "hard": "5",
-    "hard_miss": "2",
-    "hard_over": "3",
-    "n_errors": "1",
-    "n": "40",
-    "rank": "49",
-    "tier": "open_source_pro",
-    "incomplete": false
   }
 ]
