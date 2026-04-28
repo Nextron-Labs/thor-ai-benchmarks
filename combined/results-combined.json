@@ -163,6 +163,47 @@
       "#9: no ground truth for R2"
     ]
   },
+  "deepseek-v3.1/R1": {
+    "n_findings": 14,
+    "n_matched": 14,
+    "n_exact": 9,
+    "n_minor": 5,
+    "n_hard": 0,
+    "n_errors": 0,
+    "incomplete": false,
+    "ordinal_total": 23,
+    "ordinal_max": 28,
+    "ordinal_pct": 82.1,
+    "cw_total": 17.787,
+    "cw_max": 28.0,
+    "cw_pct": 63.5,
+    "mae": 12.9,
+    "rmse": 19.3,
+    "n_scored": 14,
+    "errors": []
+  },
+  "deepseek-v3.1/R2": {
+    "n_findings": 9,
+    "n_matched": 7,
+    "n_exact": 3,
+    "n_minor": 2,
+    "n_hard": 2,
+    "n_errors": 0,
+    "incomplete": false,
+    "ordinal_total": 8,
+    "ordinal_max": 14,
+    "ordinal_pct": 57.1,
+    "cw_total": 4.1,
+    "cw_max": 14.0,
+    "cw_pct": 29.3,
+    "mae": 35.0,
+    "rmse": 44.6,
+    "n_scored": 7,
+    "errors": [
+      "#8: no ground truth for R2",
+      "#9: no ground truth for R2"
+    ]
+  },
   "deepseek-v3.2/R1": {
     "n_findings": 14,
     "n_matched": 14,
@@ -327,6 +368,54 @@
       "#9: no ground truth for R2"
     ]
   },
+  "ernie-4.5-thinking/R1": {
+    "n_findings": 4,
+    "n_matched": 0,
+    "n_exact": 0,
+    "n_minor": 0,
+    "n_hard": 0,
+    "n_errors": 4,
+    "incomplete": true,
+    "ordinal_total": 0,
+    "ordinal_max": 0,
+    "ordinal_pct": 0,
+    "cw_total": 0.0,
+    "cw_max": 0.0,
+    "cw_pct": 0,
+    "mae": null,
+    "rmse": null,
+    "n_scored": 0,
+    "errors": [
+      "#1: LLM classification error (excluded from scoring)",
+      "#2: LLM classification error (excluded from scoring)",
+      "#3: LLM classification error (excluded from scoring)",
+      "#4: LLM classification error (excluded from scoring)"
+    ]
+  },
+  "ernie-4.5-thinking/R2": {
+    "n_findings": 4,
+    "n_matched": 0,
+    "n_exact": 0,
+    "n_minor": 0,
+    "n_hard": 0,
+    "n_errors": 4,
+    "incomplete": true,
+    "ordinal_total": 0,
+    "ordinal_max": 0,
+    "ordinal_pct": 0,
+    "cw_total": 0.0,
+    "cw_max": 0.0,
+    "cw_pct": 0,
+    "mae": null,
+    "rmse": null,
+    "n_scored": 0,
+    "errors": [
+      "#1: LLM classification error (excluded from scoring)",
+      "#2: LLM classification error (excluded from scoring)",
+      "#3: LLM classification error (excluded from scoring)",
+      "#4: LLM classification error (excluded from scoring)"
+    ]
+  },
   "gemini-2.5-flash/R1": {
     "n_findings": 14,
     "n_matched": 14,
@@ -409,6 +498,47 @@
       "#9: no ground truth for R2"
     ]
   },
+  "gemini-3.1-pro/R1": {
+    "n_findings": 14,
+    "n_matched": 14,
+    "n_exact": 10,
+    "n_minor": 3,
+    "n_hard": 1,
+    "n_errors": 0,
+    "incomplete": false,
+    "ordinal_total": 23,
+    "ordinal_max": 28,
+    "ordinal_pct": 82.1,
+    "cw_total": 18.262,
+    "cw_max": 28.0,
+    "cw_pct": 65.2,
+    "mae": 16.1,
+    "rmse": 23.7,
+    "n_scored": 14,
+    "errors": []
+  },
+  "gemini-3.1-pro/R2": {
+    "n_findings": 9,
+    "n_matched": 7,
+    "n_exact": 2,
+    "n_minor": 3,
+    "n_hard": 2,
+    "n_errors": 0,
+    "incomplete": false,
+    "ordinal_total": 7,
+    "ordinal_max": 14,
+    "ordinal_pct": 50.0,
+    "cw_total": 2.062,
+    "cw_max": 14.0,
+    "cw_pct": 14.7,
+    "mae": 50.7,
+    "rmse": 58.0,
+    "n_scored": 7,
+    "errors": [
+      "#8: no ground truth for R2",
+      "#9: no ground truth for R2"
+    ]
+  },
   "gemma4-31b/R1": {
     "n_findings": 14,
     "n_matched": 14,
@@ -444,6 +574,47 @@
     "cw_pct": 28.2,
     "mae": 37.9,
     "rmse": 49.9,
+    "n_scored": 7,
+    "errors": [
+      "#8: no ground truth for R2",
+      "#9: no ground truth for R2"
+    ]
+  },
+  "glm-4.7/R1": {
+    "n_findings": 14,
+    "n_matched": 14,
+    "n_exact": 6,
+    "n_minor": 6,
+    "n_hard": 2,
+    "n_errors": 0,
+    "incomplete": false,
+    "ordinal_total": 18,
+    "ordinal_max": 28,
+    "ordinal_pct": 64.3,
+    "cw_total": 8.95,
+    "cw_max": 28.0,
+    "cw_pct": 32.0,
+    "mae": 25.9,
+    "rmse": 37.6,
+    "n_scored": 14,
+    "errors": []
+  },
+  "glm-4.7/R2": {
+    "n_findings": 9,
+    "n_matched": 7,
+    "n_exact": 1,
+    "n_minor": 5,
+    "n_hard": 1,
+    "n_errors": 0,
+    "incomplete": false,
+    "ordinal_total": 7,
+    "ordinal_max": 14,
+    "ordinal_pct": 50.0,
+    "cw_total": 0.55,
+    "cw_max": 14.0,
+    "cw_pct": 3.9,
+    "mae": 34.3,
+    "rmse": 44.4,
     "n_scored": 7,
     "errors": [
       "#8: no ground truth for R2",
@@ -901,6 +1072,47 @@
       "#9: no ground truth for R2"
     ]
   },
+  "grok-4-fast/R1": {
+    "n_findings": 14,
+    "n_matched": 14,
+    "n_exact": 11,
+    "n_minor": 2,
+    "n_hard": 1,
+    "n_errors": 0,
+    "incomplete": false,
+    "ordinal_total": 24,
+    "ordinal_max": 28,
+    "ordinal_pct": 85.7,
+    "cw_total": 20.025,
+    "cw_max": 28.0,
+    "cw_pct": 71.5,
+    "mae": 16.4,
+    "rmse": 24.3,
+    "n_scored": 14,
+    "errors": []
+  },
+  "grok-4-fast/R2": {
+    "n_findings": 9,
+    "n_matched": 7,
+    "n_exact": 3,
+    "n_minor": 2,
+    "n_hard": 2,
+    "n_errors": 0,
+    "incomplete": false,
+    "ordinal_total": 8,
+    "ordinal_max": 14,
+    "ordinal_pct": 57.1,
+    "cw_total": 3.938,
+    "cw_max": 14.0,
+    "cw_pct": 28.1,
+    "mae": 40.0,
+    "rmse": 51.3,
+    "n_scored": 7,
+    "errors": [
+      "#8: no ground truth for R2",
+      "#9: no ground truth for R2"
+    ]
+  },
   "grok-4-openrouter/R1": {
     "n_findings": 14,
     "n_matched": 14,
@@ -1188,6 +1400,47 @@
       "#9: no ground truth for R2"
     ]
   },
+  "mercury-2/R1": {
+    "n_findings": 14,
+    "n_matched": 14,
+    "n_exact": 6,
+    "n_minor": 8,
+    "n_hard": 0,
+    "n_errors": 0,
+    "incomplete": false,
+    "ordinal_total": 20,
+    "ordinal_max": 28,
+    "ordinal_pct": 71.4,
+    "cw_total": 12.1,
+    "cw_max": 28.0,
+    "cw_pct": 43.2,
+    "mae": 21.8,
+    "rmse": 27.2,
+    "n_scored": 14,
+    "errors": []
+  },
+  "mercury-2/R2": {
+    "n_findings": 9,
+    "n_matched": 7,
+    "n_exact": 2,
+    "n_minor": 4,
+    "n_hard": 1,
+    "n_errors": 0,
+    "incomplete": false,
+    "ordinal_total": 8,
+    "ordinal_max": 14,
+    "ordinal_pct": 57.1,
+    "cw_total": 2.95,
+    "cw_max": 14.0,
+    "cw_pct": 21.1,
+    "mae": 31.4,
+    "rmse": 38.1,
+    "n_scored": 7,
+    "errors": [
+      "#8: no ground truth for R2",
+      "#9: no ground truth for R2"
+    ]
+  },
   "mimo-v2-pro/R1": {
     "n_findings": 14,
     "n_matched": 14,
@@ -1434,6 +1687,47 @@
       "#9: no ground truth for R2"
     ]
   },
+  "qwen3-235b-a22b/R1": {
+    "n_findings": 14,
+    "n_matched": 14,
+    "n_exact": 8,
+    "n_minor": 6,
+    "n_hard": 0,
+    "n_errors": 0,
+    "incomplete": false,
+    "ordinal_total": 22,
+    "ordinal_max": 28,
+    "ordinal_pct": 78.6,
+    "cw_total": 15.887,
+    "cw_max": 28.0,
+    "cw_pct": 56.7,
+    "mae": 12.9,
+    "rmse": 20.2,
+    "n_scored": 14,
+    "errors": []
+  },
+  "qwen3-235b-a22b/R2": {
+    "n_findings": 9,
+    "n_matched": 7,
+    "n_exact": 3,
+    "n_minor": 2,
+    "n_hard": 2,
+    "n_errors": 0,
+    "incomplete": false,
+    "ordinal_total": 8,
+    "ordinal_max": 14,
+    "ordinal_pct": 57.1,
+    "cw_total": 4.038,
+    "cw_max": 14.0,
+    "cw_pct": 28.8,
+    "mae": 42.9,
+    "rmse": 52.2,
+    "n_scored": 7,
+    "errors": [
+      "#8: no ground truth for R2",
+      "#9: no ground truth for R2"
+    ]
+  },
   "qwen3.5-35b-a3b/R1": {
     "n_findings": 14,
     "n_matched": 13,
@@ -1594,6 +1888,47 @@
     "cw_pct": 16.4,
     "mae": 40.0,
     "rmse": 49.5,
+    "n_scored": 7,
+    "errors": [
+      "#8: no ground truth for R2",
+      "#9: no ground truth for R2"
+    ]
+  },
+  "qwen3.6-max/R1": {
+    "n_findings": 14,
+    "n_matched": 14,
+    "n_exact": 9,
+    "n_minor": 3,
+    "n_hard": 2,
+    "n_errors": 0,
+    "incomplete": false,
+    "ordinal_total": 21,
+    "ordinal_max": 28,
+    "ordinal_pct": 75.0,
+    "cw_total": 14.777,
+    "cw_max": 28.0,
+    "cw_pct": 52.8,
+    "mae": 18.0,
+    "rmse": 25.9,
+    "n_scored": 14,
+    "errors": []
+  },
+  "qwen3.6-max/R2": {
+    "n_findings": 9,
+    "n_matched": 7,
+    "n_exact": 3,
+    "n_minor": 2,
+    "n_hard": 2,
+    "n_errors": 0,
+    "incomplete": false,
+    "ordinal_total": 8,
+    "ordinal_max": 14,
+    "ordinal_pct": 57.1,
+    "cw_total": 3.975,
+    "cw_max": 14.0,
+    "cw_pct": 28.4,
+    "mae": 41.4,
+    "rmse": 52.0,
     "n_scored": 7,
     "errors": [
       "#8: no ground truth for R2",
@@ -1829,6 +2164,27 @@
       "R2"
     ]
   },
+  "deepseek-v3.1/R1+R2": {
+    "n_matched": 21,
+    "n_exact": 12,
+    "n_minor": 7,
+    "n_hard": 2,
+    "n_errors": 0,
+    "incomplete": false,
+    "ordinal_total": 31,
+    "ordinal_max": 42,
+    "ordinal_pct": 73.8,
+    "cw_total": 21.887,
+    "cw_max": 42.0,
+    "cw_pct": 52.1,
+    "mae": 20.2,
+    "rmse": 30.2,
+    "n_scored": 21,
+    "reports": [
+      "R1",
+      "R2"
+    ]
+  },
   "deepseek-v3.2/R1+R2": {
     "n_matched": 21,
     "n_exact": 10,
@@ -1913,6 +2269,27 @@
       "R2"
     ]
   },
+  "ernie-4.5-thinking/R1+R2": {
+    "n_matched": 0,
+    "n_exact": 0,
+    "n_minor": 0,
+    "n_hard": 0,
+    "n_errors": 8,
+    "incomplete": true,
+    "ordinal_total": 0,
+    "ordinal_max": 0,
+    "ordinal_pct": 0,
+    "cw_total": 0.0,
+    "cw_max": 0.0,
+    "cw_pct": 0,
+    "mae": null,
+    "rmse": null,
+    "n_scored": 0,
+    "reports": [
+      "R1",
+      "R2"
+    ]
+  },
   "gemini-2.5-flash/R1+R2": {
     "n_matched": 21,
     "n_exact": 11,
@@ -1955,6 +2332,27 @@
       "R2"
     ]
   },
+  "gemini-3.1-pro/R1+R2": {
+    "n_matched": 21,
+    "n_exact": 12,
+    "n_minor": 6,
+    "n_hard": 3,
+    "n_errors": 0,
+    "incomplete": false,
+    "ordinal_total": 30,
+    "ordinal_max": 42,
+    "ordinal_pct": 71.4,
+    "cw_total": 20.324,
+    "cw_max": 42.0,
+    "cw_pct": 48.4,
+    "mae": 27.6,
+    "rmse": 38.7,
+    "n_scored": 21,
+    "reports": [
+      "R1",
+      "R2"
+    ]
+  },
   "gemma4-31b/R1+R2": {
     "n_matched": 21,
     "n_exact": 14,
@@ -1970,6 +2368,27 @@
     "cw_pct": 60.7,
     "mae": 20.5,
     "rmse": 31.8,
+    "n_scored": 21,
+    "reports": [
+      "R1",
+      "R2"
+    ]
+  },
+  "glm-4.7/R1+R2": {
+    "n_matched": 21,
+    "n_exact": 7,
+    "n_minor": 11,
+    "n_hard": 3,
+    "n_errors": 0,
+    "incomplete": false,
+    "ordinal_total": 25,
+    "ordinal_max": 42,
+    "ordinal_pct": 59.5,
+    "cw_total": 9.5,
+    "cw_max": 42.0,
+    "cw_pct": 22.6,
+    "mae": 28.7,
+    "rmse": 40.0,
     "n_scored": 21,
     "reports": [
       "R1",
@@ -2207,6 +2626,27 @@
       "R2"
     ]
   },
+  "grok-4-fast/R1+R2": {
+    "n_matched": 21,
+    "n_exact": 14,
+    "n_minor": 4,
+    "n_hard": 3,
+    "n_errors": 0,
+    "incomplete": false,
+    "ordinal_total": 32,
+    "ordinal_max": 42,
+    "ordinal_pct": 76.2,
+    "cw_total": 23.963,
+    "cw_max": 42.0,
+    "cw_pct": 57.1,
+    "mae": 24.3,
+    "rmse": 35.7,
+    "n_scored": 21,
+    "reports": [
+      "R1",
+      "R2"
+    ]
+  },
   "grok-4-openrouter/R1+R2": {
     "n_matched": 21,
     "n_exact": 12,
@@ -2354,6 +2794,27 @@
       "R2"
     ]
   },
+  "mercury-2/R1+R2": {
+    "n_matched": 21,
+    "n_exact": 8,
+    "n_minor": 12,
+    "n_hard": 1,
+    "n_errors": 0,
+    "incomplete": false,
+    "ordinal_total": 28,
+    "ordinal_max": 42,
+    "ordinal_pct": 66.7,
+    "cw_total": 15.05,
+    "cw_max": 42.0,
+    "cw_pct": 35.8,
+    "mae": 25.0,
+    "rmse": 31.2,
+    "n_scored": 21,
+    "reports": [
+      "R1",
+      "R2"
+    ]
+  },
   "mimo-v2-pro/R1+R2": {
     "n_matched": 21,
     "n_exact": 12,
@@ -2480,6 +2941,27 @@
       "R2"
     ]
   },
+  "qwen3-235b-a22b/R1+R2": {
+    "n_matched": 21,
+    "n_exact": 11,
+    "n_minor": 8,
+    "n_hard": 2,
+    "n_errors": 0,
+    "incomplete": false,
+    "ordinal_total": 30,
+    "ordinal_max": 42,
+    "ordinal_pct": 71.4,
+    "cw_total": 19.925,
+    "cw_max": 42.0,
+    "cw_pct": 47.4,
+    "mae": 22.9,
+    "rmse": 34.3,
+    "n_scored": 21,
+    "reports": [
+      "R1",
+      "R2"
+    ]
+  },
   "qwen3.5-35b-a3b/R1+R2": {
     "n_matched": 20,
     "n_exact": 8,
@@ -2558,6 +3040,27 @@
     "cw_pct": 40.5,
     "mae": 25.2,
     "rmse": 36.1,
+    "n_scored": 21,
+    "reports": [
+      "R1",
+      "R2"
+    ]
+  },
+  "qwen3.6-max/R1+R2": {
+    "n_matched": 21,
+    "n_exact": 12,
+    "n_minor": 5,
+    "n_hard": 4,
+    "n_errors": 0,
+    "incomplete": false,
+    "ordinal_total": 29,
+    "ordinal_max": 42,
+    "ordinal_pct": 69.0,
+    "cw_total": 18.752,
+    "cw_max": 42.0,
+    "cw_pct": 44.6,
+    "mae": 25.8,
+    "rmse": 36.8,
     "n_scored": 21,
     "reports": [
       "R1",
