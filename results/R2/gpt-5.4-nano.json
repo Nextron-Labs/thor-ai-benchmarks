@@ -1,5 +1,5 @@
 {
-  "n_findings": 9,
+  "n_findings": 7,
   "n_matched": 7,
   "n_exact": 2,
   "n_minor": 4,
@@ -15,8 +15,5 @@
   "mae": 33.6,
   "rmse": 40.4,
   "n_scored": 7,
-  "errors": [
-    "#8: no ground truth for R2",
-    "#9: no ground truth for R2"
-  ]
+  "errors": []
 }

@@ -19,7 +19,7 @@
     "errors": []
   },
   "claude-haiku-4.5/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 3,
@@ -35,10 +35,7 @@
     "mae": 35.0,
     "rmse": 42.7,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "claude-haiku-4.5/R3": {
     "n_findings": 20,
@@ -60,7 +57,7 @@
     "errors": []
   },
   "claude-haiku-4.5/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 6,
     "n_minor": 0,
@@ -76,11 +73,7 @@
     "mae": 20.0,
     "rmse": 22.9,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "claude-haiku-4.5/R5": {
     "n_findings": 23,
@@ -121,7 +114,7 @@
     "errors": []
   },
   "claude-opus-4.5/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 2,
@@ -137,10 +130,7 @@
     "mae": 39.6,
     "rmse": 51.3,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "claude-opus-4.5/R3": {
     "n_findings": 20,
@@ -162,7 +152,7 @@
     "errors": []
   },
   "claude-opus-4.5/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 6,
     "n_minor": 0,
@@ -178,11 +168,7 @@
     "mae": 19.2,
     "rmse": 21.5,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "claude-opus-4.5/R5": {
     "n_findings": 23,
@@ -223,7 +209,7 @@
     "errors": []
   },
   "claude-opus-4.6/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 2,
@@ -239,10 +225,7 @@
     "mae": 39.3,
     "rmse": 51.3,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "claude-opus-4.6/R3": {
     "n_findings": 20,
@@ -264,7 +247,7 @@
     "errors": []
   },
   "claude-opus-4.6/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 6,
     "n_minor": 0,
@@ -280,11 +263,7 @@
     "mae": 21.7,
     "rmse": 23.8,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "claude-opus-4.6/R5": {
     "n_findings": 23,
@@ -325,7 +304,7 @@
     "errors": []
   },
   "claude-sonnet-4.5/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 2,
@@ -341,10 +320,7 @@
     "mae": 43.6,
     "rmse": 54.5,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "claude-sonnet-4.5/R3": {
     "n_findings": 20,
@@ -366,7 +342,7 @@
     "errors": []
   },
   "claude-sonnet-4.5/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 6,
     "n_minor": 0,
@@ -382,11 +358,7 @@
     "mae": 21.7,
     "rmse": 24.3,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "claude-sonnet-4.5/R5": {
     "n_findings": 23,
@@ -427,7 +399,7 @@
     "errors": []
   },
   "claude-sonnet-4.6/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 2,
@@ -443,10 +415,7 @@
     "mae": 36.7,
     "rmse": 48.4,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "claude-sonnet-4.6/R3": {
     "n_findings": 20,
@@ -468,7 +437,7 @@
     "errors": []
   },
   "claude-sonnet-4.6/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 6,
     "n_minor": 0,
@@ -484,11 +453,7 @@
     "mae": 23.7,
     "rmse": 25.8,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "claude-sonnet-4.6/R5": {
     "n_findings": 23,
@@ -529,7 +494,7 @@
     "errors": []
   },
   "deepseek-v3.1/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 2,
@@ -545,10 +510,7 @@
     "mae": 35.0,
     "rmse": 44.6,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "deepseek-v3.1/R3": {
     "n_findings": 20,
@@ -589,7 +551,7 @@
     "errors": []
   },
   "deepseek-v3.2/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 2,
     "n_minor": 3,
@@ -605,10 +567,7 @@
     "mae": 40.0,
     "rmse": 47.6,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "deepseek-v3.2/R3": {
     "n_findings": 20,
@@ -630,7 +589,7 @@
     "errors": []
   },
   "deepseek-v3.2/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 5,
     "n_minor": 1,
@@ -646,11 +605,7 @@
     "mae": 21.7,
     "rmse": 24.8,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "deepseek-v3.2/R5": {
     "n_findings": 23,
@@ -691,7 +646,7 @@
     "errors": []
   },
   "deepseek-v4-flash/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 2,
@@ -707,10 +662,7 @@
     "mae": 37.9,
     "rmse": 47.1,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "deepseek-v4-flash/R3": {
     "n_findings": 20,
@@ -732,7 +684,7 @@
     "errors": []
   },
   "deepseek-v4-flash/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 6,
     "n_minor": 0,
@@ -748,11 +700,7 @@
     "mae": 17.5,
     "rmse": 20.9,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "deepseek-v4-flash/R5": {
     "n_findings": 23,
@@ -793,7 +741,7 @@
     "errors": []
   },
   "deepseek-v4-pro/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 2,
@@ -809,10 +757,7 @@
     "mae": 40.0,
     "rmse": 50.9,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "deepseek-v4-pro/R3": {
     "n_findings": 20,
@@ -834,7 +779,7 @@
     "errors": []
   },
   "deepseek-v4-pro/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 6,
     "n_minor": 0,
@@ -850,11 +795,7 @@
     "mae": 23.3,
     "rmse": 25.7,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "deepseek-v4-pro/R5": {
     "n_findings": 23,
@@ -895,7 +836,7 @@
     "errors": []
   },
   "devstral-small/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 3,
@@ -911,10 +852,7 @@
     "mae": 28.6,
     "rmse": 38.2,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "devstral-small/R3": {
     "n_findings": 20,
@@ -936,7 +874,7 @@
     "errors": []
   },
   "devstral-small/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 1,
     "n_minor": 5,
@@ -952,11 +890,7 @@
     "mae": 11.7,
     "rmse": 14.7,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "devstral-small/R5": {
     "n_findings": 23,
@@ -997,7 +931,7 @@
     "errors": []
   },
   "gemini-2.5-flash/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 1,
     "n_minor": 4,
@@ -1013,10 +947,7 @@
     "mae": 46.4,
     "rmse": 52.3,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "gemini-2.5-flash/R3": {
     "n_findings": 20,
@@ -1038,7 +969,7 @@
     "errors": []
   },
   "gemini-2.5-flash/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 3,
     "n_minor": 3,
@@ -1054,11 +985,7 @@
     "mae": 30.0,
     "rmse": 30.0,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "gemini-2.5-flash/R5": {
     "n_findings": 23,
@@ -1099,7 +1026,7 @@
     "errors": []
   },
   "gemini-2.5-pro/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 2,
     "n_minor": 3,
@@ -1115,10 +1042,7 @@
     "mae": 52.9,
     "rmse": 60.8,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "gemini-2.5-pro/R3": {
     "n_findings": 20,
@@ -1140,7 +1064,7 @@
     "errors": []
   },
   "gemini-2.5-pro/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 6,
     "n_minor": 0,
@@ -1156,11 +1080,7 @@
     "mae": 27.5,
     "rmse": 29.8,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "gemini-2.5-pro/R5": {
     "n_findings": 23,
@@ -1201,7 +1121,7 @@
     "errors": []
   },
   "gemini-3.1-pro/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 2,
     "n_minor": 3,
@@ -1217,10 +1137,7 @@
     "mae": 50.7,
     "rmse": 58.0,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "gemini-3.1-pro/R3": {
     "n_findings": 20,
@@ -1242,7 +1159,7 @@
     "errors": []
   },
   "gemini-3.1-pro/R4": {
-    "n_findings": 59,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 6,
     "n_minor": 0,
@@ -1258,64 +1175,10 @@
     "mae": 25.0,
     "rmse": 28.0,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4",
-      "#10: no ground truth for R4",
-      "#11: no ground truth for R4",
-      "#12: no ground truth for R4",
-      "#13: no ground truth for R4",
-      "#14: no ground truth for R4",
-      "#15: no ground truth for R4",
-      "#16: no ground truth for R4",
-      "#17: no ground truth for R4",
-      "#18: no ground truth for R4",
-      "#19: no ground truth for R4",
-      "#20: no ground truth for R4",
-      "#21: no ground truth for R4",
-      "#22: no ground truth for R4",
-      "#23: no ground truth for R4",
-      "#24: no ground truth for R4",
-      "#25: no ground truth for R4",
-      "#26: no ground truth for R4",
-      "#27: no ground truth for R4",
-      "#28: no ground truth for R4",
-      "#29: no ground truth for R4",
-      "#30: no ground truth for R4",
-      "#31: no ground truth for R4",
-      "#32: no ground truth for R4",
-      "#33: no ground truth for R4",
-      "#34: no ground truth for R4",
-      "#35: no ground truth for R4",
-      "#36: no ground truth for R4",
-      "#37: no ground truth for R4",
-      "#38: no ground truth for R4",
-      "#39: no ground truth for R4",
-      "#40: no ground truth for R4",
-      "#41: no ground truth for R4",
-      "#42: no ground truth for R4",
-      "#43: no ground truth for R4",
-      "#44: no ground truth for R4",
-      "#45: no ground truth for R4",
-      "#46: no ground truth for R4",
-      "#47: no ground truth for R4",
-      "#48: no ground truth for R4",
-      "#49: no ground truth for R4",
-      "#50: no ground truth for R4",
-      "#51: no ground truth for R4",
-      "#52: no ground truth for R4",
-      "#53: no ground truth for R4",
-      "#54: no ground truth for R4",
-      "#55: no ground truth for R4",
-      "#56: no ground truth for R4",
-      "#57: no ground truth for R4",
-      "#58: no ground truth for R4",
-      "#59: no ground truth for R4"
-    ]
+    "errors": []
   },
   "gemini-3.1-pro/R5": {
-    "n_findings": 200,
+    "n_findings": 23,
     "n_matched": 23,
     "n_exact": 9,
     "n_minor": 14,
@@ -1331,185 +1194,7 @@
     "mae": 27.2,
     "rmse": 32.1,
     "n_scored": 23,
-    "errors": [
-      "#24: no ground truth for R5",
-      "#25: no ground truth for R5",
-      "#26: no ground truth for R5",
-      "#27: no ground truth for R5",
-      "#28: no ground truth for R5",
-      "#29: no ground truth for R5",
-      "#30: no ground truth for R5",
-      "#31: no ground truth for R5",
-      "#32: no ground truth for R5",
-      "#33: no ground truth for R5",
-      "#34: no ground truth for R5",
-      "#35: no ground truth for R5",
-      "#36: no ground truth for R5",
-      "#37: no ground truth for R5",
-      "#38: no ground truth for R5",
-      "#39: no ground truth for R5",
-      "#40: no ground truth for R5",
-      "#41: no ground truth for R5",
-      "#42: no ground truth for R5",
-      "#43: no ground truth for R5",
-      "#44: no ground truth for R5",
-      "#45: no ground truth for R5",
-      "#46: no ground truth for R5",
-      "#47: no ground truth for R5",
-      "#48: no ground truth for R5",
-      "#49: no ground truth for R5",
-      "#50: no ground truth for R5",
-      "#51: no ground truth for R5",
-      "#52: no ground truth for R5",
-      "#53: no ground truth for R5",
-      "#54: no ground truth for R5",
-      "#55: no ground truth for R5",
-      "#56: no ground truth for R5",
-      "#57: no ground truth for R5",
-      "#58: no ground truth for R5",
-      "#59: no ground truth for R5",
-      "#60: no ground truth for R5",
-      "#61: no ground truth for R5",
-      "#62: no ground truth for R5",
-      "#63: no ground truth for R5",
-      "#64: no ground truth for R5",
-      "#65: no ground truth for R5",
-      "#66: no ground truth for R5",
-      "#67: no ground truth for R5",
-      "#68: no ground truth for R5",
-      "#69: no ground truth for R5",
-      "#70: no ground truth for R5",
-      "#71: no ground truth for R5",
-      "#72: no ground truth for R5",
-      "#73: no ground truth for R5",
-      "#74: no ground truth for R5",
-      "#75: no ground truth for R5",
-      "#76: no ground truth for R5",
-      "#77: no ground truth for R5",
-      "#78: no ground truth for R5",
-      "#79: no ground truth for R5",
-      "#80: no ground truth for R5",
-      "#81: no ground truth for R5",
-      "#82: no ground truth for R5",
-      "#83: no ground truth for R5",
-      "#84: no ground truth for R5",
-      "#85: no ground truth for R5",
-      "#86: no ground truth for R5",
-      "#87: no ground truth for R5",
-      "#88: no ground truth for R5",
-      "#89: no ground truth for R5",
-      "#90: no ground truth for R5",
-      "#91: no ground truth for R5",
-      "#92: no ground truth for R5",
-      "#93: no ground truth for R5",
-      "#94: no ground truth for R5",
-      "#95: no ground truth for R5",
-      "#96: no ground truth for R5",
-      "#97: no ground truth for R5",
-      "#98: no ground truth for R5",
-      "#99: no ground truth for R5",
-      "#100: no ground truth for R5",
-      "#101: no ground truth for R5",
-      "#102: no ground truth for R5",
-      "#103: no ground truth for R5",
-      "#104: no ground truth for R5",
-      "#105: no ground truth for R5",
-      "#106: no ground truth for R5",
-      "#107: no ground truth for R5",
-      "#108: no ground truth for R5",
-      "#109: no ground truth for R5",
-      "#110: no ground truth for R5",
-      "#111: no ground truth for R5",
-      "#112: no ground truth for R5",
-      "#113: no ground truth for R5",
-      "#114: no ground truth for R5",
-      "#115: no ground truth for R5",
-      "#116: no ground truth for R5",
-      "#117: no ground truth for R5",
-      "#118: no ground truth for R5",
-      "#119: no ground truth for R5",
-      "#120: no ground truth for R5",
-      "#121: no ground truth for R5",
-      "#122: no ground truth for R5",
-      "#123: no ground truth for R5",
-      "#124: no ground truth for R5",
-      "#125: no ground truth for R5",
-      "#126: no ground truth for R5",
-      "#127: no ground truth for R5",
-      "#128: no ground truth for R5",
-      "#129: no ground truth for R5",
-      "#130: no ground truth for R5",
-      "#131: no ground truth for R5",
-      "#132: no ground truth for R5",
-      "#133: no ground truth for R5",
-      "#134: no ground truth for R5",
-      "#135: no ground truth for R5",
-      "#136: no ground truth for R5",
-      "#137: no ground truth for R5",
-      "#138: no ground truth for R5",
-      "#139: no ground truth for R5",
-      "#140: no ground truth for R5",
-      "#141: no ground truth for R5",
-      "#142: no ground truth for R5",
-      "#143: no ground truth for R5",
-      "#144: no ground truth for R5",
-      "#145: no ground truth for R5",
-      "#146: no ground truth for R5",
-      "#147: no ground truth for R5",
-      "#148: no ground truth for R5",
-      "#149: no ground truth for R5",
-      "#150: no ground truth for R5",
-      "#151: no ground truth for R5",
-      "#152: no ground truth for R5",
-      "#153: no ground truth for R5",
-      "#154: no ground truth for R5",
-      "#155: no ground truth for R5",
-      "#156: no ground truth for R5",
-      "#157: no ground truth for R5",
-      "#158: no ground truth for R5",
-      "#159: no ground truth for R5",
-      "#160: no ground truth for R5",
-      "#161: no ground truth for R5",
-      "#162: no ground truth for R5",
-      "#163: no ground truth for R5",
-      "#164: no ground truth for R5",
-      "#165: no ground truth for R5",
-      "#166: no ground truth for R5",
-      "#167: no ground truth for R5",
-      "#168: no ground truth for R5",
-      "#169: no ground truth for R5",
-      "#170: no ground truth for R5",
-      "#171: no ground truth for R5",
-      "#172: no ground truth for R5",
-      "#173: no ground truth for R5",
-      "#174: no ground truth for R5",
-      "#175: no ground truth for R5",
-      "#176: no ground truth for R5",
-      "#177: no ground truth for R5",
-      "#178: no ground truth for R5",
-      "#179: no ground truth for R5",
-      "#180: no ground truth for R5",
-      "#181: no ground truth for R5",
-      "#182: no ground truth for R5",
-      "#183: no ground truth for R5",
-      "#184: no ground truth for R5",
-      "#185: no ground truth for R5",
-      "#186: no ground truth for R5",
-      "#187: no ground truth for R5",
-      "#188: no ground truth for R5",
-      "#189: no ground truth for R5",
-      "#190: no ground truth for R5",
-      "#191: no ground truth for R5",
-      "#192: no ground truth for R5",
-      "#193: no ground truth for R5",
-      "#194: no ground truth for R5",
-      "#195: no ground truth for R5",
-      "#196: no ground truth for R5",
-      "#197: no ground truth for R5",
-      "#198: no ground truth for R5",
-      "#199: no ground truth for R5",
-      "#200: no ground truth for R5"
-    ]
+    "errors": []
   },
   "gemma4-31b/R1": {
     "n_findings": 14,
@@ -1531,7 +1216,7 @@
     "errors": []
   },
   "gemma4-31b/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 2,
@@ -1547,10 +1232,7 @@
     "mae": 37.9,
     "rmse": 49.9,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "gemma4-31b/R3": {
     "n_findings": 20,
@@ -1629,7 +1311,7 @@
     "errors": []
   },
   "glm-4.7/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 1,
     "n_minor": 5,
@@ -1645,10 +1327,7 @@
     "mae": 34.3,
     "rmse": 44.4,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "glm-4.7/R3": {
     "n_findings": 20,
@@ -1691,7 +1370,7 @@
     "errors": []
   },
   "glm-5/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 2,
@@ -1707,10 +1386,7 @@
     "mae": 40.7,
     "rmse": 50.7,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "glm-5/R3": {
     "n_findings": 20,
@@ -1732,7 +1408,7 @@
     "errors": []
   },
   "glm-5/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 6,
     "n_minor": 0,
@@ -1748,11 +1424,7 @@
     "mae": 20.8,
     "rmse": 23.4,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "glm-5/R5": {
     "n_findings": 23,
@@ -1793,7 +1465,7 @@
     "errors": []
   },
   "glm-5.1/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 2,
@@ -1809,10 +1481,7 @@
     "mae": 42.4,
     "rmse": 52.7,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "glm-5.1/R3": {
     "n_findings": 20,
@@ -1834,7 +1503,7 @@
     "errors": []
   },
   "glm-5.1/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 6,
     "n_minor": 0,
@@ -1850,11 +1519,7 @@
     "mae": 22.5,
     "rmse": 24.6,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "glm-5.1/R5": {
     "n_findings": 23,
@@ -1895,7 +1560,7 @@
     "errors": []
   },
   "gpt-5/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 2,
@@ -1911,10 +1576,7 @@
     "mae": 38.6,
     "rmse": 48.9,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "gpt-5/R3": {
     "n_findings": 20,
@@ -1936,7 +1598,7 @@
     "errors": []
   },
   "gpt-5/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 4,
     "n_minor": 2,
@@ -1952,11 +1614,7 @@
     "mae": 23.3,
     "rmse": 25.3,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "gpt-5/R5": {
     "n_findings": 23,
@@ -1997,7 +1655,7 @@
     "errors": []
   },
   "gpt-5-mini/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 2,
     "n_minor": 4,
@@ -2013,10 +1671,7 @@
     "mae": 40.7,
     "rmse": 46.7,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "gpt-5-mini/R3": {
     "n_findings": 20,
@@ -2038,7 +1693,7 @@
     "errors": []
   },
   "gpt-5-mini/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 3,
     "n_minor": 3,
@@ -2054,11 +1709,7 @@
     "mae": 19.2,
     "rmse": 21.7,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "gpt-5-mini/R5": {
     "n_findings": 23,
@@ -2099,7 +1750,7 @@
     "errors": []
   },
   "gpt-5-nano/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 1,
     "n_minor": 6,
@@ -2115,10 +1766,7 @@
     "mae": 33.1,
     "rmse": 37.3,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "gpt-5-nano/R3": {
     "n_findings": 20,
@@ -2140,7 +1788,7 @@
     "errors": []
   },
   "gpt-5-nano/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 0,
     "n_minor": 6,
@@ -2156,11 +1804,7 @@
     "mae": 17.0,
     "rmse": 22.2,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "gpt-5-nano/R5": {
     "n_findings": 23,
@@ -2201,7 +1845,7 @@
     "errors": []
   },
   "gpt-5.4/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 3,
@@ -2217,10 +1861,7 @@
     "mae": 33.7,
     "rmse": 45.0,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "gpt-5.4/R3": {
     "n_findings": 20,
@@ -2242,7 +1883,7 @@
     "errors": []
   },
   "gpt-5.4/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 6,
     "n_minor": 0,
@@ -2258,11 +1899,7 @@
     "mae": 20.0,
     "rmse": 22.2,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "gpt-5.4/R5": {
     "n_findings": 23,
@@ -2303,7 +1940,7 @@
     "errors": []
   },
   "gpt-5.4-mini/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 2,
@@ -2319,10 +1956,7 @@
     "mae": 34.3,
     "rmse": 45.1,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "gpt-5.4-mini/R3": {
     "n_findings": 20,
@@ -2363,7 +1997,7 @@
     "errors": []
   },
   "gpt-5.4-nano/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 2,
     "n_minor": 4,
@@ -2379,10 +2013,7 @@
     "mae": 33.6,
     "rmse": 40.4,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "gpt-5.4-nano/R3": {
     "n_findings": 20,
@@ -2404,7 +2035,7 @@
     "errors": []
   },
   "gpt-5.4-nano/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 0,
     "n_minor": 6,
@@ -2420,11 +2051,7 @@
     "mae": 16.2,
     "rmse": 19.7,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "gpt-5.4-nano/R5": {
     "n_findings": 23,
@@ -2465,7 +2092,7 @@
     "errors": []
   },
   "gpt-5.5/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 2,
@@ -2481,10 +2108,7 @@
     "mae": 38.9,
     "rmse": 51.0,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "gpt-5.5/R3": {
     "n_findings": 20,
@@ -2506,7 +2130,7 @@
     "errors": []
   },
   "gpt-5.5/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 6,
     "n_minor": 0,
@@ -2522,11 +2146,7 @@
     "mae": 22.2,
     "rmse": 25.1,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "gpt-5.5/R5": {
     "n_findings": 23,
@@ -2567,7 +2187,7 @@
     "errors": []
   },
   "gpt-oss-120b/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 3,
@@ -2583,10 +2203,7 @@
     "mae": 34.3,
     "rmse": 44.1,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "gpt-oss-120b/R3": {
     "n_findings": 20,
@@ -2608,7 +2225,7 @@
     "errors": []
   },
   "gpt-oss-120b/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 2,
     "n_minor": 4,
@@ -2624,11 +2241,7 @@
     "mae": 24.2,
     "rmse": 25.7,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "gpt-oss-120b/R5": {
     "n_findings": 23,
@@ -2671,7 +2284,7 @@
     "errors": []
   },
   "gpt-oss-20b/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 3,
@@ -2687,10 +2300,7 @@
     "mae": 34.3,
     "rmse": 43.4,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "gpt-oss-20b/R3": {
     "n_findings": 20,
@@ -2712,7 +2322,7 @@
     "errors": []
   },
   "gpt-oss-20b/R4": {
-    "n_findings": 59,
+    "n_findings": 6,
     "n_matched": 4,
     "n_exact": 1,
     "n_minor": 3,
@@ -2730,64 +2340,11 @@
     "n_scored": 4,
     "errors": [
       "#1: LLM classification error (excluded from scoring)",
-      "#5: LLM classification error (excluded from scoring)",
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4",
-      "#10: no ground truth for R4",
-      "#11: no ground truth for R4",
-      "#12: no ground truth for R4",
-      "#13: no ground truth for R4",
-      "#14: no ground truth for R4",
-      "#15: no ground truth for R4",
-      "#16: no ground truth for R4",
-      "#17: no ground truth for R4",
-      "#18: no ground truth for R4",
-      "#19: no ground truth for R4",
-      "#20: no ground truth for R4",
-      "#21: no ground truth for R4",
-      "#22: no ground truth for R4",
-      "#23: no ground truth for R4",
-      "#24: no ground truth for R4",
-      "#25: no ground truth for R4",
-      "#26: no ground truth for R4",
-      "#27: no ground truth for R4",
-      "#28: no ground truth for R4",
-      "#29: no ground truth for R4",
-      "#30: no ground truth for R4",
-      "#31: no ground truth for R4",
-      "#32: no ground truth for R4",
-      "#33: no ground truth for R4",
-      "#34: no ground truth for R4",
-      "#35: no ground truth for R4",
-      "#36: no ground truth for R4",
-      "#37: no ground truth for R4",
-      "#38: no ground truth for R4",
-      "#39: no ground truth for R4",
-      "#40: no ground truth for R4",
-      "#41: no ground truth for R4",
-      "#42: no ground truth for R4",
-      "#43: no ground truth for R4",
-      "#44: no ground truth for R4",
-      "#45: no ground truth for R4",
-      "#46: no ground truth for R4",
-      "#47: no ground truth for R4",
-      "#48: no ground truth for R4",
-      "#49: no ground truth for R4",
-      "#50: no ground truth for R4",
-      "#51: no ground truth for R4",
-      "#52: no ground truth for R4",
-      "#53: no ground truth for R4",
-      "#54: no ground truth for R4",
-      "#55: no ground truth for R4",
-      "#56: no ground truth for R4",
-      "#57: no ground truth for R4",
-      "#58: no ground truth for R4",
-      "#59: no ground truth for R4"
+      "#5: LLM classification error (excluded from scoring)"
     ]
   },
   "gpt-oss-20b/R5": {
-    "n_findings": 200,
+    "n_findings": 23,
     "n_matched": 20,
     "n_exact": 12,
     "n_minor": 7,
@@ -2806,184 +2363,7 @@
     "errors": [
       "#3: LLM classification error (excluded from scoring)",
       "#20: LLM classification error (excluded from scoring)",
-      "#22: LLM classification error (excluded from scoring)",
-      "#24: no ground truth for R5",
-      "#25: no ground truth for R5",
-      "#26: no ground truth for R5",
-      "#27: no ground truth for R5",
-      "#28: no ground truth for R5",
-      "#29: no ground truth for R5",
-      "#30: no ground truth for R5",
-      "#31: no ground truth for R5",
-      "#32: no ground truth for R5",
-      "#33: no ground truth for R5",
-      "#34: no ground truth for R5",
-      "#35: no ground truth for R5",
-      "#36: no ground truth for R5",
-      "#37: no ground truth for R5",
-      "#38: no ground truth for R5",
-      "#39: no ground truth for R5",
-      "#40: no ground truth for R5",
-      "#41: no ground truth for R5",
-      "#42: no ground truth for R5",
-      "#43: no ground truth for R5",
-      "#44: no ground truth for R5",
-      "#45: no ground truth for R5",
-      "#46: no ground truth for R5",
-      "#47: no ground truth for R5",
-      "#48: no ground truth for R5",
-      "#49: no ground truth for R5",
-      "#50: no ground truth for R5",
-      "#51: no ground truth for R5",
-      "#52: no ground truth for R5",
-      "#53: no ground truth for R5",
-      "#54: no ground truth for R5",
-      "#55: no ground truth for R5",
-      "#56: no ground truth for R5",
-      "#57: no ground truth for R5",
-      "#58: no ground truth for R5",
-      "#59: no ground truth for R5",
-      "#60: no ground truth for R5",
-      "#61: no ground truth for R5",
-      "#62: no ground truth for R5",
-      "#63: no ground truth for R5",
-      "#64: no ground truth for R5",
-      "#65: no ground truth for R5",
-      "#66: no ground truth for R5",
-      "#67: no ground truth for R5",
-      "#68: no ground truth for R5",
-      "#69: no ground truth for R5",
-      "#70: no ground truth for R5",
-      "#71: no ground truth for R5",
-      "#72: no ground truth for R5",
-      "#73: no ground truth for R5",
-      "#74: no ground truth for R5",
-      "#75: no ground truth for R5",
-      "#76: no ground truth for R5",
-      "#77: no ground truth for R5",
-      "#78: no ground truth for R5",
-      "#79: no ground truth for R5",
-      "#80: no ground truth for R5",
-      "#81: no ground truth for R5",
-      "#82: no ground truth for R5",
-      "#83: no ground truth for R5",
-      "#84: no ground truth for R5",
-      "#85: no ground truth for R5",
-      "#86: no ground truth for R5",
-      "#87: no ground truth for R5",
-      "#88: no ground truth for R5",
-      "#89: no ground truth for R5",
-      "#90: no ground truth for R5",
-      "#91: no ground truth for R5",
-      "#92: no ground truth for R5",
-      "#93: no ground truth for R5",
-      "#94: no ground truth for R5",
-      "#95: no ground truth for R5",
-      "#96: no ground truth for R5",
-      "#97: no ground truth for R5",
-      "#98: no ground truth for R5",
-      "#99: no ground truth for R5",
-      "#100: no ground truth for R5",
-      "#101: no ground truth for R5",
-      "#102: no ground truth for R5",
-      "#103: no ground truth for R5",
-      "#104: no ground truth for R5",
-      "#105: no ground truth for R5",
-      "#106: no ground truth for R5",
-      "#107: no ground truth for R5",
-      "#108: no ground truth for R5",
-      "#109: no ground truth for R5",
-      "#110: no ground truth for R5",
-      "#111: no ground truth for R5",
-      "#112: no ground truth for R5",
-      "#113: no ground truth for R5",
-      "#114: no ground truth for R5",
-      "#115: no ground truth for R5",
-      "#116: no ground truth for R5",
-      "#117: no ground truth for R5",
-      "#118: no ground truth for R5",
-      "#119: no ground truth for R5",
-      "#120: no ground truth for R5",
-      "#121: no ground truth for R5",
-      "#122: no ground truth for R5",
-      "#123: no ground truth for R5",
-      "#124: no ground truth for R5",
-      "#125: no ground truth for R5",
-      "#126: no ground truth for R5",
-      "#127: no ground truth for R5",
-      "#128: no ground truth for R5",
-      "#129: no ground truth for R5",
-      "#130: no ground truth for R5",
-      "#131: no ground truth for R5",
-      "#132: no ground truth for R5",
-      "#133: no ground truth for R5",
-      "#134: no ground truth for R5",
-      "#135: no ground truth for R5",
-      "#136: no ground truth for R5",
-      "#137: no ground truth for R5",
-      "#138: no ground truth for R5",
-      "#139: no ground truth for R5",
-      "#140: no ground truth for R5",
-      "#141: no ground truth for R5",
-      "#142: no ground truth for R5",
-      "#143: no ground truth for R5",
-      "#144: no ground truth for R5",
-      "#145: no ground truth for R5",
-      "#146: no ground truth for R5",
-      "#147: no ground truth for R5",
-      "#148: no ground truth for R5",
-      "#149: no ground truth for R5",
-      "#150: no ground truth for R5",
-      "#151: no ground truth for R5",
-      "#152: no ground truth for R5",
-      "#153: no ground truth for R5",
-      "#154: no ground truth for R5",
-      "#155: no ground truth for R5",
-      "#156: no ground truth for R5",
-      "#157: no ground truth for R5",
-      "#158: no ground truth for R5",
-      "#159: no ground truth for R5",
-      "#160: no ground truth for R5",
-      "#161: no ground truth for R5",
-      "#162: no ground truth for R5",
-      "#163: no ground truth for R5",
-      "#164: no ground truth for R5",
-      "#165: no ground truth for R5",
-      "#166: no ground truth for R5",
-      "#167: no ground truth for R5",
-      "#168: no ground truth for R5",
-      "#169: no ground truth for R5",
-      "#170: no ground truth for R5",
-      "#171: no ground truth for R5",
-      "#172: no ground truth for R5",
-      "#173: no ground truth for R5",
-      "#174: no ground truth for R5",
-      "#175: no ground truth for R5",
-      "#176: no ground truth for R5",
-      "#177: no ground truth for R5",
-      "#178: no ground truth for R5",
-      "#179: no ground truth for R5",
-      "#180: no ground truth for R5",
-      "#181: no ground truth for R5",
-      "#182: no ground truth for R5",
-      "#183: no ground truth for R5",
-      "#184: no ground truth for R5",
-      "#185: no ground truth for R5",
-      "#186: no ground truth for R5",
-      "#187: no ground truth for R5",
-      "#188: no ground truth for R5",
-      "#189: no ground truth for R5",
-      "#190: no ground truth for R5",
-      "#191: no ground truth for R5",
-      "#192: no ground truth for R5",
-      "#193: no ground truth for R5",
-      "#194: no ground truth for R5",
-      "#195: no ground truth for R5",
-      "#196: no ground truth for R5",
-      "#197: no ground truth for R5",
-      "#198: no ground truth for R5",
-      "#199: no ground truth for R5",
-      "#200: no ground truth for R5"
+      "#22: LLM classification error (excluded from scoring)"
     ]
   },
   "grok-4-fast/R1": {
@@ -3006,7 +2386,7 @@
     "errors": []
   },
   "grok-4-fast/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 2,
@@ -3022,10 +2402,7 @@
     "mae": 40.0,
     "rmse": 51.3,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "grok-4-fast/R3": {
     "n_findings": 20,
@@ -3047,7 +2424,7 @@
     "errors": []
   },
   "grok-4-fast/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 6,
     "n_minor": 0,
@@ -3063,11 +2440,7 @@
     "mae": 20.8,
     "rmse": 23.2,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "grok-4-fast/R5": {
     "n_findings": 23,
@@ -3108,7 +2481,7 @@
     "errors": []
   },
   "grok-4-openrouter/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 2,
@@ -3124,10 +2497,7 @@
     "mae": 38.6,
     "rmse": 50.7,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "grok-4-openrouter/R3": {
     "n_findings": 20,
@@ -3149,7 +2519,7 @@
     "errors": []
   },
   "grok-4-openrouter/R4": {
-    "n_findings": 59,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 6,
     "n_minor": 0,
@@ -3165,64 +2535,10 @@
     "mae": 20.8,
     "rmse": 23.2,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4",
-      "#10: no ground truth for R4",
-      "#11: no ground truth for R4",
-      "#12: no ground truth for R4",
-      "#13: no ground truth for R4",
-      "#14: no ground truth for R4",
-      "#15: no ground truth for R4",
-      "#16: no ground truth for R4",
-      "#17: no ground truth for R4",
-      "#18: no ground truth for R4",
-      "#19: no ground truth for R4",
-      "#20: no ground truth for R4",
-      "#21: no ground truth for R4",
-      "#22: no ground truth for R4",
-      "#23: no ground truth for R4",
-      "#24: no ground truth for R4",
-      "#25: no ground truth for R4",
-      "#26: no ground truth for R4",
-      "#27: no ground truth for R4",
-      "#28: no ground truth for R4",
-      "#29: no ground truth for R4",
-      "#30: no ground truth for R4",
-      "#31: no ground truth for R4",
-      "#32: no ground truth for R4",
-      "#33: no ground truth for R4",
-      "#34: no ground truth for R4",
-      "#35: no ground truth for R4",
-      "#36: no ground truth for R4",
-      "#37: no ground truth for R4",
-      "#38: no ground truth for R4",
-      "#39: no ground truth for R4",
-      "#40: no ground truth for R4",
-      "#41: no ground truth for R4",
-      "#42: no ground truth for R4",
-      "#43: no ground truth for R4",
-      "#44: no ground truth for R4",
-      "#45: no ground truth for R4",
-      "#46: no ground truth for R4",
-      "#47: no ground truth for R4",
-      "#48: no ground truth for R4",
-      "#49: no ground truth for R4",
-      "#50: no ground truth for R4",
-      "#51: no ground truth for R4",
-      "#52: no ground truth for R4",
-      "#53: no ground truth for R4",
-      "#54: no ground truth for R4",
-      "#55: no ground truth for R4",
-      "#56: no ground truth for R4",
-      "#57: no ground truth for R4",
-      "#58: no ground truth for R4",
-      "#59: no ground truth for R4"
-    ]
+    "errors": []
   },
   "grok-4-openrouter/R5": {
-    "n_findings": 200,
+    "n_findings": 23,
     "n_matched": 23,
     "n_exact": 15,
     "n_minor": 6,
@@ -3238,185 +2554,7 @@
     "mae": 25.4,
     "rmse": 31.1,
     "n_scored": 23,
-    "errors": [
-      "#24: no ground truth for R5",
-      "#25: no ground truth for R5",
-      "#26: no ground truth for R5",
-      "#27: no ground truth for R5",
-      "#28: no ground truth for R5",
-      "#29: no ground truth for R5",
-      "#30: no ground truth for R5",
-      "#31: no ground truth for R5",
-      "#32: no ground truth for R5",
-      "#33: no ground truth for R5",
-      "#34: no ground truth for R5",
-      "#35: no ground truth for R5",
-      "#36: no ground truth for R5",
-      "#37: no ground truth for R5",
-      "#38: no ground truth for R5",
-      "#39: no ground truth for R5",
-      "#40: no ground truth for R5",
-      "#41: no ground truth for R5",
-      "#42: no ground truth for R5",
-      "#43: no ground truth for R5",
-      "#44: no ground truth for R5",
-      "#45: no ground truth for R5",
-      "#46: no ground truth for R5",
-      "#47: no ground truth for R5",
-      "#48: no ground truth for R5",
-      "#49: no ground truth for R5",
-      "#50: no ground truth for R5",
-      "#51: no ground truth for R5",
-      "#52: no ground truth for R5",
-      "#53: no ground truth for R5",
-      "#54: no ground truth for R5",
-      "#55: no ground truth for R5",
-      "#56: no ground truth for R5",
-      "#57: no ground truth for R5",
-      "#58: no ground truth for R5",
-      "#59: no ground truth for R5",
-      "#60: no ground truth for R5",
-      "#61: no ground truth for R5",
-      "#62: no ground truth for R5",
-      "#63: no ground truth for R5",
-      "#64: no ground truth for R5",
-      "#65: no ground truth for R5",
-      "#66: no ground truth for R5",
-      "#67: no ground truth for R5",
-      "#68: no ground truth for R5",
-      "#69: no ground truth for R5",
-      "#70: no ground truth for R5",
-      "#71: no ground truth for R5",
-      "#72: no ground truth for R5",
-      "#73: no ground truth for R5",
-      "#74: no ground truth for R5",
-      "#75: no ground truth for R5",
-      "#76: no ground truth for R5",
-      "#77: no ground truth for R5",
-      "#78: no ground truth for R5",
-      "#79: no ground truth for R5",
-      "#80: no ground truth for R5",
-      "#81: no ground truth for R5",
-      "#82: no ground truth for R5",
-      "#83: no ground truth for R5",
-      "#84: no ground truth for R5",
-      "#85: no ground truth for R5",
-      "#86: no ground truth for R5",
-      "#87: no ground truth for R5",
-      "#88: no ground truth for R5",
-      "#89: no ground truth for R5",
-      "#90: no ground truth for R5",
-      "#91: no ground truth for R5",
-      "#92: no ground truth for R5",
-      "#93: no ground truth for R5",
-      "#94: no ground truth for R5",
-      "#95: no ground truth for R5",
-      "#96: no ground truth for R5",
-      "#97: no ground truth for R5",
-      "#98: no ground truth for R5",
-      "#99: no ground truth for R5",
-      "#100: no ground truth for R5",
-      "#101: no ground truth for R5",
-      "#102: no ground truth for R5",
-      "#103: no ground truth for R5",
-      "#104: no ground truth for R5",
-      "#105: no ground truth for R5",
-      "#106: no ground truth for R5",
-      "#107: no ground truth for R5",
-      "#108: no ground truth for R5",
-      "#109: no ground truth for R5",
-      "#110: no ground truth for R5",
-      "#111: no ground truth for R5",
-      "#112: no ground truth for R5",
-      "#113: no ground truth for R5",
-      "#114: no ground truth for R5",
-      "#115: no ground truth for R5",
-      "#116: no ground truth for R5",
-      "#117: no ground truth for R5",
-      "#118: no ground truth for R5",
-      "#119: no ground truth for R5",
-      "#120: no ground truth for R5",
-      "#121: no ground truth for R5",
-      "#122: no ground truth for R5",
-      "#123: no ground truth for R5",
-      "#124: no ground truth for R5",
-      "#125: no ground truth for R5",
-      "#126: no ground truth for R5",
-      "#127: no ground truth for R5",
-      "#128: no ground truth for R5",
-      "#129: no ground truth for R5",
-      "#130: no ground truth for R5",
-      "#131: no ground truth for R5",
-      "#132: no ground truth for R5",
-      "#133: no ground truth for R5",
-      "#134: no ground truth for R5",
-      "#135: no ground truth for R5",
-      "#136: no ground truth for R5",
-      "#137: no ground truth for R5",
-      "#138: no ground truth for R5",
-      "#139: no ground truth for R5",
-      "#140: no ground truth for R5",
-      "#141: no ground truth for R5",
-      "#142: no ground truth for R5",
-      "#143: no ground truth for R5",
-      "#144: no ground truth for R5",
-      "#145: no ground truth for R5",
-      "#146: no ground truth for R5",
-      "#147: no ground truth for R5",
-      "#148: no ground truth for R5",
-      "#149: no ground truth for R5",
-      "#150: no ground truth for R5",
-      "#151: no ground truth for R5",
-      "#152: no ground truth for R5",
-      "#153: no ground truth for R5",
-      "#154: no ground truth for R5",
-      "#155: no ground truth for R5",
-      "#156: no ground truth for R5",
-      "#157: no ground truth for R5",
-      "#158: no ground truth for R5",
-      "#159: no ground truth for R5",
-      "#160: no ground truth for R5",
-      "#161: no ground truth for R5",
-      "#162: no ground truth for R5",
-      "#163: no ground truth for R5",
-      "#164: no ground truth for R5",
-      "#165: no ground truth for R5",
-      "#166: no ground truth for R5",
-      "#167: no ground truth for R5",
-      "#168: no ground truth for R5",
-      "#169: no ground truth for R5",
-      "#170: no ground truth for R5",
-      "#171: no ground truth for R5",
-      "#172: no ground truth for R5",
-      "#173: no ground truth for R5",
-      "#174: no ground truth for R5",
-      "#175: no ground truth for R5",
-      "#176: no ground truth for R5",
-      "#177: no ground truth for R5",
-      "#178: no ground truth for R5",
-      "#179: no ground truth for R5",
-      "#180: no ground truth for R5",
-      "#181: no ground truth for R5",
-      "#182: no ground truth for R5",
-      "#183: no ground truth for R5",
-      "#184: no ground truth for R5",
-      "#185: no ground truth for R5",
-      "#186: no ground truth for R5",
-      "#187: no ground truth for R5",
-      "#188: no ground truth for R5",
-      "#189: no ground truth for R5",
-      "#190: no ground truth for R5",
-      "#191: no ground truth for R5",
-      "#192: no ground truth for R5",
-      "#193: no ground truth for R5",
-      "#194: no ground truth for R5",
-      "#195: no ground truth for R5",
-      "#196: no ground truth for R5",
-      "#197: no ground truth for R5",
-      "#198: no ground truth for R5",
-      "#199: no ground truth for R5",
-      "#200: no ground truth for R5"
-    ]
+    "errors": []
   },
   "grok-4.1-fast/R1": {
     "n_findings": 14,
@@ -3438,7 +2576,7 @@
     "errors": []
   },
   "grok-4.1-fast/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 2,
@@ -3454,10 +2592,7 @@
     "mae": 37.1,
     "rmse": 48.9,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "grok-4.1-fast/R3": {
     "n_findings": 20,
@@ -3479,7 +2614,7 @@
     "errors": []
   },
   "grok-4.1-fast/R4": {
-    "n_findings": 59,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 6,
     "n_minor": 0,
@@ -3495,64 +2630,10 @@
     "mae": 20.8,
     "rmse": 23.2,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4",
-      "#10: no ground truth for R4",
-      "#11: no ground truth for R4",
-      "#12: no ground truth for R4",
-      "#13: no ground truth for R4",
-      "#14: no ground truth for R4",
-      "#15: no ground truth for R4",
-      "#16: no ground truth for R4",
-      "#17: no ground truth for R4",
-      "#18: no ground truth for R4",
-      "#19: no ground truth for R4",
-      "#20: no ground truth for R4",
-      "#21: no ground truth for R4",
-      "#22: no ground truth for R4",
-      "#23: no ground truth for R4",
-      "#24: no ground truth for R4",
-      "#25: no ground truth for R4",
-      "#26: no ground truth for R4",
-      "#27: no ground truth for R4",
-      "#28: no ground truth for R4",
-      "#29: no ground truth for R4",
-      "#30: no ground truth for R4",
-      "#31: no ground truth for R4",
-      "#32: no ground truth for R4",
-      "#33: no ground truth for R4",
-      "#34: no ground truth for R4",
-      "#35: no ground truth for R4",
-      "#36: no ground truth for R4",
-      "#37: no ground truth for R4",
-      "#38: no ground truth for R4",
-      "#39: no ground truth for R4",
-      "#40: no ground truth for R4",
-      "#41: no ground truth for R4",
-      "#42: no ground truth for R4",
-      "#43: no ground truth for R4",
-      "#44: no ground truth for R4",
-      "#45: no ground truth for R4",
-      "#46: no ground truth for R4",
-      "#47: no ground truth for R4",
-      "#48: no ground truth for R4",
-      "#49: no ground truth for R4",
-      "#50: no ground truth for R4",
-      "#51: no ground truth for R4",
-      "#52: no ground truth for R4",
-      "#53: no ground truth for R4",
-      "#54: no ground truth for R4",
-      "#55: no ground truth for R4",
-      "#56: no ground truth for R4",
-      "#57: no ground truth for R4",
-      "#58: no ground truth for R4",
-      "#59: no ground truth for R4"
-    ]
+    "errors": []
   },
   "grok-4.1-fast/R5": {
-    "n_findings": 200,
+    "n_findings": 23,
     "n_matched": 23,
     "n_exact": 15,
     "n_minor": 6,
@@ -3568,185 +2649,7 @@
     "mae": 27.6,
     "rmse": 32.4,
     "n_scored": 23,
-    "errors": [
-      "#24: no ground truth for R5",
-      "#25: no ground truth for R5",
-      "#26: no ground truth for R5",
-      "#27: no ground truth for R5",
-      "#28: no ground truth for R5",
-      "#29: no ground truth for R5",
-      "#30: no ground truth for R5",
-      "#31: no ground truth for R5",
-      "#32: no ground truth for R5",
-      "#33: no ground truth for R5",
-      "#34: no ground truth for R5",
-      "#35: no ground truth for R5",
-      "#36: no ground truth for R5",
-      "#37: no ground truth for R5",
-      "#38: no ground truth for R5",
-      "#39: no ground truth for R5",
-      "#40: no ground truth for R5",
-      "#41: no ground truth for R5",
-      "#42: no ground truth for R5",
-      "#43: no ground truth for R5",
-      "#44: no ground truth for R5",
-      "#45: no ground truth for R5",
-      "#46: no ground truth for R5",
-      "#47: no ground truth for R5",
-      "#48: no ground truth for R5",
-      "#49: no ground truth for R5",
-      "#50: no ground truth for R5",
-      "#51: no ground truth for R5",
-      "#52: no ground truth for R5",
-      "#53: no ground truth for R5",
-      "#54: no ground truth for R5",
-      "#55: no ground truth for R5",
-      "#56: no ground truth for R5",
-      "#57: no ground truth for R5",
-      "#58: no ground truth for R5",
-      "#59: no ground truth for R5",
-      "#60: no ground truth for R5",
-      "#61: no ground truth for R5",
-      "#62: no ground truth for R5",
-      "#63: no ground truth for R5",
-      "#64: no ground truth for R5",
-      "#65: no ground truth for R5",
-      "#66: no ground truth for R5",
-      "#67: no ground truth for R5",
-      "#68: no ground truth for R5",
-      "#69: no ground truth for R5",
-      "#70: no ground truth for R5",
-      "#71: no ground truth for R5",
-      "#72: no ground truth for R5",
-      "#73: no ground truth for R5",
-      "#74: no ground truth for R5",
-      "#75: no ground truth for R5",
-      "#76: no ground truth for R5",
-      "#77: no ground truth for R5",
-      "#78: no ground truth for R5",
-      "#79: no ground truth for R5",
-      "#80: no ground truth for R5",
-      "#81: no ground truth for R5",
-      "#82: no ground truth for R5",
-      "#83: no ground truth for R5",
-      "#84: no ground truth for R5",
-      "#85: no ground truth for R5",
-      "#86: no ground truth for R5",
-      "#87: no ground truth for R5",
-      "#88: no ground truth for R5",
-      "#89: no ground truth for R5",
-      "#90: no ground truth for R5",
-      "#91: no ground truth for R5",
-      "#92: no ground truth for R5",
-      "#93: no ground truth for R5",
-      "#94: no ground truth for R5",
-      "#95: no ground truth for R5",
-      "#96: no ground truth for R5",
-      "#97: no ground truth for R5",
-      "#98: no ground truth for R5",
-      "#99: no ground truth for R5",
-      "#100: no ground truth for R5",
-      "#101: no ground truth for R5",
-      "#102: no ground truth for R5",
-      "#103: no ground truth for R5",
-      "#104: no ground truth for R5",
-      "#105: no ground truth for R5",
-      "#106: no ground truth for R5",
-      "#107: no ground truth for R5",
-      "#108: no ground truth for R5",
-      "#109: no ground truth for R5",
-      "#110: no ground truth for R5",
-      "#111: no ground truth for R5",
-      "#112: no ground truth for R5",
-      "#113: no ground truth for R5",
-      "#114: no ground truth for R5",
-      "#115: no ground truth for R5",
-      "#116: no ground truth for R5",
-      "#117: no ground truth for R5",
-      "#118: no ground truth for R5",
-      "#119: no ground truth for R5",
-      "#120: no ground truth for R5",
-      "#121: no ground truth for R5",
-      "#122: no ground truth for R5",
-      "#123: no ground truth for R5",
-      "#124: no ground truth for R5",
-      "#125: no ground truth for R5",
-      "#126: no ground truth for R5",
-      "#127: no ground truth for R5",
-      "#128: no ground truth for R5",
-      "#129: no ground truth for R5",
-      "#130: no ground truth for R5",
-      "#131: no ground truth for R5",
-      "#132: no ground truth for R5",
-      "#133: no ground truth for R5",
-      "#134: no ground truth for R5",
-      "#135: no ground truth for R5",
-      "#136: no ground truth for R5",
-      "#137: no ground truth for R5",
-      "#138: no ground truth for R5",
-      "#139: no ground truth for R5",
-      "#140: no ground truth for R5",
-      "#141: no ground truth for R5",
-      "#142: no ground truth for R5",
-      "#143: no ground truth for R5",
-      "#144: no ground truth for R5",
-      "#145: no ground truth for R5",
-      "#146: no ground truth for R5",
-      "#147: no ground truth for R5",
-      "#148: no ground truth for R5",
-      "#149: no ground truth for R5",
-      "#150: no ground truth for R5",
-      "#151: no ground truth for R5",
-      "#152: no ground truth for R5",
-      "#153: no ground truth for R5",
-      "#154: no ground truth for R5",
-      "#155: no ground truth for R5",
-      "#156: no ground truth for R5",
-      "#157: no ground truth for R5",
-      "#158: no ground truth for R5",
-      "#159: no ground truth for R5",
-      "#160: no ground truth for R5",
-      "#161: no ground truth for R5",
-      "#162: no ground truth for R5",
-      "#163: no ground truth for R5",
-      "#164: no ground truth for R5",
-      "#165: no ground truth for R5",
-      "#166: no ground truth for R5",
-      "#167: no ground truth for R5",
-      "#168: no ground truth for R5",
-      "#169: no ground truth for R5",
-      "#170: no ground truth for R5",
-      "#171: no ground truth for R5",
-      "#172: no ground truth for R5",
-      "#173: no ground truth for R5",
-      "#174: no ground truth for R5",
-      "#175: no ground truth for R5",
-      "#176: no ground truth for R5",
-      "#177: no ground truth for R5",
-      "#178: no ground truth for R5",
-      "#179: no ground truth for R5",
-      "#180: no ground truth for R5",
-      "#181: no ground truth for R5",
-      "#182: no ground truth for R5",
-      "#183: no ground truth for R5",
-      "#184: no ground truth for R5",
-      "#185: no ground truth for R5",
-      "#186: no ground truth for R5",
-      "#187: no ground truth for R5",
-      "#188: no ground truth for R5",
-      "#189: no ground truth for R5",
-      "#190: no ground truth for R5",
-      "#191: no ground truth for R5",
-      "#192: no ground truth for R5",
-      "#193: no ground truth for R5",
-      "#194: no ground truth for R5",
-      "#195: no ground truth for R5",
-      "#196: no ground truth for R5",
-      "#197: no ground truth for R5",
-      "#198: no ground truth for R5",
-      "#199: no ground truth for R5",
-      "#200: no ground truth for R5"
-    ]
+    "errors": []
   },
   "grok-4.20/R1": {
     "n_findings": 14,
@@ -3768,7 +2671,7 @@
     "errors": []
   },
   "grok-4.20/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 2,
@@ -3784,10 +2687,7 @@
     "mae": 35.0,
     "rmse": 42.8,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "grok-4.20/R3": {
     "n_findings": 20,
@@ -3809,7 +2709,7 @@
     "errors": []
   },
   "grok-4.20/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 6,
     "n_minor": 0,
@@ -3825,11 +2725,7 @@
     "mae": 13.3,
     "rmse": 15.3,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "grok-4.20/R5": {
     "n_findings": 23,
@@ -3870,7 +2766,7 @@
     "errors": []
   },
   "kimi-k2.5/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 2,
@@ -3886,10 +2782,7 @@
     "mae": 42.9,
     "rmse": 52.8,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "kimi-k2.5/R3": {
     "n_findings": 20,
@@ -3968,7 +2861,7 @@
     "errors": []
   },
   "kimi-k2.6/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 2,
@@ -3984,10 +2877,7 @@
     "mae": 46.4,
     "rmse": 54.9,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "kimi-k2.6/R3": {
     "n_findings": 20,
@@ -4066,7 +2956,7 @@
     "errors": []
   },
   "llama-3.1-70b/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 2,
     "n_minor": 4,
@@ -4082,10 +2972,7 @@
     "mae": 37.1,
     "rmse": 46.0,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "llama-3.1-70b/R3": {
     "n_findings": 20,
@@ -4107,7 +2994,7 @@
     "errors": []
   },
   "llama-3.1-70b/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 4,
     "n_minor": 1,
@@ -4123,11 +3010,7 @@
     "mae": 28.3,
     "rmse": 30.3,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "llama-3.1-70b/R5": {
     "n_findings": 23,
@@ -4168,7 +3051,7 @@
     "errors": []
   },
   "llama-3.1-8b/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 2,
     "n_minor": 5,
@@ -4184,10 +3067,7 @@
     "mae": 30.0,
     "rmse": 37.6,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "llama-3.1-8b/R3": {
     "n_findings": 20,
@@ -4209,7 +3089,7 @@
     "errors": []
   },
   "llama-3.1-8b/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 0,
     "n_minor": 6,
@@ -4225,11 +3105,7 @@
     "mae": 18.3,
     "rmse": 20.4,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "llama-3.1-8b/R5": {
     "n_findings": 23,
@@ -4270,7 +3146,7 @@
     "errors": []
   },
   "mercury-2/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 2,
     "n_minor": 4,
@@ -4286,10 +3162,7 @@
     "mae": 31.4,
     "rmse": 38.1,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "mercury-2/R3": {
     "n_findings": 20,
@@ -4311,7 +3184,7 @@
     "errors": []
   },
   "mercury-2/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 4,
     "n_minor": 2,
@@ -4327,11 +3200,7 @@
     "mae": 21.7,
     "rmse": 24.7,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "mercury-2/R5": {
     "n_findings": 23,
@@ -4372,7 +3241,7 @@
     "errors": []
   },
   "mimo-v2-pro/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 4,
     "n_minor": 1,
@@ -4388,10 +3257,7 @@
     "mae": 32.1,
     "rmse": 46.6,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "mimo-v2-pro/R3": {
     "n_findings": 20,
@@ -4413,7 +3279,7 @@
     "errors": []
   },
   "mimo-v2-pro/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 6,
     "n_minor": 0,
@@ -4429,11 +3295,7 @@
     "mae": 22.5,
     "rmse": 24.6,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "mimo-v2-pro/R5": {
     "n_findings": 23,
@@ -4474,7 +3336,7 @@
     "errors": []
   },
   "minimax-m2.5/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 2,
@@ -4490,10 +3352,7 @@
     "mae": 36.4,
     "rmse": 46.2,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "minimax-m2.5/R3": {
     "n_findings": 20,
@@ -4515,7 +3374,7 @@
     "errors": []
   },
   "minimax-m2.5/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 4,
     "n_minor": 2,
@@ -4531,11 +3390,7 @@
     "mae": 21.7,
     "rmse": 24.3,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "minimax-m2.5/R5": {
     "n_findings": 23,
@@ -4576,7 +3431,7 @@
     "errors": []
   },
   "minimax-m2.7/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 2,
     "n_minor": 3,
@@ -4592,10 +3447,7 @@
     "mae": 35.0,
     "rmse": 42.0,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "minimax-m2.7/R3": {
     "n_findings": 20,
@@ -4617,7 +3469,7 @@
     "errors": []
   },
   "minimax-m2.7/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 5,
     "n_minor": 1,
@@ -4633,11 +3485,7 @@
     "mae": 19.2,
     "rmse": 22.5,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "minimax-m2.7/R5": {
     "n_findings": 23,
@@ -4678,7 +3526,7 @@
     "errors": []
   },
   "ministral-14b/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 3,
@@ -4694,10 +3542,7 @@
     "mae": 28.6,
     "rmse": 39.9,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "ministral-14b/R3": {
     "n_findings": 20,
@@ -4719,7 +3564,7 @@
     "errors": []
   },
   "ministral-14b/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 5,
     "n_minor": 1,
@@ -4735,11 +3580,7 @@
     "mae": 24.2,
     "rmse": 25.2,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "ministral-14b/R5": {
     "n_findings": 23,
@@ -4780,7 +3621,7 @@
     "errors": []
   },
   "mistral-nemo/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 4,
     "n_minor": 2,
@@ -4796,10 +3637,7 @@
     "mae": 31.4,
     "rmse": 36.6,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "mistral-nemo/R3": {
     "n_findings": 20,
@@ -4821,7 +3659,7 @@
     "errors": []
   },
   "mistral-nemo/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 3,
     "n_minor": 3,
@@ -4837,11 +3675,7 @@
     "mae": 10.0,
     "rmse": 14.1,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "mistral-nemo/R5": {
     "n_findings": 23,
@@ -4882,7 +3716,7 @@
     "errors": []
   },
   "nemotron-3-nano-omni/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 2,
     "n_minor": 4,
@@ -4898,10 +3732,7 @@
     "mae": 32.1,
     "rmse": 42.5,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "nemotron-3-nano-omni/R3": {
     "n_findings": 20,
@@ -4923,7 +3754,7 @@
     "errors": []
   },
   "nemotron-3-nano-omni/R4": {
-    "n_findings": 59,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 1,
     "n_minor": 5,
@@ -4939,64 +3770,10 @@
     "mae": 20.0,
     "rmse": 24.5,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4",
-      "#10: no ground truth for R4",
-      "#11: no ground truth for R4",
-      "#12: no ground truth for R4",
-      "#13: no ground truth for R4",
-      "#14: no ground truth for R4",
-      "#15: no ground truth for R4",
-      "#16: no ground truth for R4",
-      "#17: no ground truth for R4",
-      "#18: no ground truth for R4",
-      "#19: no ground truth for R4",
-      "#20: no ground truth for R4",
-      "#21: no ground truth for R4",
-      "#22: no ground truth for R4",
-      "#23: no ground truth for R4",
-      "#24: no ground truth for R4",
-      "#25: no ground truth for R4",
-      "#26: no ground truth for R4",
-      "#27: no ground truth for R4",
-      "#28: no ground truth for R4",
-      "#29: no ground truth for R4",
-      "#30: no ground truth for R4",
-      "#31: no ground truth for R4",
-      "#32: no ground truth for R4",
-      "#33: no ground truth for R4",
-      "#34: no ground truth for R4",
-      "#35: no ground truth for R4",
-      "#36: no ground truth for R4",
-      "#37: no ground truth for R4",
-      "#38: no ground truth for R4",
-      "#39: no ground truth for R4",
-      "#40: no ground truth for R4",
-      "#41: no ground truth for R4",
-      "#42: no ground truth for R4",
-      "#43: no ground truth for R4",
-      "#44: no ground truth for R4",
-      "#45: no ground truth for R4",
-      "#46: no ground truth for R4",
-      "#47: no ground truth for R4",
-      "#48: no ground truth for R4",
-      "#49: no ground truth for R4",
-      "#50: no ground truth for R4",
-      "#51: no ground truth for R4",
-      "#52: no ground truth for R4",
-      "#53: no ground truth for R4",
-      "#54: no ground truth for R4",
-      "#55: no ground truth for R4",
-      "#56: no ground truth for R4",
-      "#57: no ground truth for R4",
-      "#58: no ground truth for R4",
-      "#59: no ground truth for R4"
-    ]
+    "errors": []
   },
   "nemotron-3-nano-omni/R5": {
-    "n_findings": 200,
+    "n_findings": 23,
     "n_matched": 23,
     "n_exact": 13,
     "n_minor": 9,
@@ -5012,185 +3789,7 @@
     "mae": 20.9,
     "rmse": 25.2,
     "n_scored": 23,
-    "errors": [
-      "#24: no ground truth for R5",
-      "#25: no ground truth for R5",
-      "#26: no ground truth for R5",
-      "#27: no ground truth for R5",
-      "#28: no ground truth for R5",
-      "#29: no ground truth for R5",
-      "#30: no ground truth for R5",
-      "#31: no ground truth for R5",
-      "#32: no ground truth for R5",
-      "#33: no ground truth for R5",
-      "#34: no ground truth for R5",
-      "#35: no ground truth for R5",
-      "#36: no ground truth for R5",
-      "#37: no ground truth for R5",
-      "#38: no ground truth for R5",
-      "#39: no ground truth for R5",
-      "#40: no ground truth for R5",
-      "#41: no ground truth for R5",
-      "#42: no ground truth for R5",
-      "#43: no ground truth for R5",
-      "#44: no ground truth for R5",
-      "#45: no ground truth for R5",
-      "#46: no ground truth for R5",
-      "#47: no ground truth for R5",
-      "#48: no ground truth for R5",
-      "#49: no ground truth for R5",
-      "#50: no ground truth for R5",
-      "#51: no ground truth for R5",
-      "#52: no ground truth for R5",
-      "#53: no ground truth for R5",
-      "#54: no ground truth for R5",
-      "#55: no ground truth for R5",
-      "#56: no ground truth for R5",
-      "#57: no ground truth for R5",
-      "#58: no ground truth for R5",
-      "#59: no ground truth for R5",
-      "#60: no ground truth for R5",
-      "#61: no ground truth for R5",
-      "#62: no ground truth for R5",
-      "#63: no ground truth for R5",
-      "#64: no ground truth for R5",
-      "#65: no ground truth for R5",
-      "#66: no ground truth for R5",
-      "#67: no ground truth for R5",
-      "#68: no ground truth for R5",
-      "#69: no ground truth for R5",
-      "#70: no ground truth for R5",
-      "#71: no ground truth for R5",
-      "#72: no ground truth for R5",
-      "#73: no ground truth for R5",
-      "#74: no ground truth for R5",
-      "#75: no ground truth for R5",
-      "#76: no ground truth for R5",
-      "#77: no ground truth for R5",
-      "#78: no ground truth for R5",
-      "#79: no ground truth for R5",
-      "#80: no ground truth for R5",
-      "#81: no ground truth for R5",
-      "#82: no ground truth for R5",
-      "#83: no ground truth for R5",
-      "#84: no ground truth for R5",
-      "#85: no ground truth for R5",
-      "#86: no ground truth for R5",
-      "#87: no ground truth for R5",
-      "#88: no ground truth for R5",
-      "#89: no ground truth for R5",
-      "#90: no ground truth for R5",
-      "#91: no ground truth for R5",
-      "#92: no ground truth for R5",
-      "#93: no ground truth for R5",
-      "#94: no ground truth for R5",
-      "#95: no ground truth for R5",
-      "#96: no ground truth for R5",
-      "#97: no ground truth for R5",
-      "#98: no ground truth for R5",
-      "#99: no ground truth for R5",
-      "#100: no ground truth for R5",
-      "#101: no ground truth for R5",
-      "#102: no ground truth for R5",
-      "#103: no ground truth for R5",
-      "#104: no ground truth for R5",
-      "#105: no ground truth for R5",
-      "#106: no ground truth for R5",
-      "#107: no ground truth for R5",
-      "#108: no ground truth for R5",
-      "#109: no ground truth for R5",
-      "#110: no ground truth for R5",
-      "#111: no ground truth for R5",
-      "#112: no ground truth for R5",
-      "#113: no ground truth for R5",
-      "#114: no ground truth for R5",
-      "#115: no ground truth for R5",
-      "#116: no ground truth for R5",
-      "#117: no ground truth for R5",
-      "#118: no ground truth for R5",
-      "#119: no ground truth for R5",
-      "#120: no ground truth for R5",
-      "#121: no ground truth for R5",
-      "#122: no ground truth for R5",
-      "#123: no ground truth for R5",
-      "#124: no ground truth for R5",
-      "#125: no ground truth for R5",
-      "#126: no ground truth for R5",
-      "#127: no ground truth for R5",
-      "#128: no ground truth for R5",
-      "#129: no ground truth for R5",
-      "#130: no ground truth for R5",
-      "#131: no ground truth for R5",
-      "#132: no ground truth for R5",
-      "#133: no ground truth for R5",
-      "#134: no ground truth for R5",
-      "#135: no ground truth for R5",
-      "#136: no ground truth for R5",
-      "#137: no ground truth for R5",
-      "#138: no ground truth for R5",
-      "#139: no ground truth for R5",
-      "#140: no ground truth for R5",
-      "#141: no ground truth for R5",
-      "#142: no ground truth for R5",
-      "#143: no ground truth for R5",
-      "#144: no ground truth for R5",
-      "#145: no ground truth for R5",
-      "#146: no ground truth for R5",
-      "#147: no ground truth for R5",
-      "#148: no ground truth for R5",
-      "#149: no ground truth for R5",
-      "#150: no ground truth for R5",
-      "#151: no ground truth for R5",
-      "#152: no ground truth for R5",
-      "#153: no ground truth for R5",
-      "#154: no ground truth for R5",
-      "#155: no ground truth for R5",
-      "#156: no ground truth for R5",
-      "#157: no ground truth for R5",
-      "#158: no ground truth for R5",
-      "#159: no ground truth for R5",
-      "#160: no ground truth for R5",
-      "#161: no ground truth for R5",
-      "#162: no ground truth for R5",
-      "#163: no ground truth for R5",
-      "#164: no ground truth for R5",
-      "#165: no ground truth for R5",
-      "#166: no ground truth for R5",
-      "#167: no ground truth for R5",
-      "#168: no ground truth for R5",
-      "#169: no ground truth for R5",
-      "#170: no ground truth for R5",
-      "#171: no ground truth for R5",
-      "#172: no ground truth for R5",
-      "#173: no ground truth for R5",
-      "#174: no ground truth for R5",
-      "#175: no ground truth for R5",
-      "#176: no ground truth for R5",
-      "#177: no ground truth for R5",
-      "#178: no ground truth for R5",
-      "#179: no ground truth for R5",
-      "#180: no ground truth for R5",
-      "#181: no ground truth for R5",
-      "#182: no ground truth for R5",
-      "#183: no ground truth for R5",
-      "#184: no ground truth for R5",
-      "#185: no ground truth for R5",
-      "#186: no ground truth for R5",
-      "#187: no ground truth for R5",
-      "#188: no ground truth for R5",
-      "#189: no ground truth for R5",
-      "#190: no ground truth for R5",
-      "#191: no ground truth for R5",
-      "#192: no ground truth for R5",
-      "#193: no ground truth for R5",
-      "#194: no ground truth for R5",
-      "#195: no ground truth for R5",
-      "#196: no ground truth for R5",
-      "#197: no ground truth for R5",
-      "#198: no ground truth for R5",
-      "#199: no ground truth for R5",
-      "#200: no ground truth for R5"
-    ]
+    "errors": []
   },
   "nemotron-3-super-120b/R1": {
     "n_findings": 14,
@@ -5212,7 +3811,7 @@
     "errors": []
   },
   "nemotron-3-super-120b/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 1,
     "n_minor": 5,
@@ -5228,10 +3827,7 @@
     "mae": 37.1,
     "rmse": 42.2,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "nemotron-3-super-120b/R3": {
     "n_findings": 20,
@@ -5253,7 +3849,7 @@
     "errors": []
   },
   "nemotron-3-super-120b/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 2,
     "n_minor": 4,
@@ -5269,11 +3865,7 @@
     "mae": 19.2,
     "rmse": 20.9,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "nemotron-3-super-120b/R5": {
     "n_findings": 23,
@@ -5314,7 +3906,7 @@
     "errors": []
   },
   "qwen3-235b-a22b/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 2,
@@ -5330,10 +3922,7 @@
     "mae": 42.9,
     "rmse": 52.2,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "qwen3-235b-a22b/R3": {
     "n_findings": 20,
@@ -5355,7 +3944,7 @@
     "errors": []
   },
   "qwen3-235b-a22b/R4": {
-    "n_findings": 59,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 4,
     "n_minor": 2,
@@ -5371,64 +3960,10 @@
     "mae": 23.3,
     "rmse": 26.9,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4",
-      "#10: no ground truth for R4",
-      "#11: no ground truth for R4",
-      "#12: no ground truth for R4",
-      "#13: no ground truth for R4",
-      "#14: no ground truth for R4",
-      "#15: no ground truth for R4",
-      "#16: no ground truth for R4",
-      "#17: no ground truth for R4",
-      "#18: no ground truth for R4",
-      "#19: no ground truth for R4",
-      "#20: no ground truth for R4",
-      "#21: no ground truth for R4",
-      "#22: no ground truth for R4",
-      "#23: no ground truth for R4",
-      "#24: no ground truth for R4",
-      "#25: no ground truth for R4",
-      "#26: no ground truth for R4",
-      "#27: no ground truth for R4",
-      "#28: no ground truth for R4",
-      "#29: no ground truth for R4",
-      "#30: no ground truth for R4",
-      "#31: no ground truth for R4",
-      "#32: no ground truth for R4",
-      "#33: no ground truth for R4",
-      "#34: no ground truth for R4",
-      "#35: no ground truth for R4",
-      "#36: no ground truth for R4",
-      "#37: no ground truth for R4",
-      "#38: no ground truth for R4",
-      "#39: no ground truth for R4",
-      "#40: no ground truth for R4",
-      "#41: no ground truth for R4",
-      "#42: no ground truth for R4",
-      "#43: no ground truth for R4",
-      "#44: no ground truth for R4",
-      "#45: no ground truth for R4",
-      "#46: no ground truth for R4",
-      "#47: no ground truth for R4",
-      "#48: no ground truth for R4",
-      "#49: no ground truth for R4",
-      "#50: no ground truth for R4",
-      "#51: no ground truth for R4",
-      "#52: no ground truth for R4",
-      "#53: no ground truth for R4",
-      "#54: no ground truth for R4",
-      "#55: no ground truth for R4",
-      "#56: no ground truth for R4",
-      "#57: no ground truth for R4",
-      "#58: no ground truth for R4",
-      "#59: no ground truth for R4"
-    ]
+    "errors": []
   },
   "qwen3-235b-a22b/R5": {
-    "n_findings": 200,
+    "n_findings": 23,
     "n_matched": 23,
     "n_exact": 13,
     "n_minor": 9,
@@ -5444,185 +3979,7 @@
     "mae": 23.0,
     "rmse": 28.8,
     "n_scored": 23,
-    "errors": [
-      "#24: no ground truth for R5",
-      "#25: no ground truth for R5",
-      "#26: no ground truth for R5",
-      "#27: no ground truth for R5",
-      "#28: no ground truth for R5",
-      "#29: no ground truth for R5",
-      "#30: no ground truth for R5",
-      "#31: no ground truth for R5",
-      "#32: no ground truth for R5",
-      "#33: no ground truth for R5",
-      "#34: no ground truth for R5",
-      "#35: no ground truth for R5",
-      "#36: no ground truth for R5",
-      "#37: no ground truth for R5",
-      "#38: no ground truth for R5",
-      "#39: no ground truth for R5",
-      "#40: no ground truth for R5",
-      "#41: no ground truth for R5",
-      "#42: no ground truth for R5",
-      "#43: no ground truth for R5",
-      "#44: no ground truth for R5",
-      "#45: no ground truth for R5",
-      "#46: no ground truth for R5",
-      "#47: no ground truth for R5",
-      "#48: no ground truth for R5",
-      "#49: no ground truth for R5",
-      "#50: no ground truth for R5",
-      "#51: no ground truth for R5",
-      "#52: no ground truth for R5",
-      "#53: no ground truth for R5",
-      "#54: no ground truth for R5",
-      "#55: no ground truth for R5",
-      "#56: no ground truth for R5",
-      "#57: no ground truth for R5",
-      "#58: no ground truth for R5",
-      "#59: no ground truth for R5",
-      "#60: no ground truth for R5",
-      "#61: no ground truth for R5",
-      "#62: no ground truth for R5",
-      "#63: no ground truth for R5",
-      "#64: no ground truth for R5",
-      "#65: no ground truth for R5",
-      "#66: no ground truth for R5",
-      "#67: no ground truth for R5",
-      "#68: no ground truth for R5",
-      "#69: no ground truth for R5",
-      "#70: no ground truth for R5",
-      "#71: no ground truth for R5",
-      "#72: no ground truth for R5",
-      "#73: no ground truth for R5",
-      "#74: no ground truth for R5",
-      "#75: no ground truth for R5",
-      "#76: no ground truth for R5",
-      "#77: no ground truth for R5",
-      "#78: no ground truth for R5",
-      "#79: no ground truth for R5",
-      "#80: no ground truth for R5",
-      "#81: no ground truth for R5",
-      "#82: no ground truth for R5",
-      "#83: no ground truth for R5",
-      "#84: no ground truth for R5",
-      "#85: no ground truth for R5",
-      "#86: no ground truth for R5",
-      "#87: no ground truth for R5",
-      "#88: no ground truth for R5",
-      "#89: no ground truth for R5",
-      "#90: no ground truth for R5",
-      "#91: no ground truth for R5",
-      "#92: no ground truth for R5",
-      "#93: no ground truth for R5",
-      "#94: no ground truth for R5",
-      "#95: no ground truth for R5",
-      "#96: no ground truth for R5",
-      "#97: no ground truth for R5",
-      "#98: no ground truth for R5",
-      "#99: no ground truth for R5",
-      "#100: no ground truth for R5",
-      "#101: no ground truth for R5",
-      "#102: no ground truth for R5",
-      "#103: no ground truth for R5",
-      "#104: no ground truth for R5",
-      "#105: no ground truth for R5",
-      "#106: no ground truth for R5",
-      "#107: no ground truth for R5",
-      "#108: no ground truth for R5",
-      "#109: no ground truth for R5",
-      "#110: no ground truth for R5",
-      "#111: no ground truth for R5",
-      "#112: no ground truth for R5",
-      "#113: no ground truth for R5",
-      "#114: no ground truth for R5",
-      "#115: no ground truth for R5",
-      "#116: no ground truth for R5",
-      "#117: no ground truth for R5",
-      "#118: no ground truth for R5",
-      "#119: no ground truth for R5",
-      "#120: no ground truth for R5",
-      "#121: no ground truth for R5",
-      "#122: no ground truth for R5",
-      "#123: no ground truth for R5",
-      "#124: no ground truth for R5",
-      "#125: no ground truth for R5",
-      "#126: no ground truth for R5",
-      "#127: no ground truth for R5",
-      "#128: no ground truth for R5",
-      "#129: no ground truth for R5",
-      "#130: no ground truth for R5",
-      "#131: no ground truth for R5",
-      "#132: no ground truth for R5",
-      "#133: no ground truth for R5",
-      "#134: no ground truth for R5",
-      "#135: no ground truth for R5",
-      "#136: no ground truth for R5",
-      "#137: no ground truth for R5",
-      "#138: no ground truth for R5",
-      "#139: no ground truth for R5",
-      "#140: no ground truth for R5",
-      "#141: no ground truth for R5",
-      "#142: no ground truth for R5",
-      "#143: no ground truth for R5",
-      "#144: no ground truth for R5",
-      "#145: no ground truth for R5",
-      "#146: no ground truth for R5",
-      "#147: no ground truth for R5",
-      "#148: no ground truth for R5",
-      "#149: no ground truth for R5",
-      "#150: no ground truth for R5",
-      "#151: no ground truth for R5",
-      "#152: no ground truth for R5",
-      "#153: no ground truth for R5",
-      "#154: no ground truth for R5",
-      "#155: no ground truth for R5",
-      "#156: no ground truth for R5",
-      "#157: no ground truth for R5",
-      "#158: no ground truth for R5",
-      "#159: no ground truth for R5",
-      "#160: no ground truth for R5",
-      "#161: no ground truth for R5",
-      "#162: no ground truth for R5",
-      "#163: no ground truth for R5",
-      "#164: no ground truth for R5",
-      "#165: no ground truth for R5",
-      "#166: no ground truth for R5",
-      "#167: no ground truth for R5",
-      "#168: no ground truth for R5",
-      "#169: no ground truth for R5",
-      "#170: no ground truth for R5",
-      "#171: no ground truth for R5",
-      "#172: no ground truth for R5",
-      "#173: no ground truth for R5",
-      "#174: no ground truth for R5",
-      "#175: no ground truth for R5",
-      "#176: no ground truth for R5",
-      "#177: no ground truth for R5",
-      "#178: no ground truth for R5",
-      "#179: no ground truth for R5",
-      "#180: no ground truth for R5",
-      "#181: no ground truth for R5",
-      "#182: no ground truth for R5",
-      "#183: no ground truth for R5",
-      "#184: no ground truth for R5",
-      "#185: no ground truth for R5",
-      "#186: no ground truth for R5",
-      "#187: no ground truth for R5",
-      "#188: no ground truth for R5",
-      "#189: no ground truth for R5",
-      "#190: no ground truth for R5",
-      "#191: no ground truth for R5",
-      "#192: no ground truth for R5",
-      "#193: no ground truth for R5",
-      "#194: no ground truth for R5",
-      "#195: no ground truth for R5",
-      "#196: no ground truth for R5",
-      "#197: no ground truth for R5",
-      "#198: no ground truth for R5",
-      "#199: no ground truth for R5",
-      "#200: no ground truth for R5"
-    ]
+    "errors": []
   },
   "qwen3.5-35b-a3b/R1": {
     "n_findings": 14,
@@ -5646,7 +4003,7 @@
     ]
   },
   "qwen3.5-35b-a3b/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 2,
     "n_minor": 3,
@@ -5662,10 +4019,7 @@
     "mae": 45.0,
     "rmse": 53.6,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "qwen3.5-35b-a3b/R3": {
     "n_findings": 20,
@@ -5757,7 +4111,7 @@
     "errors": []
   },
   "qwen3.5-9b/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 3,
@@ -5773,10 +4127,7 @@
     "mae": 34.3,
     "rmse": 44.0,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "qwen3.5-9b/R3": {
     "n_findings": 20,
@@ -5798,7 +4149,7 @@
     "errors": []
   },
   "qwen3.5-9b/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 6,
     "n_minor": 0,
@@ -5814,11 +4165,7 @@
     "mae": 15.8,
     "rmse": 17.9,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "qwen3.5-9b/R5": {
     "n_findings": 23,
@@ -5859,7 +4206,7 @@
     "errors": []
   },
   "qwen3.5-plus-20260420/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 2,
@@ -5875,10 +4222,7 @@
     "mae": 35.0,
     "rmse": 47.2,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "qwen3.5-plus-20260420/R3": {
     "n_findings": 20,
@@ -5919,7 +4263,7 @@
     "errors": []
   },
   "qwen3.6-flash/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 2,
     "n_minor": 3,
@@ -5935,10 +4279,7 @@
     "mae": 40.0,
     "rmse": 49.5,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "qwen3.6-flash/R3": {
     "n_findings": 20,
@@ -5960,7 +4301,7 @@
     "errors": []
   },
   "qwen3.6-flash/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 6,
     "n_minor": 0,
@@ -5976,11 +4317,7 @@
     "mae": 22.5,
     "rmse": 24.6,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "qwen3.6-flash/R5": {
     "n_findings": 23,
@@ -6021,7 +4358,7 @@
     "errors": []
   },
   "qwen3.6-max/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 2,
@@ -6037,10 +4374,7 @@
     "mae": 41.4,
     "rmse": 52.0,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "qwen3.6-max/R3": {
     "n_findings": 20,
@@ -6062,7 +4396,7 @@
     "errors": []
   },
   "qwen3.6-max/R4": {
-    "n_findings": 59,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 6,
     "n_minor": 0,
@@ -6078,64 +4412,10 @@
     "mae": 21.7,
     "rmse": 23.5,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4",
-      "#10: no ground truth for R4",
-      "#11: no ground truth for R4",
-      "#12: no ground truth for R4",
-      "#13: no ground truth for R4",
-      "#14: no ground truth for R4",
-      "#15: no ground truth for R4",
-      "#16: no ground truth for R4",
-      "#17: no ground truth for R4",
-      "#18: no ground truth for R4",
-      "#19: no ground truth for R4",
-      "#20: no ground truth for R4",
-      "#21: no ground truth for R4",
-      "#22: no ground truth for R4",
-      "#23: no ground truth for R4",
-      "#24: no ground truth for R4",
-      "#25: no ground truth for R4",
-      "#26: no ground truth for R4",
-      "#27: no ground truth for R4",
-      "#28: no ground truth for R4",
-      "#29: no ground truth for R4",
-      "#30: no ground truth for R4",
-      "#31: no ground truth for R4",
-      "#32: no ground truth for R4",
-      "#33: no ground truth for R4",
-      "#34: no ground truth for R4",
-      "#35: no ground truth for R4",
-      "#36: no ground truth for R4",
-      "#37: no ground truth for R4",
-      "#38: no ground truth for R4",
-      "#39: no ground truth for R4",
-      "#40: no ground truth for R4",
-      "#41: no ground truth for R4",
-      "#42: no ground truth for R4",
-      "#43: no ground truth for R4",
-      "#44: no ground truth for R4",
-      "#45: no ground truth for R4",
-      "#46: no ground truth for R4",
-      "#47: no ground truth for R4",
-      "#48: no ground truth for R4",
-      "#49: no ground truth for R4",
-      "#50: no ground truth for R4",
-      "#51: no ground truth for R4",
-      "#52: no ground truth for R4",
-      "#53: no ground truth for R4",
-      "#54: no ground truth for R4",
-      "#55: no ground truth for R4",
-      "#56: no ground truth for R4",
-      "#57: no ground truth for R4",
-      "#58: no ground truth for R4",
-      "#59: no ground truth for R4"
-    ]
+    "errors": []
   },
   "qwen3.6-max/R5": {
-    "n_findings": 200,
+    "n_findings": 23,
     "n_matched": 23,
     "n_exact": 17,
     "n_minor": 4,
@@ -6151,185 +4431,7 @@
     "mae": 18.9,
     "rmse": 25.9,
     "n_scored": 23,
-    "errors": [
-      "#24: no ground truth for R5",
-      "#25: no ground truth for R5",
-      "#26: no ground truth for R5",
-      "#27: no ground truth for R5",
-      "#28: no ground truth for R5",
-      "#29: no ground truth for R5",
-      "#30: no ground truth for R5",
-      "#31: no ground truth for R5",
-      "#32: no ground truth for R5",
-      "#33: no ground truth for R5",
-      "#34: no ground truth for R5",
-      "#35: no ground truth for R5",
-      "#36: no ground truth for R5",
-      "#37: no ground truth for R5",
-      "#38: no ground truth for R5",
-      "#39: no ground truth for R5",
-      "#40: no ground truth for R5",
-      "#41: no ground truth for R5",
-      "#42: no ground truth for R5",
-      "#43: no ground truth for R5",
-      "#44: no ground truth for R5",
-      "#45: no ground truth for R5",
-      "#46: no ground truth for R5",
-      "#47: no ground truth for R5",
-      "#48: no ground truth for R5",
-      "#49: no ground truth for R5",
-      "#50: no ground truth for R5",
-      "#51: no ground truth for R5",
-      "#52: no ground truth for R5",
-      "#53: no ground truth for R5",
-      "#54: no ground truth for R5",
-      "#55: no ground truth for R5",
-      "#56: no ground truth for R5",
-      "#57: no ground truth for R5",
-      "#58: no ground truth for R5",
-      "#59: no ground truth for R5",
-      "#60: no ground truth for R5",
-      "#61: no ground truth for R5",
-      "#62: no ground truth for R5",
-      "#63: no ground truth for R5",
-      "#64: no ground truth for R5",
-      "#65: no ground truth for R5",
-      "#66: no ground truth for R5",
-      "#67: no ground truth for R5",
-      "#68: no ground truth for R5",
-      "#69: no ground truth for R5",
-      "#70: no ground truth for R5",
-      "#71: no ground truth for R5",
-      "#72: no ground truth for R5",
-      "#73: no ground truth for R5",
-      "#74: no ground truth for R5",
-      "#75: no ground truth for R5",
-      "#76: no ground truth for R5",
-      "#77: no ground truth for R5",
-      "#78: no ground truth for R5",
-      "#79: no ground truth for R5",
-      "#80: no ground truth for R5",
-      "#81: no ground truth for R5",
-      "#82: no ground truth for R5",
-      "#83: no ground truth for R5",
-      "#84: no ground truth for R5",
-      "#85: no ground truth for R5",
-      "#86: no ground truth for R5",
-      "#87: no ground truth for R5",
-      "#88: no ground truth for R5",
-      "#89: no ground truth for R5",
-      "#90: no ground truth for R5",
-      "#91: no ground truth for R5",
-      "#92: no ground truth for R5",
-      "#93: no ground truth for R5",
-      "#94: no ground truth for R5",
-      "#95: no ground truth for R5",
-      "#96: no ground truth for R5",
-      "#97: no ground truth for R5",
-      "#98: no ground truth for R5",
-      "#99: no ground truth for R5",
-      "#100: no ground truth for R5",
-      "#101: no ground truth for R5",
-      "#102: no ground truth for R5",
-      "#103: no ground truth for R5",
-      "#104: no ground truth for R5",
-      "#105: no ground truth for R5",
-      "#106: no ground truth for R5",
-      "#107: no ground truth for R5",
-      "#108: no ground truth for R5",
-      "#109: no ground truth for R5",
-      "#110: no ground truth for R5",
-      "#111: no ground truth for R5",
-      "#112: no ground truth for R5",
-      "#113: no ground truth for R5",
-      "#114: no ground truth for R5",
-      "#115: no ground truth for R5",
-      "#116: no ground truth for R5",
-      "#117: no ground truth for R5",
-      "#118: no ground truth for R5",
-      "#119: no ground truth for R5",
-      "#120: no ground truth for R5",
-      "#121: no ground truth for R5",
-      "#122: no ground truth for R5",
-      "#123: no ground truth for R5",
-      "#124: no ground truth for R5",
-      "#125: no ground truth for R5",
-      "#126: no ground truth for R5",
-      "#127: no ground truth for R5",
-      "#128: no ground truth for R5",
-      "#129: no ground truth for R5",
-      "#130: no ground truth for R5",
-      "#131: no ground truth for R5",
-      "#132: no ground truth for R5",
-      "#133: no ground truth for R5",
-      "#134: no ground truth for R5",
-      "#135: no ground truth for R5",
-      "#136: no ground truth for R5",
-      "#137: no ground truth for R5",
-      "#138: no ground truth for R5",
-      "#139: no ground truth for R5",
-      "#140: no ground truth for R5",
-      "#141: no ground truth for R5",
-      "#142: no ground truth for R5",
-      "#143: no ground truth for R5",
-      "#144: no ground truth for R5",
-      "#145: no ground truth for R5",
-      "#146: no ground truth for R5",
-      "#147: no ground truth for R5",
-      "#148: no ground truth for R5",
-      "#149: no ground truth for R5",
-      "#150: no ground truth for R5",
-      "#151: no ground truth for R5",
-      "#152: no ground truth for R5",
-      "#153: no ground truth for R5",
-      "#154: no ground truth for R5",
-      "#155: no ground truth for R5",
-      "#156: no ground truth for R5",
-      "#157: no ground truth for R5",
-      "#158: no ground truth for R5",
-      "#159: no ground truth for R5",
-      "#160: no ground truth for R5",
-      "#161: no ground truth for R5",
-      "#162: no ground truth for R5",
-      "#163: no ground truth for R5",
-      "#164: no ground truth for R5",
-      "#165: no ground truth for R5",
-      "#166: no ground truth for R5",
-      "#167: no ground truth for R5",
-      "#168: no ground truth for R5",
-      "#169: no ground truth for R5",
-      "#170: no ground truth for R5",
-      "#171: no ground truth for R5",
-      "#172: no ground truth for R5",
-      "#173: no ground truth for R5",
-      "#174: no ground truth for R5",
-      "#175: no ground truth for R5",
-      "#176: no ground truth for R5",
-      "#177: no ground truth for R5",
-      "#178: no ground truth for R5",
-      "#179: no ground truth for R5",
-      "#180: no ground truth for R5",
-      "#181: no ground truth for R5",
-      "#182: no ground truth for R5",
-      "#183: no ground truth for R5",
-      "#184: no ground truth for R5",
-      "#185: no ground truth for R5",
-      "#186: no ground truth for R5",
-      "#187: no ground truth for R5",
-      "#188: no ground truth for R5",
-      "#189: no ground truth for R5",
-      "#190: no ground truth for R5",
-      "#191: no ground truth for R5",
-      "#192: no ground truth for R5",
-      "#193: no ground truth for R5",
-      "#194: no ground truth for R5",
-      "#195: no ground truth for R5",
-      "#196: no ground truth for R5",
-      "#197: no ground truth for R5",
-      "#198: no ground truth for R5",
-      "#199: no ground truth for R5",
-      "#200: no ground truth for R5"
-    ]
+    "errors": []
   },
   "qwen3.6-plus/R1": {
     "n_findings": 14,
@@ -6351,7 +4453,7 @@
     "errors": []
   },
   "qwen3.6-plus/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 2,
@@ -6367,10 +4469,7 @@
     "mae": 36.4,
     "rmse": 48.2,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "qwen3.6-plus/R3": {
     "n_findings": 20,
@@ -6392,7 +4491,7 @@
     "errors": []
   },
   "qwen3.6-plus/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 6,
     "n_minor": 0,
@@ -6408,11 +4507,7 @@
     "mae": 26.7,
     "rmse": 29.3,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "qwen3.6-plus/R5": {
     "n_findings": 23,
@@ -6453,7 +4548,7 @@
     "errors": []
   },
   "qwen35-397b/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 7,
     "n_exact": 3,
     "n_minor": 2,
@@ -6469,10 +4564,7 @@
     "mae": 36.4,
     "rmse": 47.5,
     "n_scored": 7,
-    "errors": [
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
-    ]
+    "errors": []
   },
   "qwen35-397b/R3": {
     "n_findings": 20,
@@ -6494,7 +4586,7 @@
     "errors": []
   },
   "qwen35-397b/R4": {
-    "n_findings": 9,
+    "n_findings": 6,
     "n_matched": 6,
     "n_exact": 6,
     "n_minor": 0,
@@ -6510,11 +4602,7 @@
     "mae": 17.5,
     "rmse": 20.1,
     "n_scored": 6,
-    "errors": [
-      "#7: no ground truth for R4",
-      "#8: no ground truth for R4",
-      "#9: no ground truth for R4"
-    ]
+    "errors": []
   },
   "qwen35-397b/R5": {
     "n_findings": 23,
@@ -6570,7 +4658,7 @@
     ]
   },
   "step-3.5-flash/R2": {
-    "n_findings": 9,
+    "n_findings": 7,
     "n_matched": 0,
     "n_exact": 0,
     "n_minor": 0,
@@ -6593,9 +4681,7 @@
       "#4: LLM classification error (excluded from scoring)",
       "#5: LLM classification error (excluded from scoring)",
       "#6: LLM classification error (excluded from scoring)",
-      "#7: LLM classification error (excluded from scoring)",
-      "#8: no ground truth for R2",
-      "#9: no ground truth for R2"
+      "#7: LLM classification error (excluded from scoring)"
     ]
   },
   "step-3.5-flash/R3": {

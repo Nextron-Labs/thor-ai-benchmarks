@@ -1,5 +1,5 @@
 {
-  "n_findings": 9,
+  "n_findings": 7,
   "n_matched": 0,
   "n_exact": 0,
   "n_minor": 0,
@@ -22,8 +22,6 @@
     "#4: LLM classification error (excluded from scoring)",
     "#5: LLM classification error (excluded from scoring)",
     "#6: LLM classification error (excluded from scoring)",
-    "#7: LLM classification error (excluded from scoring)",
-    "#8: no ground truth for R2",
-    "#9: no ground truth for R2"
+    "#7: LLM classification error (excluded from scoring)"
   ]
 }
