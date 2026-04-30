@@ -1,5 +1,10 @@
 {
-  "excluded": ["step-3.5-flash", "qwen3.5-35b-a3b", "ernie-4.5-thinking", "glm-4.7"],
+  "excluded": [
+    "step-3.5-flash",
+    "ernie-4.5-thinking",
+    "glm-4.7",
+    "qwen3.5-35b-a3b"
+  ],
   "tiers": {
     "closed_source": {
       "label": "Closed Source (Vendor API)",
