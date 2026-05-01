@@ -1,19 +1,21 @@
 {
-  "n_findings": 14,
-  "n_matched": 14,
-  "n_exact": 10,
-  "n_minor": 3,
-  "n_hard": 1,
-  "n_errors": 0,
+  "n_findings": 16,
+  "n_matched": 15,
+  "n_exact": 9,
+  "n_minor": 4,
+  "n_hard": 2,
+  "n_errors": 1,
   "incomplete": false,
-  "ordinal_total": 23,
-  "ordinal_max": 28,
-  "ordinal_pct": 82.1,
-  "cw_total": 18.205,
-  "cw_max": 28.0,
-  "cw_pct": 65.0,
-  "mae": 16.8,
-  "rmse": 26.9,
-  "n_scored": 14,
-  "errors": []
+  "ordinal_total": 22,
+  "ordinal_max": 30,
+  "ordinal_pct": 73.3,
+  "cw_total": 15.837,
+  "cw_max": 30.0,
+  "cw_pct": 52.8,
+  "mae": 28.3,
+  "rmse": 37.9,
+  "n_scored": 15,
+  "errors": [
+    "#14: LLM classification error (excluded from scoring)"
+  ]
 }

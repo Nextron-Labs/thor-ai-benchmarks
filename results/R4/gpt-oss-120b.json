@@ -1,19 +1,22 @@
 {
-  "n_findings": 6,
-  "n_matched": 6,
+  "n_findings": 7,
+  "n_matched": 5,
   "n_exact": 2,
-  "n_minor": 4,
+  "n_minor": 3,
   "n_hard": 0,
-  "n_errors": 0,
+  "n_errors": 1,
   "incomplete": false,
-  "ordinal_total": 8,
-  "ordinal_max": 12,
-  "ordinal_pct": 66.7,
-  "cw_total": 4.263,
-  "cw_max": 12.0,
-  "cw_pct": 35.5,
-  "mae": 24.2,
-  "rmse": 25.7,
-  "n_scored": 6,
-  "errors": []
+  "ordinal_total": 7,
+  "ordinal_max": 10,
+  "ordinal_pct": 70.0,
+  "cw_total": 4.212,
+  "cw_max": 10.0,
+  "cw_pct": 42.1,
+  "mae": 8.0,
+  "rmse": 11.4,
+  "n_scored": 5,
+  "errors": [
+    "#2: LLM classification error (excluded from scoring)",
+    "#7: no ground truth for R4"
+  ]
 }

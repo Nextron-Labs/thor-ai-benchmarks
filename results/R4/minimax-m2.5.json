@@ -1,5 +1,5 @@
 {
-  "n_findings": 6,
+  "n_findings": 7,
   "n_matched": 6,
   "n_exact": 4,
   "n_minor": 2,
@@ -9,11 +9,13 @@
   "ordinal_total": 10,
   "ordinal_max": 12,
   "ordinal_pct": 83.3,
-  "cw_total": 8.275,
+  "cw_total": 8.06,
   "cw_max": 12.0,
-  "cw_pct": 69.0,
-  "mae": 21.7,
-  "rmse": 24.3,
+  "cw_pct": 67.2,
+  "mae": 19.2,
+  "rmse": 20.1,
   "n_scored": 6,
-  "errors": []
+  "errors": [
+    "#7: no ground truth for R4"
+  ]
 }

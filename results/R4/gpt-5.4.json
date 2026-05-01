@@ -1,19 +1,21 @@
 {
-  "n_findings": 6,
+  "n_findings": 7,
   "n_matched": 6,
-  "n_exact": 6,
-  "n_minor": 0,
+  "n_exact": 5,
+  "n_minor": 1,
   "n_hard": 0,
   "n_errors": 0,
   "incomplete": false,
-  "ordinal_total": 12,
+  "ordinal_total": 11,
   "ordinal_max": 12,
-  "ordinal_pct": 100.0,
-  "cw_total": 11.72,
+  "ordinal_pct": 91.7,
+  "cw_total": 9.795,
   "cw_max": 12.0,
-  "cw_pct": 97.7,
-  "mae": 20.0,
-  "rmse": 22.2,
+  "cw_pct": 81.6,
+  "mae": 15.0,
+  "rmse": 17.1,
   "n_scored": 6,
-  "errors": []
+  "errors": [
+    "#7: no ground truth for R4"
+  ]
 }
