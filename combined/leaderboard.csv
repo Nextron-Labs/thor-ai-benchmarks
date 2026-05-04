@@ -46,4 +46,4 @@ rank,model,tier,cw_pct,ord_pct,mae,rmse,exact,minor,hard,hard_miss,hard_over,n_e
 45,gpt-oss-120b,closed_source,32.3,64.3,23.2,29.6,23,44,3,1,1,2,70,False
 46,gpt-5-nano,closed_source,29.4,62.5,23.6,28.0,21,48,3,0,2,0,72,False
 47,gpt-5.4-nano,closed_source,28.9,63.2,21.5,25.7,21,49,2,2,0,0,72,False
-48,gpt-oss-20b,closed_source,43.6,69.9,23.6,30.5,31,33,4,1,2,4,68,True
+48,gpt-oss-20b,closed_source,46.8,72.5,23.8,31.2,29,29,2,1,1,7,60,True
