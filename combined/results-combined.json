@@ -16,7 +16,13 @@
     "mae": 27.0,
     "rmse": 35.7,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 83.48,
+    "events_reviewed": 16,
+    "seconds_per_event": 5.22,
+    "total_tokens": 50800,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "claude-haiku-4.5/R2": {
     "n_findings": 7,
@@ -35,7 +41,13 @@
     "mae": 35.0,
     "rmse": 42.7,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 45.8,
+    "events_reviewed": 7,
+    "seconds_per_event": 6.54,
+    "total_tokens": 26515,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "claude-haiku-4.5/R3": {
     "n_findings": 20,
@@ -54,7 +66,13 @@
     "mae": 29.4,
     "rmse": 34.0,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 112.06,
+    "events_reviewed": 21,
+    "seconds_per_event": 5.34,
+    "total_tokens": 60757,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "claude-haiku-4.5/R4": {
     "n_findings": 7,
@@ -75,7 +93,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 33.79,
+    "events_reviewed": 7,
+    "seconds_per_event": 4.83,
+    "total_tokens": 21931,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "claude-haiku-4.5/R5": {
     "n_findings": 23,
@@ -94,7 +118,13 @@
     "mae": 18.9,
     "rmse": 25.7,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 176.14,
+    "events_reviewed": 23,
+    "seconds_per_event": 7.66,
+    "total_tokens": 72752,
+    "llm_calls": 23,
+    "llm_errors": 0
   },
   "claude-opus-4.5/R1": {
     "n_findings": 16,
@@ -113,7 +143,13 @@
     "mae": 19.1,
     "rmse": 25.0,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 239.23,
+    "events_reviewed": 16,
+    "seconds_per_event": 14.95,
+    "total_tokens": 48900,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "claude-opus-4.5/R2": {
     "n_findings": 7,
@@ -132,7 +168,13 @@
     "mae": 39.6,
     "rmse": 51.3,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 75.1,
+    "events_reviewed": 7,
+    "seconds_per_event": 10.73,
+    "total_tokens": 25962,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "claude-opus-4.5/R3": {
     "n_findings": 20,
@@ -151,7 +193,13 @@
     "mae": 32.1,
     "rmse": 37.5,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 200.98,
+    "events_reviewed": 21,
+    "seconds_per_event": 9.57,
+    "total_tokens": 58632,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "claude-opus-4.5/R4": {
     "n_findings": 7,
@@ -172,7 +220,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 54.01,
+    "events_reviewed": 7,
+    "seconds_per_event": 7.72,
+    "total_tokens": 21265,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "claude-opus-4.5/R5": {
     "n_findings": 23,
@@ -191,7 +245,13 @@
     "mae": 20.7,
     "rmse": 28.1,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 200.18,
+    "events_reviewed": 23,
+    "seconds_per_event": 8.7,
+    "total_tokens": 70701,
+    "llm_calls": 23,
+    "llm_errors": 0
   },
   "claude-opus-4.6/R1": {
     "n_findings": 16,
@@ -210,7 +270,13 @@
     "mae": 19.2,
     "rmse": 26.2,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 149.33,
+    "events_reviewed": 16,
+    "seconds_per_event": 9.33,
+    "total_tokens": 49875,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "claude-opus-4.6/R2": {
     "n_findings": 7,
@@ -229,7 +295,13 @@
     "mae": 39.3,
     "rmse": 51.3,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 86.52,
+    "events_reviewed": 7,
+    "seconds_per_event": 12.36,
+    "total_tokens": 26551,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "claude-opus-4.6/R3": {
     "n_findings": 20,
@@ -248,7 +320,13 @@
     "mae": 27.0,
     "rmse": 32.2,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 246.74,
+    "events_reviewed": 21,
+    "seconds_per_event": 11.75,
+    "total_tokens": 60316,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "claude-opus-4.6/R4": {
     "n_findings": 7,
@@ -269,7 +347,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 58.33,
+    "events_reviewed": 7,
+    "seconds_per_event": 8.33,
+    "total_tokens": 21663,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "claude-opus-4.6/R5": {
     "n_findings": 23,
@@ -288,7 +372,13 @@
     "mae": 18.0,
     "rmse": 24.4,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 232.82,
+    "events_reviewed": 23,
+    "seconds_per_event": 10.12,
+    "total_tokens": 71819,
+    "llm_calls": 23,
+    "llm_errors": 0
   },
   "claude-sonnet-4.5/R1": {
     "n_findings": 16,
@@ -307,7 +397,13 @@
     "mae": 22.2,
     "rmse": 33.1,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 150.26,
+    "events_reviewed": 16,
+    "seconds_per_event": 9.39,
+    "total_tokens": 49654,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "claude-sonnet-4.5/R2": {
     "n_findings": 7,
@@ -326,7 +422,13 @@
     "mae": 43.6,
     "rmse": 54.5,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 78.43,
+    "events_reviewed": 7,
+    "seconds_per_event": 11.2,
+    "total_tokens": 26070,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "claude-sonnet-4.5/R3": {
     "n_findings": 20,
@@ -345,7 +447,13 @@
     "mae": 33.4,
     "rmse": 39.2,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 212.57,
+    "events_reviewed": 21,
+    "seconds_per_event": 10.12,
+    "total_tokens": 59119,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "claude-sonnet-4.5/R4": {
     "n_findings": 7,
@@ -366,7 +474,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 55.5,
+    "events_reviewed": 7,
+    "seconds_per_event": 7.93,
+    "total_tokens": 21412,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "claude-sonnet-4.5/R5": {
     "n_findings": 23,
@@ -385,7 +499,13 @@
     "mae": 23.7,
     "rmse": 30.5,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 226.23,
+    "events_reviewed": 23,
+    "seconds_per_event": 9.84,
+    "total_tokens": 71527,
+    "llm_calls": 23,
+    "llm_errors": 0
   },
   "claude-sonnet-4.6/R1": {
     "n_findings": 16,
@@ -404,7 +524,13 @@
     "mae": 21.4,
     "rmse": 29.4,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 194.73,
+    "events_reviewed": 16,
+    "seconds_per_event": 12.17,
+    "total_tokens": 51669,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "claude-sonnet-4.6/R2": {
     "n_findings": 7,
@@ -423,7 +549,13 @@
     "mae": 36.7,
     "rmse": 48.4,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 89.37,
+    "events_reviewed": 7,
+    "seconds_per_event": 12.77,
+    "total_tokens": 27072,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "claude-sonnet-4.6/R3": {
     "n_findings": 20,
@@ -442,7 +574,13 @@
     "mae": 26.7,
     "rmse": 32.2,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 257.64,
+    "events_reviewed": 21,
+    "seconds_per_event": 12.27,
+    "total_tokens": 61863,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "claude-sonnet-4.6/R4": {
     "n_findings": 7,
@@ -463,7 +601,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 64.28,
+    "events_reviewed": 7,
+    "seconds_per_event": 9.18,
+    "total_tokens": 22028,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "claude-sonnet-4.6/R5": {
     "n_findings": 23,
@@ -482,7 +626,13 @@
     "mae": 24.2,
     "rmse": 29.5,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 281.68,
+    "events_reviewed": 23,
+    "seconds_per_event": 12.25,
+    "total_tokens": 75325,
+    "llm_calls": 23,
+    "llm_errors": 0
   },
   "deepseek-v3.1/R1": {
     "n_findings": 16,
@@ -501,7 +651,13 @@
     "mae": 22.8,
     "rmse": 31.1,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 374.73,
+    "events_reviewed": 16,
+    "seconds_per_event": 23.42,
+    "total_tokens": 43733,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "deepseek-v3.1/R2": {
     "n_findings": 7,
@@ -520,7 +676,13 @@
     "mae": 35.0,
     "rmse": 44.6,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 239.21,
+    "events_reviewed": 7,
+    "seconds_per_event": 34.17,
+    "total_tokens": 23687,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "deepseek-v3.1/R3": {
     "n_findings": 20,
@@ -539,7 +701,13 @@
     "mae": 20.8,
     "rmse": 27.3,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 367.77,
+    "events_reviewed": 21,
+    "seconds_per_event": 17.51,
+    "total_tokens": 52241,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "deepseek-v3.1/R4": {
     "n_findings": 7,
@@ -560,7 +728,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 124.51,
+    "events_reviewed": 7,
+    "seconds_per_event": 17.79,
+    "total_tokens": 18641,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "deepseek-v3.1/R5": {
     "n_findings": 23,
@@ -579,7 +753,13 @@
     "mae": 22.6,
     "rmse": 26.4,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 448.01,
+    "events_reviewed": 23,
+    "seconds_per_event": 19.48,
+    "total_tokens": 64332,
+    "llm_calls": 23,
+    "llm_errors": 0
   },
   "deepseek-v3.2/R1": {
     "n_findings": 16,
@@ -598,7 +778,13 @@
     "mae": 24.1,
     "rmse": 31.4,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 1564.36,
+    "events_reviewed": 16,
+    "seconds_per_event": 97.77,
+    "total_tokens": 59906,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "deepseek-v3.2/R2": {
     "n_findings": 7,
@@ -617,7 +803,13 @@
     "mae": 40.0,
     "rmse": 47.6,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 441.42,
+    "events_reviewed": 7,
+    "seconds_per_event": 63.06,
+    "total_tokens": 34695,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "deepseek-v3.2/R3": {
     "n_findings": 20,
@@ -636,7 +828,13 @@
     "mae": 23.4,
     "rmse": 28.1,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 908.25,
+    "events_reviewed": 21,
+    "seconds_per_event": 43.25,
+    "total_tokens": 76779,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "deepseek-v3.2/R4": {
     "n_findings": 7,
@@ -657,7 +855,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 712.85,
+    "events_reviewed": 7,
+    "seconds_per_event": 101.84,
+    "total_tokens": 27291,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "deepseek-v3.2/R5": {
     "n_findings": 23,
@@ -676,7 +880,13 @@
     "mae": 18.5,
     "rmse": 24.6,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 3548.88,
+    "events_reviewed": 23,
+    "seconds_per_event": 154.3,
+    "total_tokens": 89933,
+    "llm_calls": 23,
+    "llm_errors": 0
   },
   "deepseek-v4-flash/R1": {
     "n_findings": 16,
@@ -695,7 +905,13 @@
     "mae": 26.9,
     "rmse": 33.8,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 276.31,
+    "events_reviewed": 16,
+    "seconds_per_event": 17.27,
+    "total_tokens": 51275,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "deepseek-v4-flash/R2": {
     "n_findings": 7,
@@ -714,7 +930,13 @@
     "mae": 37.9,
     "rmse": 47.1,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 126.97,
+    "events_reviewed": 7,
+    "seconds_per_event": 18.14,
+    "total_tokens": 27160,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "deepseek-v4-flash/R3": {
     "n_findings": 20,
@@ -733,7 +955,13 @@
     "mae": 27.6,
     "rmse": 33.7,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 343.16,
+    "events_reviewed": 21,
+    "seconds_per_event": 16.34,
+    "total_tokens": 62541,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "deepseek-v4-flash/R4": {
     "n_findings": 7,
@@ -754,7 +982,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 132.2,
+    "events_reviewed": 7,
+    "seconds_per_event": 18.89,
+    "total_tokens": 21245,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "deepseek-v4-flash/R5": {
     "n_findings": 23,
@@ -773,7 +1007,13 @@
     "mae": 20.4,
     "rmse": 24.9,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 631.79,
+    "events_reviewed": 23,
+    "seconds_per_event": 27.47,
+    "total_tokens": 73488,
+    "llm_calls": 23,
+    "llm_errors": 0
   },
   "deepseek-v4-pro/R1": {
     "n_findings": 16,
@@ -792,7 +1032,13 @@
     "mae": 24.4,
     "rmse": 33.1,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 664.33,
+    "events_reviewed": 16,
+    "seconds_per_event": 41.52,
+    "total_tokens": 54347,
+    "llm_calls": 17,
+    "llm_errors": 1
   },
   "deepseek-v4-pro/R2": {
     "n_findings": 7,
@@ -811,7 +1057,13 @@
     "mae": 40.0,
     "rmse": 50.9,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 33.24,
+    "events_reviewed": 7,
+    "seconds_per_event": 4.75,
+    "total_tokens": 26290,
+    "llm_calls": 10,
+    "llm_errors": 0
   },
   "deepseek-v4-pro/R3": {
     "n_findings": 20,
@@ -830,7 +1082,13 @@
     "mae": 25.0,
     "rmse": 32.3,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 87.0,
+    "events_reviewed": 21,
+    "seconds_per_event": 4.14,
+    "total_tokens": 52401,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "deepseek-v4-pro/R4": {
     "n_findings": 7,
@@ -851,7 +1109,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 341.48,
+    "events_reviewed": 7,
+    "seconds_per_event": 48.78,
+    "total_tokens": 22619,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "deepseek-v4-pro/R5": {
     "n_findings": 23,
@@ -870,7 +1134,13 @@
     "mae": 20.0,
     "rmse": 24.4,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 1291.25,
+    "events_reviewed": 23,
+    "seconds_per_event": 56.14,
+    "total_tokens": 78677,
+    "llm_calls": 23,
+    "llm_errors": 0
   },
   "devstral-small/R1": {
     "n_findings": 16,
@@ -889,7 +1159,13 @@
     "mae": 25.0,
     "rmse": 30.1,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 24.97,
+    "events_reviewed": 16,
+    "seconds_per_event": 1.56,
+    "total_tokens": 43551,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "devstral-small/R2": {
     "n_findings": 7,
@@ -908,7 +1184,13 @@
     "mae": 28.6,
     "rmse": 38.2,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 14.21,
+    "events_reviewed": 7,
+    "seconds_per_event": 2.03,
+    "total_tokens": 22913,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "devstral-small/R3": {
     "n_findings": 20,
@@ -927,7 +1209,13 @@
     "mae": 27.4,
     "rmse": 33.2,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 65.07,
+    "events_reviewed": 21,
+    "seconds_per_event": 3.1,
+    "total_tokens": 51948,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "devstral-small/R4": {
     "n_findings": 7,
@@ -948,7 +1236,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 10.89,
+    "events_reviewed": 7,
+    "seconds_per_event": 1.56,
+    "total_tokens": 19468,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "devstral-small/R5": {
     "n_findings": 23,
@@ -967,7 +1261,13 @@
     "mae": 16.7,
     "rmse": 26.5,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 36.07,
+    "events_reviewed": 23,
+    "seconds_per_event": 1.57,
+    "total_tokens": 63491,
+    "llm_calls": 23,
+    "llm_errors": 0
   },
   "gemini-2.5-flash/R1": {
     "n_findings": 16,
@@ -986,7 +1286,13 @@
     "mae": 29.7,
     "rmse": 38.8,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 47.57,
+    "events_reviewed": 16,
+    "seconds_per_event": 2.97,
+    "total_tokens": 45140,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "gemini-2.5-flash/R2": {
     "n_findings": 7,
@@ -1005,7 +1311,13 @@
     "mae": 46.4,
     "rmse": 52.3,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 19.52,
+    "events_reviewed": 7,
+    "seconds_per_event": 2.79,
+    "total_tokens": 23843,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "gemini-2.5-flash/R3": {
     "n_findings": 20,
@@ -1024,7 +1336,13 @@
     "mae": 31.8,
     "rmse": 39.5,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 43.79,
+    "events_reviewed": 21,
+    "seconds_per_event": 2.09,
+    "total_tokens": 53858,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "gemini-2.5-flash/R4": {
     "n_findings": 7,
@@ -1045,7 +1363,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 35.69,
+    "events_reviewed": 7,
+    "seconds_per_event": 5.1,
+    "total_tokens": 20216,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "gemini-2.5-flash/R5": {
     "n_findings": 23,
@@ -1064,7 +1388,13 @@
     "mae": 27.4,
     "rmse": 33.5,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 97.64,
+    "events_reviewed": 23,
+    "seconds_per_event": 4.25,
+    "total_tokens": 69948,
+    "llm_calls": 25,
+    "llm_errors": 0
   },
   "gemini-2.5-pro/R1": {
     "n_findings": 16,
@@ -1083,7 +1413,13 @@
     "mae": 25.6,
     "rmse": 37.7,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 250.72,
+    "events_reviewed": 16,
+    "seconds_per_event": 15.67,
+    "total_tokens": 64611,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "gemini-2.5-pro/R2": {
     "n_findings": 7,
@@ -1102,7 +1438,13 @@
     "mae": 52.9,
     "rmse": 60.8,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 119.89,
+    "events_reviewed": 7,
+    "seconds_per_event": 17.13,
+    "total_tokens": 33387,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "gemini-2.5-pro/R3": {
     "n_findings": 20,
@@ -1121,7 +1463,13 @@
     "mae": 34.7,
     "rmse": 41.5,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 304.98,
+    "events_reviewed": 21,
+    "seconds_per_event": 14.52,
+    "total_tokens": 75721,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "gemini-2.5-pro/R4": {
     "n_findings": 7,
@@ -1142,7 +1490,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 100.88,
+    "events_reviewed": 7,
+    "seconds_per_event": 14.41,
+    "total_tokens": 28534,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "gemini-2.5-pro/R5": {
     "n_findings": 23,
@@ -1161,7 +1515,13 @@
     "mae": 32.2,
     "rmse": 38.7,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 373.99,
+    "events_reviewed": 23,
+    "seconds_per_event": 16.26,
+    "total_tokens": 92614,
+    "llm_calls": 23,
+    "llm_errors": 0
   },
   "gemini-3.1-pro/R1": {
     "n_findings": 16,
@@ -1180,7 +1540,13 @@
     "mae": 20.6,
     "rmse": 30.1,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 182.47,
+    "events_reviewed": 16,
+    "seconds_per_event": 11.4,
+    "total_tokens": 54992,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "gemini-3.1-pro/R2": {
     "n_findings": 7,
@@ -1199,7 +1565,13 @@
     "mae": 50.7,
     "rmse": 58.0,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 81.58,
+    "events_reviewed": 7,
+    "seconds_per_event": 11.65,
+    "total_tokens": 28844,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "gemini-3.1-pro/R3": {
     "n_findings": 20,
@@ -1218,7 +1590,13 @@
     "mae": 30.5,
     "rmse": 38.3,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 216.54,
+    "events_reviewed": 21,
+    "seconds_per_event": 10.31,
+    "total_tokens": 66644,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "gemini-3.1-pro/R4": {
     "n_findings": 7,
@@ -1239,7 +1617,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 70.34,
+    "events_reviewed": 7,
+    "seconds_per_event": 10.05,
+    "total_tokens": 23540,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "gemini-3.1-pro/R5": {
     "n_findings": 23,
@@ -1258,7 +1642,13 @@
     "mae": 27.2,
     "rmse": 32.1,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 2442.89,
+    "events_reviewed": 23,
+    "seconds_per_event": 106.21,
+    "total_tokens": 671267,
+    "llm_calls": 203,
+    "llm_errors": 0
   },
   "gemma4-31b/R1": {
     "n_findings": 16,
@@ -1277,7 +1667,13 @@
     "mae": 24.1,
     "rmse": 33.1,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 159.81,
+    "events_reviewed": 16,
+    "seconds_per_event": 9.99,
+    "total_tokens": 44819,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "gemma4-31b/R2": {
     "n_findings": 7,
@@ -1296,7 +1692,13 @@
     "mae": 37.9,
     "rmse": 49.9,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 52.93,
+    "events_reviewed": 7,
+    "seconds_per_event": 7.56,
+    "total_tokens": 24488,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "gemma4-31b/R3": {
     "n_findings": 20,
@@ -1315,7 +1717,13 @@
     "mae": 31.6,
     "rmse": 38.5,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 282.52,
+    "events_reviewed": 21,
+    "seconds_per_event": 13.45,
+    "total_tokens": 54118,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "gemma4-31b/R4": {
     "n_findings": 7,
@@ -1336,7 +1744,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 78.18,
+    "events_reviewed": 7,
+    "seconds_per_event": 11.17,
+    "total_tokens": 19886,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "gemma4-31b/R5": {
     "n_findings": 23,
@@ -1355,7 +1769,13 @@
     "mae": 22.0,
     "rmse": 26.5,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 883.33,
+    "events_reviewed": 23,
+    "seconds_per_event": 38.41,
+    "total_tokens": 66188,
+    "llm_calls": 23,
+    "llm_errors": 0
   },
   "glm-4.7/R1": {
     "n_findings": 16,
@@ -1374,7 +1794,13 @@
     "mae": 31.2,
     "rmse": 43.9,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 731.81,
+    "events_reviewed": 16,
+    "seconds_per_event": 45.74,
+    "total_tokens": 99684,
+    "llm_calls": 24,
+    "llm_errors": 2
   },
   "glm-4.7/R2": {
     "n_findings": 7,
@@ -1393,7 +1819,13 @@
     "mae": 34.3,
     "rmse": 44.4,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 309.1,
+    "events_reviewed": 7,
+    "seconds_per_event": 44.16,
+    "total_tokens": 52762,
+    "llm_calls": 15,
+    "llm_errors": 0
   },
   "glm-4.7/R3": {
     "n_findings": 20,
@@ -1414,7 +1846,13 @@
     "n_scored": 18,
     "errors": [
       "#4: LLM classification error (excluded from scoring)"
-    ]
+    ],
+    "elapsed_seconds": 2656.61,
+    "events_reviewed": 21,
+    "seconds_per_event": 126.51,
+    "total_tokens": 486406,
+    "llm_calls": 131,
+    "llm_errors": 33
   },
   "glm-4.7/R4": {
     "n_findings": 7,
@@ -1435,7 +1873,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 794.94,
+    "events_reviewed": 7,
+    "seconds_per_event": 113.56,
+    "total_tokens": 73716,
+    "llm_calls": 17,
+    "llm_errors": 2
   },
   "glm-4.7/R5": {
     "n_findings": 23,
@@ -1457,7 +1901,13 @@
     "errors": [
       "#13: LLM classification error (excluded from scoring)",
       "#22: LLM classification error (excluded from scoring)"
-    ]
+    ],
+    "elapsed_seconds": 3775.0,
+    "events_reviewed": 21,
+    "seconds_per_event": 179.76,
+    "total_tokens": 507761,
+    "llm_calls": 135,
+    "llm_errors": 34
   },
   "glm-5/R1": {
     "n_findings": 16,
@@ -1476,7 +1926,13 @@
     "mae": 17.7,
     "rmse": 26.2,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 468.95,
+    "events_reviewed": 16,
+    "seconds_per_event": 29.31,
+    "total_tokens": 55273,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "glm-5/R2": {
     "n_findings": 7,
@@ -1495,7 +1951,13 @@
     "mae": 40.7,
     "rmse": 50.7,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 213.73,
+    "events_reviewed": 7,
+    "seconds_per_event": 30.53,
+    "total_tokens": 29855,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "glm-5/R3": {
     "n_findings": 20,
@@ -1514,7 +1976,13 @@
     "mae": 28.5,
     "rmse": 35.6,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 759.78,
+    "events_reviewed": 21,
+    "seconds_per_event": 36.18,
+    "total_tokens": 66594,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "glm-5/R4": {
     "n_findings": 7,
@@ -1535,7 +2003,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 69.73,
+    "events_reviewed": 7,
+    "seconds_per_event": 9.96,
+    "total_tokens": 22953,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "glm-5/R5": {
     "n_findings": 23,
@@ -1554,7 +2028,13 @@
     "mae": 19.9,
     "rmse": 26.8,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 1208.84,
+    "events_reviewed": 23,
+    "seconds_per_event": 52.56,
+    "total_tokens": 84908,
+    "llm_calls": 23,
+    "llm_errors": 0
   },
   "glm-5.1/R1": {
     "n_findings": 16,
@@ -1573,7 +2053,13 @@
     "mae": 21.9,
     "rmse": 30.9,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 561.56,
+    "events_reviewed": 16,
+    "seconds_per_event": 35.1,
+    "total_tokens": 53771,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "glm-5.1/R2": {
     "n_findings": 7,
@@ -1592,7 +2078,13 @@
     "mae": 42.4,
     "rmse": 52.7,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 278.59,
+    "events_reviewed": 7,
+    "seconds_per_event": 39.8,
+    "total_tokens": 28326,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "glm-5.1/R3": {
     "n_findings": 20,
@@ -1611,7 +2103,13 @@
     "mae": 27.1,
     "rmse": 32.9,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 895.26,
+    "events_reviewed": 21,
+    "seconds_per_event": 42.63,
+    "total_tokens": 62881,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "glm-5.1/R4": {
     "n_findings": 7,
@@ -1632,7 +2130,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 192.5,
+    "events_reviewed": 7,
+    "seconds_per_event": 27.5,
+    "total_tokens": 21982,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "glm-5.1/R5": {
     "n_findings": 23,
@@ -1651,7 +2155,13 @@
     "mae": 20.4,
     "rmse": 27.0,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 1514.04,
+    "events_reviewed": 23,
+    "seconds_per_event": 65.83,
+    "total_tokens": 77847,
+    "llm_calls": 23,
+    "llm_errors": 0
   },
   "gpt-5/R1": {
     "n_findings": 16,
@@ -1670,7 +2180,13 @@
     "mae": 22.9,
     "rmse": 29.4,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 369.96,
+    "events_reviewed": 16,
+    "seconds_per_event": 23.12,
+    "total_tokens": 60687,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "gpt-5/R2": {
     "n_findings": 7,
@@ -1689,7 +2205,13 @@
     "mae": 38.6,
     "rmse": 48.9,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 238.4,
+    "events_reviewed": 7,
+    "seconds_per_event": 34.06,
+    "total_tokens": 29922,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "gpt-5/R3": {
     "n_findings": 20,
@@ -1708,7 +2230,13 @@
     "mae": 22.5,
     "rmse": 27.8,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 507.63,
+    "events_reviewed": 21,
+    "seconds_per_event": 24.17,
+    "total_tokens": 74535,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "gpt-5/R4": {
     "n_findings": 7,
@@ -1729,7 +2257,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 194.24,
+    "events_reviewed": 7,
+    "seconds_per_event": 27.75,
+    "total_tokens": 26811,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "gpt-5/R5": {
     "n_findings": 23,
@@ -1748,7 +2282,13 @@
     "mae": 25.2,
     "rmse": 31.3,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 547.87,
+    "events_reviewed": 23,
+    "seconds_per_event": 23.82,
+    "total_tokens": 89653,
+    "llm_calls": 24,
+    "llm_errors": 0
   },
   "gpt-5-mini/R1": {
     "n_findings": 16,
@@ -1767,7 +2307,13 @@
     "mae": 24.1,
     "rmse": 31.5,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 280.5,
+    "events_reviewed": 16,
+    "seconds_per_event": 17.53,
+    "total_tokens": 58436,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "gpt-5-mini/R2": {
     "n_findings": 7,
@@ -1786,7 +2332,13 @@
     "mae": 40.7,
     "rmse": 46.7,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 172.53,
+    "events_reviewed": 7,
+    "seconds_per_event": 24.65,
+    "total_tokens": 30787,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "gpt-5-mini/R3": {
     "n_findings": 20,
@@ -1805,7 +2357,13 @@
     "mae": 28.9,
     "rmse": 37.1,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 372.62,
+    "events_reviewed": 21,
+    "seconds_per_event": 17.74,
+    "total_tokens": 72551,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "gpt-5-mini/R4": {
     "n_findings": 7,
@@ -1826,7 +2384,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 88.53,
+    "events_reviewed": 7,
+    "seconds_per_event": 12.65,
+    "total_tokens": 25340,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "gpt-5-mini/R5": {
     "n_findings": 23,
@@ -1845,7 +2409,13 @@
     "mae": 27.2,
     "rmse": 31.7,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 492.06,
+    "events_reviewed": 23,
+    "seconds_per_event": 21.39,
+    "total_tokens": 86909,
+    "llm_calls": 23,
+    "llm_errors": 0
   },
   "gpt-5-nano/R1": {
     "n_findings": 16,
@@ -1864,7 +2434,13 @@
     "mae": 27.6,
     "rmse": 32.7,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 555.06,
+    "events_reviewed": 16,
+    "seconds_per_event": 34.69,
+    "total_tokens": 79058,
+    "llm_calls": 17,
+    "llm_errors": 0
   },
   "gpt-5-nano/R2": {
     "n_findings": 7,
@@ -1883,7 +2459,13 @@
     "mae": 33.1,
     "rmse": 37.3,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 240.16,
+    "events_reviewed": 7,
+    "seconds_per_event": 34.31,
+    "total_tokens": 42641,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "gpt-5-nano/R3": {
     "n_findings": 20,
@@ -1902,7 +2484,13 @@
     "mae": 19.7,
     "rmse": 23.1,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 578.36,
+    "events_reviewed": 21,
+    "seconds_per_event": 27.54,
+    "total_tokens": 95035,
+    "llm_calls": 21,
+    "llm_errors": 0
   },
   "gpt-5-nano/R4": {
     "n_findings": 7,
@@ -1923,7 +2511,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 161.64,
+    "events_reviewed": 7,
+    "seconds_per_event": 23.09,
+    "total_tokens": 32933,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "gpt-5-nano/R5": {
     "n_findings": 23,
@@ -1942,7 +2536,13 @@
     "mae": 22.2,
     "rmse": 26.3,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 587.96,
+    "events_reviewed": 23,
+    "seconds_per_event": 25.56,
+    "total_tokens": 123916,
+    "llm_calls": 25,
+    "llm_errors": 0
   },
   "gpt-5.4/R1": {
     "n_findings": 16,
@@ -1961,7 +2561,13 @@
     "mae": 24.9,
     "rmse": 30.8,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 123.37,
+    "events_reviewed": 16,
+    "seconds_per_event": 7.71,
+    "total_tokens": 43790,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "gpt-5.4/R2": {
     "n_findings": 7,
@@ -1980,7 +2586,13 @@
     "mae": 33.7,
     "rmse": 45.0,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 51.7,
+    "events_reviewed": 7,
+    "seconds_per_event": 7.39,
+    "total_tokens": 22991,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "gpt-5.4/R3": {
     "n_findings": 20,
@@ -1999,7 +2611,13 @@
     "mae": 25.2,
     "rmse": 29.2,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 135.25,
+    "events_reviewed": 21,
+    "seconds_per_event": 6.44,
+    "total_tokens": 52441,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "gpt-5.4/R4": {
     "n_findings": 7,
@@ -2020,7 +2638,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 45.49,
+    "events_reviewed": 7,
+    "seconds_per_event": 6.5,
+    "total_tokens": 19021,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "gpt-5.4/R5": {
     "n_findings": 23,
@@ -2039,7 +2663,13 @@
     "mae": 18.7,
     "rmse": 22.8,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 164.13,
+    "events_reviewed": 23,
+    "seconds_per_event": 7.14,
+    "total_tokens": 63607,
+    "llm_calls": 23,
+    "llm_errors": 0
   },
   "gpt-5.4-mini/R1": {
     "n_findings": 16,
@@ -2058,7 +2688,13 @@
     "mae": 24.1,
     "rmse": 28.1,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 72.08,
+    "events_reviewed": 16,
+    "seconds_per_event": 4.5,
+    "total_tokens": 42887,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "gpt-5.4-mini/R2": {
     "n_findings": 7,
@@ -2077,7 +2713,13 @@
     "mae": 34.3,
     "rmse": 45.1,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 28.03,
+    "events_reviewed": 7,
+    "seconds_per_event": 4.0,
+    "total_tokens": 22664,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "gpt-5.4-mini/R3": {
     "n_findings": 20,
@@ -2096,7 +2738,13 @@
     "mae": 28.3,
     "rmse": 33.0,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 64.2,
+    "events_reviewed": 21,
+    "seconds_per_event": 3.06,
+    "total_tokens": 51243,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "gpt-5.4-mini/R4": {
     "n_findings": 7,
@@ -2117,7 +2765,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 19.62,
+    "events_reviewed": 7,
+    "seconds_per_event": 2.8,
+    "total_tokens": 18707,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "gpt-5.4-mini/R5": {
     "n_findings": 23,
@@ -2136,7 +2790,13 @@
     "mae": 21.0,
     "rmse": 26.5,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 89.79,
+    "events_reviewed": 23,
+    "seconds_per_event": 3.9,
+    "total_tokens": 62164,
+    "llm_calls": 23,
+    "llm_errors": 0
   },
   "gpt-5.4-nano/R1": {
     "n_findings": 16,
@@ -2155,7 +2815,13 @@
     "mae": 22.2,
     "rmse": 26.6,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 63.98,
+    "events_reviewed": 16,
+    "seconds_per_event": 4.0,
+    "total_tokens": 44401,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "gpt-5.4-nano/R2": {
     "n_findings": 7,
@@ -2174,7 +2840,13 @@
     "mae": 33.6,
     "rmse": 40.4,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 72.63,
+    "events_reviewed": 7,
+    "seconds_per_event": 10.38,
+    "total_tokens": 23534,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "gpt-5.4-nano/R3": {
     "n_findings": 20,
@@ -2193,7 +2865,13 @@
     "mae": 21.3,
     "rmse": 23.9,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 67.73,
+    "events_reviewed": 21,
+    "seconds_per_event": 3.23,
+    "total_tokens": 52706,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "gpt-5.4-nano/R4": {
     "n_findings": 7,
@@ -2214,7 +2892,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 29.49,
+    "events_reviewed": 7,
+    "seconds_per_event": 4.21,
+    "total_tokens": 19717,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "gpt-5.4-nano/R5": {
     "n_findings": 23,
@@ -2233,7 +2917,13 @@
     "mae": 19.6,
     "rmse": 23.0,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 91.04,
+    "events_reviewed": 23,
+    "seconds_per_event": 3.96,
+    "total_tokens": 64152,
+    "llm_calls": 23,
+    "llm_errors": 0
   },
   "gpt-5.5/R1": {
     "n_findings": 16,
@@ -2252,7 +2942,13 @@
     "mae": 21.5,
     "rmse": 29.6,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 1267.73,
+    "events_reviewed": 16,
+    "seconds_per_event": 79.23,
+    "total_tokens": 52054,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "gpt-5.5/R2": {
     "n_findings": 7,
@@ -2271,7 +2967,13 @@
     "mae": 38.9,
     "rmse": 51.0,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 802.64,
+    "events_reviewed": 7,
+    "seconds_per_event": 114.66,
+    "total_tokens": 31034,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "gpt-5.5/R3": {
     "n_findings": 20,
@@ -2290,7 +2992,13 @@
     "mae": 24.3,
     "rmse": 31.9,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 1915.12,
+    "events_reviewed": 21,
+    "seconds_per_event": 91.2,
+    "total_tokens": 65690,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "gpt-5.5/R4": {
     "n_findings": 7,
@@ -2311,7 +3019,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 550.43,
+    "events_reviewed": 7,
+    "seconds_per_event": 78.63,
+    "total_tokens": 24037,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "gpt-5.5/R5": {
     "n_findings": 23,
@@ -2330,7 +3044,13 @@
     "mae": 20.7,
     "rmse": 24.8,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 2459.47,
+    "events_reviewed": 23,
+    "seconds_per_event": 106.93,
+    "total_tokens": 83716,
+    "llm_calls": 23,
+    "llm_errors": 0
   },
   "gpt-oss-120b/R1": {
     "n_findings": 16,
@@ -2349,7 +3069,13 @@
     "mae": 20.9,
     "rmse": 27.6,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 451.67,
+    "events_reviewed": 16,
+    "seconds_per_event": 28.23,
+    "total_tokens": 48317,
+    "llm_calls": 17,
+    "llm_errors": 1
   },
   "gpt-oss-120b/R2": {
     "n_findings": 7,
@@ -2368,7 +3094,13 @@
     "mae": 34.3,
     "rmse": 44.1,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 141.37,
+    "events_reviewed": 7,
+    "seconds_per_event": 20.2,
+    "total_tokens": 25948,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "gpt-oss-120b/R3": {
     "n_findings": 20,
@@ -2387,7 +3119,13 @@
     "mae": 22.8,
     "rmse": 26.6,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 237.76,
+    "events_reviewed": 21,
+    "seconds_per_event": 11.32,
+    "total_tokens": 58177,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "gpt-oss-120b/R4": {
     "n_findings": 7,
@@ -2409,7 +3147,13 @@
     "errors": [
       "#2: LLM classification error (excluded from scoring)",
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 361.41,
+    "events_reviewed": 7,
+    "seconds_per_event": 51.63,
+    "total_tokens": 33666,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "gpt-oss-120b/R5": {
     "n_findings": 23,
@@ -2430,7 +3174,13 @@
     "n_scored": 22,
     "errors": [
       "#3: LLM classification error (excluded from scoring)"
-    ]
+    ],
+    "elapsed_seconds": 502.56,
+    "events_reviewed": 23,
+    "seconds_per_event": 21.85,
+    "total_tokens": 75888,
+    "llm_calls": 25,
+    "llm_errors": 0
   },
   "gpt-oss-20b/R1": {
     "n_findings": 14,
@@ -2452,7 +3202,13 @@
     "errors": [
       "#4: LLM classification error (excluded from scoring)",
       "#9: LLM classification error (excluded from scoring)"
-    ]
+    ],
+    "elapsed_seconds": 205.57,
+    "events_reviewed": 14,
+    "seconds_per_event": 14.68,
+    "total_tokens": 52412,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "gpt-oss-20b/R2": {
     "n_findings": 7,
@@ -2471,7 +3227,13 @@
     "mae": 34.3,
     "rmse": 43.4,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 135.56,
+    "events_reviewed": 7,
+    "seconds_per_event": 19.37,
+    "total_tokens": 26580,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "gpt-oss-20b/R3": {
     "n_findings": 20,
@@ -2490,7 +3252,13 @@
     "mae": 23.7,
     "rmse": 29.1,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 188.8,
+    "events_reviewed": 21,
+    "seconds_per_event": 8.99,
+    "total_tokens": 64289,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "gpt-oss-20b/R4": {
     "n_findings": 7,
@@ -2511,7 +3279,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 199.38,
+    "events_reviewed": 7,
+    "seconds_per_event": 28.48,
+    "total_tokens": 40588,
+    "llm_calls": 8,
+    "llm_errors": 0
   },
   "gpt-oss-20b/R5": {
     "n_findings": 20,
@@ -2536,7 +3310,13 @@
       "#10: LLM classification error (excluded from scoring)",
       "#11: LLM classification error (excluded from scoring)",
       "#20: LLM classification error (excluded from scoring)"
-    ]
+    ],
+    "elapsed_seconds": 541.03,
+    "events_reviewed": 20,
+    "seconds_per_event": 27.05,
+    "total_tokens": 77225,
+    "llm_calls": 26,
+    "llm_errors": 2
   },
   "grok-4-fast/R1": {
     "n_findings": 16,
@@ -2555,7 +3335,13 @@
     "mae": 23.8,
     "rmse": 32.9,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 134.03,
+    "events_reviewed": 16,
+    "seconds_per_event": 8.38,
+    "total_tokens": 53201,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "grok-4-fast/R2": {
     "n_findings": 7,
@@ -2574,7 +3360,13 @@
     "mae": 40.0,
     "rmse": 51.3,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 221.09,
+    "events_reviewed": 7,
+    "seconds_per_event": 31.58,
+    "total_tokens": 28451,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "grok-4-fast/R3": {
     "n_findings": 20,
@@ -2593,7 +3385,13 @@
     "mae": 26.3,
     "rmse": 33.5,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 554.47,
+    "events_reviewed": 21,
+    "seconds_per_event": 26.4,
+    "total_tokens": 65110,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "grok-4-fast/R4": {
     "n_findings": 7,
@@ -2614,7 +3412,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 89.16,
+    "events_reviewed": 7,
+    "seconds_per_event": 12.74,
+    "total_tokens": 22853,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "grok-4-fast/R5": {
     "n_findings": 23,
@@ -2633,7 +3437,13 @@
     "mae": 25.9,
     "rmse": 30.6,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 245.52,
+    "events_reviewed": 23,
+    "seconds_per_event": 10.67,
+    "total_tokens": 78969,
+    "llm_calls": 23,
+    "llm_errors": 0
   },
   "grok-4-openrouter/R1": {
     "n_findings": 16,
@@ -2652,7 +3462,13 @@
     "mae": 23.8,
     "rmse": 33.2,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 145.29,
+    "events_reviewed": 16,
+    "seconds_per_event": 9.08,
+    "total_tokens": 54520,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "grok-4-openrouter/R2": {
     "n_findings": 7,
@@ -2671,7 +3487,13 @@
     "mae": 38.6,
     "rmse": 50.7,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 93.59,
+    "events_reviewed": 7,
+    "seconds_per_event": 13.37,
+    "total_tokens": 29684,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "grok-4-openrouter/R3": {
     "n_findings": 20,
@@ -2690,7 +3512,13 @@
     "mae": 25.5,
     "rmse": 34.4,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 214.64,
+    "events_reviewed": 21,
+    "seconds_per_event": 10.22,
+    "total_tokens": 67218,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "grok-4-openrouter/R4": {
     "n_findings": 7,
@@ -2711,7 +3539,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 59.82,
+    "events_reviewed": 7,
+    "seconds_per_event": 8.55,
+    "total_tokens": 23354,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "grok-4-openrouter/R5": {
     "n_findings": 23,
@@ -2730,7 +3564,13 @@
     "mae": 25.4,
     "rmse": 31.1,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 1615.9,
+    "events_reviewed": 23,
+    "seconds_per_event": 70.26,
+    "total_tokens": 636525,
+    "llm_calls": 201,
+    "llm_errors": 0
   },
   "grok-4.1-fast/R1": {
     "n_findings": 16,
@@ -2751,7 +3591,13 @@
     "n_scored": 15,
     "errors": [
       "#14: LLM classification error (excluded from scoring)"
-    ]
+    ],
+    "elapsed_seconds": 57.29,
+    "events_reviewed": 16,
+    "seconds_per_event": 3.58,
+    "total_tokens": 44031,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "grok-4.1-fast/R2": {
     "n_findings": 7,
@@ -2770,7 +3616,13 @@
     "mae": 37.1,
     "rmse": 48.9,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 133.28,
+    "events_reviewed": 7,
+    "seconds_per_event": 19.04,
+    "total_tokens": 29844,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "grok-4.1-fast/R3": {
     "n_findings": 20,
@@ -2789,7 +3641,13 @@
     "mae": 28.2,
     "rmse": 35.6,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 238.7,
+    "events_reviewed": 21,
+    "seconds_per_event": 11.37,
+    "total_tokens": 66717,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "grok-4.1-fast/R4": {
     "n_findings": 7,
@@ -2810,7 +3668,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 19.6,
+    "events_reviewed": 7,
+    "seconds_per_event": 2.8,
+    "total_tokens": 19198,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "grok-4.1-fast/R5": {
     "n_findings": 23,
@@ -2829,7 +3693,13 @@
     "mae": 27.6,
     "rmse": 32.4,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 622.98,
+    "events_reviewed": 23,
+    "seconds_per_event": 27.09,
+    "total_tokens": 532522,
+    "llm_calls": 200,
+    "llm_errors": 0
   },
   "grok-4.20/R1": {
     "n_findings": 16,
@@ -2848,7 +3718,13 @@
     "mae": 21.6,
     "rmse": 27.6,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 75.22,
+    "events_reviewed": 16,
+    "seconds_per_event": 4.7,
+    "total_tokens": 43995,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "grok-4.20/R2": {
     "n_findings": 7,
@@ -2867,7 +3743,13 @@
     "mae": 35.0,
     "rmse": 42.8,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 148.2,
+    "events_reviewed": 7,
+    "seconds_per_event": 21.17,
+    "total_tokens": 31913,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "grok-4.20/R3": {
     "n_findings": 20,
@@ -2886,7 +3768,13 @@
     "mae": 23.4,
     "rmse": 27.4,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 345.36,
+    "events_reviewed": 21,
+    "seconds_per_event": 16.45,
+    "total_tokens": 73106,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "grok-4.20/R4": {
     "n_findings": 7,
@@ -2907,7 +3795,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 29.96,
+    "events_reviewed": 7,
+    "seconds_per_event": 4.28,
+    "total_tokens": 19137,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "grok-4.20/R5": {
     "n_findings": 23,
@@ -2926,7 +3820,13 @@
     "mae": 12.8,
     "rmse": 18.4,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 314.05,
+    "events_reviewed": 23,
+    "seconds_per_event": 13.65,
+    "total_tokens": 87790,
+    "llm_calls": 23,
+    "llm_errors": 0
   },
   "kimi-k2.5/R1": {
     "n_findings": 16,
@@ -2945,7 +3845,13 @@
     "mae": 22.2,
     "rmse": 30.4,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 386.79,
+    "events_reviewed": 16,
+    "seconds_per_event": 24.17,
+    "total_tokens": 67115,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "kimi-k2.5/R2": {
     "n_findings": 7,
@@ -2964,7 +3870,13 @@
     "mae": 42.9,
     "rmse": 52.8,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 266.36,
+    "events_reviewed": 7,
+    "seconds_per_event": 38.05,
+    "total_tokens": 35595,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "kimi-k2.5/R3": {
     "n_findings": 20,
@@ -2983,7 +3895,13 @@
     "mae": 32.2,
     "rmse": 39.0,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 850.62,
+    "events_reviewed": 21,
+    "seconds_per_event": 40.51,
+    "total_tokens": 85692,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "kimi-k2.5/R4": {
     "n_findings": 7,
@@ -3004,7 +3922,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 149.76,
+    "events_reviewed": 7,
+    "seconds_per_event": 21.39,
+    "total_tokens": 26640,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "kimi-k2.5/R5": {
     "n_findings": 23,
@@ -3023,7 +3947,13 @@
     "mae": 22.0,
     "rmse": 29.1,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 1164.55,
+    "events_reviewed": 23,
+    "seconds_per_event": 50.63,
+    "total_tokens": 107967,
+    "llm_calls": 24,
+    "llm_errors": 0
   },
   "kimi-k2.6/R1": {
     "n_findings": 16,
@@ -3042,7 +3972,13 @@
     "mae": 23.4,
     "rmse": 33.3,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 691.61,
+    "events_reviewed": 16,
+    "seconds_per_event": 43.23,
+    "total_tokens": 90045,
+    "llm_calls": 18,
+    "llm_errors": 0
   },
   "kimi-k2.6/R2": {
     "n_findings": 7,
@@ -3061,7 +3997,13 @@
     "mae": 46.4,
     "rmse": 54.9,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 357.12,
+    "events_reviewed": 7,
+    "seconds_per_event": 51.02,
+    "total_tokens": 42994,
+    "llm_calls": 10,
+    "llm_errors": 0
   },
   "kimi-k2.6/R3": {
     "n_findings": 20,
@@ -3080,7 +4022,13 @@
     "mae": 26.8,
     "rmse": 34.5,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 1277.06,
+    "events_reviewed": 21,
+    "seconds_per_event": 60.81,
+    "total_tokens": 108574,
+    "llm_calls": 22,
+    "llm_errors": 0
   },
   "kimi-k2.6/R4": {
     "n_findings": 7,
@@ -3101,7 +4049,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 201.79,
+    "events_reviewed": 7,
+    "seconds_per_event": 28.83,
+    "total_tokens": 28579,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "kimi-k2.6/R5": {
     "n_findings": 23,
@@ -3120,7 +4074,13 @@
     "mae": 20.4,
     "rmse": 25.1,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 2830.45,
+    "events_reviewed": 23,
+    "seconds_per_event": 123.06,
+    "total_tokens": 134473,
+    "llm_calls": 27,
+    "llm_errors": 0
   },
   "llama-3.1-70b/R1": {
     "n_findings": 16,
@@ -3139,7 +4099,13 @@
     "mae": 25.9,
     "rmse": 34.8,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 109.1,
+    "events_reviewed": 16,
+    "seconds_per_event": 6.82,
+    "total_tokens": 40531,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "llama-3.1-70b/R2": {
     "n_findings": 7,
@@ -3158,7 +4124,13 @@
     "mae": 37.1,
     "rmse": 46.0,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 374.66,
+    "events_reviewed": 7,
+    "seconds_per_event": 53.52,
+    "total_tokens": 32391,
+    "llm_calls": 10,
+    "llm_errors": 0
   },
   "llama-3.1-70b/R3": {
     "n_findings": 20,
@@ -3177,7 +4149,13 @@
     "mae": 30.0,
     "rmse": 36.3,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 227.74,
+    "events_reviewed": 21,
+    "seconds_per_event": 10.84,
+    "total_tokens": 49191,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "llama-3.1-70b/R4": {
     "n_findings": 7,
@@ -3198,7 +4176,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 55.39,
+    "events_reviewed": 7,
+    "seconds_per_event": 7.91,
+    "total_tokens": 17856,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "llama-3.1-70b/R5": {
     "n_findings": 23,
@@ -3217,7 +4201,13 @@
     "mae": 24.8,
     "rmse": 31.6,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 143.0,
+    "events_reviewed": 23,
+    "seconds_per_event": 6.22,
+    "total_tokens": 58792,
+    "llm_calls": 23,
+    "llm_errors": 0
   },
   "llama-3.1-8b/R1": {
     "n_findings": 16,
@@ -3236,7 +4226,13 @@
     "mae": 24.7,
     "rmse": 29.3,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 55.63,
+    "events_reviewed": 16,
+    "seconds_per_event": 3.48,
+    "total_tokens": 46270,
+    "llm_calls": 18,
+    "llm_errors": 0
   },
   "llama-3.1-8b/R2": {
     "n_findings": 7,
@@ -3255,7 +4251,13 @@
     "mae": 30.0,
     "rmse": 37.6,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 69.73,
+    "events_reviewed": 7,
+    "seconds_per_event": 9.96,
+    "total_tokens": 21740,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "llama-3.1-8b/R3": {
     "n_findings": 20,
@@ -3274,7 +4276,13 @@
     "mae": 22.1,
     "rmse": 23.8,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 220.99,
+    "events_reviewed": 21,
+    "seconds_per_event": 10.52,
+    "total_tokens": 49097,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "llama-3.1-8b/R4": {
     "n_findings": 7,
@@ -3295,7 +4303,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 53.49,
+    "events_reviewed": 7,
+    "seconds_per_event": 7.64,
+    "total_tokens": 18042,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "llama-3.1-8b/R5": {
     "n_findings": 23,
@@ -3314,7 +4328,13 @@
     "mae": 11.7,
     "rmse": 16.8,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 142.35,
+    "events_reviewed": 23,
+    "seconds_per_event": 6.19,
+    "total_tokens": 64867,
+    "llm_calls": 25,
+    "llm_errors": 0
   },
   "mercury-2/R1": {
     "n_findings": 16,
@@ -3333,7 +4353,13 @@
     "mae": 21.9,
     "rmse": 27.1,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 26.39,
+    "events_reviewed": 16,
+    "seconds_per_event": 1.65,
+    "total_tokens": 47136,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "mercury-2/R2": {
     "n_findings": 7,
@@ -3352,7 +4378,13 @@
     "mae": 31.4,
     "rmse": 38.1,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 11.33,
+    "events_reviewed": 7,
+    "seconds_per_event": 1.62,
+    "total_tokens": 24158,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "mercury-2/R3": {
     "n_findings": 20,
@@ -3371,7 +4403,13 @@
     "mae": 24.2,
     "rmse": 29.0,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 27.08,
+    "events_reviewed": 21,
+    "seconds_per_event": 1.29,
+    "total_tokens": 56657,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "mercury-2/R4": {
     "n_findings": 7,
@@ -3392,7 +4430,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 10.32,
+    "events_reviewed": 7,
+    "seconds_per_event": 1.47,
+    "total_tokens": 20262,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "mercury-2/R5": {
     "n_findings": 23,
@@ -3411,7 +4455,13 @@
     "mae": 22.4,
     "rmse": 26.9,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 36.29,
+    "events_reviewed": 23,
+    "seconds_per_event": 1.58,
+    "total_tokens": 69034,
+    "llm_calls": 23,
+    "llm_errors": 0
   },
   "mimo-v2-pro/R1": {
     "n_findings": 16,
@@ -3430,7 +4480,13 @@
     "mae": 31.6,
     "rmse": 40.9,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 115.07,
+    "events_reviewed": 16,
+    "seconds_per_event": 7.19,
+    "total_tokens": 43063,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "mimo-v2-pro/R2": {
     "n_findings": 7,
@@ -3449,7 +4505,13 @@
     "mae": 32.1,
     "rmse": 46.6,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 88.92,
+    "events_reviewed": 7,
+    "seconds_per_event": 12.7,
+    "total_tokens": 22627,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "mimo-v2-pro/R3": {
     "n_findings": 20,
@@ -3468,7 +4530,13 @@
     "mae": 27.1,
     "rmse": 34.1,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 149.76,
+    "events_reviewed": 21,
+    "seconds_per_event": 7.13,
+    "total_tokens": 51692,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "mimo-v2-pro/R4": {
     "n_findings": 7,
@@ -3489,7 +4557,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 52.19,
+    "events_reviewed": 7,
+    "seconds_per_event": 7.46,
+    "total_tokens": 19290,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "mimo-v2-pro/R5": {
     "n_findings": 23,
@@ -3508,7 +4582,13 @@
     "mae": 26.7,
     "rmse": 32.3,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 164.63,
+    "events_reviewed": 23,
+    "seconds_per_event": 7.16,
+    "total_tokens": 62910,
+    "llm_calls": 23,
+    "llm_errors": 0
   },
   "minimax-m2.5/R1": {
     "n_findings": 16,
@@ -3527,7 +4607,13 @@
     "mae": 29.7,
     "rmse": 35.6,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 318.1,
+    "events_reviewed": 16,
+    "seconds_per_event": 19.88,
+    "total_tokens": 63210,
+    "llm_calls": 22,
+    "llm_errors": 0
   },
   "minimax-m2.5/R2": {
     "n_findings": 7,
@@ -3546,7 +4632,13 @@
     "mae": 36.4,
     "rmse": 46.2,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 85.57,
+    "events_reviewed": 7,
+    "seconds_per_event": 12.22,
+    "total_tokens": 26429,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "minimax-m2.5/R3": {
     "n_findings": 20,
@@ -3565,7 +4657,13 @@
     "mae": 29.7,
     "rmse": 35.4,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 457.49,
+    "events_reviewed": 21,
+    "seconds_per_event": 21.79,
+    "total_tokens": 78411,
+    "llm_calls": 28,
+    "llm_errors": 0
   },
   "minimax-m2.5/R4": {
     "n_findings": 7,
@@ -3586,7 +4684,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 102.17,
+    "events_reviewed": 7,
+    "seconds_per_event": 14.6,
+    "total_tokens": 26034,
+    "llm_calls": 8,
+    "llm_errors": 0
   },
   "minimax-m2.5/R5": {
     "n_findings": 23,
@@ -3605,7 +4709,13 @@
     "mae": 19.1,
     "rmse": 22.3,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 827.75,
+    "events_reviewed": 23,
+    "seconds_per_event": 35.99,
+    "total_tokens": 84296,
+    "llm_calls": 28,
+    "llm_errors": 0
   },
   "minimax-m2.7/R1": {
     "n_findings": 16,
@@ -3624,7 +4734,13 @@
     "mae": 20.9,
     "rmse": 26.9,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 397.19,
+    "events_reviewed": 16,
+    "seconds_per_event": 24.82,
+    "total_tokens": 52789,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "minimax-m2.7/R2": {
     "n_findings": 7,
@@ -3643,7 +4759,13 @@
     "mae": 35.0,
     "rmse": 42.0,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 302.47,
+    "events_reviewed": 7,
+    "seconds_per_event": 43.21,
+    "total_tokens": 28030,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "minimax-m2.7/R3": {
     "n_findings": 20,
@@ -3662,7 +4784,13 @@
     "mae": 23.9,
     "rmse": 28.0,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 595.07,
+    "events_reviewed": 21,
+    "seconds_per_event": 28.34,
+    "total_tokens": 63684,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "minimax-m2.7/R4": {
     "n_findings": 7,
@@ -3683,7 +4811,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 173.04,
+    "events_reviewed": 7,
+    "seconds_per_event": 24.72,
+    "total_tokens": 22548,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "minimax-m2.7/R5": {
     "n_findings": 23,
@@ -3702,7 +4836,13 @@
     "mae": 18.7,
     "rmse": 22.9,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 568.96,
+    "events_reviewed": 23,
+    "seconds_per_event": 24.74,
+    "total_tokens": 76731,
+    "llm_calls": 23,
+    "llm_errors": 0
   },
   "ministral-14b/R1": {
     "n_findings": 16,
@@ -3721,7 +4861,13 @@
     "mae": 25.9,
     "rmse": 34.0,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 256.83,
+    "events_reviewed": 16,
+    "seconds_per_event": 16.05,
+    "total_tokens": 172661,
+    "llm_calls": 51,
+    "llm_errors": 4
   },
   "ministral-14b/R2": {
     "n_findings": 7,
@@ -3740,7 +4886,13 @@
     "mae": 28.6,
     "rmse": 39.9,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 85.43,
+    "events_reviewed": 7,
+    "seconds_per_event": 12.2,
+    "total_tokens": 60342,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "ministral-14b/R3": {
     "n_findings": 20,
@@ -3759,7 +4911,13 @@
     "mae": 20.0,
     "rmse": 26.7,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 251.21,
+    "events_reviewed": 21,
+    "seconds_per_event": 11.96,
+    "total_tokens": 189166,
+    "llm_calls": 59,
+    "llm_errors": 4
   },
   "ministral-14b/R4": {
     "n_findings": 7,
@@ -3780,7 +4938,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 82.13,
+    "events_reviewed": 7,
+    "seconds_per_event": 11.73,
+    "total_tokens": 55028,
+    "llm_calls": 17,
+    "llm_errors": 0
   },
   "ministral-14b/R5": {
     "n_findings": 23,
@@ -3799,7 +4963,13 @@
     "mae": 21.1,
     "rmse": 24.6,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 349.26,
+    "events_reviewed": 23,
+    "seconds_per_event": 15.19,
+    "total_tokens": 257599,
+    "llm_calls": 78,
+    "llm_errors": 9
   },
   "mistral-nemo/R1": {
     "n_findings": 16,
@@ -3818,7 +4988,13 @@
     "mae": 31.6,
     "rmse": 34.9,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 99.07,
+    "events_reviewed": 16,
+    "seconds_per_event": 6.19,
+    "total_tokens": 43201,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "mistral-nemo/R2": {
     "n_findings": 7,
@@ -3837,7 +5013,13 @@
     "mae": 31.4,
     "rmse": 36.6,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 53.09,
+    "events_reviewed": 7,
+    "seconds_per_event": 7.58,
+    "total_tokens": 22620,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "mistral-nemo/R3": {
     "n_findings": 20,
@@ -3856,7 +5038,13 @@
     "mae": 25.5,
     "rmse": 30.1,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 117.78,
+    "events_reviewed": 21,
+    "seconds_per_event": 5.61,
+    "total_tokens": 51430,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "mistral-nemo/R4": {
     "n_findings": 7,
@@ -3877,7 +5065,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 44.31,
+    "events_reviewed": 7,
+    "seconds_per_event": 6.33,
+    "total_tokens": 19126,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "mistral-nemo/R5": {
     "n_findings": 23,
@@ -3896,7 +5090,13 @@
     "mae": 23.3,
     "rmse": 31.5,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 213.99,
+    "events_reviewed": 23,
+    "seconds_per_event": 9.3,
+    "total_tokens": 62571,
+    "llm_calls": 23,
+    "llm_errors": 0
   },
   "nemotron-3-nano-omni/R1": {
     "n_findings": 16,
@@ -3915,7 +5115,13 @@
     "mae": 25.9,
     "rmse": 32.6,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 243.0,
+    "events_reviewed": 16,
+    "seconds_per_event": 15.19,
+    "total_tokens": 72229,
+    "llm_calls": 17,
+    "llm_errors": 0
   },
   "nemotron-3-nano-omni/R2": {
     "n_findings": 7,
@@ -3934,7 +5140,13 @@
     "mae": 32.1,
     "rmse": 42.5,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 66.08,
+    "events_reviewed": 7,
+    "seconds_per_event": 9.44,
+    "total_tokens": 36691,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "nemotron-3-nano-omni/R3": {
     "n_findings": 20,
@@ -3953,7 +5165,13 @@
     "mae": 20.5,
     "rmse": 27.0,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 133.42,
+    "events_reviewed": 21,
+    "seconds_per_event": 6.35,
+    "total_tokens": 80814,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "nemotron-3-nano-omni/R4": {
     "n_findings": 7,
@@ -3974,7 +5192,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 148.55,
+    "events_reviewed": 7,
+    "seconds_per_event": 21.22,
+    "total_tokens": 32209,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "nemotron-3-nano-omni/R5": {
     "n_findings": 23,
@@ -3993,7 +5217,13 @@
     "mae": 20.9,
     "rmse": 25.2,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 4768.51,
+    "events_reviewed": 23,
+    "seconds_per_event": 207.33,
+    "total_tokens": 922260,
+    "llm_calls": 236,
+    "llm_errors": 7
   },
   "nemotron-3-super-120b/R1": {
     "n_findings": 16,
@@ -4012,7 +5242,13 @@
     "mae": 24.8,
     "rmse": 28.7,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 212.3,
+    "events_reviewed": 16,
+    "seconds_per_event": 13.27,
+    "total_tokens": 85926,
+    "llm_calls": 28,
+    "llm_errors": 4
   },
   "nemotron-3-super-120b/R2": {
     "n_findings": 7,
@@ -4031,7 +5267,13 @@
     "mae": 37.1,
     "rmse": 42.2,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 426.3,
+    "events_reviewed": 7,
+    "seconds_per_event": 60.9,
+    "total_tokens": 30192,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "nemotron-3-super-120b/R3": {
     "n_findings": 20,
@@ -4050,7 +5292,13 @@
     "mae": 21.6,
     "rmse": 26.4,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 1200.9,
+    "events_reviewed": 21,
+    "seconds_per_event": 57.19,
+    "total_tokens": 71861,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "nemotron-3-super-120b/R4": {
     "n_findings": 7,
@@ -4071,7 +5319,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 51.88,
+    "events_reviewed": 7,
+    "seconds_per_event": 7.41,
+    "total_tokens": 46506,
+    "llm_calls": 16,
+    "llm_errors": 2
   },
   "nemotron-3-super-120b/R5": {
     "n_findings": 23,
@@ -4090,7 +5344,13 @@
     "mae": 15.2,
     "rmse": 19.1,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 733.06,
+    "events_reviewed": 23,
+    "seconds_per_event": 31.87,
+    "total_tokens": 96664,
+    "llm_calls": 25,
+    "llm_errors": 0
   },
   "qwen3-235b-a22b/R1": {
     "n_findings": 16,
@@ -4109,7 +5369,13 @@
     "mae": 24.1,
     "rmse": 32.4,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 301.23,
+    "events_reviewed": 16,
+    "seconds_per_event": 18.83,
+    "total_tokens": 45738,
+    "llm_calls": 17,
+    "llm_errors": 0
   },
   "qwen3-235b-a22b/R2": {
     "n_findings": 7,
@@ -4128,7 +5394,13 @@
     "mae": 42.9,
     "rmse": 52.2,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 62.1,
+    "events_reviewed": 7,
+    "seconds_per_event": 8.87,
+    "total_tokens": 23805,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "qwen3-235b-a22b/R3": {
     "n_findings": 20,
@@ -4147,7 +5419,13 @@
     "mae": 24.2,
     "rmse": 30.0,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 209.77,
+    "events_reviewed": 21,
+    "seconds_per_event": 9.99,
+    "total_tokens": 52835,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "qwen3-235b-a22b/R4": {
     "n_findings": 7,
@@ -4168,7 +5446,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 75.58,
+    "events_reviewed": 7,
+    "seconds_per_event": 10.8,
+    "total_tokens": 19270,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "qwen3-235b-a22b/R5": {
     "n_findings": 23,
@@ -4187,7 +5471,13 @@
     "mae": 23.0,
     "rmse": 28.8,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 3057.57,
+    "events_reviewed": 23,
+    "seconds_per_event": 132.94,
+    "total_tokens": 552968,
+    "llm_calls": 204,
+    "llm_errors": 0
   },
   "qwen3.5-35b-a3b/R1": {
     "n_findings": 16,
@@ -4206,7 +5496,13 @@
     "mae": 22.8,
     "rmse": 31.6,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 2563.72,
+    "events_reviewed": 16,
+    "seconds_per_event": 160.23,
+    "total_tokens": 156515,
+    "llm_calls": 34,
+    "llm_errors": 8
   },
   "qwen3.5-35b-a3b/R2": {
     "n_findings": 7,
@@ -4225,7 +5521,13 @@
     "mae": 45.0,
     "rmse": 53.6,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 274.71,
+    "events_reviewed": 7,
+    "seconds_per_event": 39.24,
+    "total_tokens": 58141,
+    "llm_calls": 11,
+    "llm_errors": 0
   },
   "qwen3.5-35b-a3b/R3": {
     "n_findings": 20,
@@ -4247,7 +5549,13 @@
     "errors": [
       "#19: LLM classification error (excluded from scoring)",
       "#20: LLM classification error (excluded from scoring)"
-    ]
+    ],
+    "elapsed_seconds": 1424.1,
+    "events_reviewed": 21,
+    "seconds_per_event": 67.81,
+    "total_tokens": 181031,
+    "llm_calls": 32,
+    "llm_errors": 2
   },
   "qwen3.5-35b-a3b/R4": {
     "n_findings": 7,
@@ -4268,7 +5576,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 108.13,
+    "events_reviewed": 7,
+    "seconds_per_event": 15.45,
+    "total_tokens": 33406,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "qwen3.5-35b-a3b/R5": {
     "n_findings": 4,
@@ -4292,7 +5606,13 @@
       "#2: LLM classification error (excluded from scoring)",
       "#3: LLM classification error (excluded from scoring)",
       "#4: LLM classification error (excluded from scoring)"
-    ]
+    ],
+    "elapsed_seconds": 2.16,
+    "events_reviewed": 23,
+    "seconds_per_event": 0.09,
+    "total_tokens": 0,
+    "llm_calls": 50,
+    "llm_errors": 50
   },
   "qwen3.5-9b/R1": {
     "n_findings": 16,
@@ -4311,7 +5631,13 @@
     "mae": 21.8,
     "rmse": 29.4,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 371.49,
+    "events_reviewed": 16,
+    "seconds_per_event": 23.22,
+    "total_tokens": 62112,
+    "llm_calls": 17,
+    "llm_errors": 0
   },
   "qwen3.5-9b/R2": {
     "n_findings": 7,
@@ -4330,7 +5656,13 @@
     "mae": 34.3,
     "rmse": 44.0,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 89.2,
+    "events_reviewed": 7,
+    "seconds_per_event": 12.74,
+    "total_tokens": 33042,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "qwen3.5-9b/R3": {
     "n_findings": 20,
@@ -4349,7 +5681,13 @@
     "mae": 20.0,
     "rmse": 24.4,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 359.78,
+    "events_reviewed": 21,
+    "seconds_per_event": 17.13,
+    "total_tokens": 69231,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "qwen3.5-9b/R4": {
     "n_findings": 7,
@@ -4370,7 +5708,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 167.4,
+    "events_reviewed": 7,
+    "seconds_per_event": 23.91,
+    "total_tokens": 25843,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "qwen3.5-9b/R5": {
     "n_findings": 23,
@@ -4389,7 +5733,13 @@
     "mae": 15.0,
     "rmse": 18.5,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 572.55,
+    "events_reviewed": 23,
+    "seconds_per_event": 24.89,
+    "total_tokens": 99499,
+    "llm_calls": 29,
+    "llm_errors": 4
   },
   "qwen3.5-plus-20260420/R1": {
     "n_findings": 16,
@@ -4408,7 +5758,13 @@
     "mae": 28.1,
     "rmse": 36.5,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 561.33,
+    "events_reviewed": 16,
+    "seconds_per_event": 35.08,
+    "total_tokens": 76184,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "qwen3.5-plus-20260420/R2": {
     "n_findings": 7,
@@ -4427,7 +5783,13 @@
     "mae": 35.0,
     "rmse": 47.2,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 277.01,
+    "events_reviewed": 7,
+    "seconds_per_event": 39.57,
+    "total_tokens": 38800,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "qwen3.5-plus-20260420/R3": {
     "n_findings": 20,
@@ -4446,7 +5808,13 @@
     "mae": 35.5,
     "rmse": 39.9,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 745.5,
+    "events_reviewed": 21,
+    "seconds_per_event": 35.5,
+    "total_tokens": 94303,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "qwen3.5-plus-20260420/R4": {
     "n_findings": 7,
@@ -4467,7 +5835,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 229.86,
+    "events_reviewed": 7,
+    "seconds_per_event": 32.84,
+    "total_tokens": 31246,
+    "llm_calls": 8,
+    "llm_errors": 1
   },
   "qwen3.5-plus-20260420/R5": {
     "n_findings": 23,
@@ -4486,7 +5860,13 @@
     "mae": 21.5,
     "rmse": 25.0,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 786.3,
+    "events_reviewed": 23,
+    "seconds_per_event": 34.19,
+    "total_tokens": 108415,
+    "llm_calls": 23,
+    "llm_errors": 0
   },
   "qwen3.6-flash/R1": {
     "n_findings": 16,
@@ -4505,7 +5885,13 @@
     "mae": 27.2,
     "rmse": 36.0,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 170.16,
+    "events_reviewed": 16,
+    "seconds_per_event": 10.64,
+    "total_tokens": 74512,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "qwen3.6-flash/R2": {
     "n_findings": 7,
@@ -4524,7 +5910,13 @@
     "mae": 40.0,
     "rmse": 49.5,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 84.57,
+    "events_reviewed": 7,
+    "seconds_per_event": 12.08,
+    "total_tokens": 36678,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "qwen3.6-flash/R3": {
     "n_findings": 20,
@@ -4543,7 +5935,13 @@
     "mae": 26.7,
     "rmse": 33.3,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 207.95,
+    "events_reviewed": 21,
+    "seconds_per_event": 9.9,
+    "total_tokens": 87991,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "qwen3.6-flash/R4": {
     "n_findings": 7,
@@ -4564,7 +5962,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 71.14,
+    "events_reviewed": 7,
+    "seconds_per_event": 10.16,
+    "total_tokens": 30476,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "qwen3.6-flash/R5": {
     "n_findings": 23,
@@ -4583,7 +5987,13 @@
     "mae": 19.2,
     "rmse": 24.1,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 264.78,
+    "events_reviewed": 23,
+    "seconds_per_event": 11.51,
+    "total_tokens": 109000,
+    "llm_calls": 23,
+    "llm_errors": 0
   },
   "qwen3.6-max/R1": {
     "n_findings": 16,
@@ -4602,7 +6012,13 @@
     "mae": 25.0,
     "rmse": 33.8,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 901.33,
+    "events_reviewed": 16,
+    "seconds_per_event": 56.33,
+    "total_tokens": 73074,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "qwen3.6-max/R2": {
     "n_findings": 7,
@@ -4621,7 +6037,13 @@
     "mae": 41.4,
     "rmse": 52.0,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 477.32,
+    "events_reviewed": 7,
+    "seconds_per_event": 68.19,
+    "total_tokens": 38611,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "qwen3.6-max/R3": {
     "n_findings": 20,
@@ -4640,7 +6062,13 @@
     "mae": 29.2,
     "rmse": 35.1,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 1206.48,
+    "events_reviewed": 21,
+    "seconds_per_event": 57.45,
+    "total_tokens": 88641,
+    "llm_calls": 21,
+    "llm_errors": 1
   },
   "qwen3.6-max/R4": {
     "n_findings": 7,
@@ -4661,7 +6089,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 282.7,
+    "events_reviewed": 7,
+    "seconds_per_event": 40.39,
+    "total_tokens": 28505,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "qwen3.6-max/R5": {
     "n_findings": 23,
@@ -4680,7 +6114,13 @@
     "mae": 18.9,
     "rmse": 25.9,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 9392.48,
+    "events_reviewed": 23,
+    "seconds_per_event": 408.37,
+    "total_tokens": 839046,
+    "llm_calls": 200,
+    "llm_errors": 0
   },
   "qwen3.6-plus/R1": {
     "n_findings": 16,
@@ -4699,7 +6139,13 @@
     "mae": 26.9,
     "rmse": 35.5,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 593.83,
+    "events_reviewed": 16,
+    "seconds_per_event": 37.11,
+    "total_tokens": 71247,
+    "llm_calls": 16,
+    "llm_errors": 0
   },
   "qwen3.6-plus/R2": {
     "n_findings": 7,
@@ -4718,7 +6164,13 @@
     "mae": 36.4,
     "rmse": 48.2,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 364.76,
+    "events_reviewed": 7,
+    "seconds_per_event": 52.11,
+    "total_tokens": 39156,
+    "llm_calls": 9,
+    "llm_errors": 0
   },
   "qwen3.6-plus/R3": {
     "n_findings": 20,
@@ -4737,7 +6189,13 @@
     "mae": 28.7,
     "rmse": 32.9,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 823.15,
+    "events_reviewed": 21,
+    "seconds_per_event": 39.2,
+    "total_tokens": 89493,
+    "llm_calls": 20,
+    "llm_errors": 0
   },
   "qwen3.6-plus/R4": {
     "n_findings": 7,
@@ -4758,7 +6216,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 270.0,
+    "events_reviewed": 7,
+    "seconds_per_event": 38.57,
+    "total_tokens": 32048,
+    "llm_calls": 7,
+    "llm_errors": 0
   },
   "qwen3.6-plus/R5": {
     "n_findings": 23,
@@ -4777,7 +6241,13 @@
     "mae": 18.0,
     "rmse": 20.9,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 883.46,
+    "events_reviewed": 23,
+    "seconds_per_event": 38.41,
+    "total_tokens": 105110,
+    "llm_calls": 23,
+    "llm_errors": 0
   },
   "qwen35-397b/R1": {
     "n_findings": 16,
@@ -4796,7 +6266,13 @@
     "mae": 25.9,
     "rmse": 32.6,
     "n_scored": 16,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 1357.16,
+    "events_reviewed": 16,
+    "seconds_per_event": 84.82,
+    "total_tokens": 100706,
+    "llm_calls": 22,
+    "llm_errors": 0
   },
   "qwen35-397b/R2": {
     "n_findings": 7,
@@ -4815,7 +6291,13 @@
     "mae": 36.4,
     "rmse": 47.5,
     "n_scored": 7,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 1733.13,
+    "events_reviewed": 7,
+    "seconds_per_event": 247.59,
+    "total_tokens": 50945,
+    "llm_calls": 12,
+    "llm_errors": 0
   },
   "qwen35-397b/R3": {
     "n_findings": 20,
@@ -4834,7 +6316,13 @@
     "mae": 25.5,
     "rmse": 31.7,
     "n_scored": 19,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 777.15,
+    "events_reviewed": 21,
+    "seconds_per_event": 37.01,
+    "total_tokens": 95309,
+    "llm_calls": 22,
+    "llm_errors": 0
   },
   "qwen35-397b/R4": {
     "n_findings": 7,
@@ -4855,7 +6343,13 @@
     "n_scored": 6,
     "errors": [
       "#7: no ground truth for R4"
-    ]
+    ],
+    "elapsed_seconds": 305.35,
+    "events_reviewed": 7,
+    "seconds_per_event": 43.62,
+    "total_tokens": 35238,
+    "llm_calls": 8,
+    "llm_errors": 0
   },
   "qwen35-397b/R5": {
     "n_findings": 23,
@@ -4874,7 +6368,13 @@
     "mae": 18.7,
     "rmse": 22.7,
     "n_scored": 23,
-    "errors": []
+    "errors": [],
+    "elapsed_seconds": 1989.29,
+    "events_reviewed": 23,
+    "seconds_per_event": 86.49,
+    "total_tokens": 132463,
+    "llm_calls": 29,
+    "llm_errors": 0
   },
   "step-3.5-flash/R1": {
     "n_findings": 4,
@@ -4898,7 +6398,13 @@
       "#2: LLM classification error (excluded from scoring)",
       "#3: LLM classification error (excluded from scoring)",
       "#4: LLM classification error (excluded from scoring)"
-    ]
+    ],
+    "elapsed_seconds": 11.8,
+    "events_reviewed": 0,
+    "seconds_per_event": 0,
+    "total_tokens": 0,
+    "llm_calls": 50,
+    "llm_errors": 50
   },
   "step-3.5-flash/R2": {
     "n_findings": 7,
@@ -4925,7 +6431,13 @@
       "#5: LLM classification error (excluded from scoring)",
       "#6: LLM classification error (excluded from scoring)",
       "#7: LLM classification error (excluded from scoring)"
-    ]
+    ],
+    "elapsed_seconds": 1.84,
+    "events_reviewed": 7,
+    "seconds_per_event": 0.26,
+    "total_tokens": 0,
+    "llm_calls": 9,
+    "llm_errors": 9
   },
   "step-3.5-flash/R3": {
     "n_findings": 20,
@@ -4965,7 +6477,13 @@
       "#18: LLM classification error (excluded from scoring)",
       "#19: LLM classification error (excluded from scoring)",
       "#20: LLM classification error (excluded from scoring)"
-    ]
+    ],
+    "elapsed_seconds": 4.97,
+    "events_reviewed": 21,
+    "seconds_per_event": 0.24,
+    "total_tokens": 0,
+    "llm_calls": 20,
+    "llm_errors": 20
   },
   "step-3.5-flash/R4": {
     "n_findings": 4,
@@ -4989,7 +6507,13 @@
       "#2: LLM classification error (excluded from scoring)",
       "#3: LLM classification error (excluded from scoring)",
       "#4: LLM classification error (excluded from scoring)"
-    ]
+    ],
+    "elapsed_seconds": 9.98,
+    "events_reviewed": 0,
+    "seconds_per_event": 0,
+    "total_tokens": 0,
+    "llm_calls": 50,
+    "llm_errors": 50
   },
   "step-3.5-flash/R5": {
     "n_findings": 4,
@@ -5013,7 +6537,13 @@
       "#2: LLM classification error (excluded from scoring)",
       "#3: LLM classification error (excluded from scoring)",
       "#4: LLM classification error (excluded from scoring)"
-    ]
+    ],
+    "elapsed_seconds": 14.41,
+    "events_reviewed": 23,
+    "seconds_per_event": 0.63,
+    "total_tokens": 0,
+    "llm_calls": 50,
+    "llm_errors": 50
   },
   "claude-haiku-4.5/R1+R2+R3+R4+R5": {
     "n_matched": 72,
