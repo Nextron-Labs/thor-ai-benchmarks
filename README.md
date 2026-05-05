@@ -103,7 +103,7 @@ Top-left = best (high CW%, low MAE).
 
 ### Quality vs Cost
 
-Which models deliver the best triage quality for the money? Cost estimated per full benchmark run (41 findings, ~2400 input + 250–400 output tokens per call) using OpenRouter pricing.
+Which models deliver the best triage quality for the money? Cost estimated per full benchmark run (72 findings across 5 reports, ~2400 input + 250–400 output tokens per call) using OpenRouter pricing.
 
 ![Quality vs Cost](charts/quality-vs-cost.png)
 
