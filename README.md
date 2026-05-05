@@ -117,6 +117,37 @@ Green = exact match, blue = one step off (e.g., TP↔Inc), yellow = over-call (F
 
 See [combined/leaderboard.csv](combined/leaderboard.csv) for the complete sortable data.
 
+### Speed Analysis
+
+How fast can each model triage findings? Measured as average wall-clock seconds per event reviewed across all 5 reports.
+
+| Model | CW% | s/event | Tokens | Speed Tier |
+|---|---|---|---|---|
+| mercury-2 | 13.3% | 1.5 | 217k | ⚡ Blazing |
+| devstral-small | 15.3% | 2.0 | 201k | ⚡ Blazing |
+| gemini-2.5-flash | 43.3% | 3.3 | 213k | ⚡ Fast |
+| gpt-5.4-mini | 45.3% | 3.7 | 198k | ⚡ Fast |
+| gpt-5.4-nano | 39.0% | 4.4 | 205k | ⚡ Fast |
+| claude-haiku-4.5 | 47.5% | 6.1 | 233k | ⚡ Fast |
+| claude-opus-4.5 | 48.4% | 10.4 | 225k | 🟢 Quick |
+| claude-opus-4.6 | 46.7% | 10.5 | 230k | 🟢 Quick |
+| grok-4.1-fast | 49.3% | 14.5 | 692k | 🟢 Quick |
+| gemini-2.5-pro | 47.6% | 15.6 | 295k | 🟢 Quick |
+| grok-4-fast | 50.7% | 16.8 | 249k | 🟢 Quick |
+| claude-sonnet-4.6 | 48.8% | 12.0 | 238k | 🟢 Quick |
+| **gemma4-31b** | **53.3%** | **19.7** | **209k** | 🟡 Moderate |
+| deepseek-v4-flash | 48.8% | 20.4 | 236k | 🟡 Moderate |
+| qwen3.5-9b | 47.3% | 21.1 | 290k | 🟡 Moderate |
+| deepseek-v3.1 | 46.7% | 21.0 | 203k | 🟡 Moderate |
+| deepseek-v4-pro | 53.2% | 32.7 | 234k | 🟠 Slow |
+| glm-5 | 51.8% | 36.8 | 260k | 🟠 Slow |
+| qwen3.5-plus | 50.1% | 35.1 | 349k | 🟠 Slow |
+| glm-5.1 | 51.1% | 46.5 | 245k | 🔴 Very Slow |
+| kimi-k2.6 | 49.0% | 72.4 | 405k | 🔴 Very Slow |
+| qwen3.6-max | 49.6% | 165.7 | 1068k | 🔴 Very Slow |
+
+Full speed data in [combined/leaderboard.csv](combined/leaderboard.csv) (`avg_seconds_per_event` column).
+
 ### Key Terms
 
 | Abbreviation | Meaning |
@@ -125,6 +156,7 @@ See [combined/leaderboard.csv](combined/leaderboard.csv) for the complete sortab
 | **Ord%** | Ordinal Accuracy — simple exact/near/miss scoring |
 | **MAE** | Mean Absolute Error — average |AI score − Human score| |
 | **RMSE** | Root Mean Square Error — penalizes large errors |
+| **s/event** | Average wall-clock seconds per finding assessed |
 | **TP** | True Positive — genuine security finding |
 | **Inc** | Inconclusive — cannot definitively classify |
 | **FP** | False Positive — not a genuine security finding |
