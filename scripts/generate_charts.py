@@ -169,7 +169,7 @@ legend_items = [
     mpatches.Patch(color='#F1C40F', label='Over-call (FP→TP)'),
     mpatches.Patch(color='#E74C3C', label='Missed threat (TP→FP)'),
     mpatches.Patch(color='#95A5A6', label='LLM error (no response)'),
-    mpatches.Patch(color='#D5D8DC', label='Other (unclassified)'),
+    mpatches.Patch(color='#D5D8DC', label='Hard error (FP↔Inc)'),
 ]
 ax.legend(handles=legend_items, loc='lower right', fontsize=9, framealpha=0.9)
 

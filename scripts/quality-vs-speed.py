@@ -58,7 +58,22 @@ def main():
                         xytext=(3, 3), textcoords='offset points')
 
     n_models = len(results)
-    ax.set_xlabel('Average Time per Finding (seconds)', fontsize=12)
+    
+    if n_models == 0:
+        # No speed data available - show placeholder chart
+        fig, ax = plt.subplots(figsize=(14, 10))
+        ax.text(0.5, 0.5, 'No speed data available\n\nTiming data not captured in current runs.\nRun mjolnir-ai with --timing flag to collect.',
+                ha='center', va='center', fontsize=14, transform=ax.transAxes)
+        ax.set_xlim(0, 1)
+        ax.set_ylim(0, 1)
+        ax.axis('off')
+        ax.set_title('Quality vs Speed — No Data', fontsize=14, fontweight='bold')
+        plt.tight_layout()
+        CHARTS_DIR.mkdir(exist_ok=True)
+        fig.savefig(CHARTS_DIR / 'quality-vs-speed.png', dpi=150)
+        print(f"✓ quality-vs-speed.png (no speed data available)")
+        return
+
     ax.set_ylabel('Quality Score (CW %)', fontsize=12)
     ax.set_title(f'THOR Benchmark: Quality vs Speed\n({n_models} models · average wall-clock seconds per finding assessed)', fontsize=14)
     ax.legend(loc='lower right')
