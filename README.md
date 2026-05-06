@@ -2,180 +2,56 @@
 
 > Benchmarking LLM models on THOR finding triage quality against human expert ground truth.
 
-This repository contains the public benchmark results. The scoring methodology, ground truth data, and scoring scripts remain in a private repository to prevent gaming.
+This repository contains public benchmark results for evaluating how well LLMs can triage THOR security findings.
 
-## What We Benchmark
+The benchmark is built for a specific use case: security event and forensic finding assessment. It is not a general LLM benchmark, not a coding benchmark, and not a vulnerability research benchmark.
 
-We evaluate how well LLMs can **triage THOR findings** — the security alerts produced by [THOR](https://nextron-systems.com/thor/), Nextron Systems' forensic scanner.
+The goal is to answer a more practical question:
 
-### What Are THOR Findings?
+> Given the same enriched THOR finding, how well can a model assess whether it is a true positive, false positive, or inconclusive, and how close is its priority score to a human expert assessment?
 
-THOR scans endpoints (Windows, Linux, macOS) for indicators of compromise. When it detects something suspicious, it produces a **finding** — an alert that includes:
+The benchmark compares models against human expert ground truth. The public repository contains the methodology, charts and aggregated result data. The exact finding set, ground truth data and scoring scripts remain private.
 
-- **Files** matching obfuscation or exploit signatures (packed executables, webshells, exploit tools)
-- **Suspicious registry or startup entries** (persistence mechanisms, hijacked services)
-- **Cache artifacts** showing execution of malware or attacker tools (Amcache, Shimcache, SRUM)
-- **Process anomalies** (suspicious command lines, injected DLLs, credential-dumping tools)
-- **Network indicators** (C2 callbacks, suspicious DNS, beacon patterns)
-- **Rootkit or driver signatures** (LSA SSP injection, filter drivers)
+There are two main reasons for that:
 
-Each finding gets an initial severity score and classification from THOR's rule engine, but the critical question for analysts is: **Is this a genuine threat (true positive) or a benign match (false positive)?**
+1. Once benchmark data is public, it can end up in future training data through normal web crawling. That does not require anyone to intentionally train against this benchmark. Public data just has a way of becoming training data sooner or later.
+2. Some reports behind the findings are based on real investigations, not only synthetic lab data. We do not publish that material unless we are completely sure that everything is properly cleaned and anonymized.
 
-### The Triage Problem
+## Benchmark Setup
 
-In real incident response, an analyst must decide for each finding:
+Each model receives the same THOR finding context and has to return a structured assessment.
 
-| Classification | Meaning |
-|---|---|
-| **True Positive (TP)** | Genuine security threat — requires immediate investigation |
-| **Inconclusive (Inc)** | Cannot clearly determine — needs further manual review |
-| **False Positive (FP)** | Benign match — no security relevance |
+The model is asked to provide:
 
-An LLM that flags a real threat as FP **misses a real attack**. An LLM that calls everything TP **wastes analyst time**. The best models balance precision and recall — confidently calling TPs as TP and FPs as FP, while using "inconclusive" only when genuinely uncertain.
+- A classification: `TP`, `FP`, or `Inconclusive`
+- A priority score
+- A confidence value
+- A short reasoning / assessment
 
-### Test Data
+The benchmark intentionally evaluates the model's direct triage ability based on the provided THOR finding. It does not give models access to external tools during the run.
 
-We used **multiple real THOR scan reports** from both Windows and Linux systems, containing a diverse set of findings — from confirmed malware and attacker tools to benign software triggers. Ground truth classifications were assigned by a human expert (Florian Roth, THOR's creator).
+No additional lookup is performed during scoring:
 
-## Scoring Methodology
+- No VirusTotal lookup
+- No sandbox query
+- No SIEM search
+- No EDR artifact retrieval
+- No ITAM / CMDB lookup
+- No private knowledge base retrieval
+- No additional internet search
 
-We score each model's classifications against human expert ground truth using a **Confidence-Weighted (CW)** system that accounts for both accuracy and confidence.
+This is intentional.
 
-### Why Confidence Matters
+Once external tools are added, the benchmark no longer measures only the model's triage ability. It starts measuring a combined system: model, prompt, tool selection, tool quality, available data, integration design and environment-specific context.
 
-Two models that both classify a finding correctly are not equal if one is 95% confident and the other is 50%. In security triage, **high confidence in correct answers is valuable** — it lets analysts trust the assessment and move on. But **high confidence in wrong answers is dangerous** — it actively misleads. Our scoring reflects this.
+That may be closer to a production SOC workflow, but it is much harder to compare fairly. Every organization has a different tool stack. There is no realistic "average SOC toolset" that would make such a benchmark generally meaningful.
 
-### Ordinal Classification Scale
+Tool use can absolutely improve results in practice, especially for weaker models. A model with access to VT, SIEM context, EDR telemetry, asset data or sandbox results may classify some findings better than a model without those inputs.
 
-Classifications are ordered by severity: **FP (0) — Inc (1) — TP (2)**
+But in that case, the result depends heavily on the tools and the quality of their data.
 
-This creates a natural distance between categories:
+For THOR findings, a lot of enrichment is already part of the event itself. THOR tries to attach as much useful context as possible to a finding: hashes, owners, timestamps, file headers, metadata and other attributes that may not exist in the original artifact source. For example, a ShimCache entry may only contain a file path, SHA1 and timestamp at first, but THOR can enrich it with additional file and metadata context.
 
-| Classification Pair | Distance | Type |
-|---|---|---|
-| Exact match (e.g., both TP) | 0 | Correct |
-| One step apart (e.g., TP→Inc, FP→Inc) | 1 | Minor miss |
-| Two steps apart (e.g., TP→FP, FP→TP) | 2 | Hard miss |
+So this benchmark measures how well models interpret the enriched THOR finding itself.
 
-### Penalty Structure
-
-| Error Type | Example | CW Penalty | Rationale |
-|---|---|---|---|
-| **Exact match** | Both say TP | +1.0 to +2.0 (reward) | Correct, scaled by confidence |
-| **Minor miss** | GT=TP, model=Inc | 0.0 to +0.5 | Small penalty — close, but not decisive |
-| **Over-call** (FP→TP) | Benign matched, model says TP | −0.25 to −0.5 | Moderate penalty — wastes analyst time |
-| **Critical miss** (TP→FP) | Real threat, model says FP | −0.75 to −1.5 | **Severe penalty** — missed a real attack |
-
-**Why TP→FP is penalized hardest:** In security operations, a false negative (missed threat) is far more dangerous than a false positive (over-investigation). An attacker that goes undetected can cause catastrophic damage. Over-investigation costs time, but doesn't let attackers stay inside the network.
-
-### CW Formula Detail
-
-Confidence is dampened from 0–100% to 0.5–1.0 to prevent models from gaming by always answering with low confidence:
-
-```
-d = 0.5 + 0.5 × (confidence / 100)
-
-Distance 0 (exact):   1.0 + d     →  range 1.5 – 2.0
-Distance 1 (minor):   0.5 − 0.5d  →  range 0.0 – 0.5
-Distance 2 (over):   −0.5 × d     →  range −0.5 – −0.25
-Distance 2 (missed): −1.5 × d     →  range −1.5 – −0.75
-```
-
-CW% = (sum of all finding scores) / (N × 2.0) × 100
-
-### Error Handling
-
-If a model fails to produce a valid classification for a finding (LLM error, timeout, unparsable response), that finding is **excluded from scoring** rather than treated as FP. Models with **2 or more errors** are flagged as incomplete (⚠) and ranked at the bottom of the leaderboard — a model that cannot reliably process all findings is unsuitable for production triage.
-
-## Latest Results
-
-### CW% Leaderboard (Confidence-Weighted Score)
-
-Higher is better. Rewards confident correct answers, punishes confident wrong answers.
-
-![CW% Leaderboard](charts/cw-leaderboard.png)
-
-### CW% vs MAE
-
-Top-left = best (high CW%, low MAE).
-
-![CW% vs MAE](charts/cw-vs-mae.png)
-
-### Quality vs Speed
-
-Which models deliver good triage quality quickly? Top-left = best (high CW%, fast per finding). Log scale on x-axis.
-
-![Quality vs Speed](charts/quality-vs-speed.png)
-
-### Quality vs Cost
-
-Which models deliver the best triage quality for the money? Cost estimated per full benchmark run (157 findings across 7 reports, ~2400 input + 250–400 output tokens per call) using OpenRouter pricing.
-
-![Quality vs Cost](charts/quality-vs-cost.png)
-
-### Classification Accuracy Breakdown
-
-Green = exact match, blue = one step off (e.g., TP↔Inc), yellow = over-call (FP→TP), red = missed threat (TP→FP).
-
-![Classification Breakdown](charts/classification-breakdown.png)
-
-## Full Data
-
-See [combined/leaderboard.csv](combined/leaderboard.csv) for the complete sortable data.
-
-### Speed Analysis
-
-How fast can each model triage findings? Measured as average wall-clock seconds per event reviewed across all 5 reports.
-
-| Model | CW% | s/event | Tokens | Speed Tier |
-|---|---|---|---|---|
-| mercury-2 | 13.3% | 1.5 | 217k | ⚡ Blazing |
-| devstral-small | 15.3% | 2.0 | 201k | ⚡ Blazing |
-| gemini-2.5-flash | 43.3% | 3.3 | 213k | ⚡ Fast |
-| gpt-5.4-mini | 45.3% | 3.7 | 198k | ⚡ Fast |
-| gpt-5.4-nano | 39.0% | 4.4 | 205k | ⚡ Fast |
-| claude-haiku-4.5 | 47.5% | 6.1 | 233k | ⚡ Fast |
-| claude-opus-4.5 | 48.4% | 10.4 | 225k | 🟢 Quick |
-| claude-opus-4.6 | 46.7% | 10.5 | 230k | 🟢 Quick |
-| grok-4.1-fast | 49.3% | 14.5 | 692k | 🟢 Quick |
-| gemini-2.5-pro | 47.6% | 15.6 | 295k | 🟢 Quick |
-| grok-4-fast | 50.7% | 16.8 | 249k | 🟢 Quick |
-| claude-sonnet-4.6 | 48.8% | 12.0 | 238k | 🟢 Quick |
-| **gemma4-31b** | **53.3%** | **19.7** | **209k** | 🟡 Moderate |
-| deepseek-v4-flash | 48.8% | 20.4 | 236k | 🟡 Moderate |
-| qwen3.5-9b | 47.3% | 21.1 | 290k | 🟡 Moderate |
-| deepseek-v3.1 | 46.7% | 21.0 | 203k | 🟡 Moderate |
-| deepseek-v4-pro | 53.2% | 32.7 | 234k | 🟠 Slow |
-| glm-5 | 51.8% | 36.8 | 260k | 🟠 Slow |
-| qwen3.5-plus | 50.1% | 35.1 | 349k | 🟠 Slow |
-| glm-5.1 | 51.1% | 46.5 | 245k | 🔴 Very Slow |
-| kimi-k2.6 | 49.0% | 72.4 | 405k | 🔴 Very Slow |
-| qwen3.6-max | 49.6% | 165.7 | 1068k | 🔴 Very Slow |
-
-Full speed data in [combined/leaderboard.csv](combined/leaderboard.csv) (`avg_seconds_per_event` column).
-
-### Key Terms
-
-| Abbreviation | Meaning |
-|---|---|
-| **CW%** | Confidence-Weighted Score — primary ranking metric |
-| **Ord%** | Ordinal Accuracy — simple exact/near/miss scoring |
-| **MAE** | Mean Absolute Error — average |AI score − Human score| |
-| **RMSE** | Root Mean Square Error — penalizes large errors |
-| **s/event** | Average wall-clock seconds per finding assessed |
-| **TP** | True Positive — genuine security finding |
-| **Inc** | Inconclusive — cannot definitively classify |
-| **FP** | False Positive — not a genuine security finding |
-| **Ex** | Exact classification matches |
-| **Mi** | Minor misses (one category off) |
-| **Ha** | Hard misses (two categories off) |
-| **Err** | LLM errors (no valid classification produced) |
-
-## Related
-
-- **Mjolnir AI** — [github.com/Nextron-Labs/mjolnir-ai](https://github.com/Nextron-Labs/mjolnir-ai) — the AI triage tool
-- **THOR** — [nextron-systems.com/thor](https://nextron-systems.com/thor/) — the forensic scanner
-
-## License
-
-Benchmark results © Nextron Systems.
+It should be read as a baseline for model selection, not as a full simulation of every possible SOC workflow with external tools.
