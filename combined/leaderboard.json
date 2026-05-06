@@ -400,6 +400,26 @@
     "incomplete": false
   },
   {
+    "model": "grok-4.3",
+    "cw_pct": "38.7",
+    "ord_pct": "66.9",
+    "mae": "24.9",
+    "rmse": "33.0",
+    "exact": "67",
+    "minor": "72",
+    "hard": "15",
+    "hard_miss": "6",
+    "hard_over": "1",
+    "n_errors": "0",
+    "n": "154",
+    "avg_seconds_per_event": "0",
+    "total_tokens": "0",
+    "total_llm_errors": "0",
+    "rank": "21",
+    "tier": "closed_source",
+    "incomplete": false
+  },
+  {
     "model": "llama-3.1-70b",
     "cw_pct": "38.6",
     "ord_pct": "63.3",
@@ -415,7 +435,7 @@
     "avg_seconds_per_event": "0",
     "total_tokens": "0",
     "total_llm_errors": "0",
-    "rank": "21",
+    "rank": "22",
     "tier": "open_source_consumer",
     "incomplete": false
   },
@@ -435,7 +455,7 @@
     "avg_seconds_per_event": "0",
     "total_tokens": "0",
     "total_llm_errors": "0",
-    "rank": "22",
+    "rank": "23",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -455,7 +475,7 @@
     "avg_seconds_per_event": "0",
     "total_tokens": "0",
     "total_llm_errors": "0",
-    "rank": "23",
+    "rank": "24",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -475,7 +495,7 @@
     "avg_seconds_per_event": "0",
     "total_tokens": "0",
     "total_llm_errors": "0",
-    "rank": "24",
+    "rank": "25",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -495,7 +515,7 @@
     "avg_seconds_per_event": "0",
     "total_tokens": "0",
     "total_llm_errors": "0",
-    "rank": "25",
+    "rank": "26",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -515,7 +535,7 @@
     "avg_seconds_per_event": "0",
     "total_tokens": "0",
     "total_llm_errors": "0",
-    "rank": "26",
+    "rank": "27",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -535,7 +555,7 @@
     "avg_seconds_per_event": "0",
     "total_tokens": "0",
     "total_llm_errors": "0",
-    "rank": "27",
+    "rank": "28",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -555,7 +575,7 @@
     "avg_seconds_per_event": "0",
     "total_tokens": "0",
     "total_llm_errors": "0",
-    "rank": "28",
+    "rank": "29",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -575,7 +595,7 @@
     "avg_seconds_per_event": "0",
     "total_tokens": "0",
     "total_llm_errors": "0",
-    "rank": "29",
+    "rank": "30",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -595,7 +615,7 @@
     "avg_seconds_per_event": "0",
     "total_tokens": "0",
     "total_llm_errors": "0",
-    "rank": "30",
+    "rank": "31",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -615,7 +635,7 @@
     "avg_seconds_per_event": "0",
     "total_tokens": "0",
     "total_llm_errors": "0",
-    "rank": "31",
+    "rank": "32",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -635,7 +655,7 @@
     "avg_seconds_per_event": "0",
     "total_tokens": "0",
     "total_llm_errors": "0",
-    "rank": "32",
+    "rank": "33",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -655,7 +675,7 @@
     "avg_seconds_per_event": "0",
     "total_tokens": "0",
     "total_llm_errors": "0",
-    "rank": "33",
+    "rank": "34",
     "tier": "open_source_consumer",
     "incomplete": false
   },
@@ -675,7 +695,7 @@
     "avg_seconds_per_event": "0",
     "total_tokens": "0",
     "total_llm_errors": "0",
-    "rank": "34",
+    "rank": "35",
     "tier": "open_source_consumer",
     "incomplete": false
   },
@@ -695,7 +715,7 @@
     "avg_seconds_per_event": "0",
     "total_tokens": "0",
     "total_llm_errors": "0",
-    "rank": "35",
+    "rank": "36",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -715,7 +735,7 @@
     "avg_seconds_per_event": "0",
     "total_tokens": "0",
     "total_llm_errors": "0",
-    "rank": "36",
+    "rank": "37",
     "tier": "open_source_consumer",
     "incomplete": false
   },
@@ -735,7 +755,7 @@
     "avg_seconds_per_event": "0",
     "total_tokens": "0",
     "total_llm_errors": "0",
-    "rank": "37",
+    "rank": "38",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -755,7 +775,7 @@
     "avg_seconds_per_event": "0",
     "total_tokens": "0",
     "total_llm_errors": "0",
-    "rank": "38",
+    "rank": "39",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -775,7 +795,7 @@
     "avg_seconds_per_event": "0",
     "total_tokens": "0",
     "total_llm_errors": "0",
-    "rank": "39",
+    "rank": "40",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -795,7 +815,7 @@
     "avg_seconds_per_event": "0",
     "total_tokens": "0",
     "total_llm_errors": "0",
-    "rank": "40",
+    "rank": "41",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -815,7 +835,7 @@
     "avg_seconds_per_event": "0",
     "total_tokens": "0",
     "total_llm_errors": "0",
-    "rank": "41",
+    "rank": "42",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -835,7 +855,7 @@
     "avg_seconds_per_event": "0",
     "total_tokens": "0",
     "total_llm_errors": "0",
-    "rank": "42",
+    "rank": "43",
     "tier": "open_source_consumer",
     "incomplete": false
   },
@@ -855,7 +875,7 @@
     "avg_seconds_per_event": "0",
     "total_tokens": "0",
     "total_llm_errors": "0",
-    "rank": "43",
+    "rank": "44",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -875,7 +895,7 @@
     "avg_seconds_per_event": "0",
     "total_tokens": "0",
     "total_llm_errors": "0",
-    "rank": "44",
+    "rank": "45",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -895,7 +915,7 @@
     "avg_seconds_per_event": "0",
     "total_tokens": "0",
     "total_llm_errors": "0",
-    "rank": "45",
+    "rank": "46",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -915,7 +935,7 @@
     "avg_seconds_per_event": "0",
     "total_tokens": "0",
     "total_llm_errors": "0",
-    "rank": "46",
+    "rank": "47",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -935,7 +955,7 @@
     "avg_seconds_per_event": "0",
     "total_tokens": "0",
     "total_llm_errors": "0",
-    "rank": "47",
+    "rank": "48",
     "tier": "closed_source",
     "incomplete": true
   }
