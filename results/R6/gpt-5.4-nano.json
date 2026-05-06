@@ -1,0 +1,19 @@
+{
+  "n_findings": 67,
+  "n_matched": 67,
+  "n_exact": 16,
+  "n_minor": 48,
+  "n_hard": 3,
+  "n_errors": 0,
+  "incomplete": false,
+  "ordinal_total": 80,
+  "ordinal_max": 134,
+  "ordinal_pct": 59.7,
+  "cw_total": 31.503,
+  "cw_max": 134.0,
+  "cw_pct": 23.5,
+  "mae": 24.6,
+  "rmse": 30.5,
+  "n_scored": 67,
+  "errors": []
+}

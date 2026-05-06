@@ -15,11 +15,5 @@
   "mae": 33.7,
   "rmse": 45.0,
   "n_scored": 7,
-  "errors": [],
-  "elapsed_seconds": 51.7,
-  "events_reviewed": 7,
-  "seconds_per_event": 7.39,
-  "total_tokens": 22991,
-  "llm_calls": 9,
-  "llm_errors": 0
+  "errors": []
 }
