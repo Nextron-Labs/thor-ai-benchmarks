@@ -21,5 +21,9 @@
     "#10: LLM classification error (excluded from scoring)",
     "#11: LLM classification error (excluded from scoring)",
     "#20: LLM classification error (excluded from scoring)"
-  ]
+  ],
+  "elapsed_seconds": 541.034580834,
+  "events_reviewed": 20,
+  "total_tokens": 77225,
+  "llm_errors": 2
 }

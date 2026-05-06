@@ -17,5 +17,9 @@
   "n_scored": 18,
   "errors": [
     "#4: LLM classification error (excluded from scoring)"
-  ]
+  ],
+  "elapsed_seconds": 2656.610465582,
+  "events_reviewed": 21,
+  "total_tokens": 486406,
+  "llm_errors": 33
 }

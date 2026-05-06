@@ -18,5 +18,9 @@
   "errors": [
     "#2: LLM classification error (excluded from scoring)",
     "#7: no ground truth for R4"
-  ]
+  ],
+  "elapsed_seconds": 361.40848582,
+  "events_reviewed": 7,
+  "total_tokens": 33666,
+  "llm_errors": 0
 }

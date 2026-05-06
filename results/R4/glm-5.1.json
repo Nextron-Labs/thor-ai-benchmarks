@@ -17,5 +17,9 @@
   "n_scored": 6,
   "errors": [
     "#7: no ground truth for R4"
-  ]
+  ],
+  "elapsed_seconds": 192.502055051,
+  "events_reviewed": 7,
+  "total_tokens": 21982,
+  "llm_errors": 0
 }

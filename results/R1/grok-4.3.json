@@ -19,5 +19,9 @@
     "#17: no ground truth for R1",
     "#18: no ground truth for R1",
     "#19: no ground truth for R1"
-  ]
+  ],
+  "elapsed_seconds": 385.055753615,
+  "events_reviewed": 19,
+  "total_tokens": 73073,
+  "llm_errors": 0
 }
