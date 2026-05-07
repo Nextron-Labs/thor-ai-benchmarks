@@ -8,6 +8,14 @@ THOR is a forensic scanner that detects potentially malicious activity on endpoi
 
 This benchmark measures how well LLMs perform this triage task when given the same enriched THOR event context provided to all benchmarked models. The goal is to compare models on a level playing field, measuring their direct triage ability based on enriched THOR context without model-specific prompt tuning or external tool integrations.
 
+## How To Read The Results
+
+This benchmark is intended as a baseline for this specific task, not as a claim about the best possible performance a model could achieve in every deployment.
+
+If you test the same models in your own workflow, results may differ slightly or substantially. That depends on the prompt, the surrounding instructions, the available tools, the quality of external data and how well the model can use those tools. Once you change those factors, you are no longer evaluating exactly the same system as in this benchmark.
+
+A useful analogy is a math exam without a calculator. Strong students still tend to do well, but some students improve more than others once calculators are allowed. Prompt tuning, retrieval and tool use can have a similar effect on LLM workflows: absolute performance may improve, gaps may shrink or widen, and model ordering can change.
+
 ## Input Data
 
 ### Ground Truth
@@ -28,6 +36,14 @@ Models receive the full event context including:
 - Event metadata (timestamps, paths, hashes)
 - Related context events
 - Native THOR scoring
+
+## Why Human Expert Ground Truth
+
+This benchmark intentionally uses human expert ground truth as the final reference for both classification and priority score.
+
+An LLM judge can be useful in a workflow-specific evaluation harness, especially for qualitative review, pairwise comparisons or questions that are hard to score deterministically. But it should not be treated as the final authority in this benchmark. The purpose here is to measure which models are closer to expert truth. Using another model as the judge would make that comparison partially circular and would introduce the judge model's own biases and failure modes into the benchmark itself.
+
+For that reason, the benchmark compares model outputs against human expert assessments rather than against the opinion of another LLM.
 
 ## Scoring Methodology
 
@@ -121,6 +137,8 @@ For this reason, the prompt provides the task, the expected output structure and
 
 This does not mean prompt tuning is unimportant in production. It is very important. But for this benchmark, we want the prompt to be stable, simple and comparable across models.
 
+If you evaluate the same models with a richer, longer or more model-specific prompt, you may get different results. That is expected. In that case, you are measuring a different prompt-plus-model system rather than this baseline setup.
+
 ---
 
 ## No External Tool Use
@@ -133,4 +151,4 @@ The reason is similar to the prompt decision: once tools are added, the benchmar
 
 That may be closer to a real SOC workflow, but it is much harder to compare fairly. Every organization has a different tool stack, different telemetry, different asset context and different enrichment quality. There is no realistic "average SOC toolset" that would make such a benchmark generally comparable.
 
-Tool use can absolutely improve results in practice, especially when the tools provide high-quality context. But then the result depends heavily on the tools and not only on the model. For this benchmark, we want to measure how well the model interprets the enriched THOR event context itself.
+Tool use can absolutely improve results in practice, especially when the tools provide high-quality context. Some models may benefit only slightly, while others may improve much more once external help is available. But then the result depends heavily on the tools and not only on the model. For this benchmark, we want to measure how well the model interprets the enriched THOR event context itself.

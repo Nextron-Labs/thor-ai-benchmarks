@@ -54,4 +54,8 @@ For THOR findings, a lot of enrichment is already part of the event itself. THOR
 
 So this benchmark measures how well models interpret the enriched THOR finding itself.
 
-It should be read as a baseline for model selection, not as a full simulation of every possible SOC workflow with external tools.
+If you test the same models in your own workflow, the results may differ slightly or substantially. That depends on the prompt, the surrounding instructions, the available tools, the quality of external data and how well the model can use those tools. Once you move from this controlled setup to an agentic workflow, you are no longer testing the same thing.
+
+In that sense, this benchmark should be read as a baseline, not as a ceiling. It is closer to measuring how well a model performs on a standardized exam without external aids than how well it performs inside a fully equipped production workflow.
+
+For this benchmark, final truth comes from human expert ground truth, not from an LLM judge. Judge models can be useful in workflow-specific evaluation harnesses, but they are not used here as the authority that decides which model was actually closer to the truth.
