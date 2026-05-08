@@ -67,12 +67,14 @@ BENCH_TO_OR = {
     "qwen3-235b-a22b": "qwen/qwen3-235b-a22b-2507",
     "mercury-2": "inception/mercury-2",
     "claude-sonnet-4.5": "anthropic/claude-sonnet-4.5",
+    "gemini-3.1-flash-lite": "google/gemini-3.1-flash-lite",
+    "grok-4.3": "x-ai/grok-4.3",
 }
 
 # ── Cost estimation parameters ────────────────────────────────────
-N_FINDINGS = 41
-INPUT_PER_CALL = 2400
-OUTPUT_PER_CALL = 300
+# Input/output token split ratio (empirical estimate: ~85% input, ~15% output)
+INPUT_RATIO = 0.85
+OUTPUT_RATIO = 0.15
 
 
 def main():
@@ -112,21 +114,29 @@ def main():
     with open(lb_path) as f:
         lb = json.load(f)
 
+    # Count total findings scored across all reports
+    n_findings_total = max(int(m['n']) for m in lb if m['model'] not in excluded)
+
     results = []
+    missing_price = []
     for m in lb:
         name = m['model']
         if name in excluded:
             continue
         cw_pct = float(m['cw_pct'])
         tier = m['tier']
+        total_tokens = int(m.get('total_tokens', 0))
         if name not in model_prices:
+            missing_price.append(name)
             continue
         p = model_prices[name]
-        total_input = INPUT_PER_CALL * N_FINDINGS
-        total_output = OUTPUT_PER_CALL * N_FINDINGS
+        total_input = total_tokens * INPUT_RATIO
+        total_output = total_tokens * OUTPUT_RATIO
         cost = (total_input * p['prompt']) + (total_output * p['completion'])
         cost_cents = cost * 100
         results.append({'model': name, 'cw_pct': cw_pct, 'cost_cents': cost_cents, 'tier': tier})
+    if missing_price:
+        print(f"  Warning: no OpenRouter pricing for {len(missing_price)} models: {missing_price}")
 
     # Generate chart
     tier_colors = {'closed_source': '#e74c3c', 'open_source_pro': '#3498db', 'open_source_consumer': '#2ecc71'}
@@ -147,7 +157,7 @@ def main():
     n_models = len(results)
     ax.set_xlabel('Estimated Cost per Run (¢)', fontsize=12)
     ax.set_ylabel('Quality Score (CW %)', fontsize=12)
-    ax.set_title(f'THOR Benchmark: Quality vs Cost\n({n_models} models · {N_FINDINGS} findings × ~{INPUT_PER_CALL} input + {OUTPUT_PER_CALL} output tokens)', fontsize=14)
+    ax.set_title(f'THOR Benchmark: Quality vs Cost\n({n_models} models · {n_findings_total} findings · cost based on actual token usage)', fontsize=14)
     ax.legend(loc='lower right')
     ax.grid(True, alpha=0.3)
     ax.axhline(y=38, color='gray', linestyle='--', alpha=0.5, linewidth=0.8)
