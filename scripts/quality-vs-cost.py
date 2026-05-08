@@ -115,8 +115,8 @@ def main():
         lb = json.load(f)
 
     # Total ground truth findings across all scored reports
-    # Update this when adding new reports: R1=16 + R2=7 + R3=21 + R4=6 + R5=23 + R6=68 + R7=16 = 157
-    n_findings_total = 157
+    # Update this when adding new reports: R1=16 + R2=7 + R3=20 + R4=6 + R5=23 + R6=67 + R7=15 = 154
+    n_findings_total = 154
 
     results = []
     missing_price = []

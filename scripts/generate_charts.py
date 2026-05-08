@@ -150,7 +150,7 @@ hard_over = [int(m.get('hard_over', 0)) for m in models]  # FP→TP: overlap wit
 n_errors = [int(m.get('n_errors', 0)) for m in models]
 
 # ── Total GT findings count ──
-n_findings_total = 157  # R1=16 + R2=7 + R3=21 + R4=6 + R5=23 + R6=68 + R7=16
+n_findings_total = 154  # R1=16 + R2=7 + R3=20 + R4=6 + R5=23 + R6=67 + R7=15
 
 # Stack: exact → minor → hard → errors → gap = n_findings_total
 base1 = [e+m for e,m in zip(exact,minor)]        # exact + minor
