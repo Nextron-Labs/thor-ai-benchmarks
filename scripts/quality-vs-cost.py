@@ -114,8 +114,9 @@ def main():
     with open(lb_path) as f:
         lb = json.load(f)
 
-    # Count total findings scored across all reports
-    n_findings_total = max(int(m['n']) for m in lb if m['model'] not in excluded)
+    # Total ground truth findings across all scored reports
+    # Update this when adding new reports: R1=16 + R2=7 + R3=21 + R4=6 + R5=23 + R6=68 + R7=16 = 157
+    n_findings_total = 157
 
     results = []
     missing_price = []
