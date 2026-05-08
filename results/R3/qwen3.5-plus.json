@@ -1,0 +1,23 @@
+{
+  "n_findings": 20,
+  "n_matched": 20,
+  "n_exact": 4,
+  "n_minor": 14,
+  "n_hard": 2,
+  "n_errors": 0,
+  "incomplete": false,
+  "ordinal_total": 22,
+  "ordinal_max": 40,
+  "ordinal_pct": 55.0,
+  "cw_total": 7.537,
+  "cw_max": 40.0,
+  "cw_pct": 18.8,
+  "mae": 30.3,
+  "rmse": 37.0,
+  "n_scored": 19,
+  "errors": [],
+  "elapsed_seconds": 927.275142699,
+  "events_reviewed": 20,
+  "total_tokens": 97018,
+  "llm_errors": 0
+}

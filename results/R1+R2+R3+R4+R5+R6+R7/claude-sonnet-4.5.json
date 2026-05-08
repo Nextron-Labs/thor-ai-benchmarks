@@ -8,10 +8,10 @@
   "ordinal_total": 203,
   "ordinal_max": 308,
   "ordinal_pct": 65.9,
-  "cw_total": 125.74,
+  "cw_total": 125.732,
   "cw_max": 308.0,
   "cw_pct": 40.8,
-  "mae": 29.8,
+  "mae": 29.7,
   "rmse": 38.4,
   "n_scored": 153,
   "reports": [
