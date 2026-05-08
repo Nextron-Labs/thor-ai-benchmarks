@@ -59,3 +59,50 @@ If you test the same models in your own workflow, the results may differ slightl
 In that sense, this benchmark should be read as a baseline, not as a ceiling. It is closer to measuring how well a model performs on a standardized exam without external aids than how well it performs inside a fully equipped production workflow.
 
 For this benchmark, final truth comes from human expert ground truth, not from an LLM judge. Judge models can be useful in workflow-specific evaluation harnesses, but they are not used here as the authority that decides which model was actually closer to the truth.
+
+## Latest Results
+
+### CW% Leaderboard
+
+Higher is better. Rewards confident correct answers and penalizes confident wrong answers.
+
+![CW% Leaderboard](charts/cw-leaderboard.png)
+
+### CW% vs MAE
+
+Top-left is better: higher CW%, lower MAE.
+
+![CW% vs MAE](charts/cw-vs-mae.png)
+
+### Quality vs Speed
+
+Which models deliver useful triage quality quickly? Top-left is better: higher CW%, lower per-event latency.
+
+![Quality vs Speed](charts/quality-vs-speed.png)
+
+### Quality vs Cost
+
+Which models deliver the best triage quality for the money? Cost is estimated per benchmark run based on token usage and model pricing.
+
+![Quality vs Cost](charts/quality-vs-cost.png)
+
+### Classification Accuracy Breakdown
+
+Green = exact match, blue = one step off, yellow = over-call (`FP→TP`), red = missed threat (`TP→FP`).
+
+![Classification Breakdown](charts/classification-breakdown.png)
+
+## Full Data
+
+See [combined/leaderboard.csv](combined/leaderboard.csv) for the sortable leaderboard and [combined/leaderboard.json](combined/leaderboard.json) for the richer machine-readable summary, including speed and token fields used by the charts.
+
+For methodology details, see [BENCHMARK.md](BENCHMARK.md) and [SCORING.md](SCORING.md).
+
+## Related
+
+- **Mjolnir AI** — [github.com/Nextron-Labs/mjolnir-ai](https://github.com/Nextron-Labs/mjolnir-ai) — the AI triage tool
+- **THOR** — [nextron-systems.com/thor](https://nextron-systems.com/thor/) — the forensic scanner
+
+## License
+
+Benchmark results © Nextron Systems.
