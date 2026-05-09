@@ -153,18 +153,20 @@ n_errors = [int(m.get('n_errors', 0)) for m in models]
 n_findings_total = 154  # R1=16 + R2=7 + R3=20 + R4=6 + R5=23 + R6=67 + R7=15
 
 # Stack: exact → minor → hard → errors → gap = n_findings_total
+# Note: n_errors are findings excluded from n (LLM errors), so:
+#   gap = n_findings_total - n_matched - n_errors (truly not reviewed)
 base1 = [e+m for e,m in zip(exact,minor)]        # exact + minor
 base2 = [b+h for b,h in zip(base1,hard)]           # + hard
 base3 = [b+ne for b,ne in zip(base2,n_errors)]     # + errors
-base4 = [b + (n_findings_total - m['n']) for b,m in zip(base3,models)]  # + gap
-gap = [n_findings_total - m['n'] for m in models]  # missing findings
+base4 = [b + (n_findings_total - m['n'] - ne) for b,m,ne in zip(base3,models,n_errors)]  # + gap
+gap = [n_findings_total - m['n'] - ne for m,ne in zip(models,n_errors)]  # missing findings (not reviewed AND not errored)
 
 # Solid bars
 ax.barh(y_pos, exact, color='#2ECC71', edgecolor='white', linewidth=0.5, label='Exact match')
 ax.barh(y_pos, minor, left=exact, color='#3498DB', edgecolor='white', linewidth=0.5, label='Minor miss (±1 step)')
 ax.barh(y_pos, hard, left=base1, color='#E74C3C', edgecolor='white', linewidth=0.5, label='Hard miss (>1 step)')
 ax.barh(y_pos, n_errors, left=base2, color='#95A5A6', edgecolor='white', linewidth=0.5, hatch='///', label='LLM error')
-ax.barh(y_pos, gap, left=base3, color='#BDC3C7', edgecolor='white', linewidth=0.5, alpha=0.35, hatch='xx', label=f'Gap (not reviewed, {n_findings_total} total)')
+ax.barh(y_pos, gap, left=base3, color='#BDC3C7', edgecolor='white', linewidth=0.5, alpha=0.35, hatch='xx', label=f'Gap (not reached, {n_findings_total} total)')
 
 # Overlay: hard_miss as hatched stripes within the hard segment
 # These are classification errors (TP→FP) that sit in the hard-miss score range
@@ -189,7 +191,7 @@ legend_items = [
     mpatches.Patch(color='#3498DB', label='Minor miss (±1 step)'),
     mpatches.Patch(color='#E74C3C', label='Hard miss (>1 step)'),
     mpatches.Patch(color='#95A5A6', label='LLM error'),
-    mpatches.Patch(facecolor='#BDC3C7', edgecolor='gray', hatch='xx', label=f'Gap (not reviewed, {n_findings_total} total)'),
+    mpatches.Patch(facecolor='#BDC3C7', edgecolor='gray', hatch='xx', label=f'Gap (not reached, {n_findings_total} total)'),
 ]
 # Add text annotation about classification errors
 ax.text(0.98, 0.02, f'hard_miss (TP→FP) shown as hatched overlay\nhard_over (FP→TP) overlaps minor + hard',
