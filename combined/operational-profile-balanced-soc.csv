@@ -1,0 +1,7 @@
+rank,model,cw_pct,balanced_ots,critical_miss,threat_capture,false_review,false_escalation,cost_per_run,avg_seconds_per_event,n,incomplete
+1,deepseek-v3.2,38.8,37.4,14.6,85.4,61.8,14.5,0.32,73.28,154,False
+2,nemotron-3-nano-omni,35.2,33.1,14.6,85.4,69.3,18.7,0.00,47.19,153,False
+3,llama-3.1-70b,36.9,30.5,14.6,85.4,67.1,31.6,0.00,13.93,154,False
+4,qwen3-235b-a22b,33.0,26.8,12.5,87.5,65.8,14.5,0.00,32.24,154,False
+5,minimax-m2.5,32.9,22.0,14.6,85.4,59.2,10.5,0.16,20.07,154,False
+6,gpt-oss-120b,31.3,21.6,12.8,87.2,66.7,4.2,0.00,16.80,148,True

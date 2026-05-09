@@ -1,0 +1,3 @@
+rank,model,cw_pct,balanced_ots,critical_miss,threat_capture,false_review,false_escalation,cost_per_run,avg_seconds_per_event,n,incomplete
+1,llama-3.1-8b,28.0,40.0,2.1,97.9,88.2,6.6,0.00,12.65,154,False
+2,gpt-5-nano,27.7,35.9,2.1,97.9,90.8,18.4,0.12,31.26,154,False

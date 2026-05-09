@@ -1,102 +1,289 @@
 # THOR AI Benchmarks
 
-> Benchmarking LLM models on THOR finding triage quality against human expert ground truth.
+This benchmark evaluates LLMs on THOR finding triage. It focuses on security event and forensic finding assessment, not generic reasoning, coding, or vulnerability research.
 
-This repository contains public benchmark results for evaluating how well LLMs can triage THOR security findings.
+The current public result set covers **48 models**, **7 THOR reports**, and **154 expert-classified findings**. Models are compared against human expert ground truth and are evaluated on both classification quality and operational usefulness.
 
-The benchmark is built for a specific use case: security event and forensic finding assessment. It is not a general LLM benchmark, not a coding benchmark, and not a vulnerability research benchmark.
+## Current Result Summary
 
-The goal is to answer a more practical question:
+These are **current profile leaders under the selected constraints**, not universal winners.
 
-> Given the same enriched THOR finding, how well can a model assess whether it is a true positive, false positive, or inconclusive, and how close is its priority score to a human expert assessment?
+| Use case | Suggested model | Why |
+|---|---|---|
+| High-safety triage | `llama-3.1-8b` | Lowest critical miss rate among useful models, beats `always-inc` on Balanced OTS, but still has high review load |
+| Balanced SOC triage | `deepseek-v3.2` | Under these constraints, currently the best balance between safety and review reduction in this data set |
+| Noise reduction / high-volume triage | `deepseek-v4-flash` | Lowest false review load among acceptable models, but with higher miss risk than the high-safety profile |
 
-The benchmark compares models against human expert ground truth. The public repository contains the methodology, charts and aggregated result data. The exact finding set, ground truth data and scoring scripts remain private.
+There is no single best model. The useful choice depends on whether the deployment optimizes for missed-incident avoidance, balanced SOC triage, review-load reduction, cost, or latency.
 
-There are two main reasons for that:
+## Main Decision Charts
 
-1. Once benchmark data is public, it can end up in future training data through normal web crawling. That does not require anyone to intentionally train against this benchmark. Public data just has a way of becoming training data sooner or later.
-2. Some reports behind the findings are based on real investigations, not only synthetic lab data. We do not publish that material unless we are completely sure that everything is properly cleaned and anonymized.
+### 1. Operational Profile Summary
 
-## Benchmark Setup
+![Operational Profile Summary](charts/operational-profile-summary.png)
 
-Each model receives the same THOR finding context and has to return a structured assessment.
+This chart compares the current profile leaders with the safe `always-inc` baseline. Lower Critical Miss Rate is safer; lower False Review Load means fewer findings sent to analysts; higher Balanced OTS means better operational utility. The main trade-off is visible immediately: safer models tend to preserve more review load.
 
-The model is asked to provide:
+### 2. Critical Miss Rate vs False Review Load
 
-- A classification: `TP`, `FP`, or `Inconclusive`
-- A priority score
-- A confidence value
-- A short reasoning / assessment
+![Critical Miss Rate vs False Review Load](charts/critical-miss-vs-false-review.png)
 
-The benchmark intentionally evaluates the model's direct triage ability based on the provided THOR finding. It does not give models access to external tools during the run.
+This is the primary operational selection chart. The lower-left area is best: fewer missed true positives and fewer unnecessary reviews. The horizontal guide lines show the high-safety and balanced-profile miss-rate thresholds; the vertical lines show review-load constraints.
 
-No additional lookup is performed during scoring:
+### 3. Balanced OTS vs False Review Load
 
-- No VirusTotal lookup
-- No sandbox query
-- No SIEM search
-- No EDR artifact retrieval
-- No ITAM / CMDB lookup
-- No private knowledge base retrieval
-- No additional internet search
+![Balanced OTS vs False Review Load](charts/balanced-ots-vs-false-review.png)
 
-This is intentional.
+This chart shows operational utility against analyst workload. Higher is better on the y-axis, lower is better on the x-axis. Color encodes Critical Miss Rate, so a high Balanced OTS point may still be unacceptable if it is too red.
 
-Once external tools are added, the benchmark no longer measures only the model's triage ability. It starts measuring a combined system: model, prompt, tool selection, tool quality, available data, integration design and environment-specific context.
+### 4. CW% vs Balanced OTS
 
-That may be closer to a production SOC workflow, but it is much harder to compare fairly. Every organization has a different tool stack. There is no realistic "average SOC toolset" that would make such a benchmark generally meaningful.
+![CW% vs Balanced OTS](charts/cw-vs-balanced-ots.png)
 
-Tool use can absolutely improve results in practice, especially for weaker models. A model with access to VT, SIEM context, EDR telemetry, asset data or sandbox results may classify some findings better than a model without those inputs.
+CW% remains useful, but it is not the full deployment decision. This chart shows where classic confidence-weighted quality and operational utility agree or diverge. A model can score well on CW% while still having a miss rate that is too high for a safety-focused workflow.
 
-But in that case, the result depends heavily on the tools and the quality of their data.
-
-For THOR findings, a lot of enrichment is already part of the event itself. THOR tries to attach as much useful context as possible to a finding: hashes, owners, timestamps, file headers, metadata and other attributes that may not exist in the original artifact source. For example, a ShimCache entry may only contain a file path, SHA1 and timestamp at first, but THOR can enrich it with additional file and metadata context.
-
-So this benchmark measures how well models interpret the enriched THOR finding itself.
-
-If you test the same models in your own workflow, the results may differ slightly or substantially. That depends on the prompt, the surrounding instructions, the available tools, the quality of external data and how well the model can use those tools. Once you move from this controlled setup to an agentic workflow, you are no longer testing the same thing.
-
-In that sense, this benchmark should be read as a baseline, not as a ceiling. It is closer to measuring how well a model performs on a standardized exam without external aids than how well it performs inside a fully equipped production workflow.
-
-For this benchmark, final truth comes from human expert ground truth, not from an LLM judge. Judge models can be useful in workflow-specific evaluation harnesses, but they are not used here as the authority that decides which model was actually closer to the truth.
-
-## Latest Results
-
-### CW% Leaderboard
-
-Higher is better. Rewards confident correct answers and penalizes confident wrong answers.
-
-![CW% Leaderboard](charts/cw-leaderboard.png)
-
-### CW% vs MAE
-
-Top-left is better: higher CW%, lower MAE.
-
-![CW% vs MAE](charts/cw-vs-mae.png)
-
-### Quality vs Speed
-
-Which models deliver useful triage quality quickly? Top-left is better: higher CW%, lower per-event latency.
-
-![Quality vs Speed](charts/quality-vs-speed.png)
-
-### Quality vs Cost
-
-Which models deliver the best triage quality for the money? Cost is estimated per benchmark run based on token usage and model pricing.
+### 5. Quality vs Cost
 
 ![Quality vs Cost](charts/quality-vs-cost.png)
 
-### Classification Accuracy Breakdown
+This chart estimates benchmark-run cost from observed token usage and model pricing. It is useful for separating expensive quality gains from low-cost practical options. Cost is not a proxy for safety; it must be read together with the operational charts above.
 
-Green = exact match, blue = one step off, yellow = over-call (`FP→TP`), red = missed threat (`TP→FP`).
+### 6. Quality vs Speed
+
+![Quality vs Speed](charts/quality-vs-speed.png)
+
+This chart compares quality against average seconds per event. It helps identify models that may be operationally usable for near-real-time or high-volume triage. As with cost, speed does not replace safety metrics.
+
+### 7. Classification Breakdown
 
 ![Classification Breakdown](charts/classification-breakdown.png)
 
+This chart shows exact matches, near misses, hard misses, LLM errors, and any coverage gaps. It helps explain why two models with similar headline scores may behave differently. Hatched hard-miss overlays mark the most dangerous classification failure class: `TP→FP`.
+
+### 8. CW% Leaderboard
+
+![CW% Leaderboard](charts/cw-leaderboard.png)
+
+The CW% leaderboard is retained as a compact ranking of confidence-weighted score quality. It should not be used as the only model-selection metric. Operational selection should consider Critical Miss Rate, Threat Capture Rate, False Review Load, Balanced OTS, cost, and speed.
+
+## Baseline Reference
+
+| Strategy | CW% | Balanced OTS | Critical Miss | Threat Capture | False Review | False Escalation | Cost/Run |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| `always-fp` | 26.9% | -58.3% | 100.0% | 0.0% | 0.0% | 0.0% | $0.00 |
+| `always-inc` | 22.1% | 38.3% | 0.0% | 100.0% | 100.0% | 0.0% | $0.00 |
+| `always-tp` | 19.2% | 25.0% | 0.0% | 100.0% | 100.0% | 100.0% | $0.00 |
+
+Baseline strategies are references, not recommendations:
+
+- `always-fp` is the dangerous “suppress everything” baseline. It creates no review load but misses every true positive.
+- `always-inc` is the safe but operationally weak “send everything to review” baseline. It has zero critical misses but provides no noise reduction.
+- `always-tp` is the noisy “escalate everything” baseline. It avoids misses but creates maximum false escalation.
+
+Naive baselines can appear strong on individual metrics, especially safety metrics, but they are not useful triage strategies.
+
+## Operational Profiles
+
+### Profile 1: High-Safety
+
+**Use case:** Environments where missing a real incident is unacceptable or very costly, such as critical infrastructure, high-value targets, or highly regulated environments.
+
+**Requirements:**
+
+- Critical Miss Rate ≤ 5%
+- Threat Capture Rate ≥ 95%
+- False Review Load < 100%
+
+**Ranking rule:** Balanced OTS descending, then False Review Load ascending.
+
+| # | Model | CW% | BalOTS | CritMiss | ThreatCap | FalseRev | FalseEsc | Cost/Run | AvgTime |
+|---:|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| 1 | `llama-3.1-8b` | 28.0% | 40.0% | 2.1% | 97.9% | 88.2% | 6.6% | $0.00 | 12.65s |
+| 2 | `gpt-5-nano` | 27.7% | 35.9% | 2.1% | 97.9% | 90.8% | 18.4% | $0.12 | 31.26s |
+
+**Matched:** 2 / 48 models.
+
+**Interpretation:** Under these constraints, `llama-3.1-8b` is the current profile leader. It is one of the few useful models with near-zero critical miss behavior and it beats `always-inc` on Balanced OTS, but the review load remains high.
+
+### Profile 2: Balanced SOC
+
+**Use case:** General SOC operations where both safety and analyst workload matter.
+
+**Requirements:**
+
+- Critical Miss Rate ≤ 15%
+- Threat Capture Rate ≥ 85%
+- False Review Load ≤ 75%
+
+**Ranking rule:** Balanced OTS descending.
+
+| # | Model | CW% | BalOTS | CritMiss | ThreatCap | FalseRev | FalseEsc | Cost/Run | AvgTime |
+|---:|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| 1 | `deepseek-v3.2` | 38.8% | 37.4% | 14.6% | 85.4% | 61.8% | 14.5% | $0.32 | 73.28s |
+| 2 | `nemotron-3-nano-omni` | 35.2% | 33.1% | 14.6% | 85.4% | 69.3% | 18.7% | $0.00 | 47.19s |
+| 3 | `llama-3.1-70b` | 36.9% | 30.5% | 14.6% | 85.4% | 67.1% | 31.6% | $0.00 | 13.93s |
+| 4 | `qwen3-235b-a22b` | 33.0% | 26.8% | 12.5% | 87.5% | 65.8% | 14.5% | $0.00 | 32.24s |
+| 5 | `minimax-m2.5` | 32.9% | 22.0% | 14.6% | 85.4% | 59.2% | 10.5% | $0.16 | 20.07s |
+| 6 | `gpt-oss-120b` | 31.3% | 21.6% | 12.8% | 87.2% | 66.7% | 4.2% | $0.00 | 16.80s |
+
+**Matched:** 6 / 48 models.
+
+**Interpretation:** Under these constraints, `deepseek-v3.2` currently provides the best balance in this data set. It nearly matches the `always-inc` Balanced OTS baseline while reducing review load by about 38 percentage points.
+
+### Profile 3: Noise-Reduction / High-Volume Triage
+
+**Use case:** High-volume alert or finding triage where reducing analyst review load is a priority and some miss risk is accepted.
+
+**Requirements:**
+
+- False Review Load ≤ 55%
+- Critical Miss Rate ≤ 20%
+- Balanced OTS > 0
+
+**Ranking rule:** False Review Load ascending, then Balanced OTS descending.
+
+| # | Model | CW% | BalOTS | CritMiss | ThreatCap | FalseRev | FalseEsc | Cost/Run | AvgTime |
+|---:|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| 1 | `deepseek-v4-flash` | 40.9% | 26.2% | 16.7% | 83.3% | 48.7% | 19.7% | $0.10 | 24.31s |
+| 2 | `gemma4-31b` | 40.6% | 27.1% | 18.8% | 81.2% | 52.6% | 13.2% | $0.00 | 17.21s |
+| 3 | `grok-4.20` | 36.0% | 22.9% | 18.8% | 81.2% | 52.6% | 9.2% | $2.23 | 9.39s |
+
+**Matched:** 3 / 48 models.
+
+**Interpretation:** Under these constraints, `deepseek-v4-flash` is the current review-load reduction leader. It cuts review load sharply compared with `always-inc`, but its miss risk is too high for high-safety use cases.
+
+## What We Benchmark
+
+A **THOR finding** is a security-relevant detection or forensic observation produced by THOR. It can represent a suspicious file, registry artifact, persistence mechanism, process relationship, network indicator, toolmark, anomaly, or other investigation-relevant signal.
+
+Each model receives the same enriched THOR finding context and must classify the finding as:
+
+- `FP` — False Positive
+- `Inc` — Inconclusive
+- `TP` — True Positive
+
+Operationally, these labels mean:
+
+- **FP** = suppress / no analyst action needed
+- **Inc** = review-worthy / legitimate anomaly / context needed
+- **TP** = real incident / immediate investigation
+
+Inconclusive does not simply mean that the model failed to decide. In this benchmark, Inconclusive often represents findings that require human review because they may be context-dependent legitimate anomalies. Examples include dual-use tools, remote management software, suspicious administrative activity, or unusual persistence mechanisms that may be legitimate in a specific customer environment. Operationally, such findings should not be suppressed as false positives.
+
+The benchmark asks: given the same enriched THOR finding, how close is the model to expert ground truth, and how useful would its decision be in a SOC triage workflow?
+
+## What This Benchmark Does Not Measure
+
+This is not a general LLM benchmark. It does not measure:
+
+- generic reasoning ability
+- coding ability
+- vulnerability discovery
+- exploit development
+- agentic tool-use workflows
+- retrieval-augmented SOC workflows
+- model performance after organization-specific prompt tuning
+
+Generic LLM benchmarks are not enough for this use case because THOR finding triage is a domain-specific operational decision problem. The important failures are not just “wrong answer” failures; they have different SOC consequences. Suppressing a true incident is much worse than sending an extra finding to review, and escalating a false positive is different from marking a legitimate anomaly as review-worthy.
+
+## Benchmark Setup
+
+Each model receives the same enriched THOR finding context and has to return a structured assessment:
+
+- classification: `TP`, `Inc`, or `FP`
+- priority score
+- confidence value
+- short reasoning / assessment
+
+The benchmark uses:
+
+- the same input findings for every model
+- the same enriched THOR context for every model
+- no external tools
+- no model-specific prompt tuning
+- no internet lookup
+- no VirusTotal lookup
+- no sandbox query
+- no SIEM search
+- no EDR artifact retrieval
+- no ITAM / CMDB lookup
+- no private knowledge-base retrieval
+
+The public repository contains methodology, charts, and aggregated result data. The exact finding set, private investigation material, and expert ground truth are not published, both to avoid future training-data contamination and to protect sensitive investigation context.
+
+## Prompt Design
+
+We intentionally use a simple and fairly neutral prompt to avoid optimizing the benchmark around one model family or prompt style. Prompt engineering is important in production, but this benchmark tries to compare models on a stable and repeatable basis.
+
+No model receives special phrasing, provider-specific tuning, or a custom prompt designed around its known behavior. This makes the benchmark less optimized than a production deployment, but more comparable across models.
+
+## Why No External Tool Use?
+
+Once tools are added, the benchmark measures **model + tools + data availability + integration design**, not just the model’s direct triage ability. Tool use is important in production, but every SOC has a different tool stack, data quality, and integration depth, so we do not use tools in this benchmark.
+
+A model with access to VirusTotal, SIEM context, EDR telemetry, asset inventory, sandboxing, or customer-specific allowlists may perform better in a real SOC. That is a valid production design, but it is no longer the same controlled model comparison.
+
+This benchmark should therefore be read as a standardized baseline, not as a ceiling for a fully equipped SOC workflow.
+
+## Scoring Methodology
+
+No single metric should be used alone to select a model. A model with high CW% may still have an unacceptable Critical Miss Rate. A model with low Critical Miss Rate may still create too much review load.
+
+### Classification quality
+
+- **CW%** — Confidence-weighted score quality. Rewards confident correct answers and penalizes confident wrong answers.
+- **Ord%** — Ordinal classification quality. Gives partial credit when the model is close on the ordered `FP → Inc → TP` scale.
+- **MAE / RMSE** — Priority-score error against expert scores. Lower is better.
+
+### Operational safety and usefulness
+
+- **OTS%** — Operational Triage Score using the OTS matrix below.
+- **Balanced OTS** — OTS variant that balances classes so the model is not rewarded simply for following the majority class.
+- **Critical Miss Rate** — Share of true positives classified as false positives (`TP→FP`). Lower is safer.
+- **Threat Capture Rate** — Share of true positives kept out of suppression (`TP→TP` or `TP→Inc`). Higher is safer.
+- **Anomaly Capture Rate** — Share of inconclusive/review-worthy anomalies kept out of suppression.
+- **False Review Load** — Share of false positives not suppressed (`FP→Inc` or `FP→TP`). Lower reduces analyst workload.
+- **False Escalation Rate** — Share of false positives escalated as true positives (`FP→TP`). Lower reduces unnecessary incident escalation.
+
+### Efficiency
+
+- **Cost per run** — Estimated benchmark-run cost from observed token usage and model pricing.
+- **Average seconds per event** — Average wall-clock processing time per finding.
+
+## OTS v2 Matrix
+
+| Ground truth | Model=FP | Model=Inc | Model=TP |
+|---|---:|---:|---:|
+| GT=FP | +2.0 | -0.2 | -1.0 |
+| GT=Inc | -1.5 | +2.0 | +0.5 |
+| GT=TP | -4.0 | +0.5 | +2.0 |
+
+Interpretation:
+
+- `TP→FP` is the worst failure because a real incident is suppressed.
+- `TP→Inc` is not ideal but review-safe.
+- `Inc→FP` suppresses a legitimate anomaly that should stay review-worthy.
+- `FP→Inc` creates unnecessary review load.
+- `FP→TP` creates unnecessary escalation.
+
 ## Full Data
 
-See [combined/leaderboard.csv](combined/leaderboard.csv) for the sortable leaderboard and [combined/leaderboard.json](combined/leaderboard.json) for the richer machine-readable summary, including speed and token fields used by the charts.
+Sortable and machine-readable data:
 
-For methodology details, see [BENCHMARK.md](BENCHMARK.md) and [SCORING.md](SCORING.md).
+- [combined/leaderboard.csv](combined/leaderboard.csv)
+- [combined/leaderboard.json](combined/leaderboard.json)
+- [combined/operational-baselines.csv](combined/operational-baselines.csv)
+- [combined/operational-profile-high-safety.csv](combined/operational-profile-high-safety.csv)
+- [combined/operational-profile-balanced-soc.csv](combined/operational-profile-balanced-soc.csv)
+- [combined/operational-profile-noise-reduction.csv](combined/operational-profile-noise-reduction.csv)
+
+Additional documentation:
+
+- [OPERATIONAL_PROFILES.md](OPERATIONAL_PROFILES.md) — extended operational profile tables
+- [BENCHMARK.md](BENCHMARK.md) — benchmark setup details
+- [SCORING.md](SCORING.md) — scoring details
+
+The README intentionally contains the main operational summary so visitors do not need to read the extended profile page first.
 
 ## Related
 

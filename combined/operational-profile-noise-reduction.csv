@@ -1,0 +1,4 @@
+rank,model,cw_pct,balanced_ots,critical_miss,threat_capture,false_review,false_escalation,cost_per_run,avg_seconds_per_event,n,incomplete
+1,deepseek-v4-flash,40.9,26.2,16.7,83.3,48.7,19.7,0.10,24.31,154,False
+2,gemma4-31b,40.6,27.1,18.8,81.2,52.6,13.2,0.00,17.21,154,False
+3,grok-4.20,36.0,22.9,18.8,81.2,52.6,9.2,2.23,9.39,154,False
