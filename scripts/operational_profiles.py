@@ -157,60 +157,201 @@ def plot_profile_summary(profile_rows, baselines):
     fig.savefig(CHARTS / "operational-profile-summary.png", dpi=150)
 
 
-def scatter_charts(models):
-    leaders = {"llama-3.1-8b", "deepseek-v3.2", "deepseek-v4-flash"}
-    colors = [m["critical_miss"] for m in models]
-    sizes = [60 + max(m["balanced_ots"], 0) * 4 for m in models]
 
-    fig, ax = plt.subplots(figsize=(12, 8))
-    sc = ax.scatter([m["false_review"] for m in models], [m["critical_miss"] for m in models], c=[m["balanced_ots"] for m in models], cmap="viridis", s=sizes, alpha=0.75, edgecolors="gray", linewidths=0.5)
-    for m in models:
-        if m["model"] in leaders or (m["critical_miss"] <= 15 and m["false_review"] <= 75 and m["balanced_ots"] > 20):
-            ax.annotate(m["model"], (m["false_review"], m["critical_miss"]), xytext=(5, 4), textcoords="offset points", fontsize=8)
-    ax.axhline(5, color="#e74c3c", linestyle="--", linewidth=0.8, alpha=0.6)
-    ax.axhline(15, color="#e67e22", linestyle="--", linewidth=0.8, alpha=0.6)
-    ax.axvline(55, color="gray", linestyle="--", linewidth=0.8, alpha=0.5)
-    ax.axvline(75, color="gray", linestyle="--", linewidth=0.8, alpha=0.5)
-    ax.set_xlabel("False Review Load (%) — lower is less analyst review")
-    ax.set_ylabel("Critical Miss Rate (%) — lower is safer")
-    ax.set_title("Critical Miss Rate vs False Review Load")
-    cbar = fig.colorbar(sc, ax=ax)
-    cbar.set_label("Balanced OTS (%)")
-    ax.grid(alpha=0.25)
-    plt.tight_layout()
-    fig.savefig(CHARTS / "critical-miss-vs-false-review.png", dpi=150)
+def pareto_min_min(rows, x_key, y_key):
+    frontier = []
+    for m in rows:
+        dominated = False
+        for o in rows:
+            if o is m:
+                continue
+            if (o[x_key] <= m[x_key] and o[y_key] <= m[y_key] and
+                    (o[x_key] < m[x_key] or o[y_key] < m[y_key])):
+                dominated = True
+                break
+        if not dominated:
+            frontier.append(m["model"])
+    return set(frontier)
 
-    fig, ax = plt.subplots(figsize=(12, 8))
-    sc = ax.scatter([m["false_review"] for m in models], [m["balanced_ots"] for m in models], c=colors, cmap="RdYlGn_r", s=120, alpha=0.75, edgecolors="gray", linewidths=0.5)
-    for m in models:
-        if m["model"] in leaders or m["balanced_ots"] >= 33:
-            ax.annotate(m["model"], (m["false_review"], m["balanced_ots"]), xytext=(5, 4), textcoords="offset points", fontsize=8)
-    ax.axvline(55, color="gray", linestyle="--", linewidth=0.8, alpha=0.5)
-    ax.axvline(75, color="gray", linestyle="--", linewidth=0.8, alpha=0.5)
-    ax.axhline(0, color="black", linewidth=0.8, alpha=0.5)
-    ax.set_xlabel("False Review Load (%) — lower is better")
-    ax.set_ylabel("Balanced OTS (%) — higher is better")
-    ax.set_title("Balanced OTS vs False Review Load (color = Critical Miss Rate)")
-    cbar = fig.colorbar(sc, ax=ax)
-    cbar.set_label("Critical Miss Rate (%)")
-    ax.grid(alpha=0.25)
-    plt.tight_layout()
-    fig.savefig(CHARTS / "balanced-ots-vs-false-review.png", dpi=150)
 
-    fig, ax = plt.subplots(figsize=(12, 8))
-    sc = ax.scatter([m["cw_pct"] for m in models], [m["balanced_ots"] for m in models], c=[m["critical_miss"] for m in models], cmap="RdYlGn_r", s=120, alpha=0.75, edgecolors="gray", linewidths=0.5)
-    for m in models:
-        if m["model"] in leaders or m["cw_pct"] >= 40 or m["balanced_ots"] >= 35:
-            ax.annotate(m["model"], (m["cw_pct"], m["balanced_ots"]), xytext=(5, 4), textcoords="offset points", fontsize=8)
-    ax.set_xlabel("CW% — confidence-weighted classification/score quality")
-    ax.set_ylabel("Balanced OTS (%) — operational triage utility")
-    ax.set_title("CW% vs Balanced OTS")
-    cbar = fig.colorbar(sc, ax=ax)
-    cbar.set_label("Critical Miss Rate (%)")
-    ax.grid(alpha=0.25)
-    plt.tight_layout()
-    fig.savefig(CHARTS / "cw-vs-balanced-ots.png", dpi=150)
+def pareto_min_max(rows, x_key, y_key):
+    frontier = []
+    for m in rows:
+        dominated = False
+        for o in rows:
+            if o is m:
+                continue
+            if (o[x_key] <= m[x_key] and o[y_key] >= m[y_key] and
+                    (o[x_key] < m[x_key] or o[y_key] > m[y_key])):
+                dominated = True
+                break
+        if not dominated:
+            frontier.append(m["model"])
+    return set(frontier)
 
+
+def pareto_max_max(rows, x_key, y_key):
+    frontier = []
+    for m in rows:
+        dominated = False
+        for o in rows:
+            if o is m:
+                continue
+            if (o[x_key] >= m[x_key] and o[y_key] >= m[y_key] and
+                    (o[x_key] > m[x_key] or o[y_key] > m[y_key])):
+                dominated = True
+                break
+        if not dominated:
+            frontier.append(m["model"])
+    return set(frontier)
+
+
+def add_corner_labels(ax, upper_left, upper_right, lower_left, lower_right):
+    box = dict(boxstyle="round,pad=0.35", facecolor="white", edgecolor="lightgray", alpha=0.86)
+    ax.text(0.02, 0.97, upper_left, transform=ax.transAxes, ha="left", va="top", fontsize=8.5, bbox=box)
+    ax.text(0.98, 0.97, upper_right, transform=ax.transAxes, ha="right", va="top", fontsize=8.5, bbox=box)
+    ax.text(0.02, 0.03, lower_left, transform=ax.transAxes, ha="left", va="bottom", fontsize=8.5, bbox=box)
+    ax.text(0.98, 0.03, lower_right, transform=ax.transAxes, ha="right", va="bottom", fontsize=8.5, bbox=box)
+
+
+def label_points(ax, rows, x_key, y_key, labels, all_labels=False):
+    """Deterministic label placement. adjustText is optional and not required."""
+    labels = set(labels)
+    offsets = [(7, 5), (7, -10), (-7, 5), (-7, -10), (10, 12), (-10, 12), (10, -16), (-10, -16)]
+    texts = []
+    for i, m in enumerate(rows):
+        if all_labels or m["model"] in labels:
+            dx, dy = offsets[i % len(offsets)]
+            ha = "left" if dx > 0 else "right"
+            t = ax.annotate(
+                m["model"],
+                (m[x_key], m[y_key]),
+                xytext=(dx, dy),
+                textcoords="offset points",
+                fontsize=7.5 if all_labels else 8.5,
+                ha=ha,
+                va="center",
+                bbox=dict(boxstyle="round,pad=0.18", facecolor="white", edgecolor="none", alpha=0.72),
+                arrowprops=dict(arrowstyle="-", color="gray", lw=0.35, alpha=0.55) if not all_labels else None,
+                zorder=10,
+            )
+            texts.append(t)
+    try:
+        from adjustText import adjust_text
+        adjust_text(texts, ax=ax, arrowprops=dict(arrowstyle="-", color="gray", lw=0.4, alpha=0.55))
+    except Exception:
+        pass
+
+
+def scatter_charts(models, baselines):
+    profile_leaders = {"llama-3.1-8b", "deepseek-v3.2", "deepseek-v4-flash"}
+    mentioned = profile_leaders | {"gpt-5-nano", "nemotron-3-nano-omni", "llama-3.1-70b", "qwen3-235b-a22b", "minimax-m2.5", "gpt-oss-120b", "gemma4-31b", "grok-4.20"}
+    all_rows = models + baselines
+    baseline_names = {m["model"] for m in baselines}
+
+    def draw_scatter(filename, x_key, y_key, color_key, size_key, title, xlabel, ylabel,
+                     pareto_names, top_names, corner_labels, color_label, cmap="RdYlGn_r", all_labels=False):
+        fig, ax = plt.subplots(figsize=(13.5, 9))
+        normal = [m for m in all_rows if m["tier"] != "baseline"]
+        base = [m for m in all_rows if m["tier"] == "baseline"]
+        sizes = [90 + max(float(m.get(size_key, 0)), 0) * 3 for m in normal]
+        sc = ax.scatter(
+            [m[x_key] for m in normal], [m[y_key] for m in normal],
+            c=[m[color_key] for m in normal], cmap=cmap, s=sizes,
+            alpha=0.72, edgecolors="gray", linewidths=0.6, zorder=3,
+        )
+        ax.scatter(
+            [m[x_key] for m in base], [m[y_key] for m in base],
+            marker="X", s=210, c="#111111", edgecolors="white", linewidths=0.9,
+            label="Baselines", zorder=6,
+        )
+        frontier = [m for m in all_rows if m["model"] in pareto_names]
+        ax.scatter(
+            [m[x_key] for m in frontier], [m[y_key] for m in frontier],
+            facecolors="none", edgecolors="#f1c40f", linewidths=2.1, s=250,
+            label="Pareto frontier", zorder=7,
+        )
+        # Add plot padding before labels/corner notes so baselines at 0/100 do not
+        # collide with the explanatory corner boxes.
+        xs = [m[x_key] for m in all_rows]
+        ys = [m[y_key] for m in all_rows]
+        x_span = max(xs) - min(xs) or 1
+        y_span = max(ys) - min(ys) or 1
+        ax.set_xlim(min(xs) - x_span * 0.10, max(xs) + x_span * 0.10)
+        ax.set_ylim(min(ys) - y_span * 0.12, max(ys) + y_span * 0.12)
+
+        label_set = profile_leaders | mentioned | baseline_names | pareto_names | set(top_names)
+        label_points(ax, all_rows, x_key, y_key, label_set, all_labels=all_labels)
+        add_corner_labels(ax, *corner_labels)
+        ax.set_xlabel(xlabel)
+        ax.set_ylabel(ylabel)
+        ax.set_title(title)
+        ax.grid(alpha=0.25)
+        ax.legend(loc="best", framealpha=0.9)
+        cbar = fig.colorbar(sc, ax=ax)
+        cbar.set_label(color_label)
+        plt.tight_layout()
+        fig.savefig(CHARTS / filename, dpi=150)
+
+    # 1. Critical Miss Rate vs False Review Load: lower/lower is better.
+    cm_pareto = pareto_min_min(all_rows, "false_review", "critical_miss")
+    cm_top = {m["model"] for m in sorted(models, key=lambda m: (m["critical_miss"], m["false_review"]))[:10]}
+    for suffix, all_labels in [("", False), ("-full-labeled", True)]:
+        draw_scatter(
+            f"critical-miss-vs-false-review{suffix}.png",
+            "false_review", "critical_miss", "balanced_ots", "balanced_ots",
+            "Critical Miss Rate vs False Review Load",
+            "False Review Load (%) — lower is less analyst review",
+            "Critical Miss Rate (%) — lower is safer",
+            cm_pareto, cm_top,
+            (
+                "Upper-left\nefficient but risky",
+                "Upper-right\nworst: noisy + risky",
+                "Lower-left\nideal: safe + efficient",
+                "Lower-right\nsafe but noisy",
+            ),
+            "Balanced OTS (%)", cmap="viridis", all_labels=all_labels,
+        )
+
+    # 2. Balanced OTS vs False Review Load: lower x / higher y is better.
+    bo_pareto = pareto_min_max(all_rows, "false_review", "balanced_ots")
+    bo_top = {m["model"] for m in sorted(models, key=lambda m: m["balanced_ots"], reverse=True)[:10]}
+    for suffix, all_labels in [("", False), ("-full-labeled", True)]:
+        draw_scatter(
+            f"balanced-ots-vs-false-review{suffix}.png",
+            "false_review", "balanced_ots", "critical_miss", "balanced_ots",
+            "Balanced OTS vs False Review Load",
+            "False Review Load (%) — lower is better",
+            "Balanced OTS (%) — higher is better",
+            bo_pareto, bo_top,
+            (
+                "Upper-left\nbest trade-off",
+                "Upper-right\nstrong but noisy",
+                "Lower-left\nefficient but weak",
+                "Lower-right\nweak and noisy",
+            ),
+            "Critical Miss Rate (%)", cmap="RdYlGn_r", all_labels=all_labels,
+        )
+
+    # 3. CW% vs Balanced OTS: higher/higher is better.
+    cw_pareto = pareto_max_max(all_rows, "cw_pct", "balanced_ots")
+    cw_top = {m["model"] for m in sorted(models, key=lambda m: m["cw_pct"], reverse=True)[:10]}
+    for suffix, all_labels in [("", False), ("-full-labeled", True)]:
+        draw_scatter(
+            f"cw-vs-balanced-ots{suffix}.png",
+            "cw_pct", "balanced_ots", "critical_miss", "balanced_ots",
+            "CW% vs Balanced OTS",
+            "CW% — higher is better",
+            "Balanced OTS (%) — higher is better",
+            cw_pareto, cw_top,
+            (
+                "Upper-left\noperationally useful,\nlower classic score",
+                "Upper-right\nstrong on both views",
+                "Lower-left\nweak on both views",
+                "Lower-right\nhigh CW%, weaker ops",
+            ),
+            "Critical Miss Rate (%)", cmap="RdYlGn_r", all_labels=all_labels,
+        )
 
 def main():
     rows = load_rows()
@@ -219,12 +360,13 @@ def main():
     profile_rows = write_profile_csvs(models)
     write_baseline_csv(baselines)
     plot_profile_summary(profile_rows, baselines)
-    scatter_charts(models)
+    scatter_charts(models, baselines)
     print("✓ operational profile CSVs")
     print("✓ operational-profile-summary.png")
     print("✓ critical-miss-vs-false-review.png")
     print("✓ balanced-ots-vs-false-review.png")
     print("✓ cw-vs-balanced-ots.png")
+    print("✓ full-labeled scatter appendix charts")
 
 
 if __name__ == "__main__":

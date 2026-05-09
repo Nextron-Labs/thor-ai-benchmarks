@@ -18,39 +18,90 @@ There is no single best model. The useful choice depends on whether the deployme
 
 ## Main Decision Charts
 
+The first charts are decision charts: they are meant to help pick a model for an operational profile, not just rank models by one score. Scatter plots label profile leaders, baselines, Pareto-frontier models, top metric performers, and models discussed in the README. Full-labeled appendix versions are also generated for detailed inspection.
+
 ### 1. Operational Profile Summary
 
 ![Operational Profile Summary](charts/operational-profile-summary.png)
 
-This chart compares the current profile leaders with the safe `always-inc` baseline. Lower Critical Miss Rate is safer; lower False Review Load means fewer findings sent to analysts; higher Balanced OTS means better operational utility. The main trade-off is visible immediately: safer models tend to preserve more review load.
+This chart compares the current profile leaders with the safe `always-inc` baseline. Lower Critical Miss Rate is safer; lower False Review Load means fewer findings sent to analysts; higher Balanced OTS means better operational utility.
+
+The main trade-off is visible immediately: safer models tend to preserve more review load. `llama-3.1-8b` is the high-safety profile leader because it keeps miss risk low while slightly improving on the `always-inc` baseline, but it is still noisy. `deepseek-v4-flash` removes much more review load, but that comes with higher miss risk.
 
 ### 2. Critical Miss Rate vs False Review Load
 
 ![Critical Miss Rate vs False Review Load](charts/critical-miss-vs-false-review.png)
 
-This is the primary operational selection chart. The lower-left area is best: fewer missed true positives and fewer unnecessary reviews. The horizontal guide lines show the high-safety and balanced-profile miss-rate thresholds; the vertical lines show review-load constraints.
+### How to read this chart
+
+- Upper-left: efficient but risky — low review load, but too many true positives are suppressed
+- Upper-right: worst area — high review load and high miss risk
+- Lower-left: ideal area — few missed true positives and low unnecessary review load
+- Lower-right: safe but noisy — few missed true positives, but too many false positives still go to review
+
+This is one of the most important operational charts. A model in the lower-left would reduce analyst workload without hiding real incidents. Models near `always-inc` are safe but do not reduce enough noise. Models far left but high on the y-axis reduce workload at the cost of missing too many real threats.
+
+The current data set does not contain a perfect lower-left model. `llama-3.1-8b` sits closer to the safe/noisy area, while `deepseek-v4-flash` moves left toward lower review load but upward toward more miss risk.
+
+Full-labeled detail chart: [critical-miss-vs-false-review-full-labeled.png](charts/critical-miss-vs-false-review-full-labeled.png)
 
 ### 3. Balanced OTS vs False Review Load
 
 ![Balanced OTS vs False Review Load](charts/balanced-ots-vs-false-review.png)
 
-This chart shows operational utility against analyst workload. Higher is better on the y-axis, lower is better on the x-axis. Color encodes Critical Miss Rate, so a high Balanced OTS point may still be unacceptable if it is too red.
+### How to read this chart
+
+- Upper-left: best operational trade-off — high operational score and low review load
+- Upper-right: safe/strong but noisy — high score, but still sends many FPs to review
+- Lower-left: efficient but weak — reduces review load but loses too much operational quality
+- Lower-right: weak and noisy — poor operational score and high review load
+
+Balanced OTS rewards operationally safe decisions across FP, Inc and TP classes. It should not be read without False Review Load. A model that sends everything to review can look safe, but it is not useful as a triage filter.
+
+`always-inc` illustrates the noisy-safe baseline: strong safety, but 100% false review load. `deepseek-v3.2` is the current balanced SOC profile leader because it stays close to that operational score while reducing review load substantially.
+
+Full-labeled detail chart: [balanced-ots-vs-false-review-full-labeled.png](charts/balanced-ots-vs-false-review-full-labeled.png)
 
 ### 4. CW% vs Balanced OTS
 
 ![CW% vs Balanced OTS](charts/cw-vs-balanced-ots.png)
 
-CW% remains useful, but it is not the full deployment decision. This chart shows where classic confidence-weighted quality and operational utility agree or diverge. A model can score well on CW% while still having a miss rate that is too high for a safety-focused workflow.
+### How to read this chart
+
+- Upper-left: operationally safer/useful, but weaker exact classification score
+- Upper-right: strong on both classic scoring and operational scoring
+- Lower-left: weak on both views
+- Lower-right: good classic classification score, but weaker operational behavior
+
+This chart shows why CW% alone is not enough. CW% rewards confidence-weighted closeness to the expert answer, while Balanced OTS emphasizes operational consequences. A model can look strong by CW% while still having too many critical misses or too much false escalation for a specific SOC use case.
+
+The top CW% models are useful to inspect, but they are not automatically the safest deployment choices. The operational profile leaders are selected by constraints, not by CW% alone.
+
+Full-labeled detail chart: [cw-vs-balanced-ots-full-labeled.png](charts/cw-vs-balanced-ots-full-labeled.png)
 
 ### 5. Quality vs Cost
 
 ![Quality vs Cost](charts/quality-vs-cost.png)
 
-This chart estimates benchmark-run cost from observed token usage and model pricing. It is useful for separating expensive quality gains from low-cost practical options. Cost is not a proxy for safety; it must be read together with the operational charts above.
+### How to read this chart
+
+- Upper-left: best cost/quality area — higher CW% at lower estimated cost
+- Upper-right: strong but expensive — useful only if the quality gain justifies cost
+- Lower-left: cheap but weaker — low cost, but lower benchmark quality
+- Lower-right: poor trade-off — lower quality and higher cost
+
+This chart estimates benchmark-run cost from observed token usage and model pricing. It is useful for separating expensive quality gains from low-cost practical options. Cost is not a proxy for safety; it must be read together with Critical Miss Rate, False Review Load, and Balanced OTS.
 
 ### 6. Quality vs Speed
 
 ![Quality vs Speed](charts/quality-vs-speed.png)
+
+### How to read this chart
+
+- Upper-left: best speed/quality area — higher CW% with low per-finding latency
+- Upper-right: high quality but slow — may fit batch review, not fast triage
+- Lower-left: fast but weaker — useful only if quality is sufficient for the use case
+- Lower-right: poor trade-off — slower and lower quality
 
 This chart compares quality against average seconds per event. It helps identify models that may be operationally usable for near-real-time or high-volume triage. As with cost, speed does not replace safety metrics.
 
@@ -58,7 +109,9 @@ This chart compares quality against average seconds per event. It helps identify
 
 ![Classification Breakdown](charts/classification-breakdown.png)
 
-This chart shows exact matches, near misses, hard misses, LLM errors, and any coverage gaps. It helps explain why two models with similar headline scores may behave differently. Hatched hard-miss overlays mark the most dangerous classification failure class: `TP→FP`.
+This chart has two panels to avoid mixing different error meanings. Panel A shows ordinary classification closeness: exact match, one-step away, and more-than-one-step away. Panel B separately shows operationally important error types: critical misses (`TP→FP`), over-calls (`FP→TP`), LLM errors, and coverage gaps.
+
+The important point is that `TP→FP` and `FP→TP` are not the same failure. `TP→FP` suppresses a real incident and is the most dangerous operational error. `FP→TP` creates unnecessary escalation and analyst load, but it does not hide a real threat.
 
 ### 8. CW% Leaderboard
 

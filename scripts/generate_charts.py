@@ -145,71 +145,67 @@ fig.savefig(charts_dir / 'cw-vs-mae.png', dpi=150, bbox_inches='tight')
 print(f"✓ cw-vs-mae.png")
 
 # ── Chart 3: Classification Breakdown ──────────────────────────
-# Categories: exact + minor + hard = n (additive, mutually exclusive)
-# hard_over and hard_miss OVERLAP with minor and hard, NOT additive.
-# They show classification errors within the score categories.
-# So we stack: exact → minor → hard → errors → gap = n_findings_total
-# and overlay hard_miss (hatched red within hard) and hard_over (hatched yellow within hard+minor).
-fig, ax = plt.subplots(figsize=(14, 11))
+# This chart intentionally separates ordinal closeness from operationally
+# different error types. TP→FP critical misses and FP→TP over-calls are shown
+# as separate bars, not merged into a generic red "hard miss" bucket.
+fig, (ax1, ax2) = plt.subplots(
+    ncols=2, sharey=True, figsize=(18, 12),
+    gridspec_kw={'width_ratios': [1.45, 1.0]}
+)
 y_pos = range(len(names))
 exact = [m['exact'] for m in models]
 minor = [m['minor'] for m in models]
 hard = [m['hard'] for m in models]
-hard_miss = [int(m.get('hard_miss', 0)) for m in models]   # TP→FP: overlap with hard
-hard_over = [int(m.get('hard_over', 0)) for m in models]  # FP→TP: overlap with minor+hard
+critical_miss = [int(m.get('hard_miss', 0)) for m in models]   # TP→FP
+false_escalation = [int(m.get('hard_over', 0)) for m in models]  # FP→TP
 n_errors = [int(m.get('n_errors', 0)) for m in models]
 
 # ── Total GT findings count ──
 n_findings_total = 154  # R1=16 + R2=7 + R3=20 + R4=6 + R5=23 + R6=67 + R7=15
+gap = [max(0, n_findings_total - int(m['n']) - ne) for m, ne in zip(models, n_errors)]
 
-# Stack: exact → minor → hard → errors → gap = n_findings_total
-# Note: n_errors are findings excluded from n (LLM errors), so:
-#   gap = n_findings_total - n_matched - n_errors (truly not reviewed)
-base1 = [e+m for e,m in zip(exact,minor)]        # exact + minor
-base2 = [b+h for b,h in zip(base1,hard)]           # + hard
-base3 = [b+ne for b,ne in zip(base2,n_errors)]     # + errors
-base4 = [b + (n_findings_total - m['n'] - ne) for b,m,ne in zip(base3,models,n_errors)]  # + gap
-gap = [n_findings_total - m['n'] - ne for m,ne in zip(models,n_errors)]  # missing findings (not reviewed AND not errored)
+# Left panel: ordinal distance only. Use neutral colors; do not imply every
+# >1-step miss has the same operational severity.
+base1 = [e + mi for e, mi in zip(exact, minor)]
+ax1.barh(y_pos, exact, color='#2ECC71', edgecolor='white', linewidth=0.5, label='Exact match')
+ax1.barh(y_pos, minor, left=exact, color='#3498DB', edgecolor='white', linewidth=0.5, label='One-step away')
+ax1.barh(y_pos, hard, left=base1, color='#7F8C8D', edgecolor='white', linewidth=0.5, label='More than one step away')
+ax1.set_yticks(y_pos)
+ax1.set_yticklabels(names, fontsize=9)
+ax1.invert_yaxis()
+ax1.set_xlabel('Findings by ordinal distance', fontsize=11)
+ax1.set_xlim(0, n_findings_total)
+ax1.set_title('A. Classification closeness', fontsize=13, fontweight='bold')
+ax1.legend(loc='lower right', fontsize=9, framealpha=0.9)
+ax1.grid(axis='x', alpha=0.2)
 
-# Solid bars
-ax.barh(y_pos, exact, color='#2ECC71', edgecolor='white', linewidth=0.5, label='Exact match')
-ax.barh(y_pos, minor, left=exact, color='#3498DB', edgecolor='white', linewidth=0.5, label='Minor miss (±1 step)')
-ax.barh(y_pos, hard, left=base1, color='#E74C3C', edgecolor='white', linewidth=0.5, label='Hard miss (>1 step)')
-ax.barh(y_pos, n_errors, left=base2, color='#95A5A6', edgecolor='white', linewidth=0.5, hatch='///', label='LLM error')
-ax.barh(y_pos, gap, left=base3, color='#BDC3C7', edgecolor='white', linewidth=0.5, alpha=0.35, hatch='xx', label=f'Gap (not reached, {n_findings_total} total)')
+# Right panel: operationally important error types, separated.
+h = 0.18
+bars_cm = ax2.barh([i - 1.5*h for i in y_pos], critical_miss, height=h, color='#C0392B', label='Critical miss: TP→FP')
+bars_fe = ax2.barh([i - 0.5*h for i in y_pos], false_escalation, height=h, color='#F39C12', label='Over-call: FP→TP')
+bars_err = ax2.barh([i + 0.5*h for i in y_pos], n_errors, height=h, color='#95A5A6', label='LLM error')
+bars_gap = ax2.barh([i + 1.5*h for i in y_pos], gap, height=h, color='#D5DBDB', label='Coverage gap')
+for bars in (bars_cm, bars_fe, bars_err, bars_gap):
+    for bar in bars:
+        val = bar.get_width()
+        if val > 0:
+            ax2.text(val + 0.35, bar.get_y() + bar.get_height()/2, f'{int(val)}', va='center', ha='left', fontsize=7)
+ax2.set_xlabel('Findings with operational impact', fontsize=11)
+ax2.set_title('B. Critical error types kept separate', fontsize=13, fontweight='bold')
+ax2.legend(loc='upper right', fontsize=9, framealpha=0.9)
+ax2.grid(axis='x', alpha=0.2)
+max_error = max(max(critical_miss), max(false_escalation), max(n_errors), max(gap), 1)
+ax2.set_xlim(0, max_error * 1.25)
+ax2.text(
+    0.02, 0.02,
+    'TP→FP suppresses a real incident. FP→TP escalates a false positive.\n'
+    'They are intentionally not shown as the same error class.',
+    transform=ax2.transAxes, fontsize=9, ha='left', va='bottom',
+    bbox=dict(boxstyle='round,pad=0.35', facecolor='white', edgecolor='lightgray', alpha=0.9)
+)
 
-# Overlay: hard_miss as hatched stripes within the hard segment
-# These are classification errors (TP→FP) that sit in the hard-miss score range
-for i in range(len(models)):
-    if hard_miss[i] > 0:
-        # Place hatching in the middle of the hard segment
-        hm_left = base1[i] + max(0, hard[i] - hard_miss[i]) // 2
-        ax.barh(i, min(hard_miss[i], hard[i]), left=hm_left,
-                color='#E74C3C', edgecolor='black', linewidth=0.8,
-                hatch='\\\\', alpha=0.6, zorder=3)
-
-ax.set_yticks(y_pos)
-ax.set_yticklabels(names, fontsize=10)
-ax.invert_yaxis()
-ax.set_xlabel('Number of Findings', fontsize=12)
-ax.set_xlim(0, n_findings_total * 1.05)
-ax.set_title('Classification Accuracy Breakdown by Model', fontsize=14, fontweight='bold')
-
-# Legend
-legend_items = [
-    mpatches.Patch(color='#2ECC71', label='Exact match'),
-    mpatches.Patch(color='#3498DB', label='Minor miss (±1 step)'),
-    mpatches.Patch(color='#E74C3C', label='Hard miss (>1 step)'),
-    mpatches.Patch(color='#95A5A6', label='LLM error'),
-    mpatches.Patch(facecolor='#BDC3C7', edgecolor='gray', hatch='xx', label=f'Gap (not reached, {n_findings_total} total)'),
-]
-# Add text annotation about classification errors
-ax.text(0.98, 0.02, f'hard_miss (TP→FP) shown as hatched overlay\nhard_over (FP→TP) overlaps minor + hard',
-        transform=ax.transAxes, fontsize=8, ha='right', va='bottom',
-        style='italic', color='gray')
-ax.legend(handles=legend_items, loc='lower right', fontsize=9, framealpha=0.9)
-
-plt.tight_layout()
+fig.suptitle('Classification Breakdown by Model', fontsize=15, fontweight='bold')
+plt.tight_layout(rect=[0, 0, 1, 0.98])
 fig.savefig(charts_dir / 'classification-breakdown.png', dpi=150, bbox_inches='tight')
 print(f"✓ classification-breakdown.png")
 
