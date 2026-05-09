@@ -16,6 +16,10 @@ These are **current profile leaders under the selected constraints**, not univer
 
 There is no single best model. The useful choice depends on whether the deployment optimizes for missed-incident avoidance, balanced SOC triage, review-load reduction, cost, or latency.
 
+## Reader Guide
+
+Start with the operational charts, not the CW% leaderboard. Use Critical Miss Rate vs False Review Load to understand safety vs workload. Use Balanced OTS vs False Review Load to see operational usefulness. Use CW% vs Balanced OTS to see where classic classification quality and operational triage quality diverge. Then use cost and speed charts only after the safety profile is acceptable.
+
 ## Main Decision Charts
 
 The first charts are decision charts: they are meant to help pick a model for an operational profile, not just rank models by one score. Scatter plots label profile leaders, baselines, Pareto-frontier models, top metric performers, and models discussed in the README. Full-labeled appendix versions are also generated for detailed inspection.
@@ -24,9 +28,9 @@ The first charts are decision charts: they are meant to help pick a model for an
 
 ![Operational Profile Summary](charts/operational-profile-summary.png)
 
-This chart compares the current profile leaders with the safe `always-inc` baseline. Lower Critical Miss Rate is safer; lower False Review Load means fewer findings sent to analysts; higher Balanced OTS means better operational utility.
+This chart puts the three operational profile leaders next to the `always-inc` safety baseline. Each group shows Balanced OTS, Critical Miss Rate, and False Review Load with value labels, so the trade-off is visible without reading the full tables.
 
-The main trade-off is visible immediately: safer models tend to preserve more review load. `llama-3.1-8b` is the high-safety profile leader because it keeps miss risk low while slightly improving on the `always-inc` baseline, but it is still noisy. `deepseek-v4-flash` removes much more review load, but that comes with higher miss risk.
+`llama-3.1-8b` is the high-safety profile leader under these constraints, but it still has high review load. `deepseek-v3.2` is the balanced profile leader under the current constraints. `deepseek-v4-flash` reduces review load strongly, but has higher miss risk. `always-inc` is a safety reference, not a useful triage model.
 
 ### 2. Critical Miss Rate vs False Review Load
 
@@ -75,7 +79,7 @@ Full-labeled detail chart: [balanced-ots-vs-false-review-full-labeled.png](chart
 
 This chart shows why CW% alone is not enough. CW% rewards confidence-weighted closeness to the expert answer, while Balanced OTS emphasizes operational consequences. A model can look strong by CW% while still having too many critical misses or too much false escalation for a specific SOC use case.
 
-The top CW% models are useful to inspect, but they are not automatically the safest deployment choices. The operational profile leaders are selected by constraints, not by CW% alone.
+The top CW% models are useful to inspect, but they are not automatically the safest deployment choices. A model can score well on classic confidence-weighted classification while still having a bad operational profile, especially if it suppresses too many TP or Inc findings. The operational profile leaders are selected by constraints, not by CW% alone.
 
 Full-labeled detail chart: [cw-vs-balanced-ots-full-labeled.png](charts/cw-vs-balanced-ots-full-labeled.png)
 
@@ -90,7 +94,7 @@ Full-labeled detail chart: [cw-vs-balanced-ots-full-labeled.png](charts/cw-vs-ba
 - Lower-left: cheap but weaker — low cost, but lower benchmark quality
 - Lower-right: poor trade-off — lower quality and higher cost
 
-This chart estimates benchmark-run cost from observed token usage and model pricing. It is useful for separating expensive quality gains from low-cost practical options. Cost is not a proxy for safety; it must be read together with Critical Miss Rate, False Review Load, and Balanced OTS.
+This chart estimates benchmark-run cost from observed token usage and model pricing. This chart is useful only after safety metrics are acceptable. A cheap model with high Critical Miss Rate is not a good production choice just because it is cheap.
 
 ### 6. Quality vs Speed
 
@@ -103,15 +107,24 @@ This chart estimates benchmark-run cost from observed token usage and model pric
 - Lower-left: fast but weaker — useful only if quality is sufficient for the use case
 - Lower-right: poor trade-off — slower and lower quality
 
-This chart compares quality against average seconds per event. It helps identify models that may be operationally usable for near-real-time or high-volume triage. As with cost, speed does not replace safety metrics.
+This chart compares quality against average seconds per event and matters for high-volume triage. Speed is useful only if Critical Miss Rate and False Review Load are acceptable for the workflow. A fast model with low review load but too many critical misses is efficient but risky, not production-ready.
 
 ### 7. Classification Breakdown
 
 ![Classification Breakdown](charts/classification-breakdown.png)
 
-This chart has two panels to avoid mixing different error meanings. Panel A shows ordinary classification closeness: exact match, one-step away, and more-than-one-step away. Panel B separately shows operationally important error types: critical misses (`TP→FP`), over-calls (`FP→TP`), LLM errors, and coverage gaps.
+This chart shows how each model’s decisions break down. Green is exact agreement with expert ground truth. Blue means the model was one step away. Orange/yellow means the model over-escalated benign findings. Dark red is the most dangerous case: a true positive classified as false positive. Red/purple marks review-worthy anomalies that were suppressed as false positives. Grey means the model failed to return a valid classification.
 
-The important point is that `TP→FP` and `FP→TP` are not the same failure. `TP→FP` suppresses a real incident and is the most dangerous operational error. `FP→TP` creates unnecessary escalation and analyst load, but it does not hide a real threat.
+### How to read this chart
+
+- More green is better.
+- Some blue can be acceptable, especially `TP→Inc`, because the finding still reaches a human.
+- Orange/yellow means analyst workload increases.
+- Dark red is the most dangerous segment and should be minimized.
+- Red/purple means relevant anomalies disappear and should also be minimized.
+- Grey indicates reliability problems.
+
+The stacked bars sum to 100% for each model over scored findings and invalid responses. Missing/unscored findings are not mixed into the stacked percentages. For absolute counts of only the operational error classes, see [operational-error-breakdown.png](charts/operational-error-breakdown.png).
 
 ### 8. CW% Leaderboard
 

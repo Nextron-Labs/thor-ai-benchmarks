@@ -145,69 +145,108 @@ fig.savefig(charts_dir / 'cw-vs-mae.png', dpi=150, bbox_inches='tight')
 print(f"✓ cw-vs-mae.png")
 
 # ── Chart 3: Classification Breakdown ──────────────────────────
-# This chart intentionally separates ordinal closeness from operationally
-# different error types. TP→FP critical misses and FP→TP over-calls are shown
-# as separate bars, not merged into a generic red "hard miss" bucket.
-fig, (ax1, ax2) = plt.subplots(
-    ncols=2, sharey=True, figsize=(18, 12),
-    gridspec_kw={'width_ratios': [1.45, 1.0]}
-)
+# Operational classification categories. Bars are normalized to each model's
+# scored findings plus invalid responses. Missing/unreached findings are not
+# mixed into the stacked percentages.
+combined_results = json.load(open(combined_dir / 'results-combined.json'))
+report_key = 'R1+R2+R3+R4+R5+R6+R7'
+
+cats = [
+    ('exact', 'Exact match', '#2ECC71'),
+    ('minor', 'Minor miss', '#3498DB'),
+    ('over_call', 'Over-call (FP→TP)', '#F39C12'),
+    ('critical_miss', 'Critical miss (TP→FP)', '#8B0000'),
+    ('anomaly_suppression', 'Anomaly suppression (Inc→FP)', '#8E44AD'),
+    ('llm_error', 'LLM error / invalid response', '#95A5A6'),
+]
+
+breakdown = []
+for m in models:
+    key = f"{m['model']}/{report_key}"
+    cc = combined_results.get(key, {}).get('class_counts', {})
+    exact_count = cc.get('FP-FP', 0) + cc.get('Inc-Inc', 0) + cc.get('TP-TP', 0)
+    # One-step differences that are not broken out as operational suppression.
+    minor_count = cc.get('FP-Inc', 0) + cc.get('TP-Inc', 0) + cc.get('Inc-TP', 0)
+    over_call = cc.get('FP-TP', 0)
+    critical_miss = cc.get('TP-FP', 0)
+    anomaly_suppression = cc.get('Inc-FP', 0)
+    llm_error = int(m.get('n_errors', 0))
+    total = exact_count + minor_count + over_call + critical_miss + anomaly_suppression + llm_error
+    # Fallback to leaderboard aggregates if class_counts are unavailable.
+    if total == 0:
+        exact_count = int(m.get('exact', 0))
+        over_call = int(m.get('hard_over', 0))
+        critical_miss = int(m.get('hard_miss', 0))
+        llm_error = int(m.get('n_errors', 0))
+        minor_count = max(0, int(m.get('n', 0)) - exact_count - over_call - critical_miss)
+        anomaly_suppression = 0
+        total = exact_count + minor_count + over_call + critical_miss + anomaly_suppression + llm_error
+    breakdown.append({
+        'model': m['model'],
+        'exact': exact_count,
+        'minor': minor_count,
+        'over_call': over_call,
+        'critical_miss': critical_miss,
+        'anomaly_suppression': anomaly_suppression,
+        'llm_error': llm_error,
+        'total': max(total, 1),
+    })
+
+fig, ax = plt.subplots(figsize=(15, 12))
 y_pos = range(len(names))
-exact = [m['exact'] for m in models]
-minor = [m['minor'] for m in models]
-hard = [m['hard'] for m in models]
-critical_miss = [int(m.get('hard_miss', 0)) for m in models]   # TP→FP
-false_escalation = [int(m.get('hard_over', 0)) for m in models]  # FP→TP
-n_errors = [int(m.get('n_errors', 0)) for m in models]
+left = np.zeros(len(breakdown))
+for key, label, color in cats:
+    vals = [100.0 * b[key] / b['total'] for b in breakdown]
+    ax.barh(y_pos, vals, left=left, color=color, edgecolor='white', linewidth=0.45, label=label)
+    left += np.array(vals)
 
-# ── Total GT findings count ──
-n_findings_total = 154  # R1=16 + R2=7 + R3=20 + R4=6 + R5=23 + R6=67 + R7=15
-gap = [max(0, n_findings_total - int(m['n']) - ne) for m, ne in zip(models, n_errors)]
-
-# Left panel: ordinal distance only. Use neutral colors; do not imply every
-# >1-step miss has the same operational severity.
-base1 = [e + mi for e, mi in zip(exact, minor)]
-ax1.barh(y_pos, exact, color='#2ECC71', edgecolor='white', linewidth=0.5, label='Exact match')
-ax1.barh(y_pos, minor, left=exact, color='#3498DB', edgecolor='white', linewidth=0.5, label='One-step away')
-ax1.barh(y_pos, hard, left=base1, color='#7F8C8D', edgecolor='white', linewidth=0.5, label='More than one step away')
-ax1.set_yticks(y_pos)
-ax1.set_yticklabels(names, fontsize=9)
-ax1.invert_yaxis()
-ax1.set_xlabel('Findings by ordinal distance', fontsize=11)
-ax1.set_xlim(0, n_findings_total)
-ax1.set_title('A. Classification closeness', fontsize=13, fontweight='bold')
-ax1.legend(loc='lower right', fontsize=9, framealpha=0.9)
-ax1.grid(axis='x', alpha=0.2)
-
-# Right panel: operationally important error types, separated.
-h = 0.18
-bars_cm = ax2.barh([i - 1.5*h for i in y_pos], critical_miss, height=h, color='#C0392B', label='Critical miss: TP→FP')
-bars_fe = ax2.barh([i - 0.5*h for i in y_pos], false_escalation, height=h, color='#F39C12', label='Over-call: FP→TP')
-bars_err = ax2.barh([i + 0.5*h for i in y_pos], n_errors, height=h, color='#95A5A6', label='LLM error')
-bars_gap = ax2.barh([i + 1.5*h for i in y_pos], gap, height=h, color='#D5DBDB', label='Coverage gap')
-for bars in (bars_cm, bars_fe, bars_err, bars_gap):
-    for bar in bars:
-        val = bar.get_width()
-        if val > 0:
-            ax2.text(val + 0.35, bar.get_y() + bar.get_height()/2, f'{int(val)}', va='center', ha='left', fontsize=7)
-ax2.set_xlabel('Findings with operational impact', fontsize=11)
-ax2.set_title('B. Critical error types kept separate', fontsize=13, fontweight='bold')
-ax2.legend(loc='upper right', fontsize=9, framealpha=0.9)
-ax2.grid(axis='x', alpha=0.2)
-max_error = max(max(critical_miss), max(false_escalation), max(n_errors), max(gap), 1)
-ax2.set_xlim(0, max_error * 1.25)
-ax2.text(
-    0.02, 0.02,
-    'TP→FP suppresses a real incident. FP→TP escalates a false positive.\n'
-    'They are intentionally not shown as the same error class.',
-    transform=ax2.transAxes, fontsize=9, ha='left', va='bottom',
+ax.set_yticks(y_pos)
+ax.set_yticklabels(names, fontsize=9)
+ax.invert_yaxis()
+ax.set_xlabel('Share of scored findings and invalid responses (%)', fontsize=12)
+ax.set_xlim(0, 100)
+ax.set_title('Classification Breakdown by Model — Operational Error Categories', fontsize=14, fontweight='bold')
+ax.legend(loc='lower right', fontsize=9, framealpha=0.94)
+ax.grid(axis='x', alpha=0.2)
+ax.text(
+    0.01, 0.015,
+    'Bars sum to 100% per model. Missing/unscored findings are not mixed into the stacked percentages.\n'
+    'Minor miss excludes Inc→FP because anomaly suppression has distinct operational risk.',
+    transform=ax.transAxes, fontsize=8.5, ha='left', va='bottom',
     bbox=dict(boxstyle='round,pad=0.35', facecolor='white', edgecolor='lightgray', alpha=0.9)
 )
-
-fig.suptitle('Classification Breakdown by Model', fontsize=15, fontweight='bold')
-plt.tight_layout(rect=[0, 0, 1, 0.98])
+plt.tight_layout()
 fig.savefig(charts_dir / 'classification-breakdown.png', dpi=150, bbox_inches='tight')
 print(f"✓ classification-breakdown.png")
+
+# Companion chart: operational errors only, absolute counts for easier comparison.
+fig, ax = plt.subplots(figsize=(14, 12))
+y_pos = range(len(names))
+h = 0.20
+error_keys = [
+    ('over_call', 'Over-call (FP→TP)', '#F39C12', -1.5*h),
+    ('critical_miss', 'Critical miss (TP→FP)', '#8B0000', -0.5*h),
+    ('anomaly_suppression', 'Anomaly suppression (Inc→FP)', '#8E44AD', 0.5*h),
+    ('llm_error', 'LLM error / invalid response', '#95A5A6', 1.5*h),
+]
+for key, label, color, offset in error_keys:
+    vals = [b[key] for b in breakdown]
+    bars = ax.barh([i + offset for i in y_pos], vals, height=h, color=color, label=label)
+    for bar, val in zip(bars, vals):
+        if val > 0:
+            ax.text(val + 0.25, bar.get_y() + bar.get_height()/2, str(val), va='center', ha='left', fontsize=7)
+ax.set_yticks(y_pos)
+ax.set_yticklabels(names, fontsize=9)
+ax.invert_yaxis()
+ax.set_xlabel('Number of findings / invalid responses', fontsize=12)
+ax.set_title('Operational Error Breakdown by Model', fontsize=14, fontweight='bold')
+ax.legend(loc='lower right', fontsize=9, framealpha=0.94)
+ax.grid(axis='x', alpha=0.2)
+max_err = max(max(b[k] for b in breakdown) for k, *_ in error_keys)
+ax.set_xlim(0, max_err * 1.25 if max_err else 1)
+plt.tight_layout()
+fig.savefig(charts_dir / 'operational-error-breakdown.png', dpi=150, bbox_inches='tight')
+print(f"✓ operational-error-breakdown.png")
 
 # ── Per-Tier CW% Charts ────────────────────────────────────────
 for tier_key in tier_names:

@@ -76,7 +76,7 @@ def main():
 
     ax.set_ylabel('Quality Score (CW %)', fontsize=12)
     ax.set_title(f'THOR Benchmark: Quality vs Speed\n({n_models} models · average wall-clock seconds per finding assessed)', fontsize=14)
-    ax.legend(loc='lower right')
+    ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.08), ncol=3, framealpha=0.9)
     ax.grid(True, alpha=0.3)
     ax.set_xscale('log')
     from matplotlib.ticker import ScalarFormatter
@@ -101,6 +101,11 @@ def main():
     # Quality reference line
     ax.axhline(y=50, color='gray', linestyle='--', alpha=0.5, linewidth=0.8)
     ax.text(ax.get_xlim()[1] * 0.98, 50.5, '50% CW', fontsize=8, ha='right', color='gray', alpha=0.7)
+    box = dict(boxstyle='round,pad=0.35', facecolor='white', edgecolor='lightgray', alpha=0.86)
+    ax.text(0.02, 0.97, 'Upper-left\nbest speed/quality', transform=ax.transAxes, ha='left', va='top', fontsize=8.5, bbox=box)
+    ax.text(0.98, 0.97, 'Upper-right\ngood quality, slow', transform=ax.transAxes, ha='right', va='top', fontsize=8.5, bbox=box)
+    ax.text(0.02, 0.08, 'Lower-left\nfast but weak', transform=ax.transAxes, ha='left', va='bottom', fontsize=8.5, bbox=box)
+    ax.text(0.98, 0.08, 'Lower-right\nslow and weak', transform=ax.transAxes, ha='right', va='bottom', fontsize=8.5, bbox=box)
 
     plt.tight_layout()
 

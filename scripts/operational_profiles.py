@@ -141,17 +141,29 @@ def plot_profile_summary(profile_rows, baselines):
     x = np.arange(len(points))
     width = 0.25
     fig, ax = plt.subplots(figsize=(12, 7))
-    ax.bar(x - width, [p["balanced_ots"] for p in points], width, label="Balanced OTS", color="#3498db")
-    ax.bar(x, [p["critical_miss"] for p in points], width, label="Critical Miss Rate", color="#e74c3c")
-    ax.bar(x + width, [p["false_review"] for p in points], width, label="False Review Load", color="#95a5a6")
+    b1 = ax.bar(x - width, [p["balanced_ots"] for p in points], width, label="Balanced OTS", color="#3498db")
+    b2 = ax.bar(x, [p["critical_miss"] for p in points], width, label="Critical Miss Rate", color="#e74c3c")
+    b3 = ax.bar(x + width, [p["false_review"] for p in points], width, label="False Review Load", color="#95a5a6")
+    for bars in (b1, b2, b3):
+        for bar in bars:
+            val = bar.get_height()
+            ax.text(
+                bar.get_x() + bar.get_width() / 2,
+                val + 1.4,
+                f"{val:.1f}%",
+                ha="center",
+                va="bottom",
+                fontsize=8,
+                rotation=90,
+            )
     for i, p in enumerate(points):
-        ax.text(i, 103, p["model"].replace("always-", "always-\n"), ha="center", va="top", fontsize=9)
+        ax.text(i, 108, p["model"].replace("always-", "always-\n"), ha="center", va="top", fontsize=9, fontweight="bold")
     ax.set_xticks(x)
     ax.set_xticklabels(labels)
-    ax.set_ylim(0, 110)
+    ax.set_ylim(0, 116)
     ax.set_ylabel("Percent")
-    ax.set_title("Operational Profile Leaders vs Safe Baseline")
-    ax.legend(loc="upper left")
+    ax.set_title("Operational Profile Leaders vs always-inc Safety Baseline")
+    ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.08), ncol=3, framealpha=0.9)
     ax.grid(axis="y", alpha=0.25)
     plt.tight_layout()
     fig.savefig(CHARTS / "operational-profile-summary.png", dpi=150)
