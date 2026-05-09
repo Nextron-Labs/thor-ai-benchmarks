@@ -20,6 +20,21 @@ There is no single best model. The useful choice depends on whether the deployme
 
 Start with the operational charts, not the CW% leaderboard. Use Critical Miss Rate vs False Review Load to understand safety vs workload. Use Balanced OTS vs False Review Load to see operational usefulness. Use CW% vs Balanced OTS to see where classic classification quality and operational triage quality diverge. Then use cost and speed charts only after the safety profile is acceptable.
 
+Quick metric orientation:
+
+- **Critical Miss Rate**: how often a true positive is suppressed as false positive (`TP→FP`). Lower is better.
+- **False Review Load**: how many false positives still reach analysts as `Inc` or `TP`. Lower is less noisy.
+- **Balanced OTS**: operational triage utility across `FP`, `Inc`, and `TP`, balanced so one class does not dominate. Higher is better.
+- **CW%**: classic confidence-weighted benchmark score. Higher is better, but it does not fully capture operational risk.
+
+Useful shorthand:
+
+- **Safe but noisy**: low Critical Miss Rate, high False Review Load. The model avoids hiding incidents but still sends too much to review.
+- **Efficient but risky**: low False Review Load, high Critical Miss Rate. The model reduces analyst workload by suppressing too much, including real threats.
+- **Good exact scoring but weak operational profile**: high CW%, but too many `TP→FP`, `Inc→FP`, or false escalations for the intended workflow.
+
+Baselines are included to anchor the charts. They are intentionally naive strategies, not deployment recommendations.
+
 ## Main Decision Charts
 
 The first charts are decision charts: they are meant to help pick a model for an operational profile, not just rank models by one score. Scatter plots label profile leaders, baselines, Pareto-frontier models, top metric performers, and models discussed in the README. Full-labeled appendix versions are also generated for detailed inspection.
@@ -35,6 +50,8 @@ This chart puts the three operational profile leaders next to the `always-inc` s
 ### 2. Critical Miss Rate vs False Review Load
 
 ![Critical Miss Rate vs False Review Load](charts/critical-miss-vs-false-review.png)
+
+**Axes:** x-axis = False Review Load (lower is better); y-axis = Critical Miss Rate (lower is better).
 
 ### How to read this chart
 
@@ -53,6 +70,8 @@ Full-labeled detail chart: [critical-miss-vs-false-review-full-labeled.png](char
 
 ![Balanced OTS vs False Review Load](charts/balanced-ots-vs-false-review.png)
 
+**Axes:** x-axis = False Review Load (lower is better); y-axis = Balanced OTS (higher is better).
+
 ### How to read this chart
 
 - Upper-left: best operational trade-off — high operational score and low review load
@@ -70,6 +89,8 @@ Full-labeled detail chart: [balanced-ots-vs-false-review-full-labeled.png](chart
 
 ![CW% vs Balanced OTS](charts/cw-vs-balanced-ots.png)
 
+**Axes:** x-axis = CW% (higher is better); y-axis = Balanced OTS (higher is better).
+
 ### How to read this chart
 
 - Upper-left: operationally safer/useful, but weaker exact classification score
@@ -79,13 +100,15 @@ Full-labeled detail chart: [balanced-ots-vs-false-review-full-labeled.png](chart
 
 This chart shows why CW% alone is not enough. CW% rewards confidence-weighted closeness to the expert answer, while Balanced OTS emphasizes operational consequences. A model can look strong by CW% while still having too many critical misses or too much false escalation for a specific SOC use case.
 
-The top CW% models are useful to inspect, but they are not automatically the safest deployment choices. A model can score well on classic confidence-weighted classification while still having a bad operational profile, especially if it suppresses too many TP or Inc findings. The operational profile leaders are selected by constraints, not by CW% alone.
+The top CW% models are useful to inspect, but they are not automatically the safest deployment choices. For example, a model can receive a respectable CW% by classifying many benign findings correctly while still being unacceptable if it suppresses too many true positives or review-worthy anomalies. The operational profile leaders are selected by constraints, not by CW% alone.
 
 Full-labeled detail chart: [cw-vs-balanced-ots-full-labeled.png](charts/cw-vs-balanced-ots-full-labeled.png)
 
 ### 5. Quality vs Cost
 
 ![Quality vs Cost](charts/quality-vs-cost.png)
+
+**Axes:** x-axis = estimated cost per benchmark run (lower is better); y-axis = CW% quality score (higher is better).
 
 ### How to read this chart
 
@@ -99,6 +122,8 @@ This chart estimates benchmark-run cost from observed token usage and model pric
 ### 6. Quality vs Speed
 
 ![Quality vs Speed](charts/quality-vs-speed.png)
+
+**Axes:** x-axis = average seconds per event (lower is better); y-axis = CW% quality score (higher is better).
 
 ### How to read this chart
 
@@ -133,6 +158,8 @@ The stacked bars sum to 100% for each model over scored findings and invalid res
 The CW% leaderboard is retained as a compact ranking of confidence-weighted score quality. It should not be used as the only model-selection metric. Operational selection should consider Critical Miss Rate, Threat Capture Rate, False Review Load, Balanced OTS, cost, and speed.
 
 ## Baseline Reference
+
+These rows are deliberately naive control strategies. They are included to calibrate the metrics, not because anyone should deploy them.
 
 | Strategy | CW% | Balanced OTS | Critical Miss | Threat Capture | False Review | False Escalation | Cost/Run |
 |---|---:|---:|---:|---:|---:|---:|---:|
