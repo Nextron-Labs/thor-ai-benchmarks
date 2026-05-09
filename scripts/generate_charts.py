@@ -48,6 +48,14 @@ for tier_key, tier_data in tiers_config.items():
 
 # Convert types and assign tiers
 for m in models:
+    # Skip baselines (rank='baseline')
+    if m.get('rank') == 'baseline':
+        m['rank'] = 999999  # placeholder for filtering
+        m['cw_pct'] = float(m['cw_pct'])
+        m['ord_pct'] = float(m.get('ord_pct', 0))
+        m['tier'] = 'baseline'
+        continue
+    
     m['rank'] = int(m.get('rank', 0))
     m['cw_pct'] = float(m['cw_pct'])
     m['ord_pct'] = float(m['ord_pct'])
@@ -62,8 +70,10 @@ for m in models:
     m['tier'] = tier_lookup.get(m['model'], 'closed_source')
 
 # Sort: complete models by CW% descending, then incomplete models at bottom
-complete = [m for m in models if not m.get('incomplete')]
-incomplete_models = [m for m in models if m.get('incomplete')]
+# Exclude baselines from charts
+models_filtered = [m for m in models if m.get('tier') != 'baseline']
+complete = [m for m in models_filtered if not m.get('incomplete')]
+incomplete_models = [m for m in models_filtered if m.get('incomplete')]
 complete.sort(key=lambda x: x['cw_pct'], reverse=True)
 incomplete_models.sort(key=lambda x: x['cw_pct'], reverse=True)
 models = complete + incomplete_models
