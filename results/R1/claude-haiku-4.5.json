@@ -33,8 +33,8 @@
     "Inc-FP": 1,
     "FP-Inc": 2
   },
-  "mae": 46.4,
-  "rmse": 49.7,
+  "mae": 44.1,
+  "rmse": 46.6,
   "n_scored": 11,
   "errors": [
     "line 1 (output finding #1): no stable ground-truth mapping for R1",

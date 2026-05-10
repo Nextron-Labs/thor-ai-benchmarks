@@ -33,8 +33,8 @@
     "FP-FP": 6,
     "FP-Inc": 2
   },
-  "mae": 31.8,
-  "rmse": 40.3,
+  "mae": 30.3,
+  "rmse": 37.9,
   "n_scored": 17,
   "reports": [
     "R1",
