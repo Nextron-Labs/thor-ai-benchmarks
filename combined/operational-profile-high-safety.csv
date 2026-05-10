@@ -1,3 +1,5 @@
 rank,model,cw_pct,balanced_ots,critical_miss,threat_capture,false_review,false_escalation,cost_per_run,avg_seconds_per_event,n,incomplete
-1,llama-3.1-8b,28.0,40.0,2.1,97.9,88.2,6.6,0.00,12.65,154,False
-2,gpt-5-nano,27.7,35.9,2.1,97.9,90.8,18.4,0.12,31.26,154,False
+1,gemini-3.1-flash-lite,70.3,71.1,0.0,100.0,25.7,1.4,,1.87,152,False
+2,grok-4.3,58.4,58.6,2.2,97.8,38.6,8.6,,17.61,146,False
+3,gpt-5-mini,43.2,46.9,4.3,95.7,71.1,8.9,,21.27,118,False
+4,gpt-5-nano,40.0,45.5,2.2,97.8,88.9,17.8,0.12,31.26,118,False
