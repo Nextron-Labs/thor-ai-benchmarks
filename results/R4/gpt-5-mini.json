@@ -1,5 +1,5 @@
 {
-  "n_findings": 7,
+  "n_findings": 6,
   "n_matched": 6,
   "n_exact": 2,
   "n_minor": 4,
@@ -9,7 +9,7 @@
   "ordinal_total": 8,
   "ordinal_max": 12,
   "ordinal_pct": 66.7,
-  "cw_total": 4.162,
+  "cw_total": 4.163,
   "cw_max": 12.0,
   "cw_pct": 34.7,
   "ots_total": 3.2,
@@ -29,11 +29,11 @@
     "FP-Inc": 4,
     "FP-FP": 2
   },
-  "mae": 15.0,
-  "rmse": 17.1,
+  "mae": 21.7,
+  "rmse": 22.9,
   "n_scored": 6,
   "errors": [
-    "#7: no ground truth for R4"
+    "line 5 (output finding #7): no stable ground-truth mapping for R4"
   ],
   "elapsed_seconds": 88.52862455100001,
   "events_reviewed": 7,

@@ -31,7 +31,7 @@
     "Inc-TP": 1
   },
   "mae": 17.7,
-  "rmse": 22.2,
+  "rmse": 21.8,
   "n_scored": 15,
   "errors": [],
   "elapsed_seconds": 124.644842429,

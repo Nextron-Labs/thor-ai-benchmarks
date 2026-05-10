@@ -30,8 +30,8 @@
     "TP-Inc": 1,
     "Inc-TP": 1
   },
-  "mae": 16.7,
-  "rmse": 23.1,
+  "mae": 18.7,
+  "rmse": 24.7,
   "n_scored": 15,
   "errors": [],
   "elapsed_seconds": 109.610683333,

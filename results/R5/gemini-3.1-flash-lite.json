@@ -9,9 +9,9 @@
   "ordinal_total": 39,
   "ordinal_max": 46,
   "ordinal_pct": 84.8,
-  "cw_total": 31.75,
+  "cw_total": 31.9,
   "cw_max": 46.0,
-  "cw_pct": 69.0,
+  "cw_pct": 69.3,
   "ots_total": 30.6,
   "ots_max": 46.0,
   "ots_pct": 66.5,
@@ -27,11 +27,11 @@
   "false_escalation_rate": 0.0,
   "class_counts": {
     "FP-FP": 14,
-    "FP-Inc": 7,
-    "Inc-Inc": 2
+    "Inc-Inc": 2,
+    "FP-Inc": 7
   },
-  "mae": 23.9,
-  "rmse": 29.6,
+  "mae": 25.7,
+  "rmse": 30.8,
   "n_scored": 23,
   "errors": [],
   "elapsed_seconds": 36.631866746,

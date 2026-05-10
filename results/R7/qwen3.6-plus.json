@@ -26,13 +26,13 @@
   "false_review_load": 0,
   "false_escalation_rate": 0,
   "class_counts": {
-    "TP-TP": 4,
-    "TP-Inc": 7,
     "TP-FP": 3,
+    "TP-Inc": 7,
+    "TP-TP": 4,
     "Inc-Inc": 1
   },
-  "mae": 27.7,
-  "rmse": 34.4,
+  "mae": 23.7,
+  "rmse": 30.8,
   "n_scored": 15,
   "errors": [],
   "elapsed_seconds": 708.44937233,
