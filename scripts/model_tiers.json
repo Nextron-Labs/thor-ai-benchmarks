@@ -63,7 +63,8 @@
         "kimi-k2.6",
         "nemotron-3-super-120b",
         "nemotron-3-nano-omni",
-        "mistral-nemo"
+        "mistral-nemo",
+        "ring-2.6-1t"
       ]
     },
     "open_source_consumer": {
