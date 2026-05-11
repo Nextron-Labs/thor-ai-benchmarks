@@ -1,5 +1,7 @@
 {
   "n_findings": 15,
+  "n_expected": 15,
+  "missing_gt_ids": [],
   "n_matched": 15,
   "n_exact": 10,
   "n_minor": 5,
@@ -37,5 +39,7 @@
   "elapsed_seconds": 193.004950358,
   "events_reviewed": 15,
   "total_tokens": 49177,
-  "llm_errors": 0
+  "llm_errors": 0,
+  "result_path": "runs/claude-sonnet-4.6/thor-demo-report-7/mjolnir-report_2026-05-06T0146.json",
+  "report_dir": "runs/claude-sonnet-4.6/thor-demo-report-7"
 }

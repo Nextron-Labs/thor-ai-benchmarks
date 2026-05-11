@@ -1,5 +1,7 @@
 {
   "n_findings": 6,
+  "n_expected": 6,
+  "missing_gt_ids": [],
   "n_matched": 6,
   "n_exact": 0,
   "n_minor": 6,
@@ -37,5 +39,7 @@
   "elapsed_seconds": 51.884168172,
   "events_reviewed": 7,
   "total_tokens": 46506,
-  "llm_errors": 2
+  "llm_errors": 2,
+  "result_path": "runs/nemotron-3-super-120b/thor-demo-report-4/mjolnir-report_2026-05-01T1450.json",
+  "report_dir": "runs/nemotron-3-super-120b/thor-demo-report-4"
 }

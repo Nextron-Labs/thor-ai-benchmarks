@@ -1,4 +1,4 @@
 strategy,cw_pct,balanced_ots,critical_miss,threat_capture,false_review,false_escalation,cost_per_run
-always-fp,27.3,-58.3,100.0,0.0,0.0,0.0,0.00
-always-inc,22.6,38.3,0.0,100.0,100.0,0.0,0.00
-always-tp,18.7,25.0,0.0,100.0,100.0,100.0,0.00
+always-fp,28.7,-58.3,100.0,0.0,0.0,0.0,0.00
+always-inc,24.5,38.3,0.0,100.0,100.0,0.0,0.00
+always-tp,16.8,25.0,0.0,100.0,100.0,100.0,0.00

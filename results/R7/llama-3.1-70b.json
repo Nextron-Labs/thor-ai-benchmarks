@@ -1,5 +1,7 @@
 {
   "n_findings": 15,
+  "n_expected": 15,
+  "missing_gt_ids": [],
   "n_matched": 15,
   "n_exact": 13,
   "n_minor": 2,
@@ -37,5 +39,7 @@
   "elapsed_seconds": 109.610683333,
   "events_reviewed": 15,
   "total_tokens": 38034,
-  "llm_errors": 0
+  "llm_errors": 0,
+  "result_path": "runs/llama-3.1-70b/thor-demo-report-7/mjolnir-report_2026-05-06T0129.json",
+  "report_dir": "runs/llama-3.1-70b/thor-demo-report-7"
 }

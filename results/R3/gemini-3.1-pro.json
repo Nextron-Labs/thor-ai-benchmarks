@@ -1,5 +1,7 @@
 {
   "n_findings": 19,
+  "n_expected": 19,
+  "missing_gt_ids": [],
   "n_matched": 19,
   "n_exact": 8,
   "n_minor": 11,
@@ -41,5 +43,7 @@
   "elapsed_seconds": 203.809478173,
   "events_reviewed": 20,
   "total_tokens": 66508,
-  "llm_errors": 0
+  "llm_errors": 0,
+  "result_path": "runs/gemini-3.1-pro/thor-demo-report-3/mjolnir-report_2026-05-08T0113.json",
+  "report_dir": "runs/gemini-3.1-pro/thor-demo-report-3"
 }

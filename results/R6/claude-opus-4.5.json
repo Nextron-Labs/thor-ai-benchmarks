@@ -1,5 +1,7 @@
 {
   "n_findings": 67,
+  "n_expected": 67,
+  "missing_gt_ids": [],
   "n_matched": 67,
   "n_exact": 51,
   "n_minor": 12,
@@ -42,5 +44,10 @@
   "elapsed_seconds": 610.132810953,
   "events_reviewed": 67,
   "total_tokens": 214455,
-  "llm_errors": 0
+  "llm_errors": 0,
+  "result_path": "runs/claude-opus-4.5/thor-demo-report-6-mixed-sources/mjolnir-report_2026-05-08T0846.json",
+  "report_dir": "runs/claude-opus-4.5/thor-demo-report-6-mixed-sources",
+  "superseded_result_paths": [
+    "runs/claude-opus-4.5/thor-demo-report-6/mjolnir-report_2026-05-05T2326.json"
+  ]
 }

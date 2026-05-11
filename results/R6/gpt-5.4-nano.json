@@ -1,5 +1,7 @@
 {
   "n_findings": 67,
+  "n_expected": 67,
+  "missing_gt_ids": [],
   "n_matched": 67,
   "n_exact": 21,
   "n_minor": 45,
@@ -40,5 +42,10 @@
   "elapsed_seconds": 295.426383978,
   "events_reviewed": 67,
   "total_tokens": 205185,
-  "llm_errors": 0
+  "llm_errors": 0,
+  "result_path": "runs/gpt-5.4-nano/thor-demo-report-6-mixed-sources/mjolnir-report_2026-05-08T0805.json",
+  "report_dir": "runs/gpt-5.4-nano/thor-demo-report-6-mixed-sources",
+  "superseded_result_paths": [
+    "runs/gpt-5.4-nano/thor-demo-report-6/mjolnir-report_2026-05-05T2216.json"
+  ]
 }

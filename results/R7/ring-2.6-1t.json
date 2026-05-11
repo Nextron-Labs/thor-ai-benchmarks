@@ -1,5 +1,7 @@
 {
   "n_findings": 15,
+  "n_expected": 15,
+  "missing_gt_ids": [],
   "n_matched": 15,
   "n_exact": 11,
   "n_minor": 2,
@@ -38,5 +40,7 @@
   "elapsed_seconds": 690.276287911,
   "events_reviewed": 15,
   "total_tokens": 55787,
-  "llm_errors": 7
+  "llm_errors": 7,
+  "result_path": "runs/ring-2.6-1t/thor-demo-report-7/mjolnir-report_2026-05-10T1323.json",
+  "report_dir": "runs/ring-2.6-1t/thor-demo-report-7"
 }

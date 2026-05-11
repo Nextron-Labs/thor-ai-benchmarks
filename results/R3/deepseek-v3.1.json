@@ -1,5 +1,7 @@
 {
   "n_findings": 19,
+  "n_expected": 19,
+  "missing_gt_ids": [],
   "n_matched": 19,
   "n_exact": 8,
   "n_minor": 11,
@@ -41,5 +43,7 @@
   "elapsed_seconds": 399.956945125,
   "events_reviewed": 20,
   "total_tokens": 56948,
-  "llm_errors": 0
+  "llm_errors": 0,
+  "result_path": "runs/deepseek-v3.1/thor-demo-report-3/mjolnir-report_2026-05-08T1605.json",
+  "report_dir": "runs/deepseek-v3.1/thor-demo-report-3"
 }

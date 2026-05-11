@@ -1,5 +1,7 @@
 {
   "n_findings": 15,
+  "n_expected": 15,
+  "missing_gt_ids": [],
   "n_matched": 15,
   "n_exact": 7,
   "n_minor": 8,
@@ -37,5 +39,7 @@
   "elapsed_seconds": 1587.769354796,
   "events_reviewed": 15,
   "total_tokens": 118540,
-  "llm_errors": 0
+  "llm_errors": 0,
+  "result_path": "runs/kimi-k2.6/thor-demo-report-7/mjolnir-report_2026-05-06T0128.json",
+  "report_dir": "runs/kimi-k2.6/thor-demo-report-7"
 }

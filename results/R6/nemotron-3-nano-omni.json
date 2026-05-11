@@ -1,11 +1,15 @@
 {
   "n_findings": 67,
+  "n_expected": 67,
+  "missing_gt_ids": [
+    24
+  ],
   "n_matched": 66,
   "n_exact": 30,
   "n_minor": 28,
   "n_hard": 8,
   "n_errors": 1,
-  "incomplete": false,
+  "incomplete": true,
   "ordinal_total": 88,
   "ordinal_max": 132,
   "ordinal_pct": 66.7,
@@ -39,10 +43,16 @@
   "rmse": 29.7,
   "n_scored": 66,
   "errors": [
-    "#24: LLM classification error (excluded from scoring)"
+    "#24: LLM classification error (excluded from scoring)",
+    "missing scored GT ids for R6: [24] (matched 66/67)"
   ],
   "elapsed_seconds": 1725.558753068,
   "events_reviewed": 67,
   "total_tokens": 361276,
-  "llm_errors": 2
+  "llm_errors": 2,
+  "result_path": "runs/nemotron-3-nano-omni/thor-demo-report-6-mixed-sources/mjolnir-report_2026-05-09T0147.json",
+  "report_dir": "runs/nemotron-3-nano-omni/thor-demo-report-6-mixed-sources",
+  "superseded_result_paths": [
+    "runs/nemotron-3-nano-omni/thor-demo-report-6/mjolnir-report_2026-05-06T0032.json"
+  ]
 }

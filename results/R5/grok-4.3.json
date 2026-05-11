@@ -1,5 +1,7 @@
 {
   "n_findings": 23,
+  "n_expected": 23,
+  "missing_gt_ids": [],
   "n_matched": 23,
   "n_exact": 14,
   "n_minor": 9,
@@ -37,5 +39,7 @@
   "elapsed_seconds": 574.276306687,
   "events_reviewed": 23,
   "total_tokens": 95187,
-  "llm_errors": 0
+  "llm_errors": 0,
+  "result_path": "runs/grok-4.3/thor-demo-report-5/mjolnir-report_2026-05-06T0916.json",
+  "report_dir": "runs/grok-4.3/thor-demo-report-5"
 }

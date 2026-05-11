@@ -1,5 +1,10 @@
 {
   "n_findings": 23,
+  "n_expected": 23,
+  "missing_gt_ids": [
+    9,
+    20
+  ],
   "n_matched": 21,
   "n_exact": 11,
   "n_minor": 10,
@@ -35,10 +40,13 @@
   "n_scored": 21,
   "errors": [
     "#9: LLM classification error (excluded from scoring)",
-    "#20: LLM classification error (excluded from scoring)"
+    "#20: LLM classification error (excluded from scoring)",
+    "missing scored GT ids for R5: [9, 20] (matched 21/23)"
   ],
   "elapsed_seconds": 216.711805004,
   "events_reviewed": 23,
   "total_tokens": 68021,
-  "llm_errors": 0
+  "llm_errors": 0,
+  "result_path": "runs/gpt-oss-120b/thor-demo-report-5/mjolnir-report_2026-05-09T0152.json",
+  "report_dir": "runs/gpt-oss-120b/thor-demo-report-5"
 }

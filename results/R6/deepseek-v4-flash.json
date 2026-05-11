@@ -1,5 +1,7 @@
 {
   "n_findings": 67,
+  "n_expected": 67,
+  "missing_gt_ids": [],
   "n_matched": 67,
   "n_exact": 45,
   "n_minor": 17,
@@ -42,5 +44,10 @@
   "elapsed_seconds": 1987.200184964,
   "events_reviewed": 67,
   "total_tokens": 224370,
-  "llm_errors": 0
+  "llm_errors": 0,
+  "result_path": "runs/deepseek-v4-flash/thor-demo-report-6-mixed-sources/mjolnir-report_2026-05-08T0407.json",
+  "report_dir": "runs/deepseek-v4-flash/thor-demo-report-6-mixed-sources",
+  "superseded_result_paths": [
+    "runs/deepseek-v4-flash/thor-demo-report-6/mjolnir-report_2026-05-05T2053.json"
+  ]
 }

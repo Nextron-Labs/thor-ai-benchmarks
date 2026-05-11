@@ -1,5 +1,7 @@
 {
   "n_findings": 15,
+  "n_expected": 15,
+  "missing_gt_ids": [],
   "n_matched": 15,
   "n_exact": 7,
   "n_minor": 8,
@@ -37,5 +39,7 @@
   "elapsed_seconds": 294.927817329,
   "events_reviewed": 15,
   "total_tokens": 56286,
-  "llm_errors": 0
+  "llm_errors": 0,
+  "result_path": "runs/gpt-5/thor-demo-report-7/mjolnir-report_2026-05-06T0141.json",
+  "report_dir": "runs/gpt-5/thor-demo-report-7"
 }

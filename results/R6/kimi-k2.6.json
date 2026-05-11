@@ -1,5 +1,7 @@
 {
   "n_findings": 67,
+  "n_expected": 67,
+  "missing_gt_ids": [],
   "n_matched": 67,
   "n_exact": 47,
   "n_minor": 18,
@@ -41,5 +43,10 @@
   "elapsed_seconds": 3401.228356666,
   "events_reviewed": 67,
   "total_tokens": 410398,
-  "llm_errors": 0
+  "llm_errors": 0,
+  "result_path": "runs/kimi-k2.6/thor-demo-report-6-mixed-sources/mjolnir-report_2026-05-08T0334.json",
+  "report_dir": "runs/kimi-k2.6/thor-demo-report-6-mixed-sources",
+  "superseded_result_paths": [
+    "runs/kimi-k2.6/thor-demo-report-6/mjolnir-report_2026-05-05T2108.json"
+  ]
 }
