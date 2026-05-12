@@ -39,6 +39,7 @@
         "minimax-m2.5",
         "mimo-v2-pro",
         "mercury-2",
+        "hy3-preview",
         "step-3.5-flash"
       ]
     },
@@ -68,7 +69,7 @@
       ]
     },
     "open_source_consumer": {
-      "label": "Open Source (Consumer Hardware <10k)",
+      "label": "Open Source (Consumer Hardware)",
       "color": "#2ecc71",
       "marker": "o",
       "models": [

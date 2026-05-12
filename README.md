@@ -4,17 +4,49 @@ This benchmark evaluates LLMs on THOR finding triage. It focuses on security eve
 
 The current public result set covers **49 models**, **7 THOR reports**, and **155 expert-classified findings**. Models are compared against human expert ground truth and are evaluated on both classification quality and operational usefulness.
 
-## Current Result Summary
+## Current Result Summary - Overall
 
-These are **current profile leaders under the selected constraints**, not universal winners. A model only appears as a recommendation if it also clears minimum usefulness and completeness guardrails; near-`always-inc` behavior is analysis material, not a benchmark recommendation.
+The first table ignores deployment tier and shows the current profile leaders across all tested models. These are **current profile leaders under the selected constraints**, not universal winners. A model only appears as a recommendation if it also clears minimum usefulness and completeness guardrails; near-`always-inc` behavior is analysis material, not a benchmark recommendation.
 
 | Use case | Suggested model | Why |
 |---|---|---|
-| High-safety triage | `gemini-3.1-flash-lite` | Best Balanced OTS among complete models with Critical Miss ≤ 5%, Threat Capture ≥ 95%, and False Review ≤ 75%; also has zero critical misses and low review load in this data set |
-| Balanced SOC triage | `gemini-3.1-flash-lite` | Under the balanced constraints, currently the best overall operational trade-off: highest Balanced OTS with 0.0% Critical Miss and 27.6% False Review Load |
-| Noise reduction / high-volume triage | `qwen3.6-max` | Lowest False Review Load among acceptable complete models under this profile, but with more miss risk than the high-safety leader |
+| High-safety triage | `gemini-3.1-flash-lite` | Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss; low review load. |
+| Balanced SOC triage | `gemini-3.1-flash-lite` | Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss; low review load. |
+| Noise reduction / high-volume triage | `qwen3.6-max` | Lowest False Review Load overall among models that cleared the guardrails; low review load; slower than many candidates. |
 
-There is no single best model. The useful choice depends on whether the deployment optimizes for missed-incident avoidance, balanced SOC triage, review-load reduction, cost, or latency. `gemini-3.1-flash-lite` is currently the strongest overall model in this result set, but `qwen3.6-max` still has the lowest False Review Load under the noise-reduction profile.
+There is no single best model. The useful choice depends on whether the deployment optimizes for missed-incident avoidance, balanced SOC triage, review-load reduction, cost, latency, data-control boundaries, or hardware constraints. The global winner is not automatically the best option for local or open-source deployments.
+
+## Current Result Summary by Model Tier
+
+Deployment constraints matter. A vendor API model may be easy to test, but some users need local execution, open-source weights, predictable cost, or consumer-hardware feasibility. The following tables show the current profile leaders within each model tier.
+
+### Closed Source / Vendor API
+
+| Use case | Suggested model | Why |
+|---|---|---|
+| High-safety triage | `gemini-3.1-flash-lite` | Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss; low review load. |
+| Balanced SOC triage | `gemini-3.1-flash-lite` | Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss; low review load. |
+| Noise reduction / high-volume triage | `gemini-3.1-flash-lite` | Lowest False Review Load in this tier among models that cleared the guardrails; 0.0% Critical Miss; low review load. |
+
+### Open Source / Pro Hardware
+
+| Use case | Suggested model | Why |
+|---|---|---|
+| High-safety triage | `qwen3-235b-a22b` | Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss. |
+| Balanced SOC triage | `qwen3-235b-a22b` | Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss. |
+| Noise reduction / high-volume triage | `qwen3.6-max` | Lowest False Review Load in this tier among models that cleared the guardrails; low review load; slower than many candidates. |
+
+### Open Source / Consumer Hardware
+
+| Use case | Suggested model | Why |
+|---|---|---|
+| High-safety triage | `gemma4-31b` | Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss. |
+| Balanced SOC triage | `gemma4-31b` | Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss. |
+| Noise reduction / high-volume triage | `gemma4-31b` | Lowest False Review Load in this tier among models that cleared the guardrails; 0.0% Critical Miss. |
+
+### Why model tiers matter
+
+Model tier matters because deployment constraints are part of the decision. A vendor API model may score well, but it may not be usable in environments that require local processing, predictable fixed cost, or strict data-control boundaries. Open-source models on pro hardware can be attractive for controlled deployments. Consumer-hardware models are relevant when the goal is local triage with lower infrastructure cost, even if quality may be lower.
 
 ## Reader Guide
 
@@ -37,7 +69,7 @@ Baselines are included to anchor the charts. They are intentionally naive strate
 
 ## Main Decision Charts
 
-The first charts are decision charts: they are meant to help pick a model for an operational profile, not just rank models by one score. Scatter plots label profile leaders, baselines, Pareto-frontier models, top metric performers, and models discussed in the README. Full-labeled appendix versions are also generated for detailed inspection.
+The first charts are decision charts: they are meant to help pick a model for an operational profile, not just rank models by one score. Scatter plots keep deployment tier visible with marker shape and legend entries, while color shows the operational metric named by the color bar. They label profile leaders, baselines, Pareto-frontier models, top metric performers, and models discussed in the README. Full-labeled appendix versions are also generated for detailed inspection.
 
 ### 1. Operational Profile Summary
 
@@ -47,7 +79,13 @@ This chart puts the three operational profile leaders next to the `always-inc` s
 
 `gemini-3.1-flash-lite` is now both the high-safety and balanced SOC profile leader under the current constraints. `qwen3.6-max` reduces review load the most under the noise-reduction profile, but has higher miss risk than the high-safety leader. `always-inc` is a safety reference, not a useful triage model.
 
-### 2. Critical Miss Rate vs False Review Load
+### 2. Operational Profile Summary by Model Tier
+
+![Operational Profile Summary by Model Tier](charts/operational-profile-summary-by-tier.png)
+
+This chart shows the same operational profiles split by deployment tier. Each cell uses the same guardrails as the global profile tables and shows the current profile leader within that tier, plus Balanced OTS, Critical Miss Rate, and False Review Load. Empty cells would mean no model in that tier cleared the current guardrails.
+
+### 3. Critical Miss Rate vs False Review Load
 
 ![Critical Miss Rate vs False Review Load](charts/critical-miss-vs-false-review.png)
 
@@ -66,7 +104,7 @@ The current data set still does not contain a perfect lower-left model, but `gem
 
 Full-labeled detail chart: [critical-miss-vs-false-review-full-labeled.png](charts/critical-miss-vs-false-review-full-labeled.png)
 
-### 3. Balanced OTS vs False Review Load
+### 4. Balanced OTS vs False Review Load
 
 ![Balanced OTS vs False Review Load](charts/balanced-ots-vs-false-review.png)
 
@@ -85,7 +123,7 @@ Balanced OTS rewards operationally safe decisions across FP, Inc and TP classes.
 
 Full-labeled detail chart: [balanced-ots-vs-false-review-full-labeled.png](charts/balanced-ots-vs-false-review-full-labeled.png)
 
-### 4. CW% vs Balanced OTS
+### 5. CW% vs Balanced OTS
 
 ![CW% vs Balanced OTS](charts/cw-vs-balanced-ots.png)
 
@@ -104,7 +142,7 @@ The top CW% models are useful to inspect, but they are not automatically the saf
 
 Full-labeled detail chart: [cw-vs-balanced-ots-full-labeled.png](charts/cw-vs-balanced-ots-full-labeled.png)
 
-### 5. Quality vs Cost
+### 6. Quality vs Cost
 
 ![Quality vs Cost](charts/quality-vs-cost.png)
 
@@ -119,7 +157,7 @@ Full-labeled detail chart: [cw-vs-balanced-ots-full-labeled.png](charts/cw-vs-ba
 
 This chart estimates benchmark-run cost from observed token usage and model pricing. This chart is useful only after safety metrics are acceptable. A cheap model with high Critical Miss Rate is not a good production choice just because it is cheap.
 
-### 6. Quality vs Speed
+### 7. Quality vs Speed
 
 ![Quality vs Speed](charts/quality-vs-speed.png)
 
@@ -134,7 +172,7 @@ This chart estimates benchmark-run cost from observed token usage and model pric
 
 This chart compares quality against average seconds per event and matters for high-volume triage. Speed is useful only if Critical Miss Rate and False Review Load are acceptable for the workflow. A fast model with low review load but too many critical misses is efficient but risky, not production-ready.
 
-### 7. Classification Breakdown
+### 8. Classification Breakdown
 
 ![Classification Breakdown](charts/classification-breakdown.png)
 
@@ -151,7 +189,7 @@ This chart shows how each model’s decisions break down. Green is exact agreeme
 
 The stacked bars sum to 100% for each model over scored findings and invalid responses. Missing/unscored findings are not mixed into the stacked percentages. For absolute counts of only the operational error classes, see [operational-error-breakdown.png](charts/operational-error-breakdown.png).
 
-### 8. CW% Leaderboard
+### 9. CW% Leaderboard
 
 ![CW% Leaderboard](charts/cw-leaderboard.png)
 
@@ -393,6 +431,19 @@ Sortable and machine-readable data:
 - [combined/operational-profile-high-safety.csv](combined/operational-profile-high-safety.csv)
 - [combined/operational-profile-balanced-soc.csv](combined/operational-profile-balanced-soc.csv)
 - [combined/operational-profile-noise-reduction.csv](combined/operational-profile-noise-reduction.csv)
+- [combined/operational-profile-summary-by-tier.csv](combined/operational-profile-summary-by-tier.csv)
+
+Tier-specific operational profile CSVs:
+
+- [combined/operational-profile-high-safety-closed-source.csv](combined/operational-profile-high-safety-closed-source.csv)
+- [combined/operational-profile-balanced-soc-closed-source.csv](combined/operational-profile-balanced-soc-closed-source.csv)
+- [combined/operational-profile-noise-reduction-closed-source.csv](combined/operational-profile-noise-reduction-closed-source.csv)
+- [combined/operational-profile-high-safety-open-source-pro.csv](combined/operational-profile-high-safety-open-source-pro.csv)
+- [combined/operational-profile-balanced-soc-open-source-pro.csv](combined/operational-profile-balanced-soc-open-source-pro.csv)
+- [combined/operational-profile-noise-reduction-open-source-pro.csv](combined/operational-profile-noise-reduction-open-source-pro.csv)
+- [combined/operational-profile-high-safety-open-source-consumer.csv](combined/operational-profile-high-safety-open-source-consumer.csv)
+- [combined/operational-profile-balanced-soc-open-source-consumer.csv](combined/operational-profile-balanced-soc-open-source-consumer.csv)
+- [combined/operational-profile-noise-reduction-open-source-consumer.csv](combined/operational-profile-noise-reduction-open-source-consumer.csv)
 
 Additional documentation:
 

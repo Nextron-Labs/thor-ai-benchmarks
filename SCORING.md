@@ -4,7 +4,7 @@
 
 Each model is scored on how well it triages THOR security scan findings compared to expert ground truth. Every seed finding receives a classification (True Positive, False Positive, or Inconclusive) from the model and from the expert. We measure how well the model's classifications match.
 
-## Three Scoring Metrics
+## Core Scoring Metrics
 
 ### 1. CW — Confidence-Weighted (Primary Metric)
 
@@ -72,15 +72,42 @@ In addition to classification, each model assigns a priority score (0–100) to 
 
 Lower is better for both.
 
+## Operational Metrics
+
+CW% is useful for ranking classic classification quality, but operational model selection also needs workload and safety metrics. The README profile tables use these additional metrics:
+
+| Metric | Meaning | Direction |
+|--------|---------|-----------|
+| **Balanced OTS** | Operational triage score balanced across FP, Inc, and TP classes so one dominant class does not hide weak behavior elsewhere | Higher is better |
+| **Critical Miss Rate** | Share of true positives classified as false positive (`TP→FP`) | Lower is safer |
+| **Threat Capture Rate** | Share of true positives still sent to review as `Inc` or `TP` | Higher is safer |
+| **False Review Load** | Share of ground-truth false positives still sent to review as `Inc` or `TP` | Lower means less analyst noise |
+| **False Escalation Rate** | Share of ground-truth false positives escalated all the way to `TP` | Lower is better |
+
+The operational profile recommendations also apply guardrails. In particular, the high-safety profile requires meaningful noise reduction; a model close to the `always-inc` baseline is not recommended just because it has a low miss rate.
+
 ## Ground Truth Distribution
 
-Across the three reports (41 seed findings total):
+Across the current seven-report benchmark set (155 expert-classified seed findings):
 
 | Category | Count | Share |
 |----------|-------|-------|
-| FP (False Positive) | 16 | 39% |
-| Inc (Inconclusive) | 11 | 27% |
-| TP (True Positive) | 15 | 37% |
+| FP (False Positive) | 76 | 49.0% |
+| Inc (Inconclusive) | 35 | 22.6% |
+| TP (True Positive) | 44 | 28.4% |
+
+Per-report finding counts:
+
+| Report | Findings |
+|--------|----------|
+| R1 | 16 |
+| R2 | 9 |
+| R3 | 19 |
+| R4 | 6 |
+| R5 | 23 |
+| R6 | 67 |
+| R7 | 15 |
+| **Total** | **155** |
 
 ## Why CW Over Simple Accuracy?
 

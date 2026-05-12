@@ -4,6 +4,7 @@
 import csv
 import json
 import math
+import textwrap
 from pathlib import Path
 
 import matplotlib
@@ -15,6 +16,31 @@ ROOT = Path(__file__).resolve().parent.parent
 COMBINED = ROOT / "combined"
 CHARTS = ROOT / "charts"
 CHARTS.mkdir(exist_ok=True)
+TIERS_PATH = ROOT / "scripts" / "model_tiers.json"
+
+TIER_SLUGS = {
+    "closed_source": "closed-source",
+    "open_source_pro": "open-source-pro",
+    "open_source_consumer": "open-source-consumer",
+}
+
+PROFILE_SLUGS = {
+    "High-safety": "high-safety",
+    "Balanced SOC": "balanced-soc",
+    "Noise-reduction": "noise-reduction",
+}
+
+PROFILE_USE_CASES = {
+    "High-safety": "High-safety triage",
+    "Balanced SOC": "Balanced SOC triage",
+    "Noise-reduction": "Noise reduction / high-volume triage",
+}
+
+PROFILE_DESCRIPTIONS = {
+    "High-safety": "Critical Miss ≤ 5%, Threat Capture ≥ 95%, False Review ≤ 75%; ranked by Balanced OTS, then False Review Load.",
+    "Balanced SOC": "Critical Miss ≤ 15%, Threat Capture ≥ 85%, False Review ≤ 75%; ranked by Balanced OTS.",
+    "Noise-reduction": "False Review ≤ 55%, Critical Miss ≤ 20%, Balanced OTS > 0; ranked by False Review Load, then Balanced OTS.",
+}
 
 # Profile table cost estimates used in OPERATIONAL_PROFILES.md/README.
 # Local/free-tier models are shown as $0.00 marginal API cost.
@@ -89,6 +115,97 @@ def load_rows():
     return rows
 
 
+def load_tiers():
+    with open(TIERS_PATH) as f:
+        cfg = json.load(f)
+    tiers = cfg["tiers"]
+    tier_lookup = {}
+    for tier_key, tier_data in tiers.items():
+        for model in tier_data["models"]:
+            tier_lookup[model] = tier_key
+    return tiers, tier_lookup
+
+
+def validate_tiers(models, tier_lookup):
+    missing = sorted({m["model"] for m in models if m["model"] not in tier_lookup})
+    if missing:
+        raise SystemExit("Models without tier assignment: " + ", ".join(missing))
+
+
+def fmt_metric(value, suffix="%"):
+    if value in (None, "", "–", "-"):
+        return "—"
+    return f"{float(value):.1f}{suffix}"
+
+
+def fmt_cost(model):
+    if model in COST_PER_RUN:
+        return f"${COST_PER_RUN[model]:.2f}"
+    return "—"
+
+
+def closest_candidate(models, profile):
+    complete = [m for m in models if not m["incomplete"]]
+    if not complete:
+        return None, "no complete models in this tier"
+
+    def violations(m):
+        reasons = []
+        if profile["name"] == "High-safety":
+            if m["critical_miss"] > 5:
+                reasons.append(f"Critical Miss {m['critical_miss']:.1f}% > 5%")
+            if m["threat_capture"] < 95:
+                reasons.append(f"Threat Capture {m['threat_capture']:.1f}% < 95%")
+            if m["false_review"] > 75:
+                reasons.append(f"False Review {m['false_review']:.1f}% > 75%")
+        elif profile["name"] == "Balanced SOC":
+            if m["critical_miss"] > 15:
+                reasons.append(f"Critical Miss {m['critical_miss']:.1f}% > 15%")
+            if m["threat_capture"] < 85:
+                reasons.append(f"Threat Capture {m['threat_capture']:.1f}% < 85%")
+            if m["false_review"] > 75:
+                reasons.append(f"False Review {m['false_review']:.1f}% > 75%")
+        else:
+            if m["false_review"] > 55:
+                reasons.append(f"False Review {m['false_review']:.1f}% > 55%")
+            if m["critical_miss"] > 20:
+                reasons.append(f"Critical Miss {m['critical_miss']:.1f}% > 20%")
+            if m["balanced_ots"] <= 0:
+                reasons.append(f"Balanced OTS {m['balanced_ots']:.1f}% ≤ 0")
+        return reasons
+
+    # Prefer the same profile ranking and then the fewest/smallest guardrail misses.
+    ranked = sorted(complete, key=profile["sort"])
+    ranked.sort(key=lambda m: (len(violations(m)), profile["sort"](m)))
+    candidate = ranked[0]
+    return candidate, "; ".join(violations(candidate)) or "closest by profile ranking"
+
+
+def why_for_leader(row, profile_name, tier_rows, scope="tier"):
+    notes = []
+    if profile_name == "Noise-reduction":
+        notes.append(f"Lowest False Review Load {'overall' if scope == 'overall' else 'in this tier'} among models that cleared the guardrails")
+    else:
+        notes.append("Profile leader under current constraints by Balanced OTS")
+    if row["critical_miss"] == 0:
+        notes.append("0.0% Critical Miss")
+    elif profile_name == "High-safety" and row["critical_miss"] >= 4:
+        notes.append("Critical Miss Rate is close to the 5% threshold")
+    elif profile_name == "Balanced SOC" and row["critical_miss"] >= 12:
+        notes.append("Critical Miss Rate is close to the 15% threshold")
+    elif profile_name == "Noise-reduction" and row["critical_miss"] >= 16:
+        notes.append("Critical Miss Rate is close to the 20% threshold")
+    if row["false_review"] >= 60:
+        notes.append("high review load")
+    elif row["false_review"] <= 30:
+        notes.append("low review load")
+    if row.get("avg_seconds_per_event", 0) and row["avg_seconds_per_event"] >= 50:
+        notes.append("slower than many candidates")
+    if len(tier_rows) == 1:
+        notes.append("only model in this tier that cleared the guardrails")
+    return "; ".join(notes) + "."
+
+
 def write_profile_csvs(models):
     profile_rows = {}
     fields = ["rank", "model", "cw_pct", "balanced_ots", "critical_miss", "threat_capture", "false_review", "false_escalation", "cost_per_run", "avg_seconds_per_event", "n", "incomplete"]
@@ -115,6 +232,85 @@ def write_profile_csvs(models):
                     "incomplete": m["incomplete"],
                 })
     return profile_rows
+
+
+def write_tier_profile_csvs(models, tiers):
+    fields = ["rank", "model", "cw_pct", "balanced_ots", "critical_miss", "threat_capture", "false_review", "false_escalation", "cost_per_run", "avg_seconds_per_event", "n", "incomplete"]
+    tier_profile_rows = {}
+    for tier_key in tiers:
+        tier_models = [m for m in models if m["tier"] == tier_key]
+        tier_profile_rows[tier_key] = {}
+        for profile in PROFILES:
+            matched = [m for m in tier_models if not m["incomplete"] and profile["requirements"](m)]
+            matched.sort(key=profile["sort"])
+            tier_profile_rows[tier_key][profile["name"]] = matched
+            filename = f"operational-profile-{PROFILE_SLUGS[profile['name']]}-{TIER_SLUGS[tier_key]}.csv"
+            with open(COMBINED / filename, "w", newline="") as f:
+                w = csv.DictWriter(f, fieldnames=fields, lineterminator="\n")
+                w.writeheader()
+                for i, m in enumerate(matched, 1):
+                    w.writerow({
+                        "rank": i,
+                        "model": m["model"],
+                        "cw_pct": f"{m['cw_pct']:.1f}",
+                        "balanced_ots": f"{m['balanced_ots']:.1f}",
+                        "critical_miss": f"{m['critical_miss']:.1f}",
+                        "threat_capture": f"{m['threat_capture']:.1f}",
+                        "false_review": f"{m['false_review']:.1f}",
+                        "false_escalation": f"{m['false_escalation']:.1f}",
+                        "cost_per_run": f"{COST_PER_RUN.get(m['model'], math.nan):.2f}" if m['model'] in COST_PER_RUN else "",
+                        "avg_seconds_per_event": f"{m.get('avg_seconds_per_event', 0):.2f}",
+                        "n": m["n"],
+                        "incomplete": m["incomplete"],
+                    })
+    return tier_profile_rows
+
+
+def write_tier_summary_csv(models, tiers, tier_profile_rows):
+    fields = [
+        "tier", "profile", "recommended_model", "cw_pct", "balanced_ots", "critical_miss_rate",
+        "threat_capture_rate", "false_review_load", "false_escalation_rate", "cost_per_run",
+        "avg_seconds_per_event", "recommendation_status", "exclusion_reason_if_none",
+    ]
+    rows = []
+    for tier_key, tier_data in tiers.items():
+        tier_models = [m for m in models if m["tier"] == tier_key]
+        for profile in PROFILES:
+            matched = tier_profile_rows[tier_key][profile["name"]]
+            if matched:
+                m = matched[0]
+                rows.append({
+                    "tier": tier_data["label"],
+                    "profile": profile["name"],
+                    "recommended_model": m["model"],
+                    "cw_pct": f"{m['cw_pct']:.1f}",
+                    "balanced_ots": f"{m['balanced_ots']:.1f}",
+                    "critical_miss_rate": f"{m['critical_miss']:.1f}",
+                    "threat_capture_rate": f"{m['threat_capture']:.1f}",
+                    "false_review_load": f"{m['false_review']:.1f}",
+                    "false_escalation_rate": f"{m['false_escalation']:.1f}",
+                    "cost_per_run": fmt_cost(m["model"]),
+                    "avg_seconds_per_event": f"{m.get('avg_seconds_per_event', 0):.2f}",
+                    "recommendation_status": "profile leader under current constraints",
+                    "exclusion_reason_if_none": "",
+                })
+            else:
+                closest, reason = closest_candidate(tier_models, profile)
+                closest_note = f"Closest candidate: {closest['model']}, but it failed because {reason}." if closest else reason
+                rows.append({
+                    "tier": tier_data["label"],
+                    "profile": profile["name"],
+                    "recommended_model": "",
+                    "cw_pct": "", "balanced_ots": "", "critical_miss_rate": "", "threat_capture_rate": "",
+                    "false_review_load": "", "false_escalation_rate": "", "cost_per_run": "", "avg_seconds_per_event": "",
+                    "recommendation_status": "no model cleared the current guardrails",
+                    "exclusion_reason_if_none": closest_note,
+                })
+    with open(COMBINED / "operational-profile-summary-by-tier.csv", "w", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=fields, lineterminator="\n")
+        w.writeheader()
+        w.writerows(rows)
+    return rows
 
 
 def write_baseline_csv(baselines):
@@ -170,6 +366,50 @@ def plot_profile_summary(profile_rows, baselines):
     ax.grid(axis="y", alpha=0.25)
     plt.tight_layout()
     fig.savefig(CHARTS / "operational-profile-summary.png", dpi=150)
+
+
+def plot_tier_profile_summary(tiers, tier_profile_rows):
+    profiles = [p["name"] for p in PROFILES]
+    tier_keys = list(tiers.keys())
+    fig, ax = plt.subplots(figsize=(14, 6.5))
+    ax.set_xlim(0, len(profiles))
+    ax.set_ylim(0, len(tier_keys))
+    ax.set_xticks(np.arange(len(profiles)) + 0.5)
+    ax.set_xticklabels([PROFILE_USE_CASES[p].replace(" / ", " /\n") for p in profiles], fontsize=10)
+    ax.set_yticks(np.arange(len(tier_keys)) + 0.5)
+    ax.set_yticklabels([tiers[t]["label"].replace(" (", "\n(") for t in tier_keys], fontsize=10)
+    ax.invert_yaxis()
+
+    for y, tier_key in enumerate(tier_keys):
+        color = tiers[tier_key]["color"]
+        for x, profile_name in enumerate(profiles):
+            rows = tier_profile_rows[tier_key][profile_name]
+            rect = plt.Rectangle((x, y), 1, 1, facecolor=color, alpha=0.18, edgecolor="white", linewidth=2)
+            ax.add_patch(rect)
+            if rows:
+                m = rows[0]
+                text = (
+                    f"{m['model']}\n"
+                    f"BalOTS {m['balanced_ots']:.1f}%\n"
+                    f"CritMiss {m['critical_miss']:.1f}% · FalseRev {m['false_review']:.1f}%"
+                )
+                weight = "bold"
+            else:
+                text = "No model cleared\ncurrent guardrails"
+                weight = "normal"
+            ax.text(x + 0.5, y + 0.5, text, ha="center", va="center", fontsize=9, fontweight=weight, wrap=True)
+
+    ax.set_title("Operational Profile Leaders by Model Tier", fontsize=14, fontweight="bold")
+    ax.tick_params(length=0)
+    for spine in ax.spines.values():
+        spine.set_visible(False)
+    ax.text(
+        0.5, -0.18,
+        "Cells show profile leaders under the same guardrails as the global tables. Empty cells mean no model in that tier cleared the guardrails.",
+        transform=ax.transAxes, ha="center", va="top", fontsize=9,
+    )
+    plt.tight_layout()
+    fig.savefig(CHARTS / "operational-profile-summary-by-tier.png", dpi=150, bbox_inches="tight")
 
 
 
@@ -258,7 +498,7 @@ def label_points(ax, rows, x_key, y_key, labels, all_labels=False):
         pass
 
 
-def scatter_charts(models, baselines):
+def scatter_charts(models, baselines, tiers):
     profile_leaders = set()
     profile_top_models = set()
     for profile in PROFILES:
@@ -279,12 +519,21 @@ def scatter_charts(models, baselines):
         fig, ax = plt.subplots(figsize=(13.5, 9))
         normal = [m for m in all_rows if m["tier"] != "baseline"]
         base = [m for m in all_rows if m["tier"] == "baseline"]
-        sizes = [90 + max(float(m.get(size_key, 0)), 0) * 3 for m in normal]
-        sc = ax.scatter(
-            [m[x_key] for m in normal], [m[y_key] for m in normal],
-            c=[m[color_key] for m in normal], cmap=cmap, s=sizes,
-            alpha=0.72, edgecolors="gray", linewidths=0.6, zorder=3,
-        )
+        color_values = [m[color_key] for m in normal]
+        vmin = min(color_values) if color_values else 0
+        vmax = max(color_values) if color_values else 1
+        sc = None
+        for tier_key, tier_data in tiers.items():
+            tier_rows = [m for m in normal if m["tier"] == tier_key]
+            if not tier_rows:
+                continue
+            sizes = [90 + max(float(m.get(size_key, 0)), 0) * 3 for m in tier_rows]
+            sc = ax.scatter(
+                [m[x_key] for m in tier_rows], [m[y_key] for m in tier_rows],
+                c=[m[color_key] for m in tier_rows], cmap=cmap, vmin=vmin, vmax=vmax, s=sizes,
+                marker=tier_data["marker"], alpha=0.72, edgecolors="gray", linewidths=0.6,
+                label=tier_data["label"], zorder=3,
+            )
         ax.scatter(
             [m[x_key] for m in base], [m[y_key] for m in base],
             marker="X", s=210, c="#111111", edgecolors="white", linewidths=0.9,
@@ -313,8 +562,9 @@ def scatter_charts(models, baselines):
         ax.set_title(title)
         ax.grid(alpha=0.25)
         ax.legend(loc="best", framealpha=0.9)
-        cbar = fig.colorbar(sc, ax=ax)
-        cbar.set_label(color_label)
+        if sc is not None:
+            cbar = fig.colorbar(sc, ax=ax)
+            cbar.set_label(color_label)
         plt.tight_layout()
         fig.savefig(CHARTS / filename, dpi=150)
 
@@ -378,16 +628,131 @@ def scatter_charts(models, baselines):
             "Critical Miss Rate (%)", cmap="RdYlGn_r", all_labels=all_labels,
         )
 
+
+def markdown_global_table(profile_rows):
+    lines = ["| Use case | Suggested model | Why |", "|---|---|---|"]
+    for profile in PROFILES:
+        rows = profile_rows[profile["name"]]
+        if rows:
+            m = rows[0]
+            why = why_for_leader(m, profile["name"], rows, scope="overall")
+            lines.append(f"| {PROFILE_USE_CASES[profile['name']]} | `{m['model']}` | {why} |")
+        else:
+            lines.append(f"| {PROFILE_USE_CASES[profile['name']]} | No model cleared the current guardrails | {PROFILE_DESCRIPTIONS[profile['name']]} |")
+    return "\n".join(lines)
+
+
+def markdown_tier_tables(models, tiers, tier_profile_rows):
+    lines = [
+        "## Current Result Summary by Model Tier",
+        "",
+        "Deployment constraints matter. A vendor API model may be easy to test, but some users need local execution, open-source weights, predictable cost, or consumer-hardware feasibility. The following tables show the current profile leaders within each model tier.",
+        "",
+    ]
+    for tier_key, tier_data in tiers.items():
+        title = tier_data["label"].replace("(", "/ ").replace(")", "")
+        title = title.replace("Closed Source / Vendor API", "Closed Source / Vendor API")
+        title = title.replace("Open Source / Pro Hardware", "Open Source / Pro Hardware")
+        title = title.replace("Open Source / Consumer Hardware <10k", "Open Source / Consumer Hardware")
+        lines.extend([f"### {title}", "", "| Use case | Suggested model | Why |", "|---|---|---|"])
+        tier_models = [m for m in models if m["tier"] == tier_key]
+        for profile in PROFILES:
+            rows = tier_profile_rows[tier_key][profile["name"]]
+            if rows:
+                m = rows[0]
+                lines.append(f"| {PROFILE_USE_CASES[profile['name']]} | `{m['model']}` | {why_for_leader(m, profile['name'], rows)} |")
+            else:
+                closest, reason = closest_candidate(tier_models, profile)
+                if closest:
+                    why = f"Closest candidate: `{closest['model']}`, but it failed because {reason}."
+                else:
+                    why = reason
+                lines.append(f"| {PROFILE_USE_CASES[profile['name']]} | No model cleared the current guardrails | {why} |")
+        lines.append("")
+
+    lines.extend([
+        "### Why model tiers matter",
+        "",
+        "Model tier matters because deployment constraints are part of the decision. A vendor API model may score well, but it may not be usable in environments that require local processing, predictable fixed cost, or strict data-control boundaries. Open-source models on pro hardware can be attractive for controlled deployments. Consumer-hardware models are relevant when the goal is local triage with lower infrastructure cost, even if quality may be lower.",
+        "",
+    ])
+    return "\n".join(lines).rstrip()
+
+
+def update_readme(models, tiers, profile_rows, tier_profile_rows):
+    readme = ROOT / "README.md"
+    text = readme.read_text()
+    start = text.index("## Current Result Summary")
+    end = text.index("## Reader Guide")
+    section = f"""## Current Result Summary - Overall
+
+The first table ignores deployment tier and shows the current profile leaders across all tested models. These are **current profile leaders under the selected constraints**, not universal winners. A model only appears as a recommendation if it also clears minimum usefulness and completeness guardrails; near-`always-inc` behavior is analysis material, not a benchmark recommendation.
+
+{markdown_global_table(profile_rows)}
+
+There is no single best model. The useful choice depends on whether the deployment optimizes for missed-incident avoidance, balanced SOC triage, review-load reduction, cost, latency, data-control boundaries, or hardware constraints. The global winner is not automatically the best option for local or open-source deployments.
+
+{markdown_tier_tables(models, tiers, tier_profile_rows)}
+
+"""
+    text = text[:start] + section + text[end:]
+
+    full_start = text.index("## Full Data")
+    related_start = text.index("## Related")
+    full_section = """## Full Data
+
+Sortable and machine-readable data:
+
+- [combined/leaderboard.csv](combined/leaderboard.csv)
+- [combined/leaderboard.json](combined/leaderboard.json)
+- [combined/operational-baselines.csv](combined/operational-baselines.csv)
+- [combined/operational-profile-high-safety.csv](combined/operational-profile-high-safety.csv)
+- [combined/operational-profile-balanced-soc.csv](combined/operational-profile-balanced-soc.csv)
+- [combined/operational-profile-noise-reduction.csv](combined/operational-profile-noise-reduction.csv)
+- [combined/operational-profile-summary-by-tier.csv](combined/operational-profile-summary-by-tier.csv)
+
+Tier-specific operational profile CSVs:
+
+- [combined/operational-profile-high-safety-closed-source.csv](combined/operational-profile-high-safety-closed-source.csv)
+- [combined/operational-profile-balanced-soc-closed-source.csv](combined/operational-profile-balanced-soc-closed-source.csv)
+- [combined/operational-profile-noise-reduction-closed-source.csv](combined/operational-profile-noise-reduction-closed-source.csv)
+- [combined/operational-profile-high-safety-open-source-pro.csv](combined/operational-profile-high-safety-open-source-pro.csv)
+- [combined/operational-profile-balanced-soc-open-source-pro.csv](combined/operational-profile-balanced-soc-open-source-pro.csv)
+- [combined/operational-profile-noise-reduction-open-source-pro.csv](combined/operational-profile-noise-reduction-open-source-pro.csv)
+- [combined/operational-profile-high-safety-open-source-consumer.csv](combined/operational-profile-high-safety-open-source-consumer.csv)
+- [combined/operational-profile-balanced-soc-open-source-consumer.csv](combined/operational-profile-balanced-soc-open-source-consumer.csv)
+- [combined/operational-profile-noise-reduction-open-source-consumer.csv](combined/operational-profile-noise-reduction-open-source-consumer.csv)
+
+Additional documentation:
+
+- [OPERATIONAL_PROFILES.md](OPERATIONAL_PROFILES.md) — extended operational profile tables
+- [BENCHMARK.md](BENCHMARK.md) — benchmark setup details
+- [SCORING.md](SCORING.md) — scoring details
+
+The README intentionally contains the main operational summary so visitors do not need to read the extended profile page first.
+
+"""
+    text = text[:full_start] + full_section + text[related_start:]
+    readme.write_text(text)
+
 def main():
     rows = load_rows()
     baselines = [r for r in rows if r["tier"] == "baseline"]
     models = [r for r in rows if r["tier"] != "baseline"]
+    tiers, tier_lookup = load_tiers()
+    validate_tiers(models, tier_lookup)
     profile_rows = write_profile_csvs(models)
+    tier_profile_rows = write_tier_profile_csvs(models, tiers)
+    write_tier_summary_csv(models, tiers, tier_profile_rows)
     write_baseline_csv(baselines)
     plot_profile_summary(profile_rows, baselines)
-    scatter_charts(models, baselines)
+    plot_tier_profile_summary(tiers, tier_profile_rows)
+    scatter_charts(models, baselines, tiers)
+    update_readme(models, tiers, profile_rows, tier_profile_rows)
     print("✓ operational profile CSVs")
+    print("✓ tier-specific operational profile CSVs")
     print("✓ operational-profile-summary.png")
+    print("✓ operational-profile-summary-by-tier.png")
     print("✓ critical-miss-vs-false-review.png")
     print("✓ balanced-ots-vs-false-review.png")
     print("✓ cw-vs-balanced-ots.png")

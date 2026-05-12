@@ -1,0 +1,4 @@
+rank,model,cw_pct,balanced_ots,critical_miss,threat_capture,false_review,false_escalation,cost_per_run,avg_seconds_per_event,n,incomplete
+1,gemma4-31b,66.4,66.2,0.0,100.0,36.8,7.9,0.00,16.86,155,False
+2,llama-3.1-70b,51.9,55.0,2.3,97.7,55.3,26.3,0.00,15.29,155,False
+3,devstral-small,45.1,48.2,4.5,95.5,68.4,11.8,,1.52,155,False

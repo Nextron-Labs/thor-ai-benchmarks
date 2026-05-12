@@ -84,13 +84,13 @@ The charts show how each model's classifications break down:
 | Report | Findings |
 |--------|----------|
 | R1 | 16 |
-| R2 | 7 |
-| R3 | 21 |
+| R2 | 9 |
+| R3 | 19 |
 | R4 | 6 |
 | R5 | 23 |
-| R6 | 68 |
-| R7 | 16 |
-| **Total** | **157** |
+| R6 | 67 |
+| R7 | 15 |
+| **Total** | **155** |
 
 ## Timing & Cost
 
