@@ -36,7 +36,10 @@ PROFILES = [
     {
         "name": "High-safety",
         "csv": "operational-profile-high-safety.csv",
-        "requirements": lambda m: m["critical_miss"] <= 5 and m["threat_capture"] >= 95 and m["false_review"] < 100,
+        # Recommendation guardrail: a high-safety model must still reduce review
+        # load meaningfully. Anything close to always-inc belongs in analysis, not
+        # in the recommended profile table.
+        "requirements": lambda m: m["critical_miss"] <= 5 and m["threat_capture"] >= 95 and m["false_review"] <= 75,
         "sort": lambda m: (-m["balanced_ots"], m["false_review"]),
     },
     {
@@ -90,11 +93,11 @@ def write_profile_csvs(models):
     profile_rows = {}
     fields = ["rank", "model", "cw_pct", "balanced_ots", "critical_miss", "threat_capture", "false_review", "false_escalation", "cost_per_run", "avg_seconds_per_event", "n", "incomplete"]
     for profile in PROFILES:
-        matched = [m for m in models if profile["requirements"](m)]
+        matched = [m for m in models if not m["incomplete"] and profile["requirements"](m)]
         matched.sort(key=profile["sort"])
         profile_rows[profile["name"]] = matched
         with open(COMBINED / profile["csv"], "w", newline="") as f:
-            w = csv.DictWriter(f, fieldnames=fields)
+            w = csv.DictWriter(f, fieldnames=fields, lineterminator="\n")
             w.writeheader()
             for i, m in enumerate(matched, 1):
                 w.writerow({
@@ -117,7 +120,7 @@ def write_profile_csvs(models):
 def write_baseline_csv(baselines):
     fields = ["strategy", "cw_pct", "balanced_ots", "critical_miss", "threat_capture", "false_review", "false_escalation", "cost_per_run"]
     with open(COMBINED / "operational-baselines.csv", "w", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=fields)
+        w = csv.DictWriter(f, fieldnames=fields, lineterminator="\n")
         w.writeheader()
         for name in ["always-fp", "always-inc", "always-tp"]:
             m = next(b for b in baselines if b["model"] == name)
@@ -256,8 +259,18 @@ def label_points(ax, rows, x_key, y_key, labels, all_labels=False):
 
 
 def scatter_charts(models, baselines):
-    profile_leaders = {"llama-3.1-8b", "deepseek-v3.2", "deepseek-v4-flash"}
-    mentioned = profile_leaders | {"gpt-5-nano", "nemotron-3-nano-omni", "llama-3.1-70b", "qwen3-235b-a22b", "minimax-m2.5", "gpt-oss-120b", "gemma4-31b", "grok-4.20"}
+    profile_leaders = set()
+    profile_top_models = set()
+    for profile in PROFILES:
+        matched = [m for m in models if not m["incomplete"] and profile["requirements"](m)]
+        matched.sort(key=profile["sort"])
+        if matched:
+            profile_leaders.add(matched[0]["model"])
+            profile_top_models.update(m["model"] for m in matched[:5])
+
+    # Keep labels aligned with the generated profile tables instead of freezing
+    # old README leaders into the charts.
+    mentioned = profile_leaders | profile_top_models | {"llama-3.1-8b", "deepseek-v3.2", "deepseek-v4-flash"}
     all_rows = models + baselines
     baseline_names = {m["model"] for m in baselines}
 

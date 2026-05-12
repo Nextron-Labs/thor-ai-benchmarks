@@ -37,4 +37,3 @@ rank,model,cw_pct,balanced_ots,critical_miss,threat_capture,false_review,false_e
 36,claude-sonnet-4.6,57.3,59.6,0.0,100.0,50.0,9.2,,12.15,155,False
 37,gemini-2.5-flash,52.0,51.0,2.3,97.7,51.3,15.8,,3.07,155,False
 38,deepseek-v3.2,55.4,60.1,0.0,100.0,52.6,10.5,0.32,73.10,155,False
-39,gpt-oss-120b,45.7,48.7,2.3,97.7,52.8,6.9,0.00,16.59,149,True

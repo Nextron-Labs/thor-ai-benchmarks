@@ -2,19 +2,19 @@
 
 This benchmark evaluates LLMs on THOR finding triage. It focuses on security event and forensic finding assessment, not generic reasoning, coding, or vulnerability research.
 
-The current public result set covers **48 models**, **7 THOR reports**, and **154 expert-classified findings**. Models are compared against human expert ground truth and are evaluated on both classification quality and operational usefulness.
+The current public result set covers **49 models**, **7 THOR reports**, and **155 expert-classified findings**. Models are compared against human expert ground truth and are evaluated on both classification quality and operational usefulness.
 
 ## Current Result Summary
 
-These are **current profile leaders under the selected constraints**, not universal winners.
+These are **current profile leaders under the selected constraints**, not universal winners. A model only appears as a recommendation if it also clears minimum usefulness and completeness guardrails; near-`always-inc` behavior is analysis material, not a benchmark recommendation.
 
 | Use case | Suggested model | Why |
 |---|---|---|
-| High-safety triage | `llama-3.1-8b` | Lowest critical miss rate among useful models, beats `always-inc` on Balanced OTS, but still has high review load |
-| Balanced SOC triage | `deepseek-v3.2` | Under these constraints, currently the best balance between safety and review reduction in this data set |
-| Noise reduction / high-volume triage | `deepseek-v4-flash` | Lowest false review load among acceptable models, but with higher miss risk than the high-safety profile |
+| High-safety triage | `gemini-3.1-flash-lite` | Best Balanced OTS among complete models with Critical Miss ≤ 5%, Threat Capture ≥ 95%, and False Review ≤ 75%; also has zero critical misses and low review load in this data set |
+| Balanced SOC triage | `gemini-3.1-flash-lite` | Under the balanced constraints, currently the best overall operational trade-off: highest Balanced OTS with 0.0% Critical Miss and 27.6% False Review Load |
+| Noise reduction / high-volume triage | `qwen3.6-max` | Lowest False Review Load among acceptable complete models under this profile, but with more miss risk than the high-safety leader |
 
-There is no single best model. The useful choice depends on whether the deployment optimizes for missed-incident avoidance, balanced SOC triage, review-load reduction, cost, or latency.
+There is no single best model. The useful choice depends on whether the deployment optimizes for missed-incident avoidance, balanced SOC triage, review-load reduction, cost, or latency. `gemini-3.1-flash-lite` is currently the strongest overall model in this result set, but `qwen3.6-max` still has the lowest False Review Load under the noise-reduction profile.
 
 ## Reader Guide
 
@@ -45,7 +45,7 @@ The first charts are decision charts: they are meant to help pick a model for an
 
 This chart puts the three operational profile leaders next to the `always-inc` safety baseline. Each group shows Balanced OTS, Critical Miss Rate, and False Review Load with value labels, so the trade-off is visible without reading the full tables.
 
-`llama-3.1-8b` is the high-safety profile leader under these constraints, but it still has high review load. `deepseek-v3.2` is the balanced profile leader under the current constraints. `deepseek-v4-flash` reduces review load strongly, but has higher miss risk. `always-inc` is a safety reference, not a useful triage model.
+`gemini-3.1-flash-lite` is now both the high-safety and balanced SOC profile leader under the current constraints. `qwen3.6-max` reduces review load the most under the noise-reduction profile, but has higher miss risk than the high-safety leader. `always-inc` is a safety reference, not a useful triage model.
 
 ### 2. Critical Miss Rate vs False Review Load
 
@@ -62,7 +62,7 @@ This chart puts the three operational profile leaders next to the `always-inc` s
 
 This is one of the most important operational charts. A model in the lower-left would reduce analyst workload without hiding real incidents. Models near `always-inc` are safe but do not reduce enough noise. Models far left but high on the y-axis reduce workload at the cost of missing too many real threats.
 
-The current data set does not contain a perfect lower-left model. `llama-3.1-8b` sits closer to the safe/noisy area, while `deepseek-v4-flash` moves left toward lower review load but upward toward more miss risk.
+The current data set still does not contain a perfect lower-left model, but `gemini-3.1-flash-lite` is now closest to the desirable area among the main profile leaders: it has zero critical misses and much lower review load than the older high-safety candidates. `qwen3.6-max` moves further left toward lower review load, but upward toward more miss risk.
 
 Full-labeled detail chart: [critical-miss-vs-false-review-full-labeled.png](charts/critical-miss-vs-false-review-full-labeled.png)
 
@@ -81,7 +81,7 @@ Full-labeled detail chart: [critical-miss-vs-false-review-full-labeled.png](char
 
 Balanced OTS rewards operationally safe decisions across FP, Inc and TP classes. It should not be read without False Review Load. A model that sends everything to review can look safe, but it is not useful as a triage filter.
 
-`always-inc` illustrates the noisy-safe baseline: strong safety, but 100% false review load. `deepseek-v3.2` is the current balanced SOC profile leader because it stays close to that operational score while reducing review load substantially.
+`always-inc` illustrates the noisy-safe baseline: strong safety, but 100% false review load. `gemini-3.1-flash-lite` is the current balanced SOC profile leader because it substantially improves Balanced OTS while reducing false review load to 27.6%.
 
 Full-labeled detail chart: [balanced-ots-vs-false-review-full-labeled.png](charts/balanced-ots-vs-false-review-full-labeled.png)
 
@@ -163,9 +163,9 @@ These rows are deliberately naive control strategies. They are included to calib
 
 | Strategy | CW% | Balanced OTS | Critical Miss | Threat Capture | False Review | False Escalation | Cost/Run |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| `always-fp` | 26.9% | -58.3% | 100.0% | 0.0% | 0.0% | 0.0% | $0.00 |
-| `always-inc` | 22.1% | 38.3% | 0.0% | 100.0% | 100.0% | 0.0% | $0.00 |
-| `always-tp` | 19.2% | 25.0% | 0.0% | 100.0% | 100.0% | 100.0% | $0.00 |
+| `always-fp` | 28.7% | -58.3% | 100.0% | 0.0% | 0.0% | 0.0% | $0.00 |
+| `always-inc` | 24.5% | 38.3% | 0.0% | 100.0% | 100.0% | 0.0% | $0.00 |
+| `always-tp` | 16.8% | 25.0% | 0.0% | 100.0% | 100.0% | 100.0% | $0.00 |
 
 Baseline strategies are references, not recommendations:
 
@@ -183,20 +183,31 @@ Naive baselines can appear strong on individual metrics, especially safety metri
 
 **Requirements:**
 
+- Complete coverage across the benchmark set
 - Critical Miss Rate ≤ 5%
 - Threat Capture Rate ≥ 95%
-- False Review Load < 100%
+- False Review Load ≤ 75%
+
+**Recommendation guardrail:** high-safety does not mean "send almost everything to review." Models close to the `always-inc` baseline are excluded from this recommendation table even if their miss rate is low.
 
 **Ranking rule:** Balanced OTS descending, then False Review Load ascending.
 
 | # | Model | CW% | BalOTS | CritMiss | ThreatCap | FalseRev | FalseEsc | Cost/Run | AvgTime |
 |---:|---|---:|---:|---:|---:|---:|---:|---:|---:|
-| 1 | `llama-3.1-8b` | 28.0% | 40.0% | 2.1% | 97.9% | 88.2% | 6.6% | $0.00 | 12.65s |
-| 2 | `gpt-5-nano` | 27.7% | 35.9% | 2.1% | 97.9% | 90.8% | 18.4% | $0.12 | 31.26s |
+| 1 | `gemini-3.1-flash-lite` | 71.3% | 72.8% | 0.0% | 100.0% | 27.6% | 1.3% | — | 1.87s |
+| 2 | `qwen3-235b-a22b` | 61.1% | 68.4% | 0.0% | 100.0% | 50.0% | 3.9% | $0.00 | 31.93s |
+| 3 | `gemma4-31b` | 66.4% | 66.2% | 0.0% | 100.0% | 36.8% | 7.9% | $0.00 | 16.86s |
+| 4 | `glm-5.1` | 67.3% | 66.1% | 0.0% | 100.0% | 34.2% | 7.9% | — | 43.93s |
+| 5 | `kimi-k2.5` | 68.7% | 65.4% | 2.3% | 97.7% | 31.6% | 6.6% | — | 37.74s |
+| 6 | `deepseek-v4-pro` | 65.3% | 65.2% | 0.0% | 100.0% | 31.6% | 5.3% | — | 36.63s |
+| 7 | `glm-5` | 64.7% | 64.7% | 0.0% | 100.0% | 34.2% | 7.9% | — | 38.18s |
+| 8 | `gpt-5.5` | 58.4% | 64.6% | 0.0% | 100.0% | 40.8% | 6.6% | — | 55.85s |
+| 9 | `gemini-3.1-pro` | 67.1% | 63.8% | 2.3% | 97.7% | 36.8% | 3.9% | — | 24.97s |
+| 10 | `kimi-k2.6` | 63.8% | 63.2% | 0.0% | 100.0% | 32.9% | 3.9% | — | 63.32s |
 
-**Matched:** 2 / 48 models.
+**Shown:** top 10 / 31 matched models. **Matched:** 31 / 47 complete models.
 
-**Interpretation:** Under these constraints, `llama-3.1-8b` is the current profile leader. It is one of the few useful models with near-zero critical miss behavior and it beats `always-inc` on Balanced OTS, but the review load remains high.
+**Interpretation:** Under these constraints, `gemini-3.1-flash-lite` is now the profile leader. It has 0.0% Critical Miss Rate, 100.0% Threat Capture, and only 27.6% False Review Load, so it is no longer accurate to describe `llama-3.1-8b` as the high-safety recommendation. `llama-3.1-8b` is intentionally excluded by the review-load guardrail: it sends 66/76 false positives to review, for 86.8% False Review Load.
 
 ### Profile 2: Balanced SOC
 
@@ -204,6 +215,7 @@ Naive baselines can appear strong on individual metrics, especially safety metri
 
 **Requirements:**
 
+- Complete coverage across the benchmark set
 - Critical Miss Rate ≤ 15%
 - Threat Capture Rate ≥ 85%
 - False Review Load ≤ 75%
@@ -212,16 +224,20 @@ Naive baselines can appear strong on individual metrics, especially safety metri
 
 | # | Model | CW% | BalOTS | CritMiss | ThreatCap | FalseRev | FalseEsc | Cost/Run | AvgTime |
 |---:|---|---:|---:|---:|---:|---:|---:|---:|---:|
-| 1 | `deepseek-v3.2` | 38.8% | 37.4% | 14.6% | 85.4% | 61.8% | 14.5% | $0.32 | 73.28s |
-| 2 | `nemotron-3-nano-omni` | 35.2% | 33.1% | 14.6% | 85.4% | 69.3% | 18.7% | $0.00 | 47.19s |
-| 3 | `llama-3.1-70b` | 36.9% | 30.5% | 14.6% | 85.4% | 67.1% | 31.6% | $0.00 | 13.93s |
-| 4 | `qwen3-235b-a22b` | 33.0% | 26.8% | 12.5% | 87.5% | 65.8% | 14.5% | $0.00 | 32.24s |
-| 5 | `minimax-m2.5` | 32.9% | 22.0% | 14.6% | 85.4% | 59.2% | 10.5% | $0.16 | 20.07s |
-| 6 | `gpt-oss-120b` | 31.3% | 21.6% | 12.8% | 87.2% | 66.7% | 4.2% | $0.00 | 16.80s |
+| 1 | `gemini-3.1-flash-lite` | 71.3% | 72.8% | 0.0% | 100.0% | 27.6% | 1.3% | — | 1.87s |
+| 2 | `qwen3-235b-a22b` | 61.1% | 68.4% | 0.0% | 100.0% | 50.0% | 3.9% | $0.00 | 31.93s |
+| 3 | `gemma4-31b` | 66.4% | 66.2% | 0.0% | 100.0% | 36.8% | 7.9% | $0.00 | 16.86s |
+| 4 | `glm-5.1` | 67.3% | 66.1% | 0.0% | 100.0% | 34.2% | 7.9% | — | 43.93s |
+| 5 | `kimi-k2.5` | 68.7% | 65.4% | 2.3% | 97.7% | 31.6% | 6.6% | — | 37.74s |
+| 6 | `deepseek-v4-pro` | 65.3% | 65.2% | 0.0% | 100.0% | 31.6% | 5.3% | — | 36.63s |
+| 7 | `glm-5` | 64.7% | 64.7% | 0.0% | 100.0% | 34.2% | 7.9% | — | 38.18s |
+| 8 | `gpt-5.5` | 58.4% | 64.6% | 0.0% | 100.0% | 40.8% | 6.6% | — | 55.85s |
+| 9 | `gemini-3.1-pro` | 67.1% | 63.8% | 2.3% | 97.7% | 36.8% | 3.9% | — | 24.97s |
+| 10 | `kimi-k2.6` | 63.8% | 63.2% | 0.0% | 100.0% | 32.9% | 3.9% | — | 63.32s |
 
-**Matched:** 6 / 48 models.
+**Shown:** top 10 / 43 matched models. **Matched:** 43 / 47 complete models.
 
-**Interpretation:** Under these constraints, `deepseek-v3.2` currently provides the best balance in this data set. It nearly matches the `always-inc` Balanced OTS baseline while reducing review load by about 38 percentage points.
+**Interpretation:** Under these constraints, `gemini-3.1-flash-lite` currently provides the best balance in this data set. Compared with the `always-inc` baseline, it raises Balanced OTS from 38.3% to 72.8% and reduces false review load from 100.0% to 27.6%.
 
 ### Profile 3: Noise-Reduction / High-Volume Triage
 
@@ -229,6 +245,7 @@ Naive baselines can appear strong on individual metrics, especially safety metri
 
 **Requirements:**
 
+- Complete coverage across the benchmark set
 - False Review Load ≤ 55%
 - Critical Miss Rate ≤ 20%
 - Balanced OTS > 0
@@ -237,13 +254,20 @@ Naive baselines can appear strong on individual metrics, especially safety metri
 
 | # | Model | CW% | BalOTS | CritMiss | ThreatCap | FalseRev | FalseEsc | Cost/Run | AvgTime |
 |---:|---|---:|---:|---:|---:|---:|---:|---:|---:|
-| 1 | `deepseek-v4-flash` | 40.9% | 26.2% | 16.7% | 83.3% | 48.7% | 19.7% | $0.10 | 24.31s |
-| 2 | `gemma4-31b` | 40.6% | 27.1% | 18.8% | 81.2% | 52.6% | 13.2% | $0.00 | 17.21s |
-| 3 | `grok-4.20` | 36.0% | 22.9% | 18.8% | 81.2% | 52.6% | 9.2% | $2.23 | 9.39s |
+| 1 | `qwen3.6-max` | 64.2% | 45.8% | 13.6% | 86.4% | 21.1% | 7.9% | — | 105.62s |
+| 2 | `qwen3.5-plus-20260420` | 63.0% | 50.3% | 11.4% | 88.6% | 22.4% | 5.3% | — | 43.94s |
+| 3 | `qwen3.6-plus` | 61.3% | 47.3% | 11.4% | 88.6% | 25.0% | 3.9% | — | 41.21s |
+| 4 | `gemini-3.1-flash-lite` | 71.3% | 72.8% | 0.0% | 100.0% | 27.6% | 1.3% | — | 1.87s |
+| 5 | `mimo-v2-pro` | 59.8% | 47.9% | 6.8% | 93.2% | 27.6% | 13.2% | — | 7.13s |
+| 6 | `kimi-k2.5` | 68.7% | 65.4% | 2.3% | 97.7% | 31.6% | 6.6% | — | 37.74s |
+| 7 | `deepseek-v4-pro` | 65.3% | 65.2% | 0.0% | 100.0% | 31.6% | 5.3% | — | 36.63s |
+| 8 | `deepseek-v4-flash` | 63.7% | 62.3% | 0.0% | 100.0% | 31.6% | 9.2% | $0.10 | 25.47s |
+| 9 | `grok-4.1-fast` | 62.3% | 53.2% | 9.1% | 90.9% | 31.6% | 11.8% | — | 11.01s |
+| 10 | `kimi-k2.6` | 63.8% | 63.2% | 0.0% | 100.0% | 32.9% | 3.9% | — | 63.32s |
 
-**Matched:** 3 / 48 models.
+**Shown:** top 10 / 38 matched models. **Matched:** 38 / 47 complete models.
 
-**Interpretation:** Under these constraints, `deepseek-v4-flash` is the current review-load reduction leader. It cuts review load sharply compared with `always-inc`, but its miss risk is too high for high-safety use cases.
+**Interpretation:** Under these constraints, `qwen3.6-max` is the current review-load reduction leader by False Review Load. `gemini-3.1-flash-lite` is not the lowest-review-load option, but it is the stronger all-around choice in this profile: much higher Balanced OTS, zero critical misses, and still only 27.6% False Review Load.
 
 ## What We Benchmark
 
