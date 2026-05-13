@@ -12,7 +12,7 @@ The first table ignores deployment tier and shows the current profile leaders ac
 |---|---|---|
 | High-safety triage | `gemini-3.1-flash-lite` | Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss; low review load. |
 | Balanced SOC triage | `gemini-3.1-flash-lite` | Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss; low review load. |
-| Noise reduction / high-volume triage | `qwen3.6-max` | Lowest False Review Load overall among models that cleared the guardrails; low review load; slower than many candidates. |
+| Noise reduction / high-volume triage | `qwen3.5-plus-20260420` | Lowest False Review Load overall among models that cleared the guardrails; low review load. |
 
 There is no single best model. The useful choice depends on whether the deployment optimizes for missed-incident avoidance, balanced SOC triage, review-load reduction, cost, latency, data-control boundaries, or hardware constraints. The global winner is not automatically the best option for local or open-source deployments.
 
@@ -26,7 +26,7 @@ Deployment constraints matter. A vendor API model may be easy to test, but some 
 |---|---|---|
 | High-safety triage | `gemini-3.1-flash-lite` | Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss; low review load. |
 | Balanced SOC triage | `gemini-3.1-flash-lite` | Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss; low review load. |
-| Noise reduction / high-volume triage | `gemini-3.1-flash-lite` | Lowest False Review Load in this tier among models that cleared the guardrails; 0.0% Critical Miss; low review load. |
+| Noise reduction / high-volume triage | `mimo-v2-pro` | Lowest False Review Load in this tier among models that cleared the guardrails; low review load. |
 
 ### Open Source / Pro Hardware
 
@@ -34,7 +34,7 @@ Deployment constraints matter. A vendor API model may be easy to test, but some 
 |---|---|---|
 | High-safety triage | `qwen3-235b-a22b` | Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss. |
 | Balanced SOC triage | `qwen3-235b-a22b` | Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss. |
-| Noise reduction / high-volume triage | `qwen3.6-max` | Lowest False Review Load in this tier among models that cleared the guardrails; low review load; slower than many candidates. |
+| Noise reduction / high-volume triage | `qwen3.5-plus-20260420` | Lowest False Review Load in this tier among models that cleared the guardrails; low review load. |
 
 ### Open Source / Consumer Hardware
 
