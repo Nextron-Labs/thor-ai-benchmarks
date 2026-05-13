@@ -69,14 +69,10 @@ for m in models:
     m['incomplete'] = m.get('incomplete', False) in (True, 'True', 'true', 1)
     m['tier'] = tier_lookup.get(m['model'], 'closed_source')
 
-# Sort: complete models by CW% descending, then incomplete models at bottom
-# Exclude baselines from charts
-models_filtered = [m for m in models if m.get('tier') != 'baseline']
-complete = [m for m in models_filtered if not m.get('incomplete')]
-incomplete_models = [m for m in models_filtered if m.get('incomplete')]
-complete.sort(key=lambda x: x['cw_pct'], reverse=True)
-incomplete_models.sort(key=lambda x: x['cw_pct'], reverse=True)
-models = complete + incomplete_models
+# Public charts must contain complete, publishable model results only.
+# Incomplete/errored attempts are documented separately, never plotted/ranked.
+models = [m for m in models if m.get('tier') != 'baseline' and not m.get('incomplete') and int(m.get('n_errors', 0)) == 0]
+models.sort(key=lambda x: x['cw_pct'], reverse=True)
 
 def tier_style(tier_key):
     t = tiers_config[tier_key]
@@ -87,7 +83,7 @@ def tier_models(models_list, tier_key):
 
 # ── Chart 1: CW% Leaderboard (with tier colors + n annotations) ──────────────
 fig, ax = plt.subplots(figsize=(14, 11))
-names = [f"{m['model']} ⚠" if m.get('incomplete') else m['model'] for m in models]
+names = [m['model'] for m in models]
 cw = [m['cw_pct'] for m in models]
 bar_colors = [tiers_config[m['tier']]['color'] for m in models]
 n_vals = [int(m['n']) for m in models]
@@ -108,7 +104,6 @@ for i, (bar, val, n) in enumerate(zip(bars, cw, n_vals)):
 
 # Legend
 legend_patches = [mpatches.Patch(color=tiers_config[t]['color'], label=tiers_config[t]['label']) for t in tier_names]
-legend_patches.append(mpatches.Patch(color='white', edgecolor='gray', label=f'⚠ = incomplete (n < {n_max})'))
 ax.legend(handles=legend_patches, loc='lower right', fontsize=10, framealpha=0.9)
 
 plt.tight_layout()
@@ -145,11 +140,11 @@ fig.savefig(charts_dir / 'cw-vs-mae.png', dpi=150, bbox_inches='tight')
 print(f"✓ cw-vs-mae.png")
 
 # ── Chart 3: Classification Breakdown ──────────────────────────
-# Operational classification categories. Bars are normalized to each model's
-# scored findings plus invalid responses. Missing/unreached findings are not
-# mixed into the stacked percentages.
+# Operational classification categories. Bars are normalized to each complete
+# model's current full report set. Public artifacts exclude incomplete runs, so
+# LLM error counts should remain zero; the grey category is kept only as a guard.
 combined_results = json.load(open(combined_dir / 'results-combined.json'))
-report_key = 'R1+R2+R3+R4+R5+R6+R7'
+report_key = max((key.split('/')[-1] for key in combined_results if '+' in key.split('/')[-1]), key=lambda r: (r.count('+') + 1, r))
 
 cats = [
     ('exact', 'Exact match', '#2ECC71'),
@@ -192,10 +187,22 @@ for m in models:
         'total': max(total, 1),
     })
 
+if any(b['llm_error'] for b in breakdown):
+    bad = ', '.join(b['model'] for b in breakdown if b['llm_error'])
+    raise SystemExit(f'Public classification chart refuses incomplete/errored models: {bad}')
+
+# Only show categories that actually occur. This keeps the legend honest as
+# report/model coverage changes; zero-count categories should not imply visible
+# bars. Exact/minor are kept because they are the core classification mass.
+visible_cats = [
+    c for c in cats
+    if c[0] in ('exact', 'minor') or any(b[c[0]] > 0 for b in breakdown)
+]
+
 fig, ax = plt.subplots(figsize=(15, 12))
 y_pos = range(len(names))
 left = np.zeros(len(breakdown))
-for key, label, color in cats:
+for key, label, color in visible_cats:
     vals = [100.0 * b[key] / b['total'] for b in breakdown]
     ax.barh(y_pos, vals, left=left, color=color, edgecolor='white', linewidth=0.45, label=label)
     left += np.array(vals)
@@ -206,11 +213,11 @@ ax.invert_yaxis()
 ax.set_xlabel('Share of scored findings and invalid responses (%)', fontsize=12)
 ax.set_xlim(0, 100)
 ax.set_title('Classification Breakdown by Model — Operational Error Categories', fontsize=14, fontweight='bold')
-ax.legend(loc='lower right', fontsize=9, framealpha=0.94)
+ax.legend(loc='center left', bbox_to_anchor=(1.01, 0.5), fontsize=9, framealpha=0.94)
 ax.grid(axis='x', alpha=0.2)
 ax.text(
     0.01, 0.015,
-    'Bars sum to 100% per model. Missing/unscored findings are not mixed into the stacked percentages.\n'
+    f'Bars sum to 100% per model over {report_key}. Incomplete model attempts are excluded from public charts.\n'
     'Minor miss excludes Inc→FP because anomaly suppression has distinct operational risk.',
     transform=ax.transAxes, fontsize=8.5, ha='left', va='bottom',
     bbox=dict(boxstyle='round,pad=0.35', facecolor='white', edgecolor='lightgray', alpha=0.9)
@@ -229,7 +236,8 @@ error_keys = [
     ('anomaly_suppression', 'Anomaly suppression (Inc→FP)', '#8E44AD', 0.5*h),
     ('llm_error', 'LLM error / invalid response', '#95A5A6', 1.5*h),
 ]
-for key, label, color, offset in error_keys:
+visible_error_keys = [e for e in error_keys if any(b[e[0]] > 0 for b in breakdown)]
+for key, label, color, offset in visible_error_keys:
     vals = [b[key] for b in breakdown]
     bars = ax.barh([i + offset for i in y_pos], vals, height=h, color=color, label=label)
     for bar, val in zip(bars, vals):
@@ -242,7 +250,7 @@ ax.set_xlabel('Number of findings / invalid responses', fontsize=12)
 ax.set_title('Operational Error Breakdown by Model', fontsize=14, fontweight='bold')
 ax.legend(loc='lower right', fontsize=9, framealpha=0.94)
 ax.grid(axis='x', alpha=0.2)
-max_err = max(max(b[k] for b in breakdown) for k, *_ in error_keys)
+max_err = max(max(b[k] for b in breakdown) for k, *_ in visible_error_keys) if visible_error_keys else 0
 ax.set_xlim(0, max_err * 1.25 if max_err else 1)
 plt.tight_layout()
 fig.savefig(charts_dir / 'operational-error-breakdown.png', dpi=150, bbox_inches='tight')
@@ -258,7 +266,7 @@ for tier_key in tier_names:
 
     fig, ax = plt.subplots(figsize=(10, max(4, len(tm) * 0.5 + 1)))
     tm.sort(key=lambda x: x['cw_pct'], reverse=True)
-    names_t = [f"{m['model']} ⚠" if m.get('incomplete') else m['model'] for m in tm]
+    names_t = [m['model'] for m in tm]
     cw_t = [m['cw_pct'] for m in tm]
 
     bars = ax.barh(range(len(names_t)), cw_t, color=color, edgecolor='white', linewidth=0.5)
@@ -287,7 +295,7 @@ for tier_key in tier_names:
 
     fig, ax = plt.subplots(figsize=(10, max(4, len(tm) * 0.5 + 1)))
     tm.sort(key=lambda x: x['mae'])
-    names_t = [f"{m['model']} ⚠" if m.get('incomplete') else m['model'] for m in tm]
+    names_t = [m['model'] for m in tm]
     mae_t = [m['mae'] for m in tm]
 
     bars = ax.barh(range(len(names_t)), mae_t, color=color, edgecolor='white', linewidth=0.5, alpha=0.85)

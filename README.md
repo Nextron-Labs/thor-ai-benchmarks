@@ -2,7 +2,7 @@
 
 This benchmark evaluates LLMs on THOR finding triage. It focuses on security event and forensic finding assessment, not generic reasoning, coding, or vulnerability research.
 
-The current public result set covers **49 models**, **7 THOR reports**, and **155 expert-classified findings**. Models are compared against human expert ground truth and are evaluated on both classification quality and operational usefulness.
+The current public result set covers **46 complete models**, **9 THOR reports**, and **189 expert-classified findings**. Models are compared against human expert ground truth and are evaluated on both classification quality and operational usefulness.
 
 ## Current Result Summary - Overall
 
@@ -176,7 +176,7 @@ This chart compares quality against average seconds per event and matters for hi
 
 ![Classification Breakdown](charts/classification-breakdown.png)
 
-This chart shows how each model’s decisions break down. Green is exact agreement with expert ground truth. Blue means the model was one step away. Orange/yellow means the model over-escalated benign findings. Dark red is the most dangerous case: a true positive classified as false positive. Red/purple marks review-worthy anomalies that were suppressed as false positives. Grey means the model failed to return a valid classification.
+This chart shows how each model’s decisions break down. Green is exact agreement with expert ground truth. Blue means the model was one step away. Orange/yellow means the model over-escalated benign findings. Dark red is the most dangerous case: a true positive classified as false positive. Red/purple marks review-worthy anomalies that were suppressed as false positives. Incomplete model attempts are excluded from this chart rather than shown as error bars.
 
 ### How to read this chart
 
@@ -185,9 +185,8 @@ This chart shows how each model’s decisions break down. Green is exact agreeme
 - Orange/yellow means analyst workload increases.
 - Dark red is the most dangerous segment and should be minimized.
 - Red/purple means relevant anomalies disappear and should also be minimized.
-- Grey indicates reliability problems.
 
-The stacked bars sum to 100% for each model over scored findings and invalid responses. Missing/unscored findings are not mixed into the stacked percentages. For absolute counts of only the operational error classes, see [operational-error-breakdown.png](charts/operational-error-breakdown.png).
+The stacked bars sum to 100% for each complete model over the current full R1–R9 finding set. Incomplete or invalid model attempts are dropped from public charts and listed separately. For absolute counts of only the operational error classes, see [operational-error-breakdown.png](charts/operational-error-breakdown.png).
 
 ### 9. CW% Leaderboard
 
@@ -243,7 +242,7 @@ Naive baselines can appear strong on individual metrics, especially safety metri
 | 9 | `gemini-3.1-pro` | 67.1% | 63.8% | 2.3% | 97.7% | 36.8% | 3.9% | — | 24.97s |
 | 10 | `kimi-k2.6` | 63.8% | 63.2% | 0.0% | 100.0% | 32.9% | 3.9% | — | 63.32s |
 
-**Shown:** top 10 / 31 matched models. **Matched:** 31 / 47 complete models.
+**Shown:** top 10 / 28 matched models. **Matched:** 28 / 46 complete models.
 
 **Interpretation:** Under these constraints, `gemini-3.1-flash-lite` is now the profile leader. It has 0.0% Critical Miss Rate, 100.0% Threat Capture, and only 27.6% False Review Load, so it is no longer accurate to describe `llama-3.1-8b` as the high-safety recommendation. `llama-3.1-8b` is intentionally excluded by the review-load guardrail: it sends 66/76 false positives to review, for 86.8% False Review Load.
 
@@ -273,7 +272,7 @@ Naive baselines can appear strong on individual metrics, especially safety metri
 | 9 | `gemini-3.1-pro` | 67.1% | 63.8% | 2.3% | 97.7% | 36.8% | 3.9% | — | 24.97s |
 | 10 | `kimi-k2.6` | 63.8% | 63.2% | 0.0% | 100.0% | 32.9% | 3.9% | — | 63.32s |
 
-**Shown:** top 10 / 43 matched models. **Matched:** 43 / 47 complete models.
+**Shown:** top 10 / 41 matched models. **Matched:** 41 / 46 complete models.
 
 **Interpretation:** Under these constraints, `gemini-3.1-flash-lite` currently provides the best balance in this data set. Compared with the `always-inc` baseline, it raises Balanced OTS from 38.3% to 72.8% and reduces false review load from 100.0% to 27.6%.
 
@@ -303,9 +302,17 @@ Naive baselines can appear strong on individual metrics, especially safety metri
 | 9 | `grok-4.1-fast` | 62.3% | 53.2% | 9.1% | 90.9% | 31.6% | 11.8% | — | 11.01s |
 | 10 | `kimi-k2.6` | 63.8% | 63.2% | 0.0% | 100.0% | 32.9% | 3.9% | — | 63.32s |
 
-**Shown:** top 10 / 38 matched models. **Matched:** 38 / 47 complete models.
+**Shown:** top 10 / 37 matched models. **Matched:** 37 / 46 complete models.
 
 **Interpretation:** Under these constraints, `qwen3.6-max` is the current review-load reduction leader by False Review Load. `gemini-3.1-flash-lite` is not the lowest-review-load option, but it is the stronger all-around choice in this profile: much higher Balanced OTS, zero critical misses, and still only 27.6% False Review Load.
+
+## Incomplete / Dropped Model Attempts
+
+Public benchmark charts and leaderboards include complete model runs only. If a model repeatedly fails to return valid structured results for every scored finding, we drop it from the public benchmark instead of ranking a partial result. Current dropped attempts are listed in `combined/dropped-models.json`:
+
+- `gpt-oss-120b` — incomplete result: 182/189 findings, 7 errors
+- `nemotron-3-nano-omni` — incomplete result: 187/189 findings, 2 errors
+- `ring-2.6-1t` — missing the current full R1–R9 report set
 
 ## What We Benchmark
 
