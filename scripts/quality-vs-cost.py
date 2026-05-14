@@ -114,10 +114,6 @@ def main():
     with open(lb_path) as f:
         lb = json.load(f)
 
-    # Total ground truth findings across all scored reports
-    # Update this when adding new reports: R1=16 + R2=7 + R3=20 + R4=6 + R5=23 + R6=67 + R7=15 = 154
-    n_findings_total = 154
-
     results = []
     missing_price = []
     for m in lb:
@@ -158,7 +154,7 @@ def main():
     n_models = len(results)
     ax.set_xlabel('Estimated Cost per Run (¢)', fontsize=12)
     ax.set_ylabel('Quality Score (CW %)', fontsize=12)
-    ax.set_title(f'THOR Benchmark: Quality vs Cost\n({n_models} models · {n_findings_total} findings · cost based on actual token usage)', fontsize=14)
+    ax.set_title(f'THOR Benchmark: Quality vs Cost\n({n_models} models · cost based on actual token usage)', fontsize=14)
     ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.08), ncol=3, framealpha=0.9)
     ax.grid(True, alpha=0.3)
     ax.axhline(y=38, color='gray', linestyle='--', alpha=0.5, linewidth=0.8)
