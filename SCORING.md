@@ -88,15 +88,15 @@ The operational profile recommendations also apply guardrails. In particular, th
 
 ## Ground Truth Distribution
 
-Across the current seven-report benchmark set (155 expert-classified seed findings):
+Across the current nine-report benchmark set (**189 expert-classified scored seed findings**):
 
 | Category | Count | Share |
 |----------|-------|-------|
-| FP (False Positive) | 76 | 49.0% |
-| Inc (Inconclusive) | 35 | 22.6% |
-| TP (True Positive) | 44 | 28.4% |
+| FP (False Positive) | 89 | 47.1% |
+| Inc (Inconclusive) | 45 | 23.8% |
+| TP (True Positive) | 55 | 29.1% |
 
-Per-report finding counts:
+Per-report scored finding counts:
 
 | Report | Findings |
 |--------|----------|
@@ -107,7 +107,9 @@ Per-report finding counts:
 | R5 | 23 |
 | R6 | 67 |
 | R7 | 15 |
-| **Total** | **155** |
+| R8 | 19 |
+| R9 | 15 |
+| **Total** | **189** |
 
 ## Why CW Over Simple Accuracy?
 
