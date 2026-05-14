@@ -25,7 +25,7 @@ Human expert classifications and expert priority scores define the reference ans
 - Ground truth classification (TP/FP/Inc)
 - Human expert priority score
 
-Ground truth is maintained separately for each report (R1 through R7).
+Ground truth is maintained separately for each report (R1 through R9).
 
 ### THOR Reports
 
@@ -90,7 +90,9 @@ The charts show how each model's classifications break down:
 | R5 | 23 |
 | R6 | 67 |
 | R7 | 15 |
-| **Total** | **155** |
+| R8 | 19 |
+| R9 | 15 |
+| **Total** | **189** |
 
 ## Timing & Cost
 
