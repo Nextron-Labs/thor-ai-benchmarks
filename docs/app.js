@@ -198,7 +198,7 @@ function renderChart(rows) {
       textfont: {
         family: "IBM Plex Sans, sans-serif",
         size: 11,
-        color: "#122033",
+        color: "#b7efff",
       },
       hovertemplate:
         "<b>%{customdata[0]}</b><br>" +
@@ -217,7 +217,7 @@ function renderChart(rows) {
         symbol: tier.symbol,
         opacity: 0.92,
         line: {
-          color: "#f8fbff",
+          color: "#020814",
           width: 1.3,
         },
       },
@@ -227,10 +227,10 @@ function renderChart(rows) {
   const layout = {
     margin: { l: 64, r: 24, t: 24, b: 64 },
     paper_bgcolor: "rgba(0,0,0,0)",
-    plot_bgcolor: "rgba(255,255,255,0.55)",
+    plot_bgcolor: "rgba(1, 10, 22, 0.88)",
     hoverlabel: {
       bgcolor: "#0f172a",
-      bordercolor: "#1e3a5f",
+      bordercolor: "#41e8ff",
       align: "left",
       font: {
         family: "IBM Plex Sans, sans-serif",
@@ -240,17 +240,23 @@ function renderChart(rows) {
     },
     font: {
       family: "IBM Plex Sans, sans-serif",
-      color: "#122033",
+      color: "#d8f5ff",
     },
     xaxis: {
-      title: xMetric.label,
+      title: { text: xMetric.label, font: { color: "#d8f5ff" } },
       type: state.xScale,
-      gridcolor: "rgba(37, 99, 235, 0.1)",
+      gridcolor: "rgba(65, 232, 255, 0.14)",
+      showline: true,
+      linecolor: "rgba(65, 232, 255, 0.24)",
+      tickfont: { color: "#9fc9dd" },
       zeroline: false,
     },
     yaxis: {
-      title: yMetric.label,
-      gridcolor: "rgba(37, 99, 235, 0.1)",
+      title: { text: yMetric.label, font: { color: "#d8f5ff" } },
+      gridcolor: "rgba(65, 232, 255, 0.14)",
+      showline: true,
+      linecolor: "rgba(65, 232, 255, 0.24)",
+      tickfont: { color: "#9fc9dd" },
       zeroline: false,
     },
     legend: {
@@ -258,8 +264,9 @@ function renderChart(rows) {
       xanchor: "right",
       y: 1.02,
       orientation: "h",
-      bgcolor: "rgba(255,255,255,0.88)",
-      bordercolor: "rgba(37, 99, 235, 0.12)",
+      bgcolor: "rgba(3, 14, 28, 0.92)",
+      bordercolor: "rgba(65, 232, 255, 0.2)",
+      font: { color: "#d8f5ff" },
       borderwidth: 1,
     },
   };
