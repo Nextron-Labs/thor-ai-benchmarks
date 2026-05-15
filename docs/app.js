@@ -593,7 +593,7 @@ function renderTable(rows) {
   elements.tableBody.innerHTML = "";
 
   const sorted = [...rows].sort((a, b) => a.rank_sort - b.rank_sort || a.model.localeCompare(b.model));
-  elements.tableSummary.textContent = `${sorted.length} models shown with the current search and tier filters.`;
+  elements.tableSummary.textContent = `${sorted.length} models shown with the current search and tier filters. Sorted by Quality Score (CW%) rank.`;
 
   sorted.forEach((row) => {
     const tr = document.createElement("tr");
@@ -604,7 +604,7 @@ function renderTable(rows) {
       <td>${formatValue(metricByKey("balanced_ots"), row.balanced_ots)}</td>
       <td>${formatValue(metricByKey("critical_miss"), row.critical_miss)}</td>
       <td>${formatValue(metricByKey("false_review"), row.false_review)}</td>
-      <td>${formatValue(metricByKey("cw_pct"), row.cw_pct)}</td>
+      <td class="sort-column-cell">${formatValue(metricByKey("cw_pct"), row.cw_pct)}</td>
       <td>${formatValue(metricByKey("threat_capture"), row.threat_capture)}</td>
     `;
     elements.tableBody.appendChild(tr);

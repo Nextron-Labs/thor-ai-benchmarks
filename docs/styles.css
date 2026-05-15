@@ -556,9 +556,26 @@ thead th {
   border-bottom: 1px solid var(--line);
 }
 
+.sort-column-head {
+  color: var(--ink);
+}
+
+.sort-column-tag {
+  color: var(--accent);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
 tbody td {
   padding: 12px 0;
   border-bottom: 1px solid rgba(65, 232, 255, 0.08);
+}
+
+.sort-column-cell {
+  color: var(--ink);
+  font-weight: 700;
 }
 
 tbody tr:last-child td {
