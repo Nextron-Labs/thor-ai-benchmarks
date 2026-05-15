@@ -601,10 +601,10 @@ function renderTable(rows) {
       <td>${row.rank_label ?? "–"}</td>
       <td><span class="model-label">${modelNameMarkup(row)}</span>${row.incomplete ? '<span class="incomplete-pill">Incomplete</span>' : ""}</td>
       <td>${TIER_META[row.tier].label}</td>
+      <td class="sort-column-cell">${formatValue(metricByKey("cw_pct"), row.cw_pct)}</td>
       <td>${formatValue(metricByKey("balanced_ots"), row.balanced_ots)}</td>
       <td>${formatValue(metricByKey("critical_miss"), row.critical_miss)}</td>
       <td>${formatValue(metricByKey("false_review"), row.false_review)}</td>
-      <td class="sort-column-cell">${formatValue(metricByKey("cw_pct"), row.cw_pct)}</td>
       <td>${formatValue(metricByKey("threat_capture"), row.threat_capture)}</td>
     `;
     elements.tableBody.appendChild(tr);
