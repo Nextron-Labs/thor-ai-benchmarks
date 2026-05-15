@@ -4,7 +4,7 @@ This benchmark evaluates LLMs on THOR finding triage. It focuses on security eve
 
 The current public result set covers **46 complete models**, **9 THOR reports**, and **189 expert-classified findings**. Models are compared against human expert ground truth and are evaluated on both classification quality and operational usefulness.
 
-Interactive companion: [Benchmark Control Deck](https://nextron-labs.github.io/thor-ai-benchmarks/#explorer?preset=miss-vs-review) for hoverable scatter plots, tier filters, leader tables, and the chart gallery. Use it whenever the static charts below get too dense to read.
+Interactive companion: [Benchmark Control Deck](https://nextron-labs.github.io/thor-ai-benchmarks/) for hoverable scatter plots, tier filters, leader tables, and the chart gallery. Use it whenever the static charts below get too dense to read.
 
 <!-- BEGIN GENERATED:CURRENT_RESULT_SUMMARY -->
 ## Current Result Summary - Overall
@@ -459,7 +459,7 @@ Additional documentation:
 The README intentionally contains the main operational summary so visitors do not need to read the extended profile page first.
 <!-- END GENERATED:FULL_DATA -->
 
-Interactive charts and tabbed summaries are also available in the [Benchmark Control Deck](https://nextron-labs.github.io/thor-ai-benchmarks/#explorer?preset=miss-vs-review).
+Interactive charts and tabbed summaries are also available in the [Benchmark Control Deck](https://nextron-labs.github.io/thor-ai-benchmarks/).
 
 ## Related
 

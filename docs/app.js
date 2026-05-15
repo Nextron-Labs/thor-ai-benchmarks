@@ -785,7 +785,7 @@ async function init() {
   state.metricsByKey = Object.fromEntries(state.data.metrics.map((metric) => [metric.key, metric]));
   state.modelsByName = new Map(state.data.models.map((row) => [row.model, row]));
 
-  const defaultPreset = state.data.presets[0];
+  const defaultPreset = presetByKey("cw-vs-balanced-ots") || state.data.presets[0];
   applyPreset(defaultPreset);
   state.galleryKey = state.data.chart_gallery[0]?.key || state.galleryKey;
 
