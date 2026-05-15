@@ -278,10 +278,10 @@ def main():
         "metrics": [
             {
                 "key": "cw_pct",
-                "label": "CW %",
+                "label": "Quality Score",
                 "direction": "higher",
                 "format": "percent",
-                "description": "Confidence-weighted benchmark score.",
+                "description": "Plain-language label for the benchmark's confidence-weighted score (CW%) used in the README and blog posts.",
             },
             {
                 "key": "balanced_ots",
@@ -434,28 +434,28 @@ def main():
             },
             {
                 "key": "cw-vs-balanced-ots",
-                "label": "CW % vs Balanced OTS",
+                "label": "Quality Score vs Balanced OTS",
                 "x": "cw_pct",
                 "y": "balanced_ots",
                 "x_scale": "linear",
             },
             {
                 "key": "cw-vs-speed",
-                "label": "CW % vs Speed",
+                "label": "Quality Score vs Speed",
                 "x": "avg_seconds_per_event",
                 "y": "cw_pct",
                 "x_scale": "log",
             },
             {
                 "key": "cw-vs-cost",
-                "label": "CW % vs Cost",
+                "label": "Quality Score vs Cost",
                 "x": "estimated_run_cost_cents",
                 "y": "cw_pct",
                 "x_scale": "linear",
             },
             {
                 "key": "cw-vs-mae",
-                "label": "CW % vs MAE",
+                "label": "Quality Score vs MAE",
                 "x": "mae",
                 "y": "cw_pct",
                 "x_scale": "linear",

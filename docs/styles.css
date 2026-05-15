@@ -341,7 +341,6 @@ body::before {
 }
 
 .glossary-card {
-  margin-top: 16px;
   border: 1px solid var(--line);
   border-radius: 0;
   background: rgba(4, 18, 35, 0.96);
@@ -349,9 +348,24 @@ body::before {
   box-shadow: inset 0 0 0 1px rgba(63, 135, 255, 0.05);
 }
 
+.glossary-card-chart {
+  margin-top: 18px;
+}
+
 .glossary-card strong {
   display: block;
   margin-bottom: 10px;
+}
+
+.glossary-intro {
+  margin: 0 0 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.glossary-highlight {
+  color: var(--ink);
+  font-weight: 600;
 }
 
 .glossary-list {
@@ -372,6 +386,11 @@ body::before {
   margin: 4px 0 0;
   color: var(--muted);
   line-height: 1.55;
+}
+
+.glossary-card code {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.9em;
 }
 
 .note-card code {

@@ -319,7 +319,7 @@ function renderChart(rows) {
         "%{customdata[0]}<br>" +
         "%{customdata[1]}<br>" +
         "Rank: %{customdata[2]}<br>" +
-        "CW: %{customdata[3]}<br>" +
+        "Quality score: %{customdata[3]}<br>" +
         "Balanced OTS: %{customdata[4]}<br>" +
         "Critical miss: %{customdata[5]}<br>" +
         "False review: %{customdata[6]}<br>" +

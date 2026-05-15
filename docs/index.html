@@ -82,14 +82,27 @@
                   being hidden.
                 </p>
               </div>
+            </section>
 
-              <div class="glossary-card">
+            <section class="panel panel-chart">
+              <div class="panel-header">
+                <h2 id="chart-title">Scatter Explorer</h2>
+                <p id="chart-subtitle"></p>
+              </div>
+              <div id="chart" class="chart-surface" aria-label="Interactive chart"></div>
+              <div class="glossary-card glossary-card-chart">
                 <strong>Metric Glossary</strong>
+                <p class="glossary-intro">
+                  On this page, <span class="glossary-highlight">Quality Score</span>
+                  is the plain-language label for the benchmark's <code>CW%</code>
+                  metric from the README and blog posts.
+                </p>
                 <dl class="glossary-list">
-                  <dt>CW%</dt>
+                  <dt>Quality Score (CW%)</dt>
                   <dd>
-                    Confidence-Weighted Score. The classic benchmark score. It rewards
-                    confident correct answers and penalizes confident wrong answers.
+                    Confidence-Weighted Score. The classic benchmark quality
+                    score. It rewards confident correct answers and penalizes
+                    confident wrong answers.
                   </dd>
                   <dt>OTS</dt>
                   <dd>
@@ -113,14 +126,6 @@
                   </dd>
                 </dl>
               </div>
-            </section>
-
-            <section class="panel panel-chart">
-              <div class="panel-header">
-                <h2 id="chart-title">Scatter Explorer</h2>
-                <p id="chart-subtitle"></p>
-              </div>
-              <div id="chart" class="chart-surface" aria-label="Interactive chart"></div>
             </section>
           </div>
         </section>
@@ -171,7 +176,7 @@
                     <th>Balanced OTS</th>
                     <th>Critical Miss %</th>
                     <th>False Review %</th>
-                    <th>CW %</th>
+                    <th>Quality Score</th>
                     <th>Threat Capture %</th>
                   </tr>
                 </thead>
