@@ -4,19 +4,19 @@ const TIER_META = {
   closed_source: {
     label: "Closed Source / Vendor API",
     displayLabel: "♦️ Closed Source / Vendor API",
-    color: "#2563eb",
+    color: "#ff9f43",
     symbol: "diamond",
   },
   open_source_pro: {
     label: "Open Source / Pro Hardware",
     displayLabel: "🟦 Open Source / Pro Hardware",
-    color: "#5c6f87",
+    color: "#3f87ff",
     symbol: "square",
   },
   open_source_consumer: {
     label: "Open Source / Consumer Hardware",
     displayLabel: "🟢 Open Source / Consumer Hardware",
-    color: "#8ab4ff",
+    color: "#22c55e",
     symbol: "circle",
   },
   baseline: {
@@ -144,6 +144,7 @@ function buildTierFilters() {
     const swatch = document.createElement("span");
     swatch.className = "swatch";
     swatch.style.backgroundColor = tier.color;
+    swatch.style.color = tier.color;
 
     const text = document.createElement("span");
     text.textContent = tier.displayLabel;
