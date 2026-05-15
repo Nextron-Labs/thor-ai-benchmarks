@@ -62,13 +62,15 @@
           <div class="tier-filter" id="tier-filter"></div>
 
           <div class="note-card">
-            <strong>Metric note</strong>
+            <strong>Operational note</strong>
             <p>
-              The public repo does not define a metric named
-              <code>balanced OTS</code>. This prototype therefore uses the
-              published leaderboard fields and derived rates that already exist
-              in the repo. If you want the exact balanced-OTS plots, the site
-              only needs one more formula added to the data generator.
+              This explorer now reads the public operational metrics directly
+              from <code>combined/leaderboard.json</code>, including
+              <code>balanced_ots</code>, <code>critical_miss</code>, and
+              <code>false_review</code>. The baseline rows
+              <code>always-fp</code>, <code>always-inc</code>, and
+              <code>always-tp</code> are exposed as references instead of being
+              hidden.
             </p>
           </div>
         </section>
@@ -93,11 +95,11 @@
                   <th>Rank</th>
                   <th>Model</th>
                   <th>Tier</th>
-                  <th>CW %</th>
-                  <th>Ord %</th>
+                  <th>Balanced OTS</th>
                   <th>Critical Miss %</th>
                   <th>False Review %</th>
-                  <th>MAE</th>
+                  <th>CW %</th>
+                  <th>Threat Capture %</th>
                 </tr>
               </thead>
               <tbody id="table-body"></tbody>

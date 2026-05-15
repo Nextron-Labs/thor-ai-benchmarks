@@ -4,6 +4,7 @@ const TIER_META = {
   closed_source: { label: "Closed Source", color: "#dc5a3f", symbol: "diamond" },
   open_source_pro: { label: "Open Source Pro", color: "#2176c8", symbol: "square" },
   open_source_consumer: { label: "Open Source Consumer", color: "#2b8f60", symbol: "circle" },
+  baseline: { label: "Baseline", color: "#7a6b57", symbol: "x" },
 };
 
 const state = {
@@ -159,10 +160,12 @@ function buildHoverText(row) {
   return [
     `<b>${row.model}</b>`,
     `${TIER_META[row.tier].label}`,
+    `Rank: ${row.rank_label ?? "–"}`,
     `CW: ${formatValue(metricByKey("cw_pct"), row.cw_pct)}`,
-    `Ordinal: ${formatValue(metricByKey("ord_pct"), row.ord_pct)}`,
-    `Critical miss: ${formatValue(metricByKey("critical_miss_rate"), row.critical_miss_rate)}`,
-    `False review: ${formatValue(metricByKey("false_review_load"), row.false_review_load)}`,
+    `Balanced OTS: ${formatValue(metricByKey("balanced_ots"), row.balanced_ots)}`,
+    `Critical miss: ${formatValue(metricByKey("critical_miss"), row.critical_miss)}`,
+    `False review: ${formatValue(metricByKey("false_review"), row.false_review)}`,
+    `Threat capture: ${formatValue(metricByKey("threat_capture"), row.threat_capture)}`,
     `MAE: ${formatValue(metricByKey("mae"), row.mae)}`,
     `Findings: ${row.n}`,
   ].join("<br>");
@@ -264,7 +267,7 @@ function renderChart(rows) {
 function renderTable(rows) {
   elements.tableBody.innerHTML = "";
 
-  const sorted = [...rows].sort((a, b) => (a.rank ?? 9999) - (b.rank ?? 9999));
+  const sorted = [...rows].sort((a, b) => a.rank_sort - b.rank_sort || a.model.localeCompare(b.model));
   elements.tableSummary.textContent = `${sorted.length} models shown`;
 
   sorted.forEach((row) => {
@@ -272,14 +275,14 @@ function renderTable(rows) {
     const tierLabel = TIER_META[row.tier].label;
     const incompletePill = row.incomplete ? '<span class="incomplete-pill">Incomplete</span>' : "";
     tr.innerHTML = `
-      <td>${row.rank ?? "–"}</td>
+      <td>${row.rank_label ?? "–"}</td>
       <td><span class="model-name">${row.model}</span>${incompletePill}</td>
       <td>${tierLabel}</td>
+      <td>${formatValue(metricByKey("balanced_ots"), row.balanced_ots)}</td>
+      <td>${formatValue(metricByKey("critical_miss"), row.critical_miss)}</td>
+      <td>${formatValue(metricByKey("false_review"), row.false_review)}</td>
       <td>${formatValue(metricByKey("cw_pct"), row.cw_pct)}</td>
-      <td>${formatValue(metricByKey("ord_pct"), row.ord_pct)}</td>
-      <td>${formatValue(metricByKey("critical_miss_rate"), row.critical_miss_rate)}</td>
-      <td>${formatValue(metricByKey("false_review_load"), row.false_review_load)}</td>
-      <td>${formatValue(metricByKey("mae"), row.mae)}</td>
+      <td>${formatValue(metricByKey("threat_capture"), row.threat_capture)}</td>
     `;
     elements.tableBody.appendChild(tr);
   });

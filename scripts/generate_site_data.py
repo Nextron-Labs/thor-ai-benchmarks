@@ -25,6 +25,17 @@ def parse_int(value):
     return int(value)
 
 
+def parse_rank(value):
+    if value in (None, "", "-", "–"):
+        return None, None
+    text = str(value)
+    try:
+        numeric = int(text)
+    except ValueError:
+        return text, None
+    return text, numeric
+
+
 def parse_bool(value):
     if isinstance(value, bool):
         return value
@@ -41,7 +52,7 @@ def main():
     rows = json.loads(LEADERBOARD_PATH.read_text())
 
     models = []
-    for row in rows:
+    for index, row in enumerate(rows):
         n = parse_int(row.get("n")) or 0
         exact = parse_int(row.get("exact")) or 0
         minor = parse_int(row.get("minor")) or 0
@@ -49,12 +60,24 @@ def main():
         hard_miss = parse_int(row.get("hard_miss")) or 0
         hard_over = parse_int(row.get("hard_over")) or 0
         n_errors = parse_int(row.get("n_errors")) or 0
+        rank_label, rank_numeric = parse_rank(row.get("rank"))
 
         model = {
-            "rank": parse_int(row.get("rank")),
+            "rank_label": rank_label,
+            "rank_numeric": rank_numeric,
+            "rank_sort": rank_numeric if rank_numeric is not None else 1000 + index,
             "model": row["model"],
             "tier": row["tier"],
             "cw_pct": parse_float(row.get("cw_pct")),
+            "ots_pct": parse_float(row.get("ots_pct")),
+            "ots_macro": parse_float(row.get("ots_macro")),
+            "balanced_ots": parse_float(row.get("balanced_ots")),
+            "threat_capture": parse_float(row.get("threat_capture")),
+            "critical_miss": parse_float(row.get("critical_miss")),
+            "anomaly_capture": parse_float(row.get("anomaly_capture")),
+            "anomaly_suppression": parse_float(row.get("anomaly_suppression")),
+            "false_review": parse_float(row.get("false_review")),
+            "false_escalation": parse_float(row.get("false_escalation")),
             "ord_pct": parse_float(row.get("ord_pct")),
             "mae": parse_float(row.get("mae")),
             "rmse": parse_float(row.get("rmse")),
@@ -68,12 +91,13 @@ def main():
             "n_errors": n_errors,
             "n": n,
             "incomplete": parse_bool(row.get("incomplete")),
-            "exact_rate": pct(exact, n),
-            "minor_rate": pct(minor, n),
-            "hard_rate": pct(hard, n),
-            "critical_miss_rate": pct(hard_miss, n),
-            "false_review_load": pct(hard_over, n),
-            "llm_error_rate": pct(n_errors, n),
+            "is_baseline": row["tier"] == "baseline",
+            "exact_rate_all_findings": pct(exact, n),
+            "minor_rate_all_findings": pct(minor, n),
+            "hard_rate_all_findings": pct(hard, n),
+            "hard_miss_share_all_findings": pct(hard_miss, n),
+            "hard_over_share_all_findings": pct(hard_over, n),
+            "llm_error_rate_all_findings": pct(n_errors, n),
         }
         models.append(model)
 
@@ -84,6 +108,8 @@ def main():
         },
         "summary": {
             "model_count": len(models),
+            "baseline_count": sum(1 for row in models if row["is_baseline"]),
+            "benchmarked_model_count": sum(1 for row in models if not row["is_baseline"]),
             "complete_count": sum(1 for row in models if not row["incomplete"]),
             "incomplete_count": sum(1 for row in models if row["incomplete"]),
         },
@@ -96,11 +122,74 @@ def main():
                 "description": "Confidence-weighted benchmark score.",
             },
             {
+                "key": "balanced_ots",
+                "label": "Balanced OTS",
+                "direction": "higher",
+                "format": "percent",
+                "description": "Operational triage score balanced across FP, Inc, and TP classes.",
+            },
+            {
+                "key": "critical_miss",
+                "label": "Critical Miss Rate %",
+                "direction": "lower",
+                "format": "percent",
+                "description": "Share of true positives classified as false positive.",
+            },
+            {
+                "key": "false_review",
+                "label": "False Review Load %",
+                "direction": "lower",
+                "format": "percent",
+                "description": "Share of false positives still sent to review as Inc or TP.",
+            },
+            {
+                "key": "threat_capture",
+                "label": "Threat Capture Rate %",
+                "direction": "higher",
+                "format": "percent",
+                "description": "Share of true positives still sent to review as Inc or TP.",
+            },
+            {
+                "key": "false_escalation",
+                "label": "False Escalation Rate %",
+                "direction": "lower",
+                "format": "percent",
+                "description": "Share of false positives escalated all the way to TP.",
+            },
+            {
                 "key": "ord_pct",
                 "label": "Ordinal %",
                 "direction": "higher",
                 "format": "percent",
                 "description": "Distance-based score without confidence weighting.",
+            },
+            {
+                "key": "ots_pct",
+                "label": "OTS %",
+                "direction": "higher",
+                "format": "percent",
+                "description": "Operational triage score across the full benchmark set.",
+            },
+            {
+                "key": "ots_macro",
+                "label": "OTS Macro",
+                "direction": "higher",
+                "format": "percent",
+                "description": "Operational triage score macro-averaged across classes.",
+            },
+            {
+                "key": "anomaly_capture",
+                "label": "Anomaly Capture %",
+                "direction": "higher",
+                "format": "percent",
+                "description": "Share of inconclusive or suspicious findings still surfaced for review.",
+            },
+            {
+                "key": "anomaly_suppression",
+                "label": "Anomaly Suppression %",
+                "direction": "lower",
+                "format": "percent",
+                "description": "Share of anomaly-like findings suppressed out of review.",
             },
             {
                 "key": "mae",
@@ -124,46 +213,32 @@ def main():
                 "description": "Average wall-clock latency per finding reviewed.",
             },
             {
-                "key": "critical_miss_rate",
-                "label": "Critical Miss Rate %",
-                "direction": "lower",
-                "format": "percent",
-                "description": "Share of findings where a real threat was dismissed as benign.",
-            },
-            {
-                "key": "false_review_load",
-                "label": "False Review Load %",
-                "direction": "lower",
-                "format": "percent",
-                "description": "Share of findings where benign activity was escalated as malicious.",
-            },
-            {
-                "key": "hard_rate",
-                "label": "Hard Error Rate %",
-                "direction": "lower",
-                "format": "percent",
-                "description": "Combined rate of TP↔FP hard classification errors.",
-            },
-            {
-                "key": "minor_rate",
-                "label": "Minor Miss Rate %",
-                "direction": "lower",
-                "format": "percent",
-                "description": "Share of findings where the model was one classification step away.",
-            },
-            {
-                "key": "exact_rate",
+                "key": "exact_rate_all_findings",
                 "label": "Exact Match Rate %",
                 "direction": "higher",
                 "format": "percent",
-                "description": "Share of findings classified exactly like the ground truth.",
+                "description": "Share of all findings classified exactly like the ground truth.",
             },
             {
-                "key": "llm_error_rate",
+                "key": "minor_rate_all_findings",
+                "label": "Minor Miss Rate %",
+                "direction": "lower",
+                "format": "percent",
+                "description": "Share of all findings where the model was one classification step away.",
+            },
+            {
+                "key": "hard_rate_all_findings",
+                "label": "Hard Error Rate %",
+                "direction": "lower",
+                "format": "percent",
+                "description": "Combined TP↔FP hard error share across all findings.",
+            },
+            {
+                "key": "llm_error_rate_all_findings",
                 "label": "LLM Error Rate %",
                 "direction": "lower",
                 "format": "percent",
-                "description": "Share of findings without a usable model response.",
+                "description": "Share of all findings without a usable model response.",
             },
             {
                 "key": "total_tokens",
@@ -177,22 +252,22 @@ def main():
             {
                 "key": "miss-vs-review",
                 "label": "Critical Miss Rate vs False Review Load",
-                "x": "false_review_load",
-                "y": "critical_miss_rate",
+                "x": "false_review",
+                "y": "critical_miss",
                 "x_scale": "linear",
             },
             {
-                "key": "cw-vs-ord",
-                "label": "CW % vs Ordinal %",
-                "x": "ord_pct",
-                "y": "cw_pct",
+                "key": "balanced-ots-vs-review",
+                "label": "Balanced OTS vs False Review Load",
+                "x": "false_review",
+                "y": "balanced_ots",
                 "x_scale": "linear",
             },
             {
-                "key": "cw-vs-mae",
-                "label": "CW % vs MAE",
-                "x": "mae",
-                "y": "cw_pct",
+                "key": "cw-vs-balanced-ots",
+                "label": "CW % vs Balanced OTS",
+                "x": "cw_pct",
+                "y": "balanced_ots",
                 "x_scale": "linear",
             },
             {
@@ -201,6 +276,13 @@ def main():
                 "x": "avg_seconds_per_event",
                 "y": "cw_pct",
                 "x_scale": "log",
+            },
+            {
+                "key": "cw-vs-mae",
+                "label": "CW % vs MAE",
+                "x": "mae",
+                "y": "cw_pct",
+                "x_scale": "linear",
             },
         ],
         "models": models,
