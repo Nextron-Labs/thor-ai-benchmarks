@@ -9,6 +9,7 @@ import shutil
 from datetime import datetime, timezone
 from pathlib import Path
 
+from openrouter_costs import estimate_run_cost_cents, load_pricing_snapshot
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 LEADERBOARD_PATH = REPO_ROOT / "combined" / "leaderboard.json"
@@ -201,6 +202,7 @@ def copy_gallery_charts():
 
 def main():
     rows = json.loads(LEADERBOARD_PATH.read_text())
+    pricing_snapshot = load_pricing_snapshot()
 
     models = []
     for index, row in enumerate(rows):
@@ -234,6 +236,9 @@ def main():
             "rmse": parse_float(row.get("rmse")),
             "avg_seconds_per_event": parse_float(row.get("avg_seconds_per_event")),
             "total_tokens": parse_int(row.get("total_tokens")),
+            "estimated_run_cost_cents": estimate_run_cost_cents(
+                row["model"], parse_int(row.get("total_tokens")), pricing_snapshot
+            ),
             "exact": exact,
             "minor": minor,
             "hard": hard,
@@ -370,6 +375,13 @@ def main():
                 "description": "Average wall-clock latency per finding reviewed.",
             },
             {
+                "key": "estimated_run_cost_cents",
+                "label": "Estimated Run Cost (¢)",
+                "direction": "lower",
+                "format": "currency_cents",
+                "description": "Estimated benchmark-run cost based on total token usage and the committed OpenRouter pricing snapshot.",
+            },
+            {
                 "key": "exact_rate_all_findings",
                 "label": "Exact Match Rate %",
                 "direction": "higher",
@@ -433,6 +445,13 @@ def main():
                 "x": "avg_seconds_per_event",
                 "y": "cw_pct",
                 "x_scale": "log",
+            },
+            {
+                "key": "cw-vs-cost",
+                "label": "CW % vs Cost",
+                "x": "estimated_run_cost_cents",
+                "y": "cw_pct",
+                "x_scale": "linear",
             },
             {
                 "key": "cw-vs-mae",

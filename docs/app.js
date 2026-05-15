@@ -98,6 +98,8 @@ function formatValue(metric, value) {
       return `${value.toFixed(1)}%`;
     case "seconds":
       return `${value.toFixed(2)}s`;
+    case "currency_cents":
+      return `${value.toFixed(2)}¢`;
     case "integer":
       return value.toLocaleString();
     default:
@@ -303,6 +305,8 @@ function renderChart(rows) {
         formatValue(metricByKey("false_review"), row.false_review),
         formatValue(metricByKey("threat_capture"), row.threat_capture),
         formatValue(metricByKey("mae"), row.mae),
+        formatValue(metricByKey("avg_seconds_per_event"), row.avg_seconds_per_event),
+        formatValue(metricByKey("estimated_run_cost_cents"), row.estimated_run_cost_cents),
         row.n,
       ]),
       textposition: "top center",
@@ -321,7 +325,9 @@ function renderChart(rows) {
         "False review: %{customdata[6]}<br>" +
         "Threat capture: %{customdata[7]}<br>" +
         "MAE: %{customdata[8]}<br>" +
-        "Findings: %{customdata[9]}<extra></extra>",
+        "Speed: %{customdata[9]}<br>" +
+        "Run cost: %{customdata[10]}<br>" +
+        "Findings: %{customdata[11]}<extra></extra>",
       marker: {
         size: tierRows.map((row) => (row.incomplete ? 12 : 15)),
         color: tier.color,

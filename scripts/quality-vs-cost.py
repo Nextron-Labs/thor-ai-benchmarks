@@ -2,79 +2,21 @@
 """Generate quality-vs-cost scatter chart for THOR benchmarks.
 
 Reads leaderboard data and exclusion list from model_tiers.json,
-fetches live pricing from OpenRouter, and produces charts/quality-vs-cost.png.
+uses the committed OpenRouter pricing snapshot, and produces charts/quality-vs-cost.png.
 """
 import json, sys
 from pathlib import Path
 
-import urllib.request
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+
+from openrouter_costs import BENCH_TO_OPENROUTER, INPUT_RATIO, OUTPUT_RATIO, load_pricing_snapshot
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 COMBINED_DIR = REPO_ROOT / "combined"
 CHARTS_DIR = REPO_ROOT / "charts"
 TIERS_PATH = REPO_ROOT / "scripts" / "model_tiers.json"
-
-# ── Benchmark model name → OpenRouter model ID mapping ──────────
-BENCH_TO_OR = {
-    "gemma4-31b": "google/gemma-4-31b-it",
-    "llama-3.1-70b": "meta-llama/llama-3.1-70b-instruct",
-    "llama-3.1-8b": "meta-llama/llama-3.1-8b-instruct",
-    "qwen3.5-9b": "qwen/qwen3.5-9b",
-    "ministral-14b": "mistralai/ministral-14b-2512",
-    "devstral-small": "mistralai/devstral-small",
-    "deepseek-v4-pro": "deepseek/deepseek-chat",
-    "deepseek-v4-flash": "deepseek/deepseek-chat-v3-0324",
-    "deepseek-v3.2": "deepseek/deepseek-chat-v3-0324",
-    "deepseek-v3.1": "deepseek/deepseek-chat-v3.1",
-    "qwen35-397b": "qwen/qwen3.5-397b-a17b",
-    "glm-5": "z-ai/glm-5",
-    "glm-5.1": "z-ai/glm-5.1",
-    "mistral-nemo": "mistralai/mistral-nemo",
-    "nemotron-3-super-120b": "nvidia/nemotron-3-super-120b-a12b",
-    "nemotron-3-nano-omni": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
-    "kimi-k2.6": "moonshotai/kimi-k2.6",
-    "kimi-k2.5": "moonshotai/kimi-k2.5",
-    "qwen3.5-plus-20260420": "qwen/qwen3.5-plus-20260420",
-    "gemini-2.5-pro": "google/gemini-2.5-pro",
-    "gemini-3.1-pro": "google/gemini-3.1-pro-preview",
-    "grok-4.20": "x-ai/grok-4.20",
-    "grok-4.1-fast": "x-ai/grok-4.1-fast",
-    "grok-4-fast": "x-ai/grok-4-fast",
-    "gpt-5": "openai/gpt-5",
-    "claude-opus-4.6": "anthropic/claude-opus-4.6",
-    "grok-4-openrouter": "x-ai/grok-4",
-    "qwen3.6-plus": "qwen/qwen3.6-max-preview",
-    "qwen3.6-max": "qwen/qwen3.6-max-preview",
-    "claude-sonnet-4.6": "anthropic/claude-sonnet-4.6",
-    "gpt-5.4": "openai/gpt-5.4",
-    "gpt-5-nano": "openai/gpt-5-nano",
-    "mimo-v2-pro": "xiaomi/mimo-v2-pro",
-    "gpt-5.5": "openai/gpt-5.5",
-    "claude-opus-4.5": "anthropic/claude-opus-4.5",
-    "minimax-m2.7": "minimax/minimax-m2.7",
-    "gpt-5-mini": "openai/gpt-5-mini",
-    "minimax-m2.5": "minimax/minimax-m2.5",
-    "gemini-2.5-flash": "google/gemini-2.5-flash",
-    "gpt-oss-120b": "openai/gpt-oss-120b",
-    "gpt-5.4-nano": "openai/gpt-5.4-nano",
-    "claude-haiku-4.5": "anthropic/claude-haiku-4.5",
-    "gpt-5.4-mini": "openai/gpt-5.4-mini",
-    "qwen3.6-flash": "qwen/qwen3.6-flash",
-    "gpt-oss-20b": "openai/gpt-oss-20b",
-    "qwen3-235b-a22b": "qwen/qwen3-235b-a22b-2507",
-    "mercury-2": "inception/mercury-2",
-    "claude-sonnet-4.5": "anthropic/claude-sonnet-4.5",
-    "gemini-3.1-flash-lite": "google/gemini-3.1-flash-lite",
-    "grok-4.3": "x-ai/grok-4.3",
-}
-
-# ── Cost estimation parameters ────────────────────────────────────
-# Input/output token split ratio (empirical estimate: ~85% input, ~15% output)
-INPUT_RATIO = 0.85
-OUTPUT_RATIO = 0.15
 
 
 def main():
@@ -90,20 +32,12 @@ def main():
         for m in tier_data["models"]:
             tier_lookup[m] = tier_key
 
-    # Fetch live pricing from OpenRouter
-    url = "https://openrouter.ai/api/v1/models"
-    req = urllib.request.Request(url, headers={"User-Agent": "mjolnir-benchmark"})
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        or_data = json.loads(resp.read())["data"]
-    or_pricing = {}
-    for m in or_data:
-        pi = float(m["pricing"]["prompt"]) if m["pricing"]["prompt"] else 0
-        ci = float(m["pricing"]["completion"]) if m["pricing"]["completion"] else 0
-        or_pricing[m["id"]] = {"prompt": pi, "completion": ci}
+    # Load committed pricing snapshot.
+    or_pricing = load_pricing_snapshot()
 
     # Build price lookup for benchmark models
     model_prices = {}
-    for name, or_id in BENCH_TO_OR.items():
+    for name, or_id in BENCH_TO_OPENROUTER.items():
         if name in excluded:
             continue
         if or_id in or_pricing:
