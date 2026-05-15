@@ -1,7 +1,8 @@
 {
-  "generated_at": "2026-05-15T09:30:25.137960+00:00",
+  "generated_at": "2026-05-15T10:30:12.597726+00:00",
   "source": {
-    "leaderboard": "combined/leaderboard.json"
+    "leaderboard": "combined/leaderboard.json",
+    "operational_summary_by_tier": "combined/operational-profile-summary-by-tier.csv"
   },
   "summary": {
     "model_count": 49,
@@ -180,6 +181,170 @@
       "x": "mae",
       "y": "cw_pct",
       "x_scale": "linear"
+    }
+  ],
+  "leaders": {
+    "overall": [
+      {
+        "profile_key": "high_safety",
+        "profile_label": "High-safety",
+        "use_case": "High-safety triage",
+        "model": "gemini-3.1-flash-lite",
+        "tier": "closed_source",
+        "reason": "Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss; low review load."
+      },
+      {
+        "profile_key": "balanced_soc",
+        "profile_label": "Balanced SOC",
+        "use_case": "Balanced SOC triage",
+        "model": "gemini-3.1-flash-lite",
+        "tier": "closed_source",
+        "reason": "Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss; low review load."
+      },
+      {
+        "profile_key": "noise_reduction",
+        "profile_label": "Noise-reduction",
+        "use_case": "Noise reduction / high-volume triage",
+        "model": "qwen3.5-plus-20260420",
+        "tier": "open_source_pro",
+        "reason": "Lowest False Review Load overall among models that cleared the guardrails; low review load."
+      }
+    ],
+    "by_tier": {
+      "closed_source": [
+        {
+          "profile_key": "high_safety",
+          "profile_label": "High-safety",
+          "use_case": "High-safety triage",
+          "model": "gemini-3.1-flash-lite",
+          "tier": "closed_source",
+          "reason": "Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss; low review load."
+        },
+        {
+          "profile_key": "balanced_soc",
+          "profile_label": "Balanced SOC",
+          "use_case": "Balanced SOC triage",
+          "model": "gemini-3.1-flash-lite",
+          "tier": "closed_source",
+          "reason": "Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss; low review load."
+        },
+        {
+          "profile_key": "noise_reduction",
+          "profile_label": "Noise-reduction",
+          "use_case": "Noise reduction / high-volume triage",
+          "model": "mimo-v2-pro",
+          "tier": "closed_source",
+          "reason": "Lowest False Review Load in this tier among models that cleared the guardrails; low review load."
+        }
+      ],
+      "open_source_pro": [
+        {
+          "profile_key": "high_safety",
+          "profile_label": "High-safety",
+          "use_case": "High-safety triage",
+          "model": "qwen3-235b-a22b",
+          "tier": "open_source_pro",
+          "reason": "Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss; low review load."
+        },
+        {
+          "profile_key": "balanced_soc",
+          "profile_label": "Balanced SOC",
+          "use_case": "Balanced SOC triage",
+          "model": "qwen3-235b-a22b",
+          "tier": "open_source_pro",
+          "reason": "Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss; low review load."
+        },
+        {
+          "profile_key": "noise_reduction",
+          "profile_label": "Noise-reduction",
+          "use_case": "Noise reduction / high-volume triage",
+          "model": "qwen3.5-plus-20260420",
+          "tier": "open_source_pro",
+          "reason": "Lowest False Review Load in this tier among models that cleared the guardrails; low review load."
+        }
+      ],
+      "open_source_consumer": [
+        {
+          "profile_key": "high_safety",
+          "profile_label": "High-safety",
+          "use_case": "High-safety triage",
+          "model": "gemma4-31b",
+          "tier": "open_source_consumer",
+          "reason": "Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss; low review load."
+        },
+        {
+          "profile_key": "balanced_soc",
+          "profile_label": "Balanced SOC",
+          "use_case": "Balanced SOC triage",
+          "model": "gemma4-31b",
+          "tier": "open_source_consumer",
+          "reason": "Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss; low review load."
+        },
+        {
+          "profile_key": "noise_reduction",
+          "profile_label": "Noise-reduction",
+          "use_case": "Noise reduction / high-volume triage",
+          "model": "gemma4-31b",
+          "tier": "open_source_consumer",
+          "reason": "Lowest False Review Load in this tier among models that cleared the guardrails; low review load."
+        }
+      ]
+    },
+    "tier_labels": {
+      "closed_source": "Closed Source / Vendor API",
+      "open_source_pro": "Open Source / Pro Hardware",
+      "open_source_consumer": "Open Source / Consumer Hardware"
+    }
+  },
+  "chart_gallery": [
+    {
+      "key": "operational-profile-summary",
+      "title": "Operational Profile Summary",
+      "filename": "operational-profile-summary.png",
+      "description": "Compares the current profile leaders against the always-inc baseline across the main operational metrics.",
+      "image_path": "charts/operational-profile-summary.png"
+    },
+    {
+      "key": "operational-profile-summary-by-tier",
+      "title": "Operational Profile Summary by Tier",
+      "filename": "operational-profile-summary-by-tier.png",
+      "description": "Shows the current recommended profile leader inside each deployment tier.",
+      "image_path": "charts/operational-profile-summary-by-tier.png"
+    },
+    {
+      "key": "classification-breakdown",
+      "title": "Classification Breakdown",
+      "filename": "classification-breakdown.png",
+      "description": "Shows how each model's classifications split into exact matches, near misses, and hard errors.",
+      "image_path": "charts/classification-breakdown.png"
+    },
+    {
+      "key": "quality-vs-speed",
+      "title": "Quality vs Speed",
+      "filename": "quality-vs-speed.png",
+      "description": "Plots confidence-weighted quality against average seconds per event.",
+      "image_path": "charts/quality-vs-speed.png"
+    },
+    {
+      "key": "quality-vs-cost",
+      "title": "Quality vs Cost",
+      "filename": "quality-vs-cost.png",
+      "description": "Plots confidence-weighted quality against estimated benchmark run cost.",
+      "image_path": "charts/quality-vs-cost.png"
+    },
+    {
+      "key": "cw-leaderboard",
+      "title": "CW Leaderboard",
+      "filename": "cw-leaderboard.png",
+      "description": "Ranks models by the classic confidence-weighted benchmark score.",
+      "image_path": "charts/cw-leaderboard.png"
+    },
+    {
+      "key": "operational-error-breakdown",
+      "title": "Operational Error Breakdown",
+      "filename": "operational-error-breakdown.png",
+      "description": "Breaks operationally relevant error types into critical misses, false review, and escalation-related trade-offs.",
+      "image_path": "charts/operational-error-breakdown.png"
     }
   ],
   "models": [

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>THOR AI Benchmarks Explorer</title>
+    <title>THOR AI Benchmarks Control Deck</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,124 +18,187 @@
     <div class="page-shell">
       <header class="hero">
         <p class="eyebrow">THOR AI Benchmarks</p>
-        <h1>Interactive Result Explorer</h1>
+        <h1>Benchmark Control Deck</h1>
         <p class="hero-copy">
-          The static README charts are useful for a quick scan, but they break
-          down once dozens of models land in the same narrow area. This page
-          keeps the public benchmark data static while making the plots
-          explorable through hover, zoom, filtering, and model search.
+          The static README is still the reference narrative, but this control
+          deck turns the same public benchmark artifacts into a navigable
+          dashboard with an interactive explorer, recommendation tables,
+          filtered model views, and a chart gallery.
         </p>
       </header>
 
-      <main class="content-grid">
-        <section class="panel panel-controls">
-          <div class="panel-header">
-            <h2>Controls</h2>
-            <p>Pick a preset, swap axes, and narrow the point cloud.</p>
-          </div>
+      <nav class="tab-strip" aria-label="Dashboard sections">
+        <button class="tab-button is-active" data-tab="explorer">Explorer</button>
+        <button class="tab-button" data-tab="leaders">Leaders</button>
+        <button class="tab-button" data-tab="models">Models</button>
+        <button class="tab-button" data-tab="charts">Charts</button>
+      </nav>
 
-          <div class="preset-strip" id="preset-strip"></div>
+      <main>
+        <section class="tab-view is-active" data-tab-view="explorer">
+          <div class="content-grid">
+            <section class="panel panel-controls">
+              <div class="panel-header">
+                <h2>Controls</h2>
+                <p>Pick a preset, swap axes, and narrow the point cloud.</p>
+              </div>
 
-          <div class="control-grid">
-            <label class="control">
-              <span>X Axis</span>
-              <select id="x-axis"></select>
-            </label>
-            <label class="control">
-              <span>Y Axis</span>
-              <select id="y-axis"></select>
-            </label>
-            <label class="control">
-              <span>Search Models</span>
-              <input id="model-search" type="search" placeholder="Type a model name" />
-            </label>
-            <label class="control checkbox">
-              <input id="show-labels" type="checkbox" />
-              <span>Show labels on chart</span>
-            </label>
-            <label class="control checkbox">
-              <input id="complete-only" type="checkbox" checked />
-              <span>Hide incomplete runs</span>
-            </label>
-          </div>
+              <div class="preset-strip" id="preset-strip"></div>
 
-          <div class="tier-filter" id="tier-filter"></div>
+              <div class="control-grid">
+                <label class="control">
+                  <span>X Axis</span>
+                  <select id="x-axis"></select>
+                </label>
+                <label class="control">
+                  <span>Y Axis</span>
+                  <select id="y-axis"></select>
+                </label>
+                <label class="control">
+                  <span>Search Models</span>
+                  <input id="model-search" type="search" placeholder="Type a model name" />
+                </label>
+                <label class="control checkbox">
+                  <input id="show-labels" type="checkbox" />
+                  <span>Show labels on chart</span>
+                </label>
+                <label class="control checkbox">
+                  <input id="complete-only" type="checkbox" checked />
+                  <span>Hide incomplete runs</span>
+                </label>
+              </div>
 
-          <div class="note-card">
-            <strong>Operational note</strong>
-            <p>
-              This explorer now reads the public operational metrics directly
-              from <code>combined/leaderboard.json</code>, including
-              <code>balanced_ots</code>, <code>critical_miss</code>, and
-              <code>false_review</code>. The baseline rows
-              <code>always-fp</code>, <code>always-inc</code>, and
-              <code>always-tp</code> are exposed as references instead of being
-              hidden.
-            </p>
-          </div>
+              <div class="tier-filter" id="tier-filter"></div>
 
-          <div class="glossary-card">
-            <strong>Metric Glossary</strong>
-            <dl class="glossary-list">
-              <dt>CW%</dt>
-              <dd>
-                Confidence-Weighted Score. The classic benchmark score. It rewards
-                confident correct answers and penalizes confident wrong answers.
-              </dd>
-              <dt>OTS</dt>
-              <dd>
-                Operational Triage Score. A score that weights decisions by
-                their operational consequences.
-              </dd>
-              <dt>Balanced OTS</dt>
-              <dd>
-                An operational score balanced across FP, Inc and TP, so the
-                majority class does not dominate the result.
-              </dd>
-              <dt>MAE</dt>
-              <dd>
-                Mean Absolute Error. The average absolute difference between the
-                model's priority score and the expert score.
-              </dd>
-              <dt>RMSE</dt>
-              <dd>
-                Root Mean Square Error. A score error metric that penalizes
-                larger deviations more strongly.
-              </dd>
-            </dl>
+              <div class="note-card">
+                <strong>Operational note</strong>
+                <p>
+                  This explorer reads the public operational metrics directly
+                  from <code>combined/leaderboard.json</code>, including
+                  <code>balanced_ots</code>, <code>critical_miss</code>, and
+                  <code>false_review</code>. The baseline rows
+                  <code>always-fp</code>, <code>always-inc</code>, and
+                  <code>always-tp</code> are exposed as references instead of
+                  being hidden.
+                </p>
+              </div>
+
+              <div class="glossary-card">
+                <strong>Metric Glossary</strong>
+                <dl class="glossary-list">
+                  <dt>CW%</dt>
+                  <dd>
+                    Confidence-Weighted Score. The classic benchmark score. It rewards
+                    confident correct answers and penalizes confident wrong answers.
+                  </dd>
+                  <dt>OTS</dt>
+                  <dd>
+                    Operational Triage Score. A score that weights decisions by
+                    their operational consequences.
+                  </dd>
+                  <dt>Balanced OTS</dt>
+                  <dd>
+                    An operational score balanced across FP, Inc and TP, so the
+                    majority class does not dominate the result.
+                  </dd>
+                  <dt>MAE</dt>
+                  <dd>
+                    Mean Absolute Error. The average absolute difference between the
+                    model's priority score and the expert score.
+                  </dd>
+                  <dt>RMSE</dt>
+                  <dd>
+                    Root Mean Square Error. A score error metric that penalizes
+                    larger deviations more strongly.
+                  </dd>
+                </dl>
+              </div>
+            </section>
+
+            <section class="panel panel-chart">
+              <div class="panel-header">
+                <h2 id="chart-title">Scatter Explorer</h2>
+                <p id="chart-subtitle"></p>
+              </div>
+              <div id="chart" class="chart-surface" aria-label="Interactive chart"></div>
+            </section>
           </div>
         </section>
 
-        <section class="panel panel-chart">
-          <div class="panel-header">
-            <h2 id="chart-title">Scatter Explorer</h2>
-            <p id="chart-subtitle"></p>
-          </div>
-          <div id="chart" class="chart-surface" aria-label="Interactive chart"></div>
+        <section class="tab-view" data-tab-view="leaders">
+          <section class="panel">
+            <div class="panel-header">
+              <h2>Leader Tables</h2>
+              <p>
+                Switch between the overall recommendations and the tier-specific
+                recommendation tables derived from the same operational profile
+                artifacts as the README.
+              </p>
+            </div>
+            <div class="subtab-strip" id="leader-scope-strip"></div>
+            <div id="leader-content" class="leader-content"></div>
+          </section>
         </section>
 
-        <section class="panel panel-table">
-          <div class="panel-header">
-            <h2>Filtered Models</h2>
-            <p id="table-summary"></p>
-          </div>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Rank</th>
-                  <th>Model</th>
-                  <th>Tier</th>
-                  <th>Balanced OTS</th>
-                  <th>Critical Miss %</th>
-                  <th>False Review %</th>
-                  <th>CW %</th>
-                  <th>Threat Capture %</th>
-                </tr>
-              </thead>
-              <tbody id="table-body"></tbody>
-            </table>
-          </div>
+        <section class="tab-view" data-tab-view="models">
+          <section class="panel panel-table">
+            <div class="panel-header">
+              <h2>Filtered Models</h2>
+              <p id="table-summary"></p>
+            </div>
+
+            <div class="models-toolbar">
+              <div class="control-grid control-grid-inline">
+                <label class="control">
+                  <span>Search Models</span>
+                  <input id="model-search-models" type="search" placeholder="Type a model name" />
+                </label>
+                <label class="control checkbox">
+                  <input id="complete-only-models" type="checkbox" checked />
+                  <span>Hide incomplete runs</span>
+                </label>
+              </div>
+              <div class="tier-filter" id="tier-filter-models"></div>
+            </div>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Model</th>
+                    <th>Tier</th>
+                    <th>Balanced OTS</th>
+                    <th>Critical Miss %</th>
+                    <th>False Review %</th>
+                    <th>CW %</th>
+                    <th>Threat Capture %</th>
+                  </tr>
+                </thead>
+                <tbody id="table-body"></tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+
+        <section class="tab-view" data-tab-view="charts">
+          <section class="panel">
+            <div class="panel-header">
+              <h2>Chart Gallery</h2>
+              <p>
+                Static benchmark charts from the repo, available alongside the
+                interactive explorer for comparison and documentation parity.
+              </p>
+            </div>
+            <div class="subtab-strip" id="gallery-strip"></div>
+            <figure class="gallery-figure">
+              <img id="gallery-image" class="gallery-image" alt="" />
+              <figcaption class="gallery-caption">
+                <h3 id="gallery-title"></h3>
+                <p id="gallery-description"></p>
+              </figcaption>
+            </figure>
+          </section>
         </section>
       </main>
     </div>

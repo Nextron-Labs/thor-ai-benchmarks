@@ -3,7 +3,9 @@
 
 from __future__ import annotations
 
+import csv
 import json
+import shutil
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -11,6 +13,85 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 LEADERBOARD_PATH = REPO_ROOT / "combined" / "leaderboard.json"
 OUTPUT_PATH = REPO_ROOT / "docs" / "data" / "leaderboard-explorer.json"
+DOCS_CHARTS_DIR = REPO_ROOT / "docs" / "charts"
+OPERATIONAL_SUMMARY_BY_TIER_PATH = REPO_ROOT / "combined" / "operational-profile-summary-by-tier.csv"
+
+PROFILE_META = {
+    "high_safety": {
+        "label": "High-safety",
+        "use_case": "High-safety triage",
+        "file": REPO_ROOT / "combined" / "operational-profile-high-safety.csv",
+    },
+    "balanced_soc": {
+        "label": "Balanced SOC",
+        "use_case": "Balanced SOC triage",
+        "file": REPO_ROOT / "combined" / "operational-profile-balanced-soc.csv",
+    },
+    "noise_reduction": {
+        "label": "Noise-reduction",
+        "use_case": "Noise reduction / high-volume triage",
+        "file": REPO_ROOT / "combined" / "operational-profile-noise-reduction.csv",
+    },
+}
+
+PROFILE_ORDER = ["high_safety", "balanced_soc", "noise_reduction"]
+
+TIER_LABELS = {
+    "closed_source": "Closed Source / Vendor API",
+    "open_source_pro": "Open Source / Pro Hardware",
+    "open_source_consumer": "Open Source / Consumer Hardware",
+}
+
+TIER_KEY_BY_SUMMARY_LABEL = {
+    "Closed Source (Vendor API)": "closed_source",
+    "Open Source (Pro Hardware)": "open_source_pro",
+    "Open Source (Consumer Hardware)": "open_source_consumer",
+}
+
+CHART_GALLERY = [
+    {
+        "key": "operational-profile-summary",
+        "title": "Operational Profile Summary",
+        "filename": "operational-profile-summary.png",
+        "description": "Compares the current profile leaders against the always-inc baseline across the main operational metrics.",
+    },
+    {
+        "key": "operational-profile-summary-by-tier",
+        "title": "Operational Profile Summary by Tier",
+        "filename": "operational-profile-summary-by-tier.png",
+        "description": "Shows the current recommended profile leader inside each deployment tier.",
+    },
+    {
+        "key": "classification-breakdown",
+        "title": "Classification Breakdown",
+        "filename": "classification-breakdown.png",
+        "description": "Shows how each model's classifications split into exact matches, near misses, and hard errors.",
+    },
+    {
+        "key": "quality-vs-speed",
+        "title": "Quality vs Speed",
+        "filename": "quality-vs-speed.png",
+        "description": "Plots confidence-weighted quality against average seconds per event.",
+    },
+    {
+        "key": "quality-vs-cost",
+        "title": "Quality vs Cost",
+        "filename": "quality-vs-cost.png",
+        "description": "Plots confidence-weighted quality against estimated benchmark run cost.",
+    },
+    {
+        "key": "cw-leaderboard",
+        "title": "CW Leaderboard",
+        "filename": "cw-leaderboard.png",
+        "description": "Ranks models by the classic confidence-weighted benchmark score.",
+    },
+    {
+        "key": "operational-error-breakdown",
+        "title": "Operational Error Breakdown",
+        "filename": "operational-error-breakdown.png",
+        "description": "Breaks operationally relevant error types into critical misses, false review, and escalation-related trade-offs.",
+    },
+]
 
 
 def parse_float(value):
@@ -46,6 +127,76 @@ def pct(part, total):
     if not total:
         return None
     return round((part / total) * 100, 2)
+
+
+def load_csv(path):
+    with path.open(newline="") as handle:
+        return list(csv.DictReader(handle))
+
+
+def build_leader_reason(profile_key, tier_scope, row):
+    critical_miss = row.get("critical_miss_rate") or row.get("critical_miss") or "0.0"
+    if profile_key in ("high_safety", "balanced_soc"):
+        return f"Profile leader under current constraints by Balanced OTS; {critical_miss}% Critical Miss; low review load."
+    if tier_scope == "overall":
+        return "Lowest False Review Load overall among models that cleared the guardrails; low review load."
+    return "Lowest False Review Load in this tier among models that cleared the guardrails; low review load."
+
+
+def build_overall_leaders(model_lookup):
+    leaders = []
+    for profile_key in PROFILE_ORDER:
+        rows = load_csv(PROFILE_META[profile_key]["file"])
+        if not rows:
+            continue
+        top = rows[0]
+        model_name = top["model"]
+        model = model_lookup.get(model_name, {})
+        leaders.append(
+            {
+                "profile_key": profile_key,
+                "profile_label": PROFILE_META[profile_key]["label"],
+                "use_case": PROFILE_META[profile_key]["use_case"],
+                "model": model_name,
+                "tier": model.get("tier", "baseline"),
+                "reason": build_leader_reason(profile_key, "overall", top),
+            }
+        )
+    return leaders
+
+
+def build_tier_leaders(model_lookup):
+    grouped = {key: [] for key in TIER_LABELS}
+    for row in load_csv(OPERATIONAL_SUMMARY_BY_TIER_PATH):
+        tier_key = TIER_KEY_BY_SUMMARY_LABEL.get(row["tier"])
+        profile_key = next(
+            key for key, meta in PROFILE_META.items() if meta["label"] == row["profile"]
+        )
+        model_name = row["recommended_model"]
+        model = model_lookup.get(model_name, {})
+        grouped[tier_key].append(
+            {
+                "profile_key": profile_key,
+                "profile_label": PROFILE_META[profile_key]["label"],
+                "use_case": PROFILE_META[profile_key]["use_case"],
+                "model": model_name,
+                "tier": model.get("tier", tier_key),
+                "reason": build_leader_reason(profile_key, "tier", row),
+            }
+        )
+
+    for tier_key in grouped:
+        grouped[tier_key].sort(key=lambda row: PROFILE_ORDER.index(row["profile_key"]))
+
+    return grouped
+
+
+def copy_gallery_charts():
+    DOCS_CHARTS_DIR.mkdir(parents=True, exist_ok=True)
+    for chart in CHART_GALLERY:
+        src = REPO_ROOT / "charts" / chart["filename"]
+        dst = DOCS_CHARTS_DIR / chart["filename"]
+        shutil.copy2(src, dst)
 
 
 def main():
@@ -101,10 +252,16 @@ def main():
         }
         models.append(model)
 
+    model_lookup = {row["model"]: row for row in models}
+    copy_gallery_charts()
+
     payload = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "source": {
             "leaderboard": str(LEADERBOARD_PATH.relative_to(REPO_ROOT)),
+            "operational_summary_by_tier": str(
+                OPERATIONAL_SUMMARY_BY_TIER_PATH.relative_to(REPO_ROOT)
+            ),
         },
         "summary": {
             "model_count": len(models),
@@ -284,6 +441,18 @@ def main():
                 "y": "cw_pct",
                 "x_scale": "linear",
             },
+        ],
+        "leaders": {
+            "overall": build_overall_leaders(model_lookup),
+            "by_tier": build_tier_leaders(model_lookup),
+            "tier_labels": TIER_LABELS,
+        },
+        "chart_gallery": [
+            {
+                **chart,
+                "image_path": f"charts/{chart['filename']}",
+            }
+            for chart in CHART_GALLERY
         ],
         "models": models,
     }

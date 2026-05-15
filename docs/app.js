@@ -27,9 +27,20 @@ const TIER_META = {
   },
 };
 
+const LEADER_SCOPE_META = [
+  { key: "overall", label: "Overall" },
+  { key: "all_tiers", label: "All tiers" },
+  { key: "closed_source", label: "Closed source" },
+  { key: "open_source_pro", label: "Open source / pro" },
+  { key: "open_source_consumer", label: "Open source / consumer" },
+];
+
+const TIER_ORDER = ["closed_source", "open_source_pro", "open_source_consumer"];
+
 const state = {
   data: null,
   metricsByKey: {},
+  modelsByName: new Map(),
   xMetric: null,
   yMetric: null,
   xScale: "linear",
@@ -37,6 +48,9 @@ const state = {
   showLabels: false,
   completeOnly: true,
   selectedTiers: new Set(Object.keys(TIER_META)),
+  activeTab: "explorer",
+  leaderScope: "overall",
+  galleryKey: "operational-profile-summary",
 };
 
 const elements = {
@@ -46,13 +60,33 @@ const elements = {
   presetStrip: document.getElementById("preset-strip"),
   xAxis: document.getElementById("x-axis"),
   yAxis: document.getElementById("y-axis"),
-  modelSearch: document.getElementById("model-search"),
+  modelSearchExplorer: document.getElementById("model-search"),
+  modelSearchModels: document.getElementById("model-search-models"),
   showLabels: document.getElementById("show-labels"),
-  completeOnly: document.getElementById("complete-only"),
-  tierFilter: document.getElementById("tier-filter"),
+  completeOnlyExplorer: document.getElementById("complete-only"),
+  completeOnlyModels: document.getElementById("complete-only-models"),
+  tierFilterExplorer: document.getElementById("tier-filter"),
+  tierFilterModels: document.getElementById("tier-filter-models"),
   tableBody: document.getElementById("table-body"),
   tableSummary: document.getElementById("table-summary"),
+  tabButtons: [...document.querySelectorAll(".tab-button")],
+  tabViews: [...document.querySelectorAll(".tab-view")],
+  leaderScopeStrip: document.getElementById("leader-scope-strip"),
+  leaderContent: document.getElementById("leader-content"),
+  galleryStrip: document.getElementById("gallery-strip"),
+  galleryImage: document.getElementById("gallery-image"),
+  galleryTitle: document.getElementById("gallery-title"),
+  galleryDescription: document.getElementById("gallery-description"),
 };
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
 
 function formatValue(metric, value) {
   if (value === null || value === undefined || Number.isNaN(value)) {
@@ -71,13 +105,16 @@ function formatValue(metric, value) {
   }
 }
 
-function escapeHtml(value) {
-  return String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#39;");
+function metricByKey(key) {
+  return state.metricsByKey[key];
+}
+
+function defaultScaleForMetric(key) {
+  return key === "avg_seconds_per_event" ? "log" : "linear";
+}
+
+function lookupModelByName(modelName) {
+  return state.modelsByName.get(modelName) || null;
 }
 
 function tierSymbolMarkup(tierKey) {
@@ -87,16 +124,20 @@ function tierSymbolMarkup(tierKey) {
 
 function modelNameMarkup(row, bold = false) {
   const modelName = escapeHtml(row.model);
-  const modelText = bold ? `<b>${modelName}</b>` : modelName;
+  const modelText = bold ? `<b class="model-name">${modelName}</b>` : `<span class="model-name">${modelName}</span>`;
   return `${tierSymbolMarkup(row.tier)}${modelText}`;
 }
 
-function metricByKey(key) {
-  return state.metricsByKey[key];
+function modelChipMarkup(row) {
+  return `<span class="leader-model-chip">${modelNameMarkup(row)}</span>`;
 }
 
-function defaultScaleForMetric(key) {
-  return key === "avg_seconds_per_event" ? "log" : "linear";
+function syncFilterControls() {
+  elements.modelSearchExplorer.value = state.search;
+  elements.modelSearchModels.value = state.search;
+  elements.completeOnlyExplorer.checked = state.completeOnly;
+  elements.completeOnlyModels.checked = state.completeOnly;
+  elements.showLabels.checked = state.showLabels;
 }
 
 function populateMetricSelect(selectEl, selectedKey) {
@@ -117,7 +158,7 @@ function buildPresetButtons() {
   state.data.presets.forEach((preset) => {
     const button = document.createElement("button");
     button.type = "button";
-    button.className = "preset-button";
+    button.className = `preset-button${preset.x === state.xMetric && preset.y === state.yMetric ? " active" : ""}`;
     button.textContent = preset.label;
     button.addEventListener("click", () => {
       state.xMetric = preset.x;
@@ -125,26 +166,14 @@ function buildPresetButtons() {
       state.xScale = preset.x_scale || defaultScaleForMetric(preset.x);
       populateMetricSelect(elements.xAxis, state.xMetric);
       populateMetricSelect(elements.yAxis, state.yMetric);
-      highlightActivePreset();
       render();
     });
-    button.dataset.presetKey = preset.key;
     elements.presetStrip.appendChild(button);
   });
 }
 
-function highlightActivePreset() {
-  const activePreset = state.data.presets.find(
-    (preset) => preset.x === state.xMetric && preset.y === state.yMetric && (preset.x_scale || "linear") === state.xScale,
-  );
-
-  [...elements.presetStrip.children].forEach((button) => {
-    button.classList.toggle("active", button.dataset.presetKey === activePreset?.key);
-  });
-}
-
-function buildTierFilters() {
-  elements.tierFilter.innerHTML = "";
+function buildTierFilters(container) {
+  container.innerHTML = "";
   Object.entries(TIER_META).forEach(([tierKey, tier]) => {
     const label = document.createElement("label");
     label.className = "tier-chip";
@@ -170,7 +199,48 @@ function buildTierFilters() {
     text.textContent = tier.label;
 
     label.append(input, swatch, text);
-    elements.tierFilter.appendChild(label);
+    container.appendChild(label);
+  });
+}
+
+function buildLeaderScopeButtons() {
+  elements.leaderScopeStrip.innerHTML = "";
+  LEADER_SCOPE_META.forEach((scope) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `subtab-button${scope.key === state.leaderScope ? " is-active" : ""}`;
+    button.textContent = scope.label;
+    button.addEventListener("click", () => {
+      state.leaderScope = scope.key;
+      renderLeaderContent();
+      buildLeaderScopeButtons();
+    });
+    elements.leaderScopeStrip.appendChild(button);
+  });
+}
+
+function buildGalleryButtons() {
+  elements.galleryStrip.innerHTML = "";
+  state.data.chart_gallery.forEach((chart) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `subtab-button${chart.key === state.galleryKey ? " is-active" : ""}`;
+    button.textContent = chart.title;
+    button.addEventListener("click", () => {
+      state.galleryKey = chart.key;
+      renderGallery();
+      buildGalleryButtons();
+    });
+    elements.galleryStrip.appendChild(button);
+  });
+}
+
+function renderTabs() {
+  elements.tabButtons.forEach((button) => {
+    button.classList.toggle("is-active", button.dataset.tab === state.activeTab);
+  });
+  elements.tabViews.forEach((view) => {
+    view.classList.toggle("is-active", view.dataset.tabView === state.activeTab);
   });
 }
 
@@ -326,16 +396,14 @@ function renderTable(rows) {
   elements.tableBody.innerHTML = "";
 
   const sorted = [...rows].sort((a, b) => a.rank_sort - b.rank_sort || a.model.localeCompare(b.model));
-  elements.tableSummary.textContent = `${sorted.length} models shown`;
+  elements.tableSummary.textContent = `${sorted.length} models shown with the current search and tier filters.`;
 
   sorted.forEach((row) => {
     const tr = document.createElement("tr");
-    const tierLabel = TIER_META[row.tier].label;
-    const incompletePill = row.incomplete ? '<span class="incomplete-pill">Incomplete</span>' : "";
     tr.innerHTML = `
       <td>${row.rank_label ?? "–"}</td>
-      <td><span class="model-label">${modelNameMarkup(row)}</span>${incompletePill}</td>
-      <td>${tierLabel}</td>
+      <td><span class="model-label">${modelNameMarkup(row)}</span>${row.incomplete ? '<span class="incomplete-pill">Incomplete</span>' : ""}</td>
+      <td>${TIER_META[row.tier].label}</td>
       <td>${formatValue(metricByKey("balanced_ots"), row.balanced_ots)}</td>
       <td>${formatValue(metricByKey("critical_miss"), row.critical_miss)}</td>
       <td>${formatValue(metricByKey("false_review"), row.false_review)}</td>
@@ -346,28 +414,152 @@ function renderTable(rows) {
   });
 }
 
-function render() {
-  const rows = getFilteredModels();
-  highlightActivePreset();
-  renderChart(rows);
-  renderTable(rows);
+function renderLeaderTable(rows) {
+  return `
+    <div class="table-wrap">
+      <table class="leader-table">
+        <thead>
+          <tr>
+            <th>Use case</th>
+            <th>Suggested model</th>
+            <th>Why</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows
+            .map((row) => {
+              const model = lookupModelByName(row.model) || { model: row.model, tier: row.tier };
+              return `
+                <tr>
+                  <td>${escapeHtml(row.use_case)}</td>
+                  <td>${modelChipMarkup(model)}</td>
+                  <td>${escapeHtml(row.reason)}</td>
+                </tr>
+              `;
+            })
+            .join("")}
+        </tbody>
+      </table>
+    </div>
+  `;
 }
 
-async function init() {
-  const response = await fetch(DATA_URL);
-  state.data = await response.json();
-  state.metricsByKey = Object.fromEntries(state.data.metrics.map((metric) => [metric.key, metric]));
+function renderLeaderContent() {
+  const leaderData = state.data.leaders;
 
-  const defaultPreset = state.data.presets[0];
-  state.xMetric = defaultPreset.x;
-  state.yMetric = defaultPreset.y;
-  state.xScale = defaultPreset.x_scale || defaultScaleForMetric(defaultPreset.x);
+  if (state.leaderScope === "overall") {
+    elements.leaderContent.innerHTML = `
+      <section class="leader-section">
+        <h3>Current Result Summary - Overall</h3>
+        <p class="leader-copy">
+          The first table ignores deployment tier and shows the current profile leaders across all tested models.
+          These are current profile leaders under the selected constraints, not universal winners.
+          A model only appears as a recommendation if it also clears minimum usefulness and completeness guardrails.
+        </p>
+        ${renderLeaderTable(leaderData.overall)}
+        <p class="leader-copy">
+          There is no single best model. The useful choice depends on whether the deployment optimizes for
+          missed-incident avoidance, balanced SOC triage, review-load reduction, cost, latency, data-control boundaries,
+          or hardware constraints.
+        </p>
+      </section>
+    `;
+    return;
+  }
 
-  populateMetricSelect(elements.xAxis, state.xMetric);
-  populateMetricSelect(elements.yAxis, state.yMetric);
+  const renderTierSection = (tierKey) => `
+    <section class="leader-section">
+      <h3 class="leader-subheading">${leaderData.tier_labels[tierKey]}</h3>
+      ${renderLeaderTable(leaderData.by_tier[tierKey] || [])}
+    </section>
+  `;
+
+  if (state.leaderScope === "all_tiers") {
+    elements.leaderContent.innerHTML = `
+      <section class="leader-section">
+        <h3>Current Result Summary by Model Tier</h3>
+        <p class="leader-copy">
+          Deployment constraints matter. A vendor API model may be easy to test, but some users need local execution,
+          open-source weights, predictable cost, or consumer-hardware feasibility. The following tables show the
+          current profile leaders within each model tier.
+        </p>
+        ${TIER_ORDER.map(renderTierSection).join("")}
+      </section>
+    `;
+    return;
+  }
+
+  elements.leaderContent.innerHTML = `
+    <section class="leader-section">
+      <h3>${leaderData.tier_labels[state.leaderScope]}</h3>
+      <p class="leader-copy">
+        Current profile leaders within this deployment tier under the published operational constraints.
+      </p>
+      ${renderLeaderTable(leaderData.by_tier[state.leaderScope] || [])}
+    </section>
+  `;
+}
+
+function renderGallery() {
+  const chart = state.data.chart_gallery.find((item) => item.key === state.galleryKey) || state.data.chart_gallery[0];
+  elements.galleryImage.src = `./${chart.image_path}`;
+  elements.galleryImage.alt = chart.title;
+  elements.galleryTitle.textContent = chart.title;
+  elements.galleryDescription.textContent = chart.description;
+}
+
+function render() {
+  syncFilterControls();
+  renderTabs();
   buildPresetButtons();
-  buildTierFilters();
-  highlightActivePreset();
+  buildTierFilters(elements.tierFilterExplorer);
+  buildTierFilters(elements.tierFilterModels);
+  buildLeaderScopeButtons();
+  buildGalleryButtons();
+  renderChart(getFilteredModels());
+  renderTable(state.data.models.filter((row) => {
+    const search = state.search.trim().toLowerCase();
+    if (!state.selectedTiers.has(row.tier)) {
+      return false;
+    }
+    if (state.completeOnly && row.incomplete) {
+      return false;
+    }
+    if (search && !row.model.toLowerCase().includes(search)) {
+      return false;
+    }
+    return true;
+  }));
+  renderLeaderContent();
+  renderGallery();
+}
+
+function bindEvents() {
+  elements.tabButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      state.activeTab = button.dataset.tab;
+      renderTabs();
+    });
+  });
+
+  [elements.modelSearchExplorer, elements.modelSearchModels].forEach((input) => {
+    input.addEventListener("input", (event) => {
+      state.search = event.target.value;
+      render();
+    });
+  });
+
+  [elements.completeOnlyExplorer, elements.completeOnlyModels].forEach((checkbox) => {
+    checkbox.addEventListener("change", (event) => {
+      state.completeOnly = event.target.checked;
+      render();
+    });
+  });
+
+  elements.showLabels.addEventListener("change", (event) => {
+    state.showLabels = event.target.checked;
+    render();
+  });
 
   elements.xAxis.addEventListener("change", (event) => {
     state.xMetric = event.target.value;
@@ -379,22 +571,23 @@ async function init() {
     state.yMetric = event.target.value;
     render();
   });
+}
 
-  elements.modelSearch.addEventListener("input", (event) => {
-    state.search = event.target.value;
-    render();
-  });
+async function init() {
+  const response = await fetch(DATA_URL);
+  state.data = await response.json();
+  state.metricsByKey = Object.fromEntries(state.data.metrics.map((metric) => [metric.key, metric]));
+  state.modelsByName = new Map(state.data.models.map((row) => [row.model, row]));
 
-  elements.showLabels.addEventListener("change", (event) => {
-    state.showLabels = event.target.checked;
-    render();
-  });
+  const defaultPreset = state.data.presets[0];
+  state.xMetric = defaultPreset.x;
+  state.yMetric = defaultPreset.y;
+  state.xScale = defaultPreset.x_scale || defaultScaleForMetric(defaultPreset.x);
+  state.galleryKey = state.data.chart_gallery[0]?.key || state.galleryKey;
 
-  elements.completeOnly.addEventListener("change", (event) => {
-    state.completeOnly = event.target.checked;
-    render();
-  });
-
+  populateMetricSelect(elements.xAxis, state.xMetric);
+  populateMetricSelect(elements.yAxis, state.yMetric);
+  bindEvents();
   render();
 }
 
