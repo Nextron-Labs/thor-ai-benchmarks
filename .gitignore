@@ -4,3 +4,5 @@ __pycache__/
 .DS_Store
 runs/
 *.log
+.venv/
+.cache-public-artifacts/

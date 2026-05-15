@@ -1,4 +1,4 @@
-name: Deploy GitHub Pages
+name: Refresh Public Artifacts and Deploy Pages
 
 on:
   push:
@@ -7,16 +7,17 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
 concurrency:
-  group: github-pages
+  group: public-artifacts-and-pages
   cancel-in-progress: true
 
 jobs:
   build:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -27,8 +28,23 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Generate site data
-        run: python3 scripts/generate_site_data.py
+      - name: Install public artifact dependencies
+        run: python3 -m pip install -r requirements-public-artifacts.txt
+
+      - name: Regenerate public benchmark artifacts
+        run: python3 scripts/build_public_artifacts.py
+
+      - name: Commit refreshed artifacts
+        run: |
+          if git diff --quiet -- README.md combined charts docs; then
+            echo "No generated artifact changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md combined charts docs
+          git commit -m "chore: refresh public benchmark artifacts [skip ci]"
+          git push
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

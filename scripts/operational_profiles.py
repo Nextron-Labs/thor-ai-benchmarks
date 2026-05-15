@@ -3,7 +3,6 @@
 
 import csv
 import json
-import math
 import textwrap
 from pathlib import Path
 
@@ -11,6 +10,8 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
+
+from openrouter_costs import estimate_run_cost_cents, load_pricing_snapshot
 
 ROOT = Path(__file__).resolve().parent.parent
 COMBINED = ROOT / "combined"
@@ -42,22 +43,6 @@ PROFILE_DESCRIPTIONS = {
     "Noise-reduction": "False Review ≤ 55%, Critical Miss ≤ 20%, Balanced OTS > 0; ranked by False Review Load, then Balanced OTS.",
 }
 
-# Profile table cost estimates used in OPERATIONAL_PROFILES.md/README.
-# Local/free-tier models are shown as $0.00 marginal API cost.
-COST_PER_RUN = {
-    "llama-3.1-8b": 0.00,
-    "gpt-5-nano": 0.12,
-    "deepseek-v3.2": 0.32,
-    "nemotron-3-nano-omni": 0.00,
-    "llama-3.1-70b": 0.00,
-    "qwen3-235b-a22b": 0.00,
-    "minimax-m2.5": 0.16,
-    "gpt-oss-120b": 0.00,
-    "deepseek-v4-flash": 0.10,
-    "gemma4-31b": 0.00,
-    "grok-4.20": 2.23,
-}
-
 PROFILES = [
     {
         "name": "High-safety",
@@ -87,7 +72,12 @@ NUMERIC = {
     "anomaly_capture", "anomaly_suppression", "false_review", "false_escalation",
     "ord_pct", "avg_seconds_per_event",
 }
-INTS = {"exact", "minor", "hard", "hard_miss", "hard_over", "n_errors", "n"}
+INTS = {"exact", "minor", "hard", "hard_miss", "hard_over", "n_errors", "n", "total_tokens"}
+
+GENERATED_SUMMARY_START = "<!-- BEGIN GENERATED:CURRENT_RESULT_SUMMARY -->"
+GENERATED_SUMMARY_END = "<!-- END GENERATED:CURRENT_RESULT_SUMMARY -->"
+GENERATED_FULL_DATA_START = "<!-- BEGIN GENERATED:FULL_DATA -->"
+GENERATED_FULL_DATA_END = "<!-- END GENERATED:FULL_DATA -->"
 
 
 def load_rows():
@@ -126,10 +116,28 @@ def load_tiers():
     return tiers, tier_lookup
 
 
-def validate_tiers(models, tier_lookup):
-    missing = sorted({m["model"] for m in models if m["model"] not in tier_lookup})
+def resolve_tier(model, tiers, tier_lookup):
+    row_tier = model.get("tier")
+    if row_tier in tiers:
+        return row_tier
+    fallback_tier = tier_lookup.get(model["model"])
+    if fallback_tier in tiers:
+        return fallback_tier
+    raise KeyError(model["model"])
+
+
+def validate_tiers(models, tiers, tier_lookup):
+    missing = []
+    for model in models:
+        try:
+            model["tier"] = resolve_tier(model, tiers, tier_lookup)
+        except KeyError:
+            missing.append(model["model"])
     if missing:
-        raise SystemExit("Models without tier assignment: " + ", ".join(missing))
+        raise SystemExit(
+            "Models without a known tier in combined/leaderboard data or scripts/model_tiers.json: "
+            + ", ".join(sorted(missing))
+        )
 
 
 def fmt_metric(value, suffix="%"):
@@ -138,10 +146,42 @@ def fmt_metric(value, suffix="%"):
     return f"{float(value):.1f}{suffix}"
 
 
-def fmt_cost(model):
-    if model in COST_PER_RUN:
-        return f"${COST_PER_RUN[model]:.2f}"
-    return "—"
+def fmt_cost(cents):
+    if cents in (None, "", "–", "-"):
+        return "—"
+    return f"${float(cents) / 100:.2f}"
+
+
+def attach_estimated_costs(rows):
+    pricing_snapshot = load_pricing_snapshot()
+    for row in rows:
+        row["estimated_run_cost_cents"] = estimate_run_cost_cents(
+            row["model"], row.get("total_tokens"), pricing_snapshot
+        )
+
+
+def csv_cost(row):
+    cents = row.get("estimated_run_cost_cents")
+    if cents in (None, "", "–", "-"):
+        return ""
+    return f"{float(cents) / 100:.2f}"
+
+
+def replace_generated_block(text, start_marker, end_marker, replacement, fallback_start=None, fallback_end=None):
+    wrapped = f"{start_marker}\n{replacement.rstrip()}\n{end_marker}"
+    if start_marker in text and end_marker in text:
+        start = text.index(start_marker)
+        end = text.index(end_marker) + len(end_marker)
+        return text[:start] + wrapped + text[end:]
+
+    if fallback_start is None or fallback_end is None:
+        raise SystemExit(f"Missing generated block markers: {start_marker} / {end_marker}")
+
+    start = text.index(fallback_start)
+    end = text.index(fallback_end)
+    prefix = text[:start].rstrip()
+    suffix = text[end:].lstrip()
+    return prefix + "\n\n" + wrapped + "\n\n" + suffix
 
 
 def closest_candidate(models, profile):
@@ -226,7 +266,7 @@ def write_profile_csvs(models):
                     "threat_capture": f"{m['threat_capture']:.1f}",
                     "false_review": f"{m['false_review']:.1f}",
                     "false_escalation": f"{m['false_escalation']:.1f}",
-                    "cost_per_run": f"{COST_PER_RUN.get(m['model'], math.nan):.2f}" if m['model'] in COST_PER_RUN else "",
+                    "cost_per_run": csv_cost(m),
                     "avg_seconds_per_event": f"{m.get('avg_seconds_per_event', 0):.2f}",
                     "n": m["n"],
                     "incomplete": m["incomplete"],
@@ -258,7 +298,7 @@ def write_tier_profile_csvs(models, tiers):
                         "threat_capture": f"{m['threat_capture']:.1f}",
                         "false_review": f"{m['false_review']:.1f}",
                         "false_escalation": f"{m['false_escalation']:.1f}",
-                        "cost_per_run": f"{COST_PER_RUN.get(m['model'], math.nan):.2f}" if m['model'] in COST_PER_RUN else "",
+                        "cost_per_run": csv_cost(m),
                         "avg_seconds_per_event": f"{m.get('avg_seconds_per_event', 0):.2f}",
                         "n": m["n"],
                         "incomplete": m["incomplete"],
@@ -289,7 +329,7 @@ def write_tier_summary_csv(models, tiers, tier_profile_rows):
                     "threat_capture_rate": f"{m['threat_capture']:.1f}",
                     "false_review_load": f"{m['false_review']:.1f}",
                     "false_escalation_rate": f"{m['false_escalation']:.1f}",
-                    "cost_per_run": fmt_cost(m["model"]),
+                    "cost_per_run": fmt_cost(m.get("estimated_run_cost_cents")),
                     "avg_seconds_per_event": f"{m.get('avg_seconds_per_event', 0):.2f}",
                     "recommendation_status": "profile leader under current constraints",
                     "exclusion_reason_if_none": "",
@@ -682,8 +722,6 @@ def markdown_tier_tables(models, tiers, tier_profile_rows):
 def update_readme(models, tiers, profile_rows, tier_profile_rows):
     readme = ROOT / "README.md"
     text = readme.read_text()
-    start = text.index("## Current Result Summary")
-    end = text.index("## Reader Guide")
     section = f"""## Current Result Summary - Overall
 
 The first table ignores deployment tier and shows the current profile leaders across all tested models. These are **current profile leaders under the selected constraints**, not universal winners. A model only appears as a recommendation if it also clears minimum usefulness and completeness guardrails; near-`always-inc` behavior is analysis material, not a benchmark recommendation.
@@ -695,10 +733,15 @@ There is no single best model. The useful choice depends on whether the deployme
 {markdown_tier_tables(models, tiers, tier_profile_rows)}
 
 """
-    text = text[:start] + section + text[end:]
+    text = replace_generated_block(
+        text,
+        GENERATED_SUMMARY_START,
+        GENERATED_SUMMARY_END,
+        section,
+        fallback_start="## Current Result Summary",
+        fallback_end="## Reader Guide",
+    )
 
-    full_start = text.index("## Full Data")
-    related_start = text.index("## Related")
     full_section = """## Full Data
 
 Sortable and machine-readable data:
@@ -732,7 +775,14 @@ Additional documentation:
 The README intentionally contains the main operational summary so visitors do not need to read the extended profile page first.
 
 """
-    text = text[:full_start] + full_section + text[related_start:]
+    text = replace_generated_block(
+        text,
+        GENERATED_FULL_DATA_START,
+        GENERATED_FULL_DATA_END,
+        full_section,
+        fallback_start="## Full Data",
+        fallback_end="## Related",
+    )
     readme.write_text(text)
 
 def main():
@@ -740,7 +790,8 @@ def main():
     baselines = [r for r in rows if r["tier"] == "baseline"]
     models = [r for r in rows if r["tier"] != "baseline"]
     tiers, tier_lookup = load_tiers()
-    validate_tiers(models, tier_lookup)
+    validate_tiers(models, tiers, tier_lookup)
+    attach_estimated_costs(rows)
     profile_rows = write_profile_csvs(models)
     tier_profile_rows = write_tier_profile_csvs(models, tiers)
     write_tier_summary_csv(models, tiers, tier_profile_rows)

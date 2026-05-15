@@ -4,6 +4,7 @@ This benchmark evaluates LLMs on THOR finding triage. It focuses on security eve
 
 The current public result set covers **46 complete models**, **9 THOR reports**, and **189 expert-classified findings**. Models are compared against human expert ground truth and are evaluated on both classification quality and operational usefulness.
 
+<!-- BEGIN GENERATED:CURRENT_RESULT_SUMMARY -->
 ## Current Result Summary - Overall
 
 The first table ignores deployment tier and shows the current profile leaders across all tested models. These are **current profile leaders under the selected constraints**, not universal winners. A model only appears as a recommendation if it also clears minimum usefulness and completeness guardrails; near-`always-inc` behavior is analysis material, not a benchmark recommendation.
@@ -47,6 +48,7 @@ Deployment constraints matter. A vendor API model may be easy to test, but some 
 ### Why model tiers matter
 
 Model tier matters because deployment constraints are part of the decision. A vendor API model may score well, but it may not be usable in environments that require local processing, predictable fixed cost, or strict data-control boundaries. Open-source models on pro hardware can be attractive for controlled deployments. Consumer-hardware models are relevant when the goal is local triage with lower infrastructure cost, even if quality may be lower.
+<!-- END GENERATED:CURRENT_RESULT_SUMMARY -->
 
 ## Reader Guide
 
@@ -411,6 +413,7 @@ Interpretation:
 - `FP→Inc` creates unnecessary review load.
 - `FP→TP` creates unnecessary escalation.
 
+<!-- BEGIN GENERATED:FULL_DATA -->
 ## Full Data
 
 Sortable and machine-readable data:
@@ -442,6 +445,7 @@ Additional documentation:
 - [SCORING.md](SCORING.md) — scoring details
 
 The README intentionally contains the main operational summary so visitors do not need to read the extended profile page first.
+<!-- END GENERATED:FULL_DATA -->
 
 ## Related
 

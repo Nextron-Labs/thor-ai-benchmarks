@@ -37,7 +37,9 @@ else:
 
 # Load tiers
 with open(tiers_path) as f:
-    tiers_config = json.load(f)["tiers"]
+    tiers_payload = json.load(f)
+tiers_config = tiers_payload["tiers"]
+excluded = set(tiers_payload.get("excluded", []))
 
 # Build tier lookup
 tier_lookup = {}
@@ -45,6 +47,16 @@ tier_names = list(tiers_config.keys())
 for tier_key, tier_data in tiers_config.items():
     for m in tier_data["models"]:
         tier_lookup[m] = tier_key
+
+
+def resolve_tier(model_row):
+    if model_row.get("tier") in tiers_config:
+        return model_row["tier"]
+    if model_row["model"] in tier_lookup:
+        return tier_lookup[model_row["model"]]
+    raise SystemExit(
+        f"Model {model_row['model']} is missing a known tier in leaderboard data and scripts/model_tiers.json"
+    )
 
 # Convert types and assign tiers
 for m in models:
@@ -67,11 +79,18 @@ for m in models:
     m['n'] = int(m.get('n', 0))
     m['n_errors'] = int(m.get('n_errors', 0))
     m['incomplete'] = m.get('incomplete', False) in (True, 'True', 'true', 1)
-    m['tier'] = tier_lookup.get(m['model'], 'closed_source')
+    m['tier'] = resolve_tier(m)
 
 # Public charts must contain complete, publishable model results only.
 # Incomplete/errored attempts are documented separately, never plotted/ranked.
-models = [m for m in models if m.get('tier') != 'baseline' and not m.get('incomplete') and int(m.get('n_errors', 0)) == 0]
+models = [
+    m
+    for m in models
+    if m.get('tier') != 'baseline'
+    and m['model'] not in excluded
+    and not m.get('incomplete')
+    and int(m.get('n_errors', 0)) == 0
+]
 models.sort(key=lambda x: x['cw_pct'], reverse=True)
 
 def tier_style(tier_key):

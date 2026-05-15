@@ -11,8 +11,20 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from openrouter_costs import estimate_run_cost_cents, load_pricing_snapshot
+
 ROOT = Path(__file__).resolve().parents[1]
 COMBINED = ROOT / "combined"
+DOCS = ROOT / "docs"
+README = ROOT / "README.md"
+TIERS_PATH = ROOT / "scripts" / "model_tiers.json"
+
+GENERATED_MARKERS = [
+    "<!-- BEGIN GENERATED:CURRENT_RESULT_SUMMARY -->",
+    "<!-- END GENERATED:CURRENT_RESULT_SUMMARY -->",
+    "<!-- BEGIN GENERATED:FULL_DATA -->",
+    "<!-- END GENERATED:FULL_DATA -->",
+]
 
 
 def load_json(path: Path):
@@ -25,8 +37,16 @@ def main() -> int:
     results = load_json(COMBINED / "results-combined.json")
     dropped_path = COMBINED / "dropped-models.json"
     dropped = load_json(dropped_path) if dropped_path.exists() else []
+    tier_keys = set(load_json(TIERS_PATH)["tiers"])
+    pricing_snapshot = load_pricing_snapshot()
 
     real_leaderboard = [m for m in leaderboard if m.get("rank") != "baseline"]
+    bad_tiers = sorted(
+        m["model"] for m in real_leaderboard if m.get("tier") not in tier_keys
+    )
+    if bad_tiers:
+        raise SystemExit(f"Public leaderboard contains models with unknown tiers: {bad_tiers}")
+
     bad_lb = [
         m["model"] for m in real_leaderboard
         if m.get("incomplete") or int(m.get("n_errors", 0)) != 0
@@ -70,10 +90,48 @@ def main() -> int:
         "cw-leaderboard.png",
         "critical-miss-vs-false-review.png",
         "balanced-ots-vs-false-review.png",
+        "cw-vs-balanced-ots.png",
+        "quality-vs-cost.png",
+        "quality-vs-speed.png",
+        "operational-profile-summary.png",
+        "operational-profile-summary-by-tier.png",
     ]
     missing = [name for name in required_charts if not (ROOT / "charts" / name).exists()]
     if missing:
         raise SystemExit(f"Missing required charts: {missing}")
+
+    site_artifacts = [
+        DOCS / "data" / "leaderboard-explorer.json",
+        DOCS / "charts" / "classification-breakdown.png",
+        DOCS / "charts" / "quality-vs-cost.png",
+        DOCS / "charts" / "quality-vs-speed.png",
+        DOCS / "charts" / "operational-profile-summary.png",
+        DOCS / "charts" / "operational-profile-summary-by-tier.png",
+    ]
+    missing_site = [str(path.relative_to(ROOT)) for path in site_artifacts if not path.exists()]
+    if missing_site:
+        raise SystemExit(f"Missing required site artifacts: {missing_site}")
+
+    readme_text = README.read_text()
+    missing_markers = [marker for marker in GENERATED_MARKERS if marker not in readme_text]
+    if missing_markers:
+        raise SystemExit(f"README is missing generated content markers: {missing_markers}")
+
+    missing_cost = sorted(
+        m["model"]
+        for m in real_leaderboard
+        if estimate_run_cost_cents(
+            m["model"],
+            int(m.get("total_tokens", 0)) if m.get("total_tokens") not in (None, "", "–", "-") else None,
+            pricing_snapshot,
+        )
+        is None
+    )
+    if missing_cost:
+        print(
+            "WARNING: models without cost estimates will be omitted from cost-based views: "
+            + ", ".join(missing_cost)
+        )
 
     print(f"OK: public artifacts contain {len(lb_models)} complete models over {full_report} (n={expected_n})")
     return 0

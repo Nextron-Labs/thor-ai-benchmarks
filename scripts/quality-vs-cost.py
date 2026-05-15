@@ -54,6 +54,8 @@ def main():
         name = m['model']
         if name in excluded:
             continue
+        if m.get('tier') == 'baseline':
+            continue
         cw_pct = float(m['cw_pct'])
         tier = m['tier']
         total_tokens = int(m.get('total_tokens', 0))
