@@ -1,10 +1,10 @@
 const DATA_URL = "./data/leaderboard-explorer.json";
 
 const TIER_META = {
-  closed_source: { label: "Closed Source", color: "#dc5a3f", symbol: "diamond" },
-  open_source_pro: { label: "Open Source Pro", color: "#2176c8", symbol: "square" },
-  open_source_consumer: { label: "Open Source Consumer", color: "#2b8f60", symbol: "circle" },
-  baseline: { label: "Baseline", color: "#7a6b57", symbol: "x" },
+  closed_source: { label: "Closed Source", color: "#2563eb", symbol: "diamond" },
+  open_source_pro: { label: "Open Source Pro", color: "#5c6f87", symbol: "square" },
+  open_source_consumer: { label: "Open Source Consumer", color: "#8ab4ff", symbol: "circle" },
+  baseline: { label: "Baseline", color: "#9ca9ba", symbol: "x" },
 };
 
 const state = {
@@ -156,21 +156,6 @@ function getFilteredModels() {
   });
 }
 
-function buildHoverText(row) {
-  return [
-    `<b>${row.model}</b>`,
-    `${TIER_META[row.tier].label}`,
-    `Rank: ${row.rank_label ?? "–"}`,
-    `CW: ${formatValue(metricByKey("cw_pct"), row.cw_pct)}`,
-    `Balanced OTS: ${formatValue(metricByKey("balanced_ots"), row.balanced_ots)}`,
-    `Critical miss: ${formatValue(metricByKey("critical_miss"), row.critical_miss)}`,
-    `False review: ${formatValue(metricByKey("false_review"), row.false_review)}`,
-    `Threat capture: ${formatValue(metricByKey("threat_capture"), row.threat_capture)}`,
-    `MAE: ${formatValue(metricByKey("mae"), row.mae)}`,
-    `Findings: ${row.n}`,
-  ].join("<br>");
-}
-
 function chartCompass(xMetric, yMetric) {
   const xWord = xMetric.direction === "lower" ? "lower" : "higher";
   const yWord = yMetric.direction === "lower" ? "lower" : "higher";
@@ -197,22 +182,42 @@ function renderChart(rows) {
       x: tierRows.map((row) => row[state.xMetric]),
       y: tierRows.map((row) => row[state.yMetric]),
       text: tierRows.map((row) => row.model),
-      hovertext: tierRows.map(buildHoverText),
+      customdata: tierRows.map((row) => [
+        row.model,
+        TIER_META[row.tier].label,
+        row.rank_label ?? "–",
+        formatValue(metricByKey("cw_pct"), row.cw_pct),
+        formatValue(metricByKey("balanced_ots"), row.balanced_ots),
+        formatValue(metricByKey("critical_miss"), row.critical_miss),
+        formatValue(metricByKey("false_review"), row.false_review),
+        formatValue(metricByKey("threat_capture"), row.threat_capture),
+        formatValue(metricByKey("mae"), row.mae),
+        row.n,
+      ]),
       textposition: "top center",
       textfont: {
         family: "IBM Plex Sans, sans-serif",
         size: 11,
-        color: "#1b1e24",
+        color: "#122033",
       },
-      customdata: tierRows,
-      hovertemplate: "%{hovertext}<extra></extra>",
+      hovertemplate:
+        "<b>%{customdata[0]}</b><br>" +
+        "%{customdata[1]}<br>" +
+        "Rank: %{customdata[2]}<br>" +
+        "CW: %{customdata[3]}<br>" +
+        "Balanced OTS: %{customdata[4]}<br>" +
+        "Critical miss: %{customdata[5]}<br>" +
+        "False review: %{customdata[6]}<br>" +
+        "Threat capture: %{customdata[7]}<br>" +
+        "MAE: %{customdata[8]}<br>" +
+        "Findings: %{customdata[9]}<extra></extra>",
       marker: {
         size: tierRows.map((row) => (row.incomplete ? 12 : 15)),
         color: tier.color,
         symbol: tier.symbol,
-        opacity: 0.88,
+        opacity: 0.92,
         line: {
-          color: "#fffaf4",
+          color: "#f8fbff",
           width: 1.3,
         },
       },
@@ -224,23 +229,28 @@ function renderChart(rows) {
     paper_bgcolor: "rgba(0,0,0,0)",
     plot_bgcolor: "rgba(255,255,255,0.55)",
     hoverlabel: {
-      bgcolor: "#171a20",
-      bordercolor: "#171a20",
-      font: { family: "IBM Plex Sans, sans-serif", size: 12 },
+      bgcolor: "#0f172a",
+      bordercolor: "#1e3a5f",
+      align: "left",
+      font: {
+        family: "IBM Plex Sans, sans-serif",
+        size: 12,
+        color: "#f8fbff",
+      },
     },
     font: {
       family: "IBM Plex Sans, sans-serif",
-      color: "#1b1e24",
+      color: "#122033",
     },
     xaxis: {
       title: xMetric.label,
       type: state.xScale,
-      gridcolor: "rgba(27, 30, 36, 0.08)",
+      gridcolor: "rgba(37, 99, 235, 0.1)",
       zeroline: false,
     },
     yaxis: {
       title: yMetric.label,
-      gridcolor: "rgba(27, 30, 36, 0.08)",
+      gridcolor: "rgba(37, 99, 235, 0.1)",
       zeroline: false,
     },
     legend: {
@@ -248,8 +258,8 @@ function renderChart(rows) {
       xanchor: "right",
       y: 1.02,
       orientation: "h",
-      bgcolor: "rgba(255,255,255,0.65)",
-      bordercolor: "rgba(27, 30, 36, 0.08)",
+      bgcolor: "rgba(255,255,255,0.88)",
+      bordercolor: "rgba(37, 99, 235, 0.12)",
       borderwidth: 1,
     },
   };
