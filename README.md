@@ -4,6 +4,8 @@ This benchmark evaluates LLMs on THOR finding triage. It focuses on security eve
 
 The current public result set covers **46 complete models**, **9 THOR reports**, and **189 expert-classified findings**. Models are compared against human expert ground truth and are evaluated on both classification quality and operational usefulness.
 
+Interactive companion: [Benchmark Control Deck](https://nextron-labs.github.io/thor-ai-benchmarks/#explorer?preset=miss-vs-review) for hoverable scatter plots, tier filters, leader tables, and the chart gallery. Use it whenever the static charts below get too dense to read.
+
 <!-- BEGIN GENERATED:CURRENT_RESULT_SUMMARY -->
 ## Current Result Summary - Overall
 
@@ -106,6 +108,8 @@ The current data set still does not contain a perfect lower-left model, but `gem
 
 Full-labeled detail chart: [critical-miss-vs-false-review-full-labeled.png](charts/critical-miss-vs-false-review-full-labeled.png)
 
+Interactive explorer view: [Critical Miss Rate vs False Review Load](https://nextron-labs.github.io/thor-ai-benchmarks/#explorer?preset=miss-vs-review)
+
 ### 4. Balanced OTS vs False Review Load
 
 ![Balanced OTS vs False Review Load](charts/balanced-ots-vs-false-review.png)
@@ -124,6 +128,8 @@ Balanced OTS rewards operationally safe decisions across FP, Inc and TP classes.
 `always-inc` illustrates the noisy-safe baseline: strong safety, but 100% false review load. `gemini-3.1-flash-lite` is the current balanced SOC profile leader because it substantially improves Balanced OTS while reducing false review load to 27.6%.
 
 Full-labeled detail chart: [balanced-ots-vs-false-review-full-labeled.png](charts/balanced-ots-vs-false-review-full-labeled.png)
+
+Interactive explorer view: [Balanced OTS vs False Review Load](https://nextron-labs.github.io/thor-ai-benchmarks/#explorer?preset=balanced-ots-vs-review)
 
 ### 5. CW% vs Balanced OTS
 
@@ -144,6 +150,8 @@ The top CW% models are useful to inspect, but they are not automatically the saf
 
 Full-labeled detail chart: [cw-vs-balanced-ots-full-labeled.png](charts/cw-vs-balanced-ots-full-labeled.png)
 
+Interactive explorer view: [Quality Score vs Balanced OTS](https://nextron-labs.github.io/thor-ai-benchmarks/#explorer?preset=cw-vs-balanced-ots)
+
 ### 6. Quality vs Cost
 
 ![Quality vs Cost](charts/quality-vs-cost.png)
@@ -159,6 +167,8 @@ Full-labeled detail chart: [cw-vs-balanced-ots-full-labeled.png](charts/cw-vs-ba
 
 This chart estimates benchmark-run cost from observed token usage and model pricing. This chart is useful only after safety metrics are acceptable. A cheap model with high Critical Miss Rate is not a good production choice just because it is cheap.
 
+Interactive explorer view: [Quality Score vs Cost](https://nextron-labs.github.io/thor-ai-benchmarks/#explorer?preset=cw-vs-cost)
+
 ### 7. Quality vs Speed
 
 ![Quality vs Speed](charts/quality-vs-speed.png)
@@ -173,6 +183,8 @@ This chart estimates benchmark-run cost from observed token usage and model pric
 - Lower-right: poor trade-off — slower and lower quality
 
 This chart compares quality against average seconds per event and matters for high-volume triage. Speed is useful only if Critical Miss Rate and False Review Load are acceptable for the workflow. A fast model with low review load but too many critical misses is efficient but risky, not production-ready.
+
+Interactive explorer view: [Quality Score vs Speed](https://nextron-labs.github.io/thor-ai-benchmarks/#explorer?preset=cw-vs-speed)
 
 ### 8. Classification Breakdown
 
@@ -446,6 +458,8 @@ Additional documentation:
 
 The README intentionally contains the main operational summary so visitors do not need to read the extended profile page first.
 <!-- END GENERATED:FULL_DATA -->
+
+Interactive charts and tabbed summaries are also available in the [Benchmark Control Deck](https://nextron-labs.github.io/thor-ai-benchmarks/#explorer?preset=miss-vs-review).
 
 ## Related
 

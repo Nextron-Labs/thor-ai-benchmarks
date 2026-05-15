@@ -36,6 +36,7 @@ const LEADER_SCOPE_META = [
 ];
 
 const TIER_ORDER = ["closed_source", "open_source_pro", "open_source_consumer"];
+const VALID_TABS = new Set(["explorer", "leaders", "models", "charts"]);
 
 const state = {
   data: null,
@@ -111,12 +112,31 @@ function metricByKey(key) {
   return state.metricsByKey[key];
 }
 
+function presetByKey(key) {
+  return state.data?.presets.find((preset) => preset.key === key) || null;
+}
+
+function selectedPreset() {
+  return state.data?.presets.find((preset) => preset.x === state.xMetric && preset.y === state.yMetric) || null;
+}
+
 function defaultScaleForMetric(key) {
   return key === "avg_seconds_per_event" ? "log" : "linear";
 }
 
 function lookupModelByName(modelName) {
   return state.modelsByName.get(modelName) || null;
+}
+
+function applyPreset(preset) {
+  state.xMetric = preset.x;
+  state.yMetric = preset.y;
+  state.xScale = preset.x_scale || defaultScaleForMetric(preset.x);
+}
+
+function syncMetricControls() {
+  elements.xAxis.value = state.xMetric;
+  elements.yAxis.value = state.yMetric;
 }
 
 function tierSymbolMarkup(tierKey) {
@@ -142,6 +162,87 @@ function syncFilterControls() {
   elements.showLabels.checked = state.showLabels;
 }
 
+function parseHashState() {
+  const rawHash = window.location.hash.replace(/^#/, "");
+  if (!rawHash) {
+    return {};
+  }
+
+  const [tab, query = ""] = rawHash.split("?");
+  const params = new URLSearchParams(query);
+  return {
+    tab,
+    preset: params.get("preset"),
+    x: params.get("x"),
+    y: params.get("y"),
+    scale: params.get("scale"),
+    scope: params.get("scope"),
+    chart: params.get("chart"),
+  };
+}
+
+function applyHashState() {
+  const hashState = parseHashState();
+
+  if (hashState.tab && VALID_TABS.has(hashState.tab)) {
+    state.activeTab = hashState.tab;
+  }
+
+  if (hashState.preset) {
+    const preset = presetByKey(hashState.preset);
+    if (preset) {
+      applyPreset(preset);
+    }
+  } else if (hashState.x && hashState.y && metricByKey(hashState.x) && metricByKey(hashState.y)) {
+    state.xMetric = hashState.x;
+    state.yMetric = hashState.y;
+    state.xScale = hashState.scale === "log" ? "log" : defaultScaleForMetric(hashState.x);
+  }
+
+  if (hashState.scope && LEADER_SCOPE_META.some((scope) => scope.key === hashState.scope)) {
+    state.leaderScope = hashState.scope;
+  }
+
+  if (hashState.chart && state.data.chart_gallery.some((chart) => chart.key === hashState.chart)) {
+    state.galleryKey = hashState.chart;
+  }
+}
+
+function syncHashState() {
+  if (!state.data) {
+    return;
+  }
+
+  const params = new URLSearchParams();
+
+  if (state.activeTab === "explorer") {
+    const preset = selectedPreset();
+    if (preset) {
+      params.set("preset", preset.key);
+    } else {
+      params.set("x", state.xMetric);
+      params.set("y", state.yMetric);
+      if (state.xScale !== defaultScaleForMetric(state.xMetric)) {
+        params.set("scale", state.xScale);
+      }
+    }
+  } else if (state.activeTab === "leaders") {
+    if (state.leaderScope !== LEADER_SCOPE_META[0].key) {
+      params.set("scope", state.leaderScope);
+    }
+  } else if (state.activeTab === "charts") {
+    const defaultChart = state.data.chart_gallery[0]?.key;
+    if (state.galleryKey !== defaultChart) {
+      params.set("chart", state.galleryKey);
+    }
+  }
+
+  const nextHash = params.size ? `#${state.activeTab}?${params.toString()}` : `#${state.activeTab}`;
+  if (window.location.hash !== nextHash) {
+    window.history.replaceState(null, "", nextHash);
+  }
+}
+
 function populateMetricSelect(selectEl, selectedKey) {
   selectEl.innerHTML = "";
   state.data.metrics.forEach((metric) => {
@@ -157,17 +258,15 @@ function populateMetricSelect(selectEl, selectedKey) {
 
 function buildPresetButtons() {
   elements.presetStrip.innerHTML = "";
+  const activePresetKey = selectedPreset()?.key;
   state.data.presets.forEach((preset) => {
     const button = document.createElement("button");
     button.type = "button";
-    button.className = `preset-button${preset.x === state.xMetric && preset.y === state.yMetric ? " active" : ""}`;
+    button.className = `preset-button${preset.key === activePresetKey ? " active" : ""}`;
     button.textContent = preset.label;
+    button.dataset.presetKey = preset.key;
     button.addEventListener("click", () => {
-      state.xMetric = preset.x;
-      state.yMetric = preset.y;
-      state.xScale = preset.x_scale || defaultScaleForMetric(preset.x);
-      populateMetricSelect(elements.xAxis, state.xMetric);
-      populateMetricSelect(elements.yAxis, state.yMetric);
+      applyPreset(preset);
       render();
     });
     elements.presetStrip.appendChild(button);
@@ -516,6 +615,7 @@ function renderGallery() {
 
 function render() {
   syncFilterControls();
+  syncMetricControls();
   renderTabs();
   buildPresetButtons();
   buildTierFilters(elements.tierFilterExplorer);
@@ -538,13 +638,14 @@ function render() {
   }));
   renderLeaderContent();
   renderGallery();
+  syncHashState();
 }
 
 function bindEvents() {
   elements.tabButtons.forEach((button) => {
     button.addEventListener("click", () => {
       state.activeTab = button.dataset.tab;
-      renderTabs();
+      render();
     });
   });
 
@@ -586,13 +687,12 @@ async function init() {
   state.modelsByName = new Map(state.data.models.map((row) => [row.model, row]));
 
   const defaultPreset = state.data.presets[0];
-  state.xMetric = defaultPreset.x;
-  state.yMetric = defaultPreset.y;
-  state.xScale = defaultPreset.x_scale || defaultScaleForMetric(defaultPreset.x);
+  applyPreset(defaultPreset);
   state.galleryKey = state.data.chart_gallery[0]?.key || state.galleryKey;
 
   populateMetricSelect(elements.xAxis, state.xMetric);
   populateMetricSelect(elements.yAxis, state.yMetric);
+  applyHashState();
   bindEvents();
   render();
 }
