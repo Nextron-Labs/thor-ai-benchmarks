@@ -1,10 +1,30 @@
 const DATA_URL = "./data/leaderboard-explorer.json";
 
 const TIER_META = {
-  closed_source: { label: "Closed Source", color: "#2563eb", symbol: "diamond" },
-  open_source_pro: { label: "Open Source Pro", color: "#5c6f87", symbol: "square" },
-  open_source_consumer: { label: "Open Source Consumer", color: "#8ab4ff", symbol: "circle" },
-  baseline: { label: "Baseline", color: "#9ca9ba", symbol: "x" },
+  closed_source: {
+    label: "Closed Source / Vendor API",
+    displayLabel: "♦️ Closed Source / Vendor API",
+    color: "#2563eb",
+    symbol: "diamond",
+  },
+  open_source_pro: {
+    label: "Open Source / Pro Hardware",
+    displayLabel: "🟦 Open Source / Pro Hardware",
+    color: "#5c6f87",
+    symbol: "square",
+  },
+  open_source_consumer: {
+    label: "Open Source / Consumer Hardware",
+    displayLabel: "🟢 Open Source / Consumer Hardware",
+    color: "#8ab4ff",
+    symbol: "circle",
+  },
+  baseline: {
+    label: "Baseline",
+    displayLabel: "Baseline",
+    color: "#9ca9ba",
+    symbol: "x",
+  },
 };
 
 const state = {
@@ -126,7 +146,7 @@ function buildTierFilters() {
     swatch.style.backgroundColor = tier.color;
 
     const text = document.createElement("span");
-    text.textContent = tier.label;
+    text.textContent = tier.displayLabel;
 
     label.append(input, swatch, text);
     elements.tierFilter.appendChild(label);
@@ -178,13 +198,13 @@ function renderChart(rows) {
     return {
       type: "scatter",
       mode: state.showLabels ? "markers+text" : "markers",
-      name: tier.label,
+      name: tier.displayLabel,
       x: tierRows.map((row) => row[state.xMetric]),
       y: tierRows.map((row) => row[state.yMetric]),
       text: tierRows.map((row) => row.model),
       customdata: tierRows.map((row) => [
         row.model,
-        TIER_META[row.tier].label,
+        TIER_META[row.tier].displayLabel,
         row.rank_label ?? "–",
         formatValue(metricByKey("cw_pct"), row.cw_pct),
         formatValue(metricByKey("balanced_ots"), row.balanced_ots),
@@ -289,7 +309,7 @@ function renderTable(rows) {
 
   sorted.forEach((row) => {
     const tr = document.createElement("tr");
-    const tierLabel = TIER_META[row.tier].label;
+    const tierLabel = TIER_META[row.tier].displayLabel;
     const incompletePill = row.incomplete ? '<span class="incomplete-pill">Incomplete</span>' : "";
     tr.innerHTML = `
       <td>${row.rank_label ?? "–"}</td>
