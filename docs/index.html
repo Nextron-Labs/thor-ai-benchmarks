@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>THOR AI Benchmarks Explorer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" defer></script>
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <p class="eyebrow">THOR AI Benchmarks</p>
+        <h1>Interactive Result Explorer</h1>
+        <p class="hero-copy">
+          The static README charts are useful for a quick scan, but they break
+          down once dozens of models land in the same narrow area. This page
+          keeps the public benchmark data static while making the plots
+          explorable through hover, zoom, filtering, and model search.
+        </p>
+      </header>
+
+      <main class="content-grid">
+        <section class="panel panel-controls">
+          <div class="panel-header">
+            <h2>Controls</h2>
+            <p>Pick a preset, swap axes, and narrow the point cloud.</p>
+          </div>
+
+          <div class="preset-strip" id="preset-strip"></div>
+
+          <div class="control-grid">
+            <label class="control">
+              <span>X Axis</span>
+              <select id="x-axis"></select>
+            </label>
+            <label class="control">
+              <span>Y Axis</span>
+              <select id="y-axis"></select>
+            </label>
+            <label class="control">
+              <span>Search Models</span>
+              <input id="model-search" type="search" placeholder="Type a model name" />
+            </label>
+            <label class="control checkbox">
+              <input id="show-labels" type="checkbox" />
+              <span>Show labels on chart</span>
+            </label>
+            <label class="control checkbox">
+              <input id="complete-only" type="checkbox" checked />
+              <span>Hide incomplete runs</span>
+            </label>
+          </div>
+
+          <div class="tier-filter" id="tier-filter"></div>
+
+          <div class="note-card">
+            <strong>Metric note</strong>
+            <p>
+              The public repo does not define a metric named
+              <code>balanced OTS</code>. This prototype therefore uses the
+              published leaderboard fields and derived rates that already exist
+              in the repo. If you want the exact balanced-OTS plots, the site
+              only needs one more formula added to the data generator.
+            </p>
+          </div>
+        </section>
+
+        <section class="panel panel-chart">
+          <div class="panel-header">
+            <h2 id="chart-title">Scatter Explorer</h2>
+            <p id="chart-subtitle"></p>
+          </div>
+          <div id="chart" class="chart-surface" aria-label="Interactive chart"></div>
+        </section>
+
+        <section class="panel panel-table">
+          <div class="panel-header">
+            <h2>Filtered Models</h2>
+            <p id="table-summary"></p>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Model</th>
+                  <th>Tier</th>
+                  <th>CW %</th>
+                  <th>Ord %</th>
+                  <th>Critical Miss %</th>
+                  <th>False Review %</th>
+                  <th>MAE</th>
+                </tr>
+              </thead>
+              <tbody id="table-body"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
