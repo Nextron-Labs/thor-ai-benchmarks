@@ -3,27 +3,27 @@ const DATA_URL = "./data/leaderboard-explorer.json";
 const TIER_META = {
   closed_source: {
     label: "Closed Source / Vendor API",
-    displayLabel: "♦️ Closed Source / Vendor API",
     color: "#ff9f43",
     symbol: "diamond",
+    textSymbol: "◆",
   },
   open_source_pro: {
     label: "Open Source / Pro Hardware",
-    displayLabel: "🟦 Open Source / Pro Hardware",
     color: "#3f87ff",
     symbol: "square",
+    textSymbol: "■",
   },
   open_source_consumer: {
     label: "Open Source / Consumer Hardware",
-    displayLabel: "🟢 Open Source / Consumer Hardware",
     color: "#22c55e",
     symbol: "circle",
+    textSymbol: "●",
   },
   baseline: {
     label: "Baseline",
-    displayLabel: "Baseline",
     color: "#9ca9ba",
     symbol: "x",
+    textSymbol: "✕",
   },
 };
 
@@ -69,6 +69,26 @@ function formatValue(metric, value) {
     default:
       return value.toFixed(1);
   }
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
+function tierSymbolMarkup(tierKey) {
+  const tier = TIER_META[tierKey];
+  return `<span class="tier-symbol" style="color:${tier.color}">${tier.textSymbol}</span>`;
+}
+
+function modelNameMarkup(row, bold = false) {
+  const modelName = escapeHtml(row.model);
+  const modelText = bold ? `<b>${modelName}</b>` : modelName;
+  return `${tierSymbolMarkup(row.tier)}${modelText}`;
 }
 
 function metricByKey(key) {
@@ -147,7 +167,7 @@ function buildTierFilters() {
     swatch.style.color = tier.color;
 
     const text = document.createElement("span");
-    text.textContent = tier.displayLabel;
+    text.textContent = tier.label;
 
     label.append(input, swatch, text);
     elements.tierFilter.appendChild(label);
@@ -199,13 +219,13 @@ function renderChart(rows) {
     return {
       type: "scatter",
       mode: state.showLabels ? "markers+text" : "markers",
-      name: tier.displayLabel,
+      name: tier.label,
       x: tierRows.map((row) => row[state.xMetric]),
       y: tierRows.map((row) => row[state.yMetric]),
-      text: tierRows.map((row) => row.model),
+      text: tierRows.map((row) => `${TIER_META[row.tier].textSymbol} ${row.model}`),
       customdata: tierRows.map((row) => [
-        row.model,
-        TIER_META[row.tier].displayLabel,
+        modelNameMarkup(row, true),
+        TIER_META[row.tier].label,
         row.rank_label ?? "–",
         formatValue(metricByKey("cw_pct"), row.cw_pct),
         formatValue(metricByKey("balanced_ots"), row.balanced_ots),
@@ -219,10 +239,10 @@ function renderChart(rows) {
       textfont: {
         family: "IBM Plex Sans, sans-serif",
         size: 11,
-        color: "#b7efff",
+        color: tier.color,
       },
       hovertemplate:
-        "<b>%{customdata[0]}</b><br>" +
+        "%{customdata[0]}<br>" +
         "%{customdata[1]}<br>" +
         "Rank: %{customdata[2]}<br>" +
         "CW: %{customdata[3]}<br>" +
@@ -310,11 +330,11 @@ function renderTable(rows) {
 
   sorted.forEach((row) => {
     const tr = document.createElement("tr");
-    const tierLabel = TIER_META[row.tier].displayLabel;
+    const tierLabel = TIER_META[row.tier].label;
     const incompletePill = row.incomplete ? '<span class="incomplete-pill">Incomplete</span>' : "";
     tr.innerHTML = `
       <td>${row.rank_label ?? "–"}</td>
-      <td><span class="model-name">${row.model}</span>${incompletePill}</td>
+      <td><span class="model-label">${modelNameMarkup(row)}</span>${incompletePill}</td>
       <td>${tierLabel}</td>
       <td>${formatValue(metricByKey("balanced_ots"), row.balanced_ots)}</td>
       <td>${formatValue(metricByKey("critical_miss"), row.critical_miss)}</td>

@@ -355,8 +355,23 @@ tbody tr:last-child td {
   border-bottom: none;
 }
 
+.model-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
 .model-name {
   font-weight: 600;
+}
+
+.tier-symbol {
+  display: inline-block;
+  min-width: 0.9rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.95rem;
+  line-height: 1;
+  text-shadow: 0 0 10px currentColor;
 }
 
 .incomplete-pill {
