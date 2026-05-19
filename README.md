@@ -29,7 +29,7 @@ Deployment constraints matter. A vendor API model may be easy to test, but some 
 |---|---|---|
 | High-safety triage | `gemini-3.1-flash-lite` | Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss. |
 | Balanced SOC triage | `gemini-3.1-flash-lite` | Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss. |
-| Noise reduction / high-volume triage | `gemini-3.5-flash` | Lowest False Review Load in this tier among models that cleared the guardrails; low review load. |
+| Noise reduction / high-volume triage | `gemini-3.5-flash` | Lowest False Review Load in this tier among models that cleared the guardrails. |
 
 ### Open Source / Pro Hardware
 
