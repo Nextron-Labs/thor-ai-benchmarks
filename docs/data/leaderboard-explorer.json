@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-15T14:05:31.500469+00:00",
+  "generated_at": "2026-05-19T16:13:01.449102+00:00",
   "source": {
     "leaderboard": "combined/leaderboard.json",
     "operational_summary_by_tier": "combined/operational-profile-summary-by-tier.csv"
@@ -155,6 +155,13 @@
   ],
   "presets": [
     {
+      "key": "cw-vs-balanced-ots",
+      "label": "Quality Score vs Balanced OTS",
+      "x": "cw_pct",
+      "y": "balanced_ots",
+      "x_scale": "linear"
+    },
+    {
       "key": "miss-vs-review",
       "label": "Critical Miss Rate vs False Review Load",
       "x": "false_review",
@@ -165,13 +172,6 @@
       "key": "balanced-ots-vs-review",
       "label": "Balanced OTS vs False Review Load",
       "x": "false_review",
-      "y": "balanced_ots",
-      "x_scale": "linear"
-    },
-    {
-      "key": "cw-vs-balanced-ots",
-      "label": "Quality Score vs Balanced OTS",
-      "x": "cw_pct",
       "y": "balanced_ots",
       "x_scale": "linear"
     },

@@ -36,6 +36,7 @@ const LEADER_SCOPE_META = [
 ];
 
 const TIER_ORDER = ["closed_source", "open_source_pro", "open_source_consumer"];
+const VALID_TABS = new Set(["explorer", "leaders", "models", "charts"]);
 
 const state = {
   data: null,
@@ -51,12 +52,17 @@ const state = {
   activeTab: "explorer",
   leaderScope: "overall",
   galleryKey: "operational-profile-summary",
+  pinnedModels: new Set(),
+  chartEventsBound: false,
 };
 
 const elements = {
   chart: document.getElementById("chart"),
   chartTitle: document.getElementById("chart-title"),
   chartSubtitle: document.getElementById("chart-subtitle"),
+  pinnedSummary: document.getElementById("pinned-summary"),
+  pinnedDetails: document.getElementById("pinned-details"),
+  clearPins: document.getElementById("clear-pins"),
   presetStrip: document.getElementById("preset-strip"),
   xAxis: document.getElementById("x-axis"),
   yAxis: document.getElementById("y-axis"),
@@ -111,12 +117,31 @@ function metricByKey(key) {
   return state.metricsByKey[key];
 }
 
+function presetByKey(key) {
+  return state.data?.presets.find((preset) => preset.key === key) || null;
+}
+
+function selectedPreset() {
+  return state.data?.presets.find((preset) => preset.x === state.xMetric && preset.y === state.yMetric) || null;
+}
+
 function defaultScaleForMetric(key) {
   return key === "avg_seconds_per_event" ? "log" : "linear";
 }
 
 function lookupModelByName(modelName) {
   return state.modelsByName.get(modelName) || null;
+}
+
+function applyPreset(preset) {
+  state.xMetric = preset.x;
+  state.yMetric = preset.y;
+  state.xScale = preset.x_scale || defaultScaleForMetric(preset.x);
+}
+
+function syncMetricControls() {
+  elements.xAxis.value = state.xMetric;
+  elements.yAxis.value = state.yMetric;
 }
 
 function tierSymbolMarkup(tierKey) {
@@ -134,12 +159,102 @@ function modelChipMarkup(row) {
   return `<span class="leader-model-chip">${modelNameMarkup(row)}</span>`;
 }
 
+function chartCardMetric(label, value) {
+  return `
+    <div class="pinned-metric">
+      <dt>${escapeHtml(label)}</dt>
+      <dd>${escapeHtml(value)}</dd>
+    </div>
+  `;
+}
+
 function syncFilterControls() {
   elements.modelSearchExplorer.value = state.search;
   elements.modelSearchModels.value = state.search;
   elements.completeOnlyExplorer.checked = state.completeOnly;
   elements.completeOnlyModels.checked = state.completeOnly;
   elements.showLabels.checked = state.showLabels;
+}
+
+function parseHashState() {
+  const rawHash = window.location.hash.replace(/^#/, "");
+  if (!rawHash) {
+    return {};
+  }
+
+  const [tab, query = ""] = rawHash.split("?");
+  const params = new URLSearchParams(query);
+  return {
+    tab,
+    preset: params.get("preset"),
+    x: params.get("x"),
+    y: params.get("y"),
+    scale: params.get("scale"),
+    scope: params.get("scope"),
+    chart: params.get("chart"),
+  };
+}
+
+function applyHashState() {
+  const hashState = parseHashState();
+
+  if (hashState.tab && VALID_TABS.has(hashState.tab)) {
+    state.activeTab = hashState.tab;
+  }
+
+  if (hashState.preset) {
+    const preset = presetByKey(hashState.preset);
+    if (preset) {
+      applyPreset(preset);
+    }
+  } else if (hashState.x && hashState.y && metricByKey(hashState.x) && metricByKey(hashState.y)) {
+    state.xMetric = hashState.x;
+    state.yMetric = hashState.y;
+    state.xScale = hashState.scale === "log" ? "log" : defaultScaleForMetric(hashState.x);
+  }
+
+  if (hashState.scope && LEADER_SCOPE_META.some((scope) => scope.key === hashState.scope)) {
+    state.leaderScope = hashState.scope;
+  }
+
+  if (hashState.chart && state.data.chart_gallery.some((chart) => chart.key === hashState.chart)) {
+    state.galleryKey = hashState.chart;
+  }
+}
+
+function syncHashState() {
+  if (!state.data) {
+    return;
+  }
+
+  const params = new URLSearchParams();
+
+  if (state.activeTab === "explorer") {
+    const preset = selectedPreset();
+    if (preset) {
+      params.set("preset", preset.key);
+    } else {
+      params.set("x", state.xMetric);
+      params.set("y", state.yMetric);
+      if (state.xScale !== defaultScaleForMetric(state.xMetric)) {
+        params.set("scale", state.xScale);
+      }
+    }
+  } else if (state.activeTab === "leaders") {
+    if (state.leaderScope !== LEADER_SCOPE_META[0].key) {
+      params.set("scope", state.leaderScope);
+    }
+  } else if (state.activeTab === "charts") {
+    const defaultChart = state.data.chart_gallery[0]?.key;
+    if (state.galleryKey !== defaultChart) {
+      params.set("chart", state.galleryKey);
+    }
+  }
+
+  const nextHash = params.size ? `#${state.activeTab}?${params.toString()}` : `#${state.activeTab}`;
+  if (window.location.hash !== nextHash) {
+    window.history.replaceState(null, "", nextHash);
+  }
 }
 
 function populateMetricSelect(selectEl, selectedKey) {
@@ -157,17 +272,15 @@ function populateMetricSelect(selectEl, selectedKey) {
 
 function buildPresetButtons() {
   elements.presetStrip.innerHTML = "";
+  const activePresetKey = selectedPreset()?.key;
   state.data.presets.forEach((preset) => {
     const button = document.createElement("button");
     button.type = "button";
-    button.className = `preset-button${preset.x === state.xMetric && preset.y === state.yMetric ? " active" : ""}`;
+    button.className = `preset-button${preset.key === activePresetKey ? " active" : ""}`;
     button.textContent = preset.label;
+    button.dataset.presetKey = preset.key;
     button.addEventListener("click", () => {
-      state.xMetric = preset.x;
-      state.yMetric = preset.y;
-      state.xScale = preset.x_scale || defaultScaleForMetric(preset.x);
-      populateMetricSelect(elements.xAxis, state.xMetric);
-      populateMetricSelect(elements.yAxis, state.yMetric);
+      applyPreset(preset);
       render();
     });
     elements.presetStrip.appendChild(button);
@@ -282,6 +395,75 @@ function chartCompass(xMetric, yMetric) {
   return `${quadrantMap[`${xWord}-${yWord}`]} is best: ${xMetric.label.toLowerCase()} ${xWord}, ${yMetric.label.toLowerCase()} ${yWord}.`;
 }
 
+function bindChartEvents() {
+  if (state.chartEventsBound || typeof elements.chart.on !== "function") {
+    return;
+  }
+
+  elements.chart.on("plotly_click", (event) => {
+    const modelName = event?.points?.[0]?.customdata?.[0];
+    if (!modelName) {
+      return;
+    }
+
+    if (state.pinnedModels.has(modelName)) {
+      state.pinnedModels.delete(modelName);
+    } else {
+      state.pinnedModels.add(modelName);
+    }
+
+    render();
+  });
+
+  state.chartEventsBound = true;
+}
+
+function renderPinnedDetails(rows) {
+  const visibleModels = new Map(rows.map((row) => [row.model, row]));
+  const pinnedRows = [...state.pinnedModels].map((modelName) => visibleModels.get(modelName)).filter(Boolean);
+  const hiddenPinCount = state.pinnedModels.size - pinnedRows.length;
+
+  elements.clearPins.disabled = state.pinnedModels.size === 0;
+
+  if (pinnedRows.length === 0) {
+    elements.pinnedSummary.textContent = hiddenPinCount
+      ? `${hiddenPinCount} pinned model${hiddenPinCount === 1 ? "" : "s"} hidden by the current filters or chart axes.`
+      : "Click a chart symbol to pin its details here. Click it again to remove it.";
+    elements.pinnedDetails.innerHTML = '<p class="pinned-empty">Pinned model cards will appear here for side-by-side comparison.</p>';
+    return;
+  }
+
+  elements.pinnedSummary.textContent =
+    `${pinnedRows.length} model${pinnedRows.length === 1 ? "" : "s"} pinned for comparison.` +
+    (hiddenPinCount ? ` ${hiddenPinCount} more hidden by the current filters or chart axes.` : "");
+
+  elements.pinnedDetails.innerHTML = pinnedRows
+    .map((row) => {
+      const model = lookupModelByName(row.model) || row;
+      return `
+        <article class="pinned-card">
+          <div class="pinned-card-header">
+            <span class="model-label">${modelNameMarkup(model, true)}</span>
+            <span class="pinned-rank">Rank ${escapeHtml(row.rank_label ?? "–")}</span>
+          </div>
+          <dl class="pinned-metrics">
+            ${chartCardMetric("Quality Score", formatValue(metricByKey("cw_pct"), row.cw_pct))}
+            ${chartCardMetric("Balanced OTS", formatValue(metricByKey("balanced_ots"), row.balanced_ots))}
+            ${chartCardMetric("Critical Miss", formatValue(metricByKey("critical_miss"), row.critical_miss))}
+            ${chartCardMetric("False Review", formatValue(metricByKey("false_review"), row.false_review))}
+            ${chartCardMetric("Threat Capture", formatValue(metricByKey("threat_capture"), row.threat_capture))}
+            ${chartCardMetric("MAE", formatValue(metricByKey("mae"), row.mae))}
+            ${chartCardMetric("Speed", formatValue(metricByKey("avg_seconds_per_event"), row.avg_seconds_per_event))}
+            ${chartCardMetric("Run Cost", formatValue(metricByKey("estimated_run_cost_cents"), row.estimated_run_cost_cents))}
+            ${chartCardMetric("Findings", String(row.n ?? "–"))}
+            ${chartCardMetric("Tier", TIER_META[row.tier].label)}
+          </dl>
+        </article>
+      `;
+    })
+    .join("");
+}
+
 function renderChart(rows) {
   const xMetric = metricByKey(state.xMetric);
   const yMetric = metricByKey(state.yMetric);
@@ -296,6 +478,7 @@ function renderChart(rows) {
       y: tierRows.map((row) => row[state.yMetric]),
       text: tierRows.map((row) => `${TIER_META[row.tier].textSymbol} ${row.model}`),
       customdata: tierRows.map((row) => [
+        row.model,
         modelNameMarkup(row, true),
         TIER_META[row.tier].label,
         row.rank_label ?? "–",
@@ -316,26 +499,31 @@ function renderChart(rows) {
         color: tier.color,
       },
       hovertemplate:
-        "%{customdata[0]}<br>" +
         "%{customdata[1]}<br>" +
-        "Rank: %{customdata[2]}<br>" +
-        "Quality score: %{customdata[3]}<br>" +
-        "Balanced OTS: %{customdata[4]}<br>" +
-        "Critical miss: %{customdata[5]}<br>" +
-        "False review: %{customdata[6]}<br>" +
-        "Threat capture: %{customdata[7]}<br>" +
-        "MAE: %{customdata[8]}<br>" +
-        "Speed: %{customdata[9]}<br>" +
-        "Run cost: %{customdata[10]}<br>" +
-        "Findings: %{customdata[11]}<extra></extra>",
+        "%{customdata[2]}<br>" +
+        "Rank: %{customdata[3]}<br>" +
+        "Quality score: %{customdata[4]}<br>" +
+        "Balanced OTS: %{customdata[5]}<br>" +
+        "Critical miss: %{customdata[6]}<br>" +
+        "False review: %{customdata[7]}<br>" +
+        "Threat capture: %{customdata[8]}<br>" +
+        "MAE: %{customdata[9]}<br>" +
+        "Speed: %{customdata[10]}<br>" +
+        "Run cost: %{customdata[11]}<br>" +
+        "Findings: %{customdata[12]}<extra></extra>",
       marker: {
-        size: tierRows.map((row) => (row.incomplete ? 12 : 15)),
+        size: tierRows.map((row) => {
+          if (state.pinnedModels.has(row.model)) {
+            return row.incomplete ? 18 : 22;
+          }
+          return row.incomplete ? 14 : 18;
+        }),
         color: tier.color,
         symbol: tier.symbol,
         opacity: 0.92,
         line: {
-          color: "#020814",
-          width: 1.3,
+          color: tierRows.map((row) => (state.pinnedModels.has(row.model) ? "#f8fbff" : "#020814")),
+          width: tierRows.map((row) => (state.pinnedModels.has(row.model) ? 2.3 : 1.5)),
         },
       },
     };
@@ -359,6 +547,8 @@ function renderChart(rows) {
       family: "IBM Plex Sans, sans-serif",
       color: "#d8f5ff",
     },
+    clickmode: "event",
+    hovermode: "closest",
     xaxis: {
       title: { text: xMetric.label, font: { color: "#d8f5ff" } },
       type: state.xScale,
@@ -393,6 +583,7 @@ function renderChart(rows) {
     displaylogo: false,
     modeBarButtonsToRemove: ["lasso2d", "select2d"],
   });
+  bindChartEvents();
 
   elements.chartTitle.textContent = `${yMetric.label} vs ${xMetric.label}`;
   elements.chartSubtitle.textContent = chartCompass(xMetric, yMetric);
@@ -402,7 +593,7 @@ function renderTable(rows) {
   elements.tableBody.innerHTML = "";
 
   const sorted = [...rows].sort((a, b) => a.rank_sort - b.rank_sort || a.model.localeCompare(b.model));
-  elements.tableSummary.textContent = `${sorted.length} models shown with the current search and tier filters.`;
+  elements.tableSummary.textContent = `${sorted.length} models shown with the current search and tier filters. Sorted by Quality Score (CW%) rank.`;
 
   sorted.forEach((row) => {
     const tr = document.createElement("tr");
@@ -410,10 +601,10 @@ function renderTable(rows) {
       <td>${row.rank_label ?? "–"}</td>
       <td><span class="model-label">${modelNameMarkup(row)}</span>${row.incomplete ? '<span class="incomplete-pill">Incomplete</span>' : ""}</td>
       <td>${TIER_META[row.tier].label}</td>
+      <td class="sort-column-cell">${formatValue(metricByKey("cw_pct"), row.cw_pct)}</td>
       <td>${formatValue(metricByKey("balanced_ots"), row.balanced_ots)}</td>
       <td>${formatValue(metricByKey("critical_miss"), row.critical_miss)}</td>
       <td>${formatValue(metricByKey("false_review"), row.false_review)}</td>
-      <td>${formatValue(metricByKey("cw_pct"), row.cw_pct)}</td>
       <td>${formatValue(metricByKey("threat_capture"), row.threat_capture)}</td>
     `;
     elements.tableBody.appendChild(tr);
@@ -516,13 +707,16 @@ function renderGallery() {
 
 function render() {
   syncFilterControls();
+  syncMetricControls();
+  const filteredRows = getFilteredModels();
   renderTabs();
   buildPresetButtons();
   buildTierFilters(elements.tierFilterExplorer);
   buildTierFilters(elements.tierFilterModels);
   buildLeaderScopeButtons();
   buildGalleryButtons();
-  renderChart(getFilteredModels());
+  renderChart(filteredRows);
+  renderPinnedDetails(filteredRows);
   renderTable(state.data.models.filter((row) => {
     const search = state.search.trim().toLowerCase();
     if (!state.selectedTiers.has(row.tier)) {
@@ -538,13 +732,14 @@ function render() {
   }));
   renderLeaderContent();
   renderGallery();
+  syncHashState();
 }
 
 function bindEvents() {
   elements.tabButtons.forEach((button) => {
     button.addEventListener("click", () => {
       state.activeTab = button.dataset.tab;
-      renderTabs();
+      render();
     });
   });
 
@@ -577,6 +772,11 @@ function bindEvents() {
     state.yMetric = event.target.value;
     render();
   });
+
+  elements.clearPins.addEventListener("click", () => {
+    state.pinnedModels.clear();
+    render();
+  });
 }
 
 async function init() {
@@ -585,14 +785,13 @@ async function init() {
   state.metricsByKey = Object.fromEntries(state.data.metrics.map((metric) => [metric.key, metric]));
   state.modelsByName = new Map(state.data.models.map((row) => [row.model, row]));
 
-  const defaultPreset = state.data.presets[0];
-  state.xMetric = defaultPreset.x;
-  state.yMetric = defaultPreset.y;
-  state.xScale = defaultPreset.x_scale || defaultScaleForMetric(defaultPreset.x);
+  const defaultPreset = presetByKey("cw-vs-balanced-ots") || state.data.presets[0];
+  applyPreset(defaultPreset);
   state.galleryKey = state.data.chart_gallery[0]?.key || state.galleryKey;
 
   populateMetricSelect(elements.xAxis, state.xMetric);
   populateMetricSelect(elements.yAxis, state.yMetric);
+  applyHashState();
   bindEvents();
   render();
 }

@@ -90,6 +90,18 @@
                 <p id="chart-subtitle"></p>
               </div>
               <div id="chart" class="chart-surface" aria-label="Interactive chart"></div>
+              <section class="pinned-panel" aria-live="polite">
+                <div class="pinned-panel-header">
+                  <div>
+                    <strong>Pinned Model Details</strong>
+                    <p id="pinned-summary" class="pinned-summary">
+                      Click a chart symbol to pin its details here. Click it again to remove it.
+                    </p>
+                  </div>
+                  <button id="clear-pins" class="ghost-button" type="button">Clear pinned</button>
+                </div>
+                <div id="pinned-details" class="pinned-details"></div>
+              </section>
               <div class="glossary-card glossary-card-chart">
                 <strong>Metric Glossary</strong>
                 <p class="glossary-intro">
@@ -97,34 +109,56 @@
                   is the plain-language label for the benchmark's <code>CW%</code>
                   metric from the README and blog posts.
                 </p>
-                <dl class="glossary-list">
-                  <dt>Quality Score (CW%)</dt>
-                  <dd>
-                    Confidence-Weighted Score. The classic benchmark quality
-                    score. It rewards confident correct answers and penalizes
-                    confident wrong answers.
-                  </dd>
-                  <dt>OTS</dt>
-                  <dd>
-                    Operational Triage Score. A score that weights decisions by
-                    their operational consequences.
-                  </dd>
-                  <dt>Balanced OTS</dt>
-                  <dd>
-                    An operational score balanced across FP, Inc and TP, so the
-                    majority class does not dominate the result.
-                  </dd>
-                  <dt>MAE</dt>
-                  <dd>
-                    Mean Absolute Error. The average absolute difference between the
-                    model's priority score and the expert score.
-                  </dd>
-                  <dt>RMSE</dt>
-                  <dd>
-                    Root Mean Square Error. A score error metric that penalizes
-                    larger deviations more strongly.
-                  </dd>
-                </dl>
+                <div class="glossary-grid">
+                  <dl class="glossary-list">
+                    <div class="glossary-entry">
+                      <dt>Quality Score (CW%)</dt>
+                      <dd>
+                        Confidence-Weighted Score. The classic benchmark quality
+                        score. It rewards confident correct answers and penalizes
+                        confident wrong answers.
+                      </dd>
+                    </div>
+                    <div class="glossary-entry">
+                      <dt>OTS</dt>
+                      <dd>
+                        Operational Triage Score. A score that weights decisions by
+                        their operational consequences.
+                      </dd>
+                    </div>
+                    <div class="glossary-entry">
+                      <dt>Balanced OTS</dt>
+                      <dd>
+                        An operational score balanced across FP, Inc and TP, so the
+                        majority class does not dominate the result.
+                      </dd>
+                    </div>
+                  </dl>
+                  <dl class="glossary-list">
+                    <div class="glossary-entry">
+                      <dt>Critical Miss Rate</dt>
+                      <dd>
+                        The share of true positives wrongly suppressed as false
+                        positives. Lower is safer.
+                      </dd>
+                    </div>
+                    <div class="glossary-entry">
+                      <dt>False Review Load</dt>
+                      <dd>
+                        The share of false positives that still reach analysts as
+                        review-worthy or escalated findings. Lower is better.
+                      </dd>
+                    </div>
+                    <div class="glossary-entry">
+                      <dt>MAE / RMSE</dt>
+                      <dd>
+                        Priority-score error metrics. MAE is the average absolute
+                        difference from the expert score, while RMSE penalizes larger
+                        deviations more strongly.
+                      </dd>
+                    </div>
+                  </dl>
+                </div>
               </div>
             </section>
           </div>
@@ -173,10 +207,10 @@
                     <th>Rank</th>
                     <th>Model</th>
                     <th>Tier</th>
+                    <th class="sort-column-head">Quality Score <span class="sort-column-tag">(CW%)</span></th>
                     <th>Balanced OTS</th>
                     <th>Critical Miss %</th>
                     <th>False Review %</th>
-                    <th>Quality Score</th>
                     <th>Threat Capture %</th>
                   </tr>
                 </thead>

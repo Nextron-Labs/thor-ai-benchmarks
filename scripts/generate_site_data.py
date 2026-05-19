@@ -419,6 +419,13 @@ def main():
         ],
         "presets": [
             {
+                "key": "cw-vs-balanced-ots",
+                "label": "Quality Score vs Balanced OTS",
+                "x": "cw_pct",
+                "y": "balanced_ots",
+                "x_scale": "linear",
+            },
+            {
                 "key": "miss-vs-review",
                 "label": "Critical Miss Rate vs False Review Load",
                 "x": "false_review",
@@ -429,13 +436,6 @@ def main():
                 "key": "balanced-ots-vs-review",
                 "label": "Balanced OTS vs False Review Load",
                 "x": "false_review",
-                "y": "balanced_ots",
-                "x_scale": "linear",
-            },
-            {
-                "key": "cw-vs-balanced-ots",
-                "label": "Quality Score vs Balanced OTS",
-                "x": "cw_pct",
                 "y": "balanced_ots",
                 "x_scale": "linear",
             },
