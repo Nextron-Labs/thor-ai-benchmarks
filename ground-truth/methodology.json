@@ -1,25 +1,51 @@
 {
   "description": "Scoring methodology (no actual ground truth answers)",
-  "classification_scale": ["TP", "Inc", "FP"],
+  "classification_scale": ["FP", "Inc", "TP"],
   "ordinal_distances": {
     "TP_to_TP": 0,
     "TP_to_Inc": 1,
     "TP_to_FP": 2,
-    "Inc_to_FP": 1
+    "Inc_to_Inc": 0,
+    "Inc_to_TP": 1,
+    "Inc_to_FP": 1,
+    "FP_to_FP": 0,
+    "FP_to_Inc": 1,
+    "FP_to_TP": 2
   },
   "cw_formula": {
-    "exact_match": "1.0 + confidence/100",
-    "minor_miss": "1.0 - confidence/100",
-    "hard_miss": "-confidence/100"
+    "dampened_confidence": "0.5 + 0.5 * (confidence/100)",
+    "exact_match": "1.0 + dampened_confidence",
+    "minor_miss": "0.5 - 0.5 * dampened_confidence",
+    "hard_miss_gt_tp_model_fp": "-1.5 * dampened_confidence",
+    "hard_overcall_gt_fp_model_tp": "-0.5 * dampened_confidence",
+    "cw_pct": "(cw_total / (n_scored * 2.0)) * 100"
+  },
+  "ordinal_formula": {
+    "exact_match": 2,
+    "minor_miss": 1,
+    "hard_miss": 0,
+    "ord_pct": "(ordinal_total / (n_scored * 2)) * 100"
   },
   "priority_score_range": "0-100",
   "mae_formula": "mean(|ai_score - human_score|)",
   "rmse_formula": "sqrt(mean((ai_score - human_score)^2))",
   "seed_findings": {
-    "report_1": 14,
-    "report_2": 7,
-    "report_3": 21,
-    "total": 42
+    "R1": 16,
+    "R2": 9,
+    "R3": 19,
+    "R4": 6,
+    "R5": 23,
+    "R6": 67,
+    "R7": 15,
+    "R8": 19,
+    "R9": 15,
+    "total": 189
+  },
+  "ground_truth_distribution": {
+    "FP": 89,
+    "Inc": 45,
+    "TP": 55,
+    "total": 189
   },
   "note": "Actual ground truth classifications and scores are NOT published here. They remain private to prevent gaming the benchmark."
 }
