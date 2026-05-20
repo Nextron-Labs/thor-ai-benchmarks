@@ -510,31 +510,30 @@ def add_corner_labels(ax, upper_left, upper_right, lower_left, lower_right):
 
 
 def label_points(ax, rows, x_key, y_key, labels, all_labels=False):
-    """Deterministic label placement. adjustText is optional and not required."""
+    """Deterministic label placement with adjustText for leader lines."""
     labels = set(labels)
-    offsets = [(7, 5), (7, -10), (-7, 5), (-7, -10), (10, 12), (-10, 12), (10, -16), (-10, -16)]
     texts = []
     for i, m in enumerate(rows):
         if all_labels or m["model"] in labels:
-            dx, dy = offsets[i % len(offsets)]
-            ha = "left" if dx > 0 else "right"
+            # Create annotations WITHOUT arrowprops initially — adjustText will add them
             t = ax.annotate(
                 m["model"],
                 (m[x_key], m[y_key]),
-                xytext=(dx, dy),
+                xytext=(10, 8),
                 textcoords="offset points",
                 fontsize=7.5 if all_labels else 8.5,
-                ha=ha,
+                ha="left",
                 va="center",
                 bbox=dict(boxstyle="round,pad=0.18", facecolor="white", edgecolor="none", alpha=0.72),
-                arrowprops=dict(arrowstyle="-", color="gray", lw=0.35, alpha=0.55) if not all_labels else None,
                 zorder=10,
             )
             texts.append(t)
     try:
         from adjustText import adjust_text
+        # adjustText handles arrow creation after repositioning
         adjust_text(texts, ax=ax, arrowprops=dict(arrowstyle="-", color="gray", lw=0.4, alpha=0.55))
     except Exception:
+        # Fallback: no leader lines if adjustText not available
         pass
 
 
