@@ -515,14 +515,14 @@ def label_points(ax, rows, x_key, y_key, labels, all_labels=False):
     """Deterministic label placement with adjustText for leader lines."""
     labels = set(labels)
     texts = []
+    target_x = []
+    target_y = []
     for i, m in enumerate(rows):
         if all_labels or m["model"] in labels:
-            # Create annotations WITHOUT arrowprops initially — adjustText will add them
-            t = ax.annotate(
+            # Create text positioned near the point
+            t = ax.text(
+                m[x_key], m[y_key],
                 m["model"],
-                (m[x_key], m[y_key]),
-                xytext=(10, 8),
-                textcoords="offset points",
                 fontsize=7.5 if all_labels else 8.5,
                 ha="left",
                 va="center",
@@ -530,10 +530,14 @@ def label_points(ax, rows, x_key, y_key, labels, all_labels=False):
                 zorder=10,
             )
             texts.append(t)
+            target_x.append(m[x_key])
+            target_y.append(m[y_key])
     try:
         from adjustText import adjust_text
-        # adjustText handles arrow creation after repositioning
-        adjust_text(texts, ax=ax, arrowprops=dict(arrowstyle="-", color="gray", lw=0.4, alpha=0.55))
+        # Pass target positions so arrows point to actual data points
+        adjust_text(texts, ax=ax, target_x=target_x, target_y=target_y,
+                    min_arrow_len=2.0,
+            arrowprops=dict(arrowstyle="-", color="gray", lw=0.4, alpha=0.55))
     except Exception:
         # Fallback: no leader lines if adjustText not available
         pass
