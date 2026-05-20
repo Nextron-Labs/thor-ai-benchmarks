@@ -193,6 +193,15 @@ def main():
     leaderboard_models = load_leaderboard_models()
     result_models = load_result_models()
 
+    # Warn about unscored models (in results but not in leaderboard)
+    unscored = result_models - leaderboard_models
+    if unscored:
+        print("⚠️  UNSCORED MODELS - run score.sh first:")
+        for m in sorted(unscored):
+            print(f"    {m}")
+        print("\nThese models have results but are not in leaderboard.json.")
+        print("Run score.sh to update the leaderboard before using --auto.\n")
+
     # Find new models
     all_known = tiered_models | set(b2o.keys())
     new_models = result_models - all_known - set(excluded)
