@@ -79,15 +79,15 @@ The first charts are decision charts: they are meant to help pick a model for an
 
 ![Operational Profile Summary](charts/operational-profile-summary.png)
 
+<!-- BEGIN GENERATED:CHART_NARRATIVE -->
 This chart puts the three operational profile leaders next to the `always-inc` safety baseline. Each group shows Balanced OTS, Critical Miss Rate, and False Review Load with value labels, so the trade-off is visible without reading the full tables.
 
-`gemini-3.1-flash-lite` is now both the high-safety and balanced SOC profile leader under the current constraints. `qwen3.6-max` reduces review load the most under the noise-reduction profile, but has higher miss risk than the high-safety leader. `always-inc` is a safety reference, not a useful triage model.
-
-### 2. Operational Profile Summary by Model Tier
-
-![Operational Profile Summary by Model Tier](charts/operational-profile-summary-by-tier.png)
+`gemini-3.1-flash-lite` is now both the high-safety and balanced SOC profile leader under the current constraints.
+`qwen3.6-max` reduces review load the most under the noise-reduction profile, but has higher miss risk (16.4% Critical Miss) than the high-safety leader.
+`always-inc` is a safety reference, not a useful triage model.
 
 This chart shows the same operational profiles split by deployment tier. Each cell uses the same guardrails as the global profile tables and shows the current profile leader within that tier, plus Balanced OTS, Critical Miss Rate, and False Review Load. Empty cells would mean no model in that tier cleared the current guardrails.
+<!-- END GENERATED:CHART_NARRATIVE -->
 
 ### 3. Critical Miss Rate vs False Review Load
 

@@ -76,6 +76,8 @@ INTS = {"exact", "minor", "hard", "hard_miss", "hard_over", "n_errors", "n", "to
 
 GENERATED_SUMMARY_START = "<!-- BEGIN GENERATED:CURRENT_RESULT_SUMMARY -->"
 GENERATED_SUMMARY_END = "<!-- END GENERATED:CURRENT_RESULT_SUMMARY -->"
+GENERATED_CHART_NARRATIVE_START = "<!-- BEGIN GENERATED:CHART_NARRATIVE -->"
+GENERATED_CHART_NARRATIVE_END = "<!-- END GENERATED:CHART_NARRATIVE -->"
 GENERATED_FULL_DATA_START = "<!-- BEGIN GENERATED:FULL_DATA -->"
 GENERATED_FULL_DATA_END = "<!-- END GENERATED:FULL_DATA -->"
 
@@ -718,6 +720,46 @@ def markdown_tier_tables(models, tiers, tier_profile_rows):
     return "\n".join(lines).rstrip()
 
 
+def generate_chart_narrative(profile_rows, tier_profile_rows):
+    """Generate narrative text for chart descriptions based on current profile leaders."""
+    # Get overall leaders for each profile
+    high_safety = profile_rows.get("High-safety", [])
+    balanced_soc = profile_rows.get("Balanced SOC", [])
+    noise_reduction = profile_rows.get("Noise-reduction", [])
+    
+    lines = []
+    
+    # Build dynamic narrative for overall leaders
+    hs_model = high_safety[0]["model"] if high_safety else None
+    bs_model = balanced_soc[0]["model"] if balanced_soc else None
+    nr_model = noise_reduction[0]["model"] if noise_reduction else None
+    
+    hs_cm = high_safety[0].get("critical_miss", 0) if high_safety else None
+    nr_cm = noise_reduction[0].get("critical_miss", 0) if noise_reduction else None
+    
+    if hs_model and hs_model == bs_model:
+        lines.append(f"`{hs_model}` is now both the high-safety and balanced SOC profile leader under the current constraints.")
+    else:
+        if hs_model:
+            lines.append(f"`{hs_model}` is the high-safety profile leader.")
+        if bs_model:
+            lines.append(f"`{bs_model}` is the balanced SOC profile leader.")
+    
+    if nr_model:
+        if nr_model == hs_model:
+            lines.append(f"It also reduces review load under the noise-reduction profile.")
+        else:
+            nr_note = f"`{nr_model}` reduces review load the most under the noise-reduction profile"
+            if nr_cm and nr_cm > 5:
+                nr_note += f", but has higher miss risk ({nr_cm:.1f}% Critical Miss) than the high-safety leader"
+            nr_note += "."
+            lines.append(nr_note)
+    
+    lines.append("`always-inc` is a safety reference, not a useful triage model.")
+    
+    return "\n".join(lines)
+
+
 def update_readme(models, tiers, profile_rows, tier_profile_rows):
     readme = ROOT / "README.md"
     text = readme.read_text()
@@ -782,6 +824,23 @@ The README intentionally contains the main operational summary so visitors do no
         fallback_start="## Full Data",
         fallback_end="## Related",
     )
+    
+    # Update chart narrative section
+    chart_narrative = f"""This chart puts the three operational profile leaders next to the `always-inc` safety baseline. Each group shows Balanced OTS, Critical Miss Rate, and False Review Load with value labels, so the trade-off is visible without reading the full tables.
+
+{generate_chart_narrative(profile_rows, tier_profile_rows)}
+
+This chart shows the same operational profiles split by deployment tier. Each cell uses the same guardrails as the global profile tables and shows the current profile leader within that tier, plus Balanced OTS, Critical Miss Rate, and False Review Load. Empty cells would mean no model in that tier cleared the current guardrails."""
+    
+    text = replace_generated_block(
+        text,
+        GENERATED_CHART_NARRATIVE_START,
+        GENERATED_CHART_NARRATIVE_END,
+        chart_narrative,
+        fallback_start="### 1. Operational Profile Summary",
+        fallback_end="### 2. Operational Profile Summary by Model Tier",
+    )
+    
     readme.write_text(text)
 
 def main():
