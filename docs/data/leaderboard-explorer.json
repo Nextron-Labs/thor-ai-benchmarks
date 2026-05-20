@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-19T22:50:03.106558+00:00",
+  "generated_at": "2026-05-20T05:53:52.347708+00:00",
   "source": {
     "leaderboard": "combined/leaderboard.json",
     "operational_summary_by_tier": "combined/operational-profile-summary-by-tier.csv"
@@ -383,7 +383,7 @@
       "rmse": 22.1,
       "avg_seconds_per_event": 9.13,
       "total_tokens": 851584,
-      "estimated_run_cost_cents": null,
+      "estimated_run_cost_cents": 223.5408,
       "exact": 132,
       "minor": 50,
       "hard": 7,
