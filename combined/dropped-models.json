@@ -2,22 +2,43 @@
   {
     "model": "gpt-oss-120b",
     "reason": "incomplete result: n=182/189, errors=7",
-    "reports": "R1+R2+R3+R4+R5+R6+R7+R8+R9",
+    "reports": "R1+R10+R2+R3+R4+R5+R6+R7+R8+R9",
     "n": 182,
     "n_errors": 7
   },
   {
+    "model": "grok-4-openrouter",
+    "reason": "incomplete result: n=187/189, errors=2",
+    "reports": "R1+R10+R2+R3+R4+R5+R6+R7+R8+R9",
+    "n": 187,
+    "n_errors": 2
+  },
+  {
+    "model": "grok-4.1-fast",
+    "reason": "incomplete result: n=187/189, errors=2",
+    "reports": "R1+R10+R2+R3+R4+R5+R6+R7+R8+R9",
+    "n": 187,
+    "n_errors": 2
+  },
+  {
+    "model": "mercury-2",
+    "reason": "incomplete result: n=187/189, errors=2",
+    "reports": "R1+R10+R2+R3+R4+R5+R6+R7+R8+R9",
+    "n": 187,
+    "n_errors": 2
+  },
+  {
     "model": "nemotron-3-nano-omni",
     "reason": "incomplete result: n=187/189, errors=2",
-    "reports": "R1+R2+R3+R4+R5+R6+R7+R8+R9",
+    "reports": "R1+R10+R2+R3+R4+R5+R6+R7+R8+R9",
     "n": 187,
     "n_errors": 2
   },
   {
     "model": "ring-2.6-1t",
-    "reason": "missing current full report set R1+R2+R3+R4+R5+R6+R7+R8+R9",
-    "reports": "R1+R2+R3+R4+R5+R6+R7+R9",
-    "n": 170,
-    "n_errors": 0
+    "reason": "missing current full report set R1+R10+R2+R3+R4+R5+R6+R7+R8+R9",
+    "reports": "R1+R10+R2+R3+R4+R5+R6+R7+R9",
+    "n": 168,
+    "n_errors": 2
   }
 ]

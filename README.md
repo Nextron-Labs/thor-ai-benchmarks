@@ -15,7 +15,7 @@ The first table ignores deployment tier and shows the current profile leaders ac
 |---|---|---|
 | High-safety triage | `gemini-3.1-flash-lite` | Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss. |
 | Balanced SOC triage | `gemini-3.1-flash-lite` | Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss. |
-| Noise reduction / high-volume triage | `qwen3.6-max` | Lowest False Review Load overall among models that cleared the guardrails; Critical Miss Rate is close to the 20% threshold; low review load; slower than many candidates. |
+| Noise reduction / high-volume triage | `qwen3.6-max` | Lowest False Review Load overall among models that cleared the guardrails; low review load; slower than many candidates. |
 
 There is no single best model. The useful choice depends on whether the deployment optimizes for missed-incident avoidance, balanced SOC triage, review-load reduction, cost, latency, data-control boundaries, or hardware constraints. The global winner is not automatically the best option for local or open-source deployments.
 
@@ -35,9 +35,9 @@ Deployment constraints matter. A vendor API model may be easy to test, but some 
 
 | Use case | Suggested model | Why |
 |---|---|---|
-| High-safety triage | `glm-5.1` | Profile leader under current constraints by Balanced OTS. |
-| Balanced SOC triage | `glm-5.1` | Profile leader under current constraints by Balanced OTS. |
-| Noise reduction / high-volume triage | `qwen3.6-max` | Lowest False Review Load in this tier among models that cleared the guardrails; Critical Miss Rate is close to the 20% threshold; low review load; slower than many candidates. |
+| High-safety triage | `glm-5.1` | Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss. |
+| Balanced SOC triage | `glm-5.1` | Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss. |
+| Noise reduction / high-volume triage | `qwen3.6-max` | Lowest False Review Load in this tier among models that cleared the guardrails; low review load; slower than many candidates. |
 
 ### Open Source / Consumer Hardware
 
@@ -83,7 +83,7 @@ The first charts are decision charts: they are meant to help pick a model for an
 This chart puts the three operational profile leaders next to the `always-inc` safety baseline. Each group shows Balanced OTS, Critical Miss Rate, and False Review Load with value labels, so the trade-off is visible without reading the full tables.
 
 `gemini-3.1-flash-lite` is now both the high-safety and balanced SOC profile leader under the current constraints.
-`qwen3.6-max` reduces review load the most under the noise-reduction profile, but has higher miss risk (16.4% Critical Miss) than the high-safety leader.
+`qwen3.6-max` reduces review load the most under the noise-reduction profile, but has higher miss risk (14.5% Critical Miss) than the high-safety leader.
 `always-inc` is a safety reference, not a useful triage model.
 
 This chart shows the same operational profiles split by deployment tier. Each cell uses the same guardrails as the global profile tables and shows the current profile leader within that tier, plus Balanced OTS, Critical Miss Rate, and False Review Load. Empty cells would mean no model in that tier cleared the current guardrails.
