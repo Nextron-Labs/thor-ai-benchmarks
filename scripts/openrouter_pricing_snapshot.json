@@ -50,6 +50,10 @@
       "prompt": 2e-06,
       "completion": 1.2e-05
     },
+    "google/gemini-3.5-flash": {
+      "prompt": 1.5e-06,
+      "completion": 9e-06
+    },
     "google/gemma-4-31b-it": {
       "prompt": 1.2e-07,
       "completion": 3.7e-07

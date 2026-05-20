@@ -61,6 +61,7 @@ BENCH_TO_OPENROUTER = {
     "mercury-2": "inception/mercury-2",
     "claude-sonnet-4.5": "anthropic/claude-sonnet-4.5",
     "gemini-3.1-flash-lite": "google/gemini-3.1-flash-lite",
+    "gemini-3.5-flash": "google/gemini-3.5-flash",
     "grok-4.3": "x-ai/grok-4.3",
 }
 
