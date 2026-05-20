@@ -312,9 +312,30 @@ def main():
                     print(f"  {m} -> {tier}")
             save_json(TIERS_PATH, current)
 
-        print("\n✓ Auto-fix complete. Regenerate charts with:")
-        print("  python3 scripts/quality-vs-cost.py")
-        print("  python3 scripts/generate_charts.py")
+        print("\n✓ Auto-fix complete. Regenerating all charts...")
+        
+        # Regenerate all charts
+        import subprocess
+        
+        scripts = [
+            "scripts/quality-vs-cost.py",
+            "scripts/quality-vs-speed.py",
+            "scripts/generate_charts.py",
+            "scripts/operational_profiles.py",
+        ]
+        
+        for script in scripts:
+            script_path = REPO_ROOT / script
+            if script_path.exists():
+                print(f"  Running {script}...")
+                result = subprocess.run(["python3", str(script_path)], cwd=REPO_ROOT, capture_output=True, text=True)
+                if result.returncode != 0:
+                    print(f"    WARNING: {script} failed")
+                    print(result.stderr)
+                else:
+                    print(f"    ✓ {script}")
+        
+        print("\n✓ All charts regenerated.")
 
 
 if __name__ == "__main__":
