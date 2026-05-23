@@ -6,6 +6,9 @@
   "n_exact": 5,
   "n_minor": 12,
   "n_hard": 2,
+  "n_duplicate_outputs": 0,
+  "n_llm_classification_errors": 0,
+  "n_diagnostic_errors": 0,
   "n_errors": 0,
   "incomplete": false,
   "ordinal_total": 22,
@@ -45,6 +48,6 @@
   "events_reviewed": 20,
   "total_tokens": 51343,
   "llm_errors": 0,
-  "result_path": "runs/mistral-nemo/thor-demo-report-3/mjolnir-report_2026-05-08T0254.json",
-  "report_dir": "runs/mistral-nemo/thor-demo-report-3"
+  "result_path": "/home/neo/.openclaw/workspace/mjolnir-ai-benchmarking/runs/mistral-nemo/thor-demo-report-3/mjolnir-report_2026-05-08T0254.json",
+  "report_dir": "/home/neo/.openclaw/workspace/mjolnir-ai-benchmarking/runs/mistral-nemo/thor-demo-report-3"
 }

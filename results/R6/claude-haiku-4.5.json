@@ -6,6 +6,9 @@
   "n_exact": 42,
   "n_minor": 19,
   "n_hard": 6,
+  "n_duplicate_outputs": 0,
+  "n_llm_classification_errors": 0,
+  "n_diagnostic_errors": 0,
   "n_errors": 0,
   "incomplete": false,
   "ordinal_total": 103,
@@ -46,9 +49,6 @@
   "events_reviewed": 67,
   "total_tokens": 221221,
   "llm_errors": 0,
-  "result_path": "runs/claude-haiku-4.5/thor-demo-report-6-mixed-sources/mjolnir-report_2026-05-08T0858.json",
-  "report_dir": "runs/claude-haiku-4.5/thor-demo-report-6-mixed-sources",
-  "superseded_result_paths": [
-    "runs/claude-haiku-4.5/thor-demo-report-6/mjolnir-report_2026-05-05T2323.json"
-  ]
+  "result_path": "/home/neo/.openclaw/workspace/mjolnir-ai-benchmarking/runs/claude-haiku-4.5/thor-demo-report-6-mixed-sources/mjolnir-report_2026-05-08T0858.json",
+  "report_dir": "/home/neo/.openclaw/workspace/mjolnir-ai-benchmarking/runs/claude-haiku-4.5/thor-demo-report-6-mixed-sources"
 }

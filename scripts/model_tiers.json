@@ -5,7 +5,9 @@
     "glm-4.7",
     "qwen3.5-35b-a3b",
     "gpt-oss-20b",
-    "ministral-14b"
+    "ministral-14b",
+    "grok-4-fast",
+    "grok-4.1-fast"
   ],
   "tiers": {
     "closed_source": {
@@ -34,8 +36,6 @@
         "grok-4.3",
         "grok-4-openrouter",
         "grok-4.20",
-        "grok-4.1-fast",
-        "grok-4-fast",
         "minimax-m2.7",
         "minimax-m2.5",
         "mimo-v2-pro",
@@ -61,6 +61,7 @@
         "qwen3.6-plus",
         "qwen3.6-max",
         "qwen3.6-flash",
+        "qwen3.7-max",
         "kimi-k2.5",
         "kimi-k2.6",
         "nemotron-3-super-120b",

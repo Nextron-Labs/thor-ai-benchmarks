@@ -6,6 +6,9 @@
   "n_exact": 9,
   "n_minor": 4,
   "n_hard": 0,
+  "n_duplicate_outputs": 0,
+  "n_llm_classification_errors": 0,
+  "n_diagnostic_errors": 0,
   "n_errors": 0,
   "incomplete": false,
   "ordinal_total": 22,
@@ -42,6 +45,6 @@
   "events_reviewed": 15,
   "total_tokens": 40270,
   "llm_errors": 0,
-  "result_path": "runs/deepseek-v3.1/thor-demo-report-9/mjolnir-report_2026-05-13T2037.json",
-  "report_dir": "runs/deepseek-v3.1/thor-demo-report-9"
+  "result_path": "/home/neo/.openclaw/workspace/mjolnir-ai-benchmarking/runs/deepseek-v3.1/thor-demo-report-9/mjolnir-report_2026-05-13T2037.json",
+  "report_dir": "/home/neo/.openclaw/workspace/mjolnir-ai-benchmarking/runs/deepseek-v3.1/thor-demo-report-9"
 }

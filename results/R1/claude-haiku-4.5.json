@@ -6,6 +6,9 @@
   "n_exact": 10,
   "n_minor": 5,
   "n_hard": 1,
+  "n_duplicate_outputs": 0,
+  "n_llm_classification_errors": 0,
+  "n_diagnostic_errors": 0,
   "n_errors": 0,
   "incomplete": false,
   "ordinal_total": 25,
@@ -39,11 +42,15 @@
   "mae": 21.4,
   "rmse": 28.3,
   "n_scored": 16,
-  "errors": [],
-  "elapsed_seconds": 83.483422155,
-  "events_reviewed": 16,
-  "total_tokens": 50800,
+  "errors": [
+    "line 14 (output finding #14): no stable ground-truth mapping for R1",
+    "line 20 (output finding #18): no stable ground-truth mapping for R1",
+    "line 21 (output finding #19): no stable ground-truth mapping for R1"
+  ],
+  "elapsed_seconds": 114.803977769,
+  "events_reviewed": 19,
+  "total_tokens": 59816,
   "llm_errors": 0,
-  "result_path": "runs/claude-haiku-4.5/thor-demo-report-1/mjolnir-report_2026-05-01T1300.json",
-  "report_dir": "runs/claude-haiku-4.5/thor-demo-report-1"
+  "result_path": "/home/neo/.openclaw/workspace/mjolnir-ai-benchmarking/runs/claude-haiku-4.5/thor-demo-report-1/mjolnir-report_2026-05-22T1144.json",
+  "report_dir": "/home/neo/.openclaw/workspace/mjolnir-ai-benchmarking/runs/claude-haiku-4.5/thor-demo-report-1"
 }

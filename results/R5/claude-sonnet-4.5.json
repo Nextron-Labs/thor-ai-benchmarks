@@ -6,6 +6,9 @@
   "n_exact": 11,
   "n_minor": 10,
   "n_hard": 2,
+  "n_duplicate_outputs": 0,
+  "n_llm_classification_errors": 0,
+  "n_diagnostic_errors": 0,
   "n_errors": 0,
   "incomplete": false,
   "ordinal_total": 32,
@@ -41,6 +44,6 @@
   "events_reviewed": 23,
   "total_tokens": 71527,
   "llm_errors": 0,
-  "result_path": "runs/claude-sonnet-4.5/thor-demo-report-5/mjolnir-report_2026-04-29T2225.json",
-  "report_dir": "runs/claude-sonnet-4.5/thor-demo-report-5"
+  "result_path": "/home/neo/.openclaw/workspace/mjolnir-ai-benchmarking/runs/claude-sonnet-4.5/thor-demo-report-5/mjolnir-report_2026-04-29T2225.json",
+  "report_dir": "/home/neo/.openclaw/workspace/mjolnir-ai-benchmarking/runs/claude-sonnet-4.5/thor-demo-report-5"
 }

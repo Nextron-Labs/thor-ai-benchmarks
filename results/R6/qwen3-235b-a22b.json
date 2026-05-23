@@ -6,6 +6,9 @@
   "n_exact": 46,
   "n_minor": 18,
   "n_hard": 3,
+  "n_duplicate_outputs": 0,
+  "n_llm_classification_errors": 0,
+  "n_diagnostic_errors": 0,
   "n_errors": 0,
   "incomplete": false,
   "ordinal_total": 110,
@@ -44,9 +47,6 @@
   "events_reviewed": 67,
   "total_tokens": 207713,
   "llm_errors": 0,
-  "result_path": "runs/qwen3-235b-a22b/thor-demo-report-6-mixed-sources/mjolnir-report_2026-05-08T0645.json",
-  "report_dir": "runs/qwen3-235b-a22b/thor-demo-report-6-mixed-sources",
-  "superseded_result_paths": [
-    "runs/qwen3-235b-a22b/thor-demo-report-6/mjolnir-report_2026-05-06T0005.json"
-  ]
+  "result_path": "/home/neo/.openclaw/workspace/mjolnir-ai-benchmarking/runs/qwen3-235b-a22b/thor-demo-report-6-mixed-sources/mjolnir-report_2026-05-08T0645.json",
+  "report_dir": "/home/neo/.openclaw/workspace/mjolnir-ai-benchmarking/runs/qwen3-235b-a22b/thor-demo-report-6-mixed-sources"
 }

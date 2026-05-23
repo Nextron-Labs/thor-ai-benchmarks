@@ -6,6 +6,9 @@
   "n_exact": 7,
   "n_minor": 2,
   "n_hard": 0,
+  "n_duplicate_outputs": 0,
+  "n_llm_classification_errors": 0,
+  "n_diagnostic_errors": 0,
   "n_errors": 0,
   "incomplete": false,
   "ordinal_total": 16,
@@ -41,6 +44,6 @@
   "events_reviewed": 9,
   "total_tokens": 28237,
   "llm_errors": 0,
-  "result_path": "runs/gpt-5.5/thor-demo-report-2/mjolnir-report_2026-05-11T0128.json",
-  "report_dir": "runs/gpt-5.5/thor-demo-report-2"
+  "result_path": "/home/neo/.openclaw/workspace/mjolnir-ai-benchmarking/runs/gpt-5.5/thor-demo-report-2/mjolnir-report_2026-05-11T0128.json",
+  "report_dir": "/home/neo/.openclaw/workspace/mjolnir-ai-benchmarking/runs/gpt-5.5/thor-demo-report-2"
 }

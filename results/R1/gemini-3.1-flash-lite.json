@@ -6,14 +6,17 @@
   "n_exact": 13,
   "n_minor": 2,
   "n_hard": 1,
+  "n_duplicate_outputs": 0,
+  "n_llm_classification_errors": 0,
+  "n_diagnostic_errors": 0,
   "n_errors": 0,
   "incomplete": false,
   "ordinal_total": 28,
   "ordinal_max": 32,
   "ordinal_pct": 87.5,
-  "cw_total": 24.538,
+  "cw_total": 24.613,
   "cw_max": 32.0,
-  "cw_pct": 76.7,
+  "cw_pct": 76.9,
   "ots_total": 24.6,
   "ots_max": 32.0,
   "ots_pct": 76.9,
@@ -35,17 +38,17 @@
     "FP-FP": 4
   },
   "mae": 10.0,
-  "rmse": 18.9,
+  "rmse": 18.8,
   "n_scored": 16,
   "errors": [
     "line 14 (output finding #14): no stable ground-truth mapping for R1",
     "line 20 (output finding #18): no stable ground-truth mapping for R1",
     "line 21 (output finding #19): no stable ground-truth mapping for R1"
   ],
-  "elapsed_seconds": 35.68597081,
+  "elapsed_seconds": 34.34760917,
   "events_reviewed": 19,
-  "total_tokens": 52111,
+  "total_tokens": 52148,
   "llm_errors": 0,
-  "result_path": "runs/gemini-3.1-flash-lite/thor-demo-report-1/mjolnir-report_2026-05-09T0148.json",
-  "report_dir": "runs/gemini-3.1-flash-lite/thor-demo-report-1"
+  "result_path": "/home/neo/.openclaw/workspace/mjolnir-ai-benchmarking/runs/gemini-3.1-flash-lite/thor-demo-report-1/mjolnir-report_2026-05-22T1157.json",
+  "report_dir": "/home/neo/.openclaw/workspace/mjolnir-ai-benchmarking/runs/gemini-3.1-flash-lite/thor-demo-report-1"
 }
