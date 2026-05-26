@@ -3,6 +3,7 @@
 
 import csv
 import json
+import re
 import textwrap
 from pathlib import Path
 
@@ -184,6 +185,82 @@ def replace_generated_block(text, start_marker, end_marker, replacement, fallbac
     prefix = text[:start].rstrip()
     suffix = text[end:].lstrip()
     return prefix + "\n\n" + wrapped + "\n\n" + suffix
+
+
+def current_result_dimensions(models):
+    finding_count = max((int(m.get("n", 0)) for m in models), default=0)
+    report_set = ""
+    results_path = COMBINED / "results-combined.json"
+    if results_path.exists():
+        with open(results_path) as f:
+            results = json.load(f)
+        combined_keys = [key for key in results if "+" in key.split("/")[-1]]
+        if combined_keys:
+            report_set = max(
+                (key.split("/")[-1] for key in combined_keys),
+                key=lambda value: (value.count("+") + 1, value),
+            )
+            finding_count = max(
+                (
+                    score.get("n_expected", score.get("n_matched", finding_count))
+                    for key, score in results.items()
+                    if key.endswith("/" + report_set)
+                ),
+                default=finding_count,
+            )
+    report_count = report_set.count("+") + 1 if report_set else 0
+    if report_set:
+        def report_number(label):
+            match = re.search(r"\d+", label)
+            return int(match.group(0)) if match else 0
+
+        parts = sorted(report_set.split("+"), key=report_number)
+        report_range = f"{parts[0]}-{parts[-1]}" if len(parts) > 1 else parts[0]
+    else:
+        report_range = "current report set"
+    return report_count, finding_count, report_set, report_range
+
+
+def render_dropped_models_section():
+    dropped_path = COMBINED / "dropped-models.json"
+    dropped = []
+    if dropped_path.exists():
+        with open(dropped_path) as f:
+            dropped = json.load(f)
+
+    lines = [
+        "## Incomplete / Dropped Model Attempts",
+        "",
+        "Public benchmark charts and leaderboards include complete model runs only. If a model repeatedly fails to return valid structured results for every scored finding, we drop it from the public benchmark instead of ranking a partial result. Current dropped attempts are listed in `combined/dropped-models.json`:",
+        "",
+    ]
+    if dropped:
+        for item in sorted(dropped, key=lambda row: row.get("model", "")):
+            lines.append(f"- `{item.get('model')}` — {item.get('reason', 'dropped from public artifacts')}")
+    else:
+        lines.append("There are currently no dropped model attempts.")
+    lines.append("")
+    return "\n".join(lines)
+
+
+def update_static_readme_counts(text, models):
+    report_count, finding_count, _report_set, report_range = current_result_dimensions(models)
+    model_count = len([m for m in models if not m.get("incomplete")])
+    text = re.sub(
+        r"The current public result set covers \*\*[^*]+ complete models\*\*, \*\*[^*]+ THOR reports\*\*, and \*\*[^*]+ expert-classified findings\*\*\.",
+        f"The current public result set covers **{model_count} complete models**, **{report_count} THOR reports**, and **{finding_count} expert-classified findings**.",
+        text,
+        count=1,
+    )
+    text = re.sub(r"current full R1[–-]R9 finding set", f"current full {report_range} finding set", text)
+    text = re.sub(r"current full R1[–-]R9 report set", f"current full {report_range} report set", text)
+    text = re.sub(
+        r"## Incomplete / Dropped Model Attempts\n.*?\n(?=## What We Benchmark)",
+        render_dropped_models_section() + "\n",
+        text,
+        flags=re.S,
+    )
+    return text
 
 
 def closest_candidate(models, profile):
@@ -724,6 +801,75 @@ def markdown_tier_tables(models, tiers, tier_profile_rows):
     return "\n".join(lines).rstrip()
 
 
+PROFILE_README_DETAILS = {
+    "High-safety": {
+        "heading": "High-Safety",
+        "use_case": "Environments where missing a real incident is unacceptable or very costly, such as critical infrastructure, high-value targets, or highly regulated environments.",
+        "requirements": "Complete coverage across the benchmark set; Critical Miss Rate ≤ 5%; Threat Capture Rate ≥ 95%; False Review Load ≤ 75%.",
+        "ranking": "Balanced OTS descending, then False Review Load ascending.",
+    },
+    "Balanced SOC": {
+        "heading": "Balanced SOC",
+        "use_case": "General SOC operations where both safety and analyst workload matter.",
+        "requirements": "Complete coverage across the benchmark set; Critical Miss Rate ≤ 15%; Threat Capture Rate ≥ 85%; False Review Load ≤ 75%.",
+        "ranking": "Balanced OTS descending.",
+    },
+    "Noise-reduction": {
+        "heading": "Noise-Reduction / High-Volume Triage",
+        "use_case": "High-volume alert or finding triage where reducing analyst review load is a priority and some miss risk is accepted.",
+        "requirements": "Complete coverage across the benchmark set; False Review Load ≤ 55%; Critical Miss Rate ≤ 20%; Balanced OTS > 0.",
+        "ranking": "False Review Load ascending, then Balanced OTS descending.",
+    },
+}
+
+
+def render_operational_profiles_section(models, profile_rows):
+    lines = ["## Operational Profiles", ""]
+    complete_count = len([m for m in models if not m.get("incomplete")])
+    for profile in PROFILES:
+        name = profile["name"]
+        details = PROFILE_README_DETAILS[name]
+        rows = profile_rows.get(name, [])
+        lines.extend([
+            f"### {details['heading']}",
+            "",
+            f"**Use case:** {details['use_case']}",
+            "",
+            f"**Requirements:** {details['requirements']}",
+            "",
+            f"**Ranking rule:** {details['ranking']}",
+            "",
+            "| # | Model | CW% | BalOTS | CritMiss | ThreatCap | FalseRev | FalseEsc | Cost/Run | AvgTime |",
+            "|---:|---|---:|---:|---:|---:|---:|---:|---:|---:|",
+        ])
+        for idx, row in enumerate(rows[:10], 1):
+            lines.append(
+                f"| {idx} | `{row['model']}` | {row['cw_pct']:.1f}% | {row['balanced_ots']:.1f}% | "
+                f"{row['critical_miss']:.1f}% | {row['threat_capture']:.1f}% | {row['false_review']:.1f}% | "
+                f"{row['false_escalation']:.1f}% | {fmt_cost(row.get('estimated_run_cost_cents'))} | "
+                f"{row.get('avg_seconds_per_event', 0):.2f}s |"
+            )
+        if not rows:
+            lines.append("| — | No model cleared the current guardrails | — | — | — | — | — | — | — | — |")
+        lines.extend([
+            "",
+            f"**Shown:** top {min(10, len(rows))} / {len(rows)} matched models. **Matched:** {len(rows)} / {complete_count} complete models.",
+            "",
+        ])
+        if rows:
+            lines.append(
+                f"**Interpretation:** Under these constraints, `{rows[0]['model']}` is the current profile leader. "
+                f"Values in this section are generated from `combined/{profile['csv']}`."
+            )
+        else:
+            lines.append(
+                f"**Interpretation:** No complete model currently clears these constraints. "
+                f"Values in this section are generated from `combined/{profile['csv']}`."
+            )
+        lines.append("")
+    return "\n".join(lines).rstrip() + "\n"
+
+
 def generate_chart_narrative(profile_rows, tier_profile_rows):
     """Generate narrative text for chart descriptions based on current profile leaders."""
     # Get overall leaders for each profile
@@ -766,7 +912,7 @@ def generate_chart_narrative(profile_rows, tier_profile_rows):
 
 def update_readme(models, tiers, profile_rows, tier_profile_rows):
     readme = ROOT / "README.md"
-    text = readme.read_text()
+    text = update_static_readme_counts(readme.read_text(), models)
     section = f"""## Current Result Summary - Overall
 
 The first table ignores deployment tier and shows the current profile leaders across all tested models. These are **current profile leaders under the selected constraints**, not universal winners. A model only appears as a recommendation if it also clears minimum usefulness and completeness guardrails; near-`always-inc` behavior is analysis material, not a benchmark recommendation.
@@ -834,6 +980,10 @@ The README intentionally contains the main operational summary so visitors do no
 
 {generate_chart_narrative(profile_rows, tier_profile_rows)}
 
+### 2. Operational Profile Summary by Model Tier
+
+![Operational Profile Summary by Model Tier](charts/operational-profile-summary-by-tier.png)
+
 This chart shows the same operational profiles split by deployment tier. Each cell uses the same guardrails as the global profile tables and shows the current profile leader within that tier, plus Balanced OTS, Critical Miss Rate, and False Review Load. Empty cells would mean no model in that tier cleared the current guardrails."""
     
     text = replace_generated_block(
@@ -844,6 +994,14 @@ This chart shows the same operational profiles split by deployment tier. Each ce
         fallback_start="### 1. Operational Profile Summary",
         fallback_end="### 2. Operational Profile Summary by Model Tier",
     )
+
+    text = re.sub(
+        r"## Operational Profiles\n.*?\n(?=## Incomplete / Dropped Model Attempts)",
+        render_operational_profiles_section(models, profile_rows) + "\n",
+        text,
+        flags=re.S,
+    )
+    text = update_static_readme_counts(text, models)
     
     readme.write_text(text)
 

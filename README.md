@@ -2,7 +2,7 @@
 
 This benchmark evaluates LLMs on THOR finding triage. It focuses on security event and forensic finding assessment, not generic reasoning, coding, or vulnerability research.
 
-The current public result set covers **46 complete models**, **9 THOR reports**, and **189 expert-classified findings**. Models are compared against human expert ground truth and are evaluated on both classification quality and operational usefulness.
+The current public result set covers **45 complete models**, **10 THOR reports**, and **189 expert-classified findings**. Models are compared against human expert ground truth and are evaluated on both classification quality and operational usefulness.
 
 Interactive companion: [THOR Finding Triage Benchmark](https://nextron-labs.github.io/thor-ai-benchmarks/) for hoverable scatter plots, tier filters, leader tables, and the chart gallery. Use it whenever the static charts below get too dense to read.
 
@@ -85,6 +85,10 @@ This chart puts the three operational profile leaders next to the `always-inc` s
 `gemini-3.1-flash-lite` is now both the high-safety and balanced SOC profile leader under the current constraints.
 `qwen3.6-max` reduces review load the most under the noise-reduction profile, but has higher miss risk (12.7% Critical Miss) than the high-safety leader.
 `always-inc` is a safety reference, not a useful triage model.
+
+### 2. Operational Profile Summary by Model Tier
+
+![Operational Profile Summary by Model Tier](charts/operational-profile-summary-by-tier.png)
 
 This chart shows the same operational profiles split by deployment tier. Each cell uses the same guardrails as the global profile tables and shows the current profile leader within that tier, plus Balanced OTS, Critical Miss Rate, and False Review Load. Empty cells would mean no model in that tier cleared the current guardrails.
 <!-- END GENERATED:CHART_NARRATIVE -->
@@ -200,7 +204,7 @@ This chart shows how each model’s decisions break down. Green is exact agreeme
 - Dark red is the most dangerous segment and should be minimized.
 - Red/purple means relevant anomalies disappear and should also be minimized.
 
-The stacked bars sum to 100% for each complete model over the current full R1–R9 finding set. Incomplete or invalid model attempts are dropped from public charts and listed separately. For absolute counts of only the operational error classes, see [operational-error-breakdown.png](charts/operational-error-breakdown.png).
+The stacked bars sum to 100% for each complete model over the current full R1-R10 finding set. Incomplete or invalid model attempts are dropped from public charts and listed separately. For absolute counts of only the operational error classes, see [operational-error-breakdown.png](charts/operational-error-breakdown.png).
 
 ### 9. CW% Leaderboard
 
@@ -238,18 +242,18 @@ Naive baselines can appear strong on individual metrics, especially safety metri
 
 | # | Model | CW% | BalOTS | CritMiss | ThreatCap | FalseRev | FalseEsc | Cost/Run | AvgTime |
 |---:|---|---:|---:|---:|---:|---:|---:|---:|---:|
-| 1 | `gemini-3.1-flash-lite` | 69.4% | 71.6% | 0.0% | 100.0% | 28.1% | 1.1% | — | 2.08s |
-| 2 | `gemma4-31b` | 66.5% | 67.2% | 0.0% | 100.0% | 34.8% | 6.7% | 0.00 | 15.65s |
-| 3 | `qwen3-235b-a22b` | 58.7% | 65.6% | 0.0% | 100.0% | 50.6% | 5.6% | 0.00 | 29.82s |
-| 4 | `glm-5.1` | 66.1% | 65.4% | 1.8% | 98.2% | 32.6% | 6.7% | — | 41.68s |
-| 5 | `gpt-5.5` | 59.3% | 64.0% | 0.0% | 100.0% | 40.4% | 5.6% | — | 62.11s |
-| 6 | `glm-5` | 63.4% | 63.8% | 1.8% | 98.2% | 34.8% | 7.9% | — | 38.46s |
-| 7 | `gemini-3.1-pro` | 65.5% | 63.3% | 1.8% | 98.2% | 36.0% | 3.4% | — | 22.53s |
-| 8 | `claude-opus-4.5` | 63.7% | 62.9% | 1.8% | 98.2% | 34.8% | 10.1% | — | 9.68s |
-| 9 | `deepseek-v4-pro` | 64.0% | 61.9% | 1.8% | 98.2% | 30.3% | 4.5% | — | 36.07s |
-| 10 | `kimi-k2.6` | 63.7% | 61.3% | 3.6% | 96.4% | 31.5% | 3.4% | — | 60.73s |
+| 1 | `gemini-3.1-flash-lite` | 67.8% | 70.8% | 0.0% | 100.0% | 33.0% | 3.1% | $0.24 | 2.07s |
+| 2 | `glm-5.1` | 65.3% | 69.6% | 0.0% | 100.0% | 39.2% | 10.3% | $0.84 | 36.35s |
+| 3 | `claude-opus-4.5` | 66.3% | 69.0% | 1.8% | 98.2% | 35.1% | 12.4% | $4.81 | 9.42s |
+| 4 | `gemini-3.5-flash` | 69.6% | 68.8% | 1.8% | 98.2% | 30.9% | 5.2% | $2.22 | 9.23s |
+| 5 | `gemma4-31b` | 65.7% | 68.5% | 0.0% | 100.0% | 39.2% | 5.2% | $0.09 | 22.45s |
+| 6 | `gemini-3.1-pro` | 66.2% | 66.3% | 1.8% | 98.2% | 37.1% | 3.1% | $4.47 | 22.33s |
+| 7 | `claude-opus-4.6` | 62.4% | 64.8% | 0.0% | 100.0% | 43.3% | 9.3% | $4.91 | 11.93s |
+| 8 | `qwen3-235b-a22b` | 55.8% | 64.2% | 0.0% | 100.0% | 54.6% | 6.2% | $0.08 | 29.90s |
+| 9 | `gpt-5.5` | 57.4% | 63.8% | 0.0% | 100.0% | 44.3% | 5.2% | $6.15 | 84.81s |
+| 10 | `claude-sonnet-4.5` | 59.4% | 61.9% | 1.8% | 98.2% | 45.4% | 13.4% | $2.92 | 12.28s |
 
-**Shown:** top 10 / 28 matched models. **Matched:** 28 / 46 complete models.
+**Shown:** top 10 / 28 matched models. **Matched:** 28 / 45 complete models.
 
 **Interpretation:** Under these constraints, `gemini-3.1-flash-lite` is the current profile leader. Values in this section are generated from `combined/operational-profile-high-safety.csv`.
 
@@ -263,18 +267,18 @@ Naive baselines can appear strong on individual metrics, especially safety metri
 
 | # | Model | CW% | BalOTS | CritMiss | ThreatCap | FalseRev | FalseEsc | Cost/Run | AvgTime |
 |---:|---|---:|---:|---:|---:|---:|---:|---:|---:|
-| 1 | `gemini-3.1-flash-lite` | 69.4% | 71.6% | 0.0% | 100.0% | 28.1% | 1.1% | — | 2.08s |
-| 2 | `gemma4-31b` | 66.5% | 67.2% | 0.0% | 100.0% | 34.8% | 6.7% | 0.00 | 15.65s |
-| 3 | `qwen3-235b-a22b` | 58.7% | 65.6% | 0.0% | 100.0% | 50.6% | 5.6% | 0.00 | 29.82s |
-| 4 | `glm-5.1` | 66.1% | 65.4% | 1.8% | 98.2% | 32.6% | 6.7% | — | 41.68s |
-| 5 | `gpt-5.5` | 59.3% | 64.0% | 0.0% | 100.0% | 40.4% | 5.6% | — | 62.11s |
-| 6 | `glm-5` | 63.4% | 63.8% | 1.8% | 98.2% | 34.8% | 7.9% | — | 38.46s |
-| 7 | `gemini-3.1-pro` | 65.5% | 63.3% | 1.8% | 98.2% | 36.0% | 3.4% | — | 22.53s |
-| 8 | `claude-opus-4.5` | 63.7% | 62.9% | 1.8% | 98.2% | 34.8% | 10.1% | — | 9.68s |
-| 9 | `kimi-k2.5` | 66.9% | 62.1% | 5.5% | 94.5% | 32.6% | 5.6% | — | 42.18s |
-| 10 | `deepseek-v4-pro` | 64.0% | 61.9% | 1.8% | 98.2% | 30.3% | 4.5% | — | 36.07s |
+| 1 | `gemini-3.1-flash-lite` | 67.8% | 70.8% | 0.0% | 100.0% | 33.0% | 3.1% | $0.24 | 2.07s |
+| 2 | `glm-5.1` | 65.3% | 69.6% | 0.0% | 100.0% | 39.2% | 10.3% | $0.84 | 36.35s |
+| 3 | `claude-opus-4.5` | 66.3% | 69.0% | 1.8% | 98.2% | 35.1% | 12.4% | $4.81 | 9.42s |
+| 4 | `gemini-3.5-flash` | 69.6% | 68.8% | 1.8% | 98.2% | 30.9% | 5.2% | $2.22 | 9.23s |
+| 5 | `gemma4-31b` | 65.7% | 68.5% | 0.0% | 100.0% | 39.2% | 5.2% | $0.09 | 22.45s |
+| 6 | `gemini-3.1-pro` | 66.2% | 66.3% | 1.8% | 98.2% | 37.1% | 3.1% | $4.47 | 22.33s |
+| 7 | `claude-opus-4.6` | 62.4% | 64.8% | 0.0% | 100.0% | 43.3% | 9.3% | $4.91 | 11.93s |
+| 8 | `qwen3-235b-a22b` | 55.8% | 64.2% | 0.0% | 100.0% | 54.6% | 6.2% | $0.08 | 29.90s |
+| 9 | `gpt-5.5` | 57.4% | 63.8% | 0.0% | 100.0% | 44.3% | 5.2% | $6.15 | 84.81s |
+| 10 | `claude-sonnet-4.5` | 59.4% | 61.9% | 1.8% | 98.2% | 45.4% | 13.4% | $2.92 | 12.28s |
 
-**Shown:** top 10 / 41 matched models. **Matched:** 41 / 46 complete models.
+**Shown:** top 10 / 41 matched models. **Matched:** 41 / 45 complete models.
 
 **Interpretation:** Under these constraints, `gemini-3.1-flash-lite` is the current profile leader. Values in this section are generated from `combined/operational-profile-balanced-soc.csv`.
 
@@ -288,28 +292,26 @@ Naive baselines can appear strong on individual metrics, especially safety metri
 
 | # | Model | CW% | BalOTS | CritMiss | ThreatCap | FalseRev | FalseEsc | Cost/Run | AvgTime |
 |---:|---|---:|---:|---:|---:|---:|---:|---:|---:|
-| 1 | `qwen3.5-plus-20260420` | 62.5% | 50.4% | 10.9% | 89.1% | 20.2% | 5.6% | — | 44.66s |
-| 2 | `qwen3.6-max` | 62.9% | 44.6% | 16.4% | 83.6% | 20.2% | 6.7% | — | 95.74s |
-| 3 | `qwen3.6-plus` | 59.4% | 45.5% | 12.7% | 87.3% | 24.7% | 3.4% | — | 41.29s |
-| 4 | `mimo-v2-pro` | 59.9% | 49.2% | 7.3% | 92.7% | 27.0% | 12.4% | — | 10.01s |
-| 5 | `gemini-3.1-flash-lite` | 69.4% | 71.6% | 0.0% | 100.0% | 28.1% | 1.1% | — | 2.08s |
-| 6 | `deepseek-v4-pro` | 64.0% | 61.9% | 1.8% | 98.2% | 30.3% | 4.5% | — | 36.07s |
-| 7 | `deepseek-v4-flash` | 63.3% | 59.9% | 3.6% | 96.4% | 30.3% | 7.9% | 0.10 | 27.89s |
-| 8 | `kimi-k2.6` | 63.7% | 61.3% | 3.6% | 96.4% | 31.5% | 3.4% | — | 60.73s |
-| 9 | `glm-5.1` | 66.1% | 65.4% | 1.8% | 98.2% | 32.6% | 6.7% | — | 41.68s |
-| 10 | `kimi-k2.5` | 66.9% | 62.1% | 5.5% | 94.5% | 32.6% | 5.6% | — | 42.18s |
+| 1 | `qwen3.6-max` | 65.4% | 50.1% | 12.7% | 87.3% | 22.7% | 8.2% | $2.94 | 95.29s |
+| 2 | `qwen3.5-plus-20260420` | 63.7% | 52.8% | 7.3% | 92.7% | 23.7% | 7.2% | $0.50 | 45.82s |
+| 3 | `qwen3.6-plus` | 60.3% | 47.5% | 9.1% | 90.9% | 26.8% | 3.1% | $1.67 | 41.64s |
+| 4 | `qwen3.6-flash` | 55.2% | 37.7% | 18.2% | 81.8% | 29.9% | 3.1% | $0.30 | 17.61s |
+| 5 | `gemini-3.5-flash` | 69.6% | 68.8% | 1.8% | 98.2% | 30.9% | 5.2% | $2.22 | 9.23s |
+| 6 | `mimo-v2-pro` | 61.2% | 49.7% | 5.5% | 94.5% | 30.9% | 16.5% | $0.69 | 9.85s |
+| 7 | `qwen3.7-max` | 65.7% | 61.7% | 0.0% | 100.0% | 32.0% | 6.2% | — | 12.72s |
+| 8 | `gemini-3.1-flash-lite` | 67.8% | 70.8% | 0.0% | 100.0% | 33.0% | 3.1% | $0.24 | 2.07s |
+| 9 | `claude-opus-4.5` | 66.3% | 69.0% | 1.8% | 98.2% | 35.1% | 12.4% | $4.81 | 9.42s |
+| 10 | `grok-4.3-openrouter` | 63.2% | 60.6% | 3.6% | 96.4% | 35.1% | 7.2% | — | 13.20s |
 
-**Shown:** top 10 / 37 matched models. **Matched:** 37 / 46 complete models.
+**Shown:** top 10 / 37 matched models. **Matched:** 37 / 45 complete models.
 
-**Interpretation:** Under these constraints, `qwen3.5-plus-20260420` is the current profile leader. Values in this section are generated from `combined/operational-profile-noise-reduction.csv`.
+**Interpretation:** Under these constraints, `qwen3.6-max` is the current profile leader. Values in this section are generated from `combined/operational-profile-noise-reduction.csv`.
 
 ## Incomplete / Dropped Model Attempts
 
 Public benchmark charts and leaderboards include complete model runs only. If a model repeatedly fails to return valid structured results for every scored finding, we drop it from the public benchmark instead of ranking a partial result. Current dropped attempts are listed in `combined/dropped-models.json`:
 
-- `gpt-oss-120b` — incomplete result: 182/189 findings, 7 errors
-- `nemotron-3-nano-omni` — incomplete result: 187/189 findings, 2 errors
-- `ring-2.6-1t` — missing the current full R1–R9 report set
+There are currently no dropped model attempts.
 
 ## What We Benchmark
 
