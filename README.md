@@ -2,7 +2,7 @@
 
 This benchmark evaluates LLMs on THOR finding triage. It focuses on security event and forensic finding assessment, not generic reasoning, coding, or vulnerability research.
 
-The current public result set covers **45 complete models**, **10 THOR reports**, and **189 expert-classified findings**. Models are compared against human expert ground truth and are evaluated on both classification quality and operational usefulness.
+The current public result set covers **47 complete models**, **10 THOR reports**, and **189 expert-classified findings**. Models are compared against human expert ground truth and are evaluated on both classification quality and operational usefulness.
 
 Interactive companion: [THOR Finding Triage Benchmark](https://nextron-labs.github.io/thor-ai-benchmarks/) for hoverable scatter plots, tier filters, leader tables, and the chart gallery. Use it whenever the static charts below get too dense to read.
 
@@ -45,7 +45,7 @@ Deployment constraints matter. A vendor API model may be easy to test, but some 
 |---|---|---|
 | High-safety triage | `gemma4-31b` | Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss. |
 | Balanced SOC triage | `gemma4-31b` | Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss. |
-| Noise reduction / high-volume triage | `qwen3.5-9b` | Lowest False Review Load in this tier among models that cleared the guardrails. |
+| Noise reduction / high-volume triage | `qwen3.6-27b` | Lowest False Review Load in this tier among models that cleared the guardrails; low review load; slower than many candidates. |
 
 ### Why model tiers matter
 
@@ -251,9 +251,9 @@ Naive baselines can appear strong on individual metrics, especially safety metri
 | 7 | `claude-opus-4.6` | 62.4% | 64.8% | 0.0% | 100.0% | 43.3% | 9.3% | $4.91 | 11.93s |
 | 8 | `qwen3-235b-a22b` | 55.8% | 64.2% | 0.0% | 100.0% | 54.6% | 6.2% | $0.08 | 29.90s |
 | 9 | `gpt-5.5` | 57.4% | 63.8% | 0.0% | 100.0% | 44.3% | 5.2% | $6.15 | 84.81s |
-| 10 | `claude-sonnet-4.5` | 59.4% | 61.9% | 1.8% | 98.2% | 45.4% | 13.4% | $2.92 | 12.28s |
+| 10 | `gemma4-26b-a4b` | 63.5% | 62.8% | 0.0% | 100.0% | 40.2% | 11.3% | — | 12.78s |
 
-**Shown:** top 10 / 28 matched models. **Matched:** 28 / 45 complete models.
+**Shown:** top 10 / 29 matched models. **Matched:** 29 / 47 complete models.
 
 **Interpretation:** Under these constraints, `gemini-3.1-flash-lite` is the current profile leader. Values in this section are generated from `combined/operational-profile-high-safety.csv`.
 
@@ -276,9 +276,9 @@ Naive baselines can appear strong on individual metrics, especially safety metri
 | 7 | `claude-opus-4.6` | 62.4% | 64.8% | 0.0% | 100.0% | 43.3% | 9.3% | $4.91 | 11.93s |
 | 8 | `qwen3-235b-a22b` | 55.8% | 64.2% | 0.0% | 100.0% | 54.6% | 6.2% | $0.08 | 29.90s |
 | 9 | `gpt-5.5` | 57.4% | 63.8% | 0.0% | 100.0% | 44.3% | 5.2% | $6.15 | 84.81s |
-| 10 | `claude-sonnet-4.5` | 59.4% | 61.9% | 1.8% | 98.2% | 45.4% | 13.4% | $2.92 | 12.28s |
+| 10 | `gemma4-26b-a4b` | 63.5% | 62.8% | 0.0% | 100.0% | 40.2% | 11.3% | — | 12.78s |
 
-**Shown:** top 10 / 41 matched models. **Matched:** 41 / 45 complete models.
+**Shown:** top 10 / 43 matched models. **Matched:** 43 / 47 complete models.
 
 **Interpretation:** Under these constraints, `gemini-3.1-flash-lite` is the current profile leader. Values in this section are generated from `combined/operational-profile-balanced-soc.csv`.
 
@@ -295,15 +295,15 @@ Naive baselines can appear strong on individual metrics, especially safety metri
 | 1 | `qwen3.6-max` | 65.4% | 50.1% | 12.7% | 87.3% | 22.7% | 8.2% | $2.94 | 95.29s |
 | 2 | `qwen3.5-plus-20260420` | 63.7% | 52.8% | 7.3% | 92.7% | 23.7% | 7.2% | $0.50 | 45.82s |
 | 3 | `qwen3.6-plus` | 60.3% | 47.5% | 9.1% | 90.9% | 26.8% | 3.1% | $1.67 | 41.64s |
-| 4 | `qwen3.6-flash` | 55.2% | 37.7% | 18.2% | 81.8% | 29.9% | 3.1% | $0.30 | 17.61s |
-| 5 | `gemini-3.5-flash` | 69.6% | 68.8% | 1.8% | 98.2% | 30.9% | 5.2% | $2.22 | 9.23s |
-| 6 | `mimo-v2-pro` | 61.2% | 49.7% | 5.5% | 94.5% | 30.9% | 16.5% | $0.69 | 9.85s |
-| 7 | `qwen3.7-max` | 65.7% | 61.7% | 0.0% | 100.0% | 32.0% | 6.2% | — | 12.72s |
-| 8 | `gemini-3.1-flash-lite` | 67.8% | 70.8% | 0.0% | 100.0% | 33.0% | 3.1% | $0.24 | 2.07s |
-| 9 | `claude-opus-4.5` | 66.3% | 69.0% | 1.8% | 98.2% | 35.1% | 12.4% | $4.81 | 9.42s |
-| 10 | `grok-4.3-openrouter` | 63.2% | 60.6% | 3.6% | 96.4% | 35.1% | 7.2% | — | 13.20s |
+| 4 | `qwen3.6-27b` | 63.7% | 56.8% | 7.3% | 92.7% | 27.8% | 3.1% | — | 52.29s |
+| 5 | `qwen3.6-flash` | 55.2% | 37.7% | 18.2% | 81.8% | 29.9% | 3.1% | $0.30 | 17.61s |
+| 6 | `gemini-3.5-flash` | 69.6% | 68.8% | 1.8% | 98.2% | 30.9% | 5.2% | $2.22 | 9.23s |
+| 7 | `mimo-v2-pro` | 61.2% | 49.7% | 5.5% | 94.5% | 30.9% | 16.5% | $0.69 | 9.85s |
+| 8 | `qwen3.7-max` | 65.7% | 61.7% | 0.0% | 100.0% | 32.0% | 6.2% | — | 12.72s |
+| 9 | `gemini-3.1-flash-lite` | 67.8% | 70.8% | 0.0% | 100.0% | 33.0% | 3.1% | $0.24 | 2.07s |
+| 10 | `claude-opus-4.5` | 66.3% | 69.0% | 1.8% | 98.2% | 35.1% | 12.4% | $4.81 | 9.42s |
 
-**Shown:** top 10 / 37 matched models. **Matched:** 37 / 45 complete models.
+**Shown:** top 10 / 39 matched models. **Matched:** 39 / 47 complete models.
 
 **Interpretation:** Under these constraints, `qwen3.6-max` is the current profile leader. Values in this section are generated from `combined/operational-profile-noise-reduction.csv`.
 

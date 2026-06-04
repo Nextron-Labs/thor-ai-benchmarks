@@ -261,6 +261,64 @@
     "incomplete": false
   },
   {
+    "model": "qwen3.6-27b",
+    "cw_pct": "63.7",
+    "ots_pct": "60.4",
+    "ots_macro": "65.3",
+    "balanced_ots": "56.8",
+    "threat_capture": "92.7",
+    "critical_miss": "7.3",
+    "anomaly_capture": "78.4",
+    "anomaly_suppression": "21.6",
+    "false_review": "27.8",
+    "false_escalation": "3.1",
+    "ord_pct": "81.5",
+    "mae": "17.2",
+    "rmse": "22.8",
+    "exact": "126",
+    "minor": "56",
+    "hard": "7",
+    "hard_miss": "0",
+    "hard_over": "0",
+    "n_errors": "0",
+    "n": "189",
+    "avg_seconds_per_event": "52.29",
+    "total_tokens": "913647",
+    "total_llm_errors": "0",
+    "rank": "10",
+    "tier": "open_source_consumer",
+    "incomplete": false
+  },
+  {
+    "model": "gemma4-26b-a4b",
+    "cw_pct": "63.5",
+    "ots_pct": "61.9",
+    "ots_macro": "65.8",
+    "balanced_ots": "62.8",
+    "threat_capture": "100.0",
+    "critical_miss": "0.0",
+    "anomaly_capture": "83.8",
+    "anomaly_suppression": "16.2",
+    "false_review": "40.2",
+    "false_escalation": "11.3",
+    "ord_pct": "80.2",
+    "mae": "17.5",
+    "rmse": "22.7",
+    "exact": "125",
+    "minor": "53",
+    "hard": "11",
+    "hard_miss": "0",
+    "hard_over": "0",
+    "n_errors": "0",
+    "n": "189",
+    "avg_seconds_per_event": "12.78",
+    "total_tokens": "545129",
+    "total_llm_errors": "0",
+    "rank": "11",
+    "tier": "open_source_consumer",
+    "incomplete": false
+  },
+  {
     "model": "grok-4.3-openrouter",
     "cw_pct": "63.2",
     "ots_pct": "61.0",
@@ -285,7 +343,7 @@
     "avg_seconds_per_event": "13.2",
     "total_tokens": "645229",
     "total_llm_errors": "1",
-    "rank": "10",
+    "rank": "12",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -314,7 +372,7 @@
     "avg_seconds_per_event": "11.93",
     "total_tokens": "613608",
     "total_llm_errors": "0",
-    "rank": "11",
+    "rank": "13",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -343,7 +401,7 @@
     "avg_seconds_per_event": "9.85",
     "total_tokens": "533689",
     "total_llm_errors": "2",
-    "rank": "12",
+    "rank": "14",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -372,7 +430,7 @@
     "avg_seconds_per_event": "32.0",
     "total_tokens": "683187",
     "total_llm_errors": "0",
-    "rank": "13",
+    "rank": "15",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -401,7 +459,7 @@
     "avg_seconds_per_event": "41.64",
     "total_tokens": "915707",
     "total_llm_errors": "0",
-    "rank": "14",
+    "rank": "16",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -430,7 +488,7 @@
     "avg_seconds_per_event": "15.88",
     "total_tokens": "787292",
     "total_llm_errors": "0",
-    "rank": "15",
+    "rank": "17",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -459,7 +517,7 @@
     "avg_seconds_per_event": "77.6",
     "total_tokens": "967061",
     "total_llm_errors": "3",
-    "rank": "16",
+    "rank": "18",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -488,7 +546,7 @@
     "avg_seconds_per_event": "12.28",
     "total_tokens": "608309",
     "total_llm_errors": "0",
-    "rank": "17",
+    "rank": "19",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -517,7 +575,7 @@
     "avg_seconds_per_event": "18.99",
     "total_tokens": "599269",
     "total_llm_errors": "1",
-    "rank": "18",
+    "rank": "20",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -546,7 +604,7 @@
     "avg_seconds_per_event": "84.81",
     "total_tokens": "703044",
     "total_llm_errors": "2",
-    "rank": "19",
+    "rank": "21",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -575,7 +633,7 @@
     "avg_seconds_per_event": "38.56",
     "total_tokens": "828397",
     "total_llm_errors": "12",
-    "rank": "20",
+    "rank": "22",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -604,7 +662,7 @@
     "avg_seconds_per_event": "13.99",
     "total_tokens": "671824",
     "total_llm_errors": "0",
-    "rank": "21",
+    "rank": "23",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -633,7 +691,7 @@
     "avg_seconds_per_event": "12.26",
     "total_tokens": "636884",
     "total_llm_errors": "0",
-    "rank": "22",
+    "rank": "24",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -662,7 +720,7 @@
     "avg_seconds_per_event": "29.9",
     "total_tokens": "1061345",
     "total_llm_errors": "0",
-    "rank": "23",
+    "rank": "25",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -691,7 +749,7 @@
     "avg_seconds_per_event": "6.0",
     "total_tokens": "621249",
     "total_llm_errors": "0",
-    "rank": "24",
+    "rank": "26",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -720,7 +778,7 @@
     "avg_seconds_per_event": "17.61",
     "total_tokens": "917039",
     "total_llm_errors": "4",
-    "rank": "25",
+    "rank": "27",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -749,7 +807,7 @@
     "avg_seconds_per_event": "47.04",
     "total_tokens": "554491",
     "total_llm_errors": "0",
-    "rank": "26",
+    "rank": "28",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -778,7 +836,7 @@
     "avg_seconds_per_event": "6.31",
     "total_tokens": "531311",
     "total_llm_errors": "0",
-    "rank": "27",
+    "rank": "29",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -807,7 +865,7 @@
     "avg_seconds_per_event": "25.04",
     "total_tokens": "811223",
     "total_llm_errors": "4",
-    "rank": "28",
+    "rank": "30",
     "tier": "open_source_consumer",
     "incomplete": false
   },
@@ -836,7 +894,7 @@
     "avg_seconds_per_event": "26.21",
     "total_tokens": "773039",
     "total_llm_errors": "1",
-    "rank": "29",
+    "rank": "31",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -865,7 +923,7 @@
     "avg_seconds_per_event": "6.58",
     "total_tokens": "532036",
     "total_llm_errors": "0",
-    "rank": "30",
+    "rank": "32",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -894,7 +952,7 @@
     "avg_seconds_per_event": "18.1",
     "total_tokens": "546071",
     "total_llm_errors": "0",
-    "rank": "31",
+    "rank": "33",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -923,7 +981,7 @@
     "avg_seconds_per_event": "20.03",
     "total_tokens": "666440",
     "total_llm_errors": "0",
-    "rank": "32",
+    "rank": "34",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -952,7 +1010,7 @@
     "avg_seconds_per_event": "3.0",
     "total_tokens": "563432",
     "total_llm_errors": "0",
-    "rank": "33",
+    "rank": "35",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -981,7 +1039,7 @@
     "avg_seconds_per_event": "27.99",
     "total_tokens": "759298",
     "total_llm_errors": "0",
-    "rank": "34",
+    "rank": "36",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -1010,7 +1068,7 @@
     "avg_seconds_per_event": "38.22",
     "total_tokens": "889213",
     "total_llm_errors": "6",
-    "rank": "35",
+    "rank": "37",
     "tier": "open_source_pro",
     "incomplete": false
   },
@@ -1039,7 +1097,7 @@
     "avg_seconds_per_event": "4.07",
     "total_tokens": "528966",
     "total_llm_errors": "0",
-    "rank": "36",
+    "rank": "38",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -1068,7 +1126,7 @@
     "avg_seconds_per_event": "13.79",
     "total_tokens": "510564",
     "total_llm_errors": "1",
-    "rank": "37",
+    "rank": "39",
     "tier": "open_source_consumer",
     "incomplete": false
   },
@@ -1097,7 +1155,7 @@
     "avg_seconds_per_event": "7.35",
     "total_tokens": "540631",
     "total_llm_errors": "0",
-    "rank": "38",
+    "rank": "40",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -1126,7 +1184,7 @@
     "avg_seconds_per_event": "21.15",
     "total_tokens": "736268",
     "total_llm_errors": "0",
-    "rank": "39",
+    "rank": "41",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -1155,7 +1213,7 @@
     "avg_seconds_per_event": "1.55",
     "total_tokens": "537947",
     "total_llm_errors": "0",
-    "rank": "40",
+    "rank": "42",
     "tier": "open_source_consumer",
     "incomplete": false
   },
@@ -1184,7 +1242,7 @@
     "avg_seconds_per_event": "1.61",
     "total_tokens": "576576",
     "total_llm_errors": "0",
-    "rank": "41",
+    "rank": "43",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -1213,7 +1271,7 @@
     "avg_seconds_per_event": "30.06",
     "total_tokens": "1009238",
     "total_llm_errors": "0",
-    "rank": "42",
+    "rank": "44",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -1242,7 +1300,7 @@
     "avg_seconds_per_event": "5.45",
     "total_tokens": "540074",
     "total_llm_errors": "1",
-    "rank": "43",
+    "rank": "45",
     "tier": "open_source_consumer",
     "incomplete": false
   },
@@ -1271,7 +1329,7 @@
     "avg_seconds_per_event": "4.2",
     "total_tokens": "554817",
     "total_llm_errors": "0",
-    "rank": "44",
+    "rank": "46",
     "tier": "closed_source",
     "incomplete": false
   },
@@ -1300,7 +1358,7 @@
     "avg_seconds_per_event": "13.45",
     "total_tokens": "637239",
     "total_llm_errors": "3",
-    "rank": "45",
+    "rank": "47",
     "tier": "open_source_consumer",
     "incomplete": false
   },

@@ -75,6 +75,8 @@
       "marker": "o",
       "models": [
         "gemma4-31b",
+        "gemma4-26b-a4b",
+        "qwen3.6-27b",
         "qwen3.6-35b",
         "qwen3.5-9b",
         "devstral-small",

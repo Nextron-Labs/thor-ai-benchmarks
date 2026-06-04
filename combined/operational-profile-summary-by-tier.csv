@@ -7,4 +7,4 @@ Open Source (Pro Hardware),Balanced SOC,glm-5.1,65.3,69.6,0.0,100.0,39.2,10.3,$0
 Open Source (Pro Hardware),Noise-reduction,kimi-k2.6,59.6,58.2,1.8,98.2,35.1,5.2,$1.11,77.60,profile leader under current constraints,
 Open Source (Consumer Hardware),High-safety,gemma4-31b,65.7,68.5,0.0,100.0,39.2,5.2,$0.09,22.45,profile leader under current constraints,
 Open Source (Consumer Hardware),Balanced SOC,gemma4-31b,65.7,68.5,0.0,100.0,39.2,5.2,$0.09,22.45,profile leader under current constraints,
-Open Source (Consumer Hardware),Noise-reduction,qwen3.5-9b,53.7,49.0,10.9,89.1,38.1,4.1,$0.05,25.04,profile leader under current constraints,
+Open Source (Consumer Hardware),Noise-reduction,qwen3.6-27b,63.7,56.8,7.3,92.7,27.8,3.1,—,52.29,profile leader under current constraints,

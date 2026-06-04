@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-06-04T00:17:00.237681+00:00",
+  "generated_at": "2026-06-04T17:18:26.481597+00:00",
   "source": {
     "leaderboard": "combined/leaderboard.json",
     "operational_summary_by_tier": "combined/operational-profile-summary-by-tier.csv"
   },
   "summary": {
-    "model_count": 48,
+    "model_count": 50,
     "baseline_count": 3,
-    "benchmarked_model_count": 45,
-    "complete_count": 48,
+    "benchmarked_model_count": 47,
+    "complete_count": 50,
     "incomplete_count": 0
   },
   "metrics": [
@@ -298,7 +298,7 @@
           "profile_key": "noise_reduction",
           "profile_label": "Noise-reduction",
           "use_case": "Noise reduction / high-volume triage",
-          "model": "qwen3.5-9b",
+          "model": "qwen3.6-27b",
           "tier": "open_source_consumer",
           "reason": "Lowest False Review Load in this tier among models that cleared the guardrails; low review load."
         }
@@ -708,6 +708,82 @@
       "rank_label": "10",
       "rank_numeric": 10,
       "rank_sort": 10,
+      "model": "qwen3.6-27b",
+      "tier": "open_source_consumer",
+      "cw_pct": 63.7,
+      "ots_pct": 60.4,
+      "ots_macro": 65.3,
+      "balanced_ots": 56.8,
+      "threat_capture": 92.7,
+      "critical_miss": 7.3,
+      "anomaly_capture": 78.4,
+      "anomaly_suppression": 21.6,
+      "false_review": 27.8,
+      "false_escalation": 3.1,
+      "ord_pct": 81.5,
+      "mae": 17.2,
+      "rmse": 22.8,
+      "avg_seconds_per_event": 52.29,
+      "total_tokens": 913647,
+      "estimated_run_cost_cents": null,
+      "exact": 126,
+      "minor": 56,
+      "hard": 7,
+      "hard_miss": 0,
+      "hard_over": 0,
+      "n_errors": 0,
+      "n": 189,
+      "incomplete": false,
+      "is_baseline": false,
+      "exact_rate_all_findings": 66.67,
+      "minor_rate_all_findings": 29.63,
+      "hard_rate_all_findings": 3.7,
+      "hard_miss_share_all_findings": 0.0,
+      "hard_over_share_all_findings": 0.0,
+      "llm_error_rate_all_findings": 0.0
+    },
+    {
+      "rank_label": "11",
+      "rank_numeric": 11,
+      "rank_sort": 11,
+      "model": "gemma4-26b-a4b",
+      "tier": "open_source_consumer",
+      "cw_pct": 63.5,
+      "ots_pct": 61.9,
+      "ots_macro": 65.8,
+      "balanced_ots": 62.8,
+      "threat_capture": 100.0,
+      "critical_miss": 0.0,
+      "anomaly_capture": 83.8,
+      "anomaly_suppression": 16.2,
+      "false_review": 40.2,
+      "false_escalation": 11.3,
+      "ord_pct": 80.2,
+      "mae": 17.5,
+      "rmse": 22.7,
+      "avg_seconds_per_event": 12.78,
+      "total_tokens": 545129,
+      "estimated_run_cost_cents": null,
+      "exact": 125,
+      "minor": 53,
+      "hard": 11,
+      "hard_miss": 0,
+      "hard_over": 0,
+      "n_errors": 0,
+      "n": 189,
+      "incomplete": false,
+      "is_baseline": false,
+      "exact_rate_all_findings": 66.14,
+      "minor_rate_all_findings": 28.04,
+      "hard_rate_all_findings": 5.82,
+      "hard_miss_share_all_findings": 0.0,
+      "hard_over_share_all_findings": 0.0,
+      "llm_error_rate_all_findings": 0.0
+    },
+    {
+      "rank_label": "12",
+      "rank_numeric": 12,
+      "rank_sort": 12,
       "model": "grok-4.3-openrouter",
       "tier": "closed_source",
       "cw_pct": 63.2,
@@ -743,9 +819,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "11",
-      "rank_numeric": 11,
-      "rank_sort": 11,
+      "rank_label": "13",
+      "rank_numeric": 13,
+      "rank_sort": 13,
       "model": "claude-opus-4.6",
       "tier": "closed_source",
       "cw_pct": 62.4,
@@ -781,9 +857,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "12",
-      "rank_numeric": 12,
-      "rank_sort": 12,
+      "rank_label": "14",
+      "rank_numeric": 14,
+      "rank_sort": 14,
       "model": "mimo-v2-pro",
       "tier": "closed_source",
       "cw_pct": 61.2,
@@ -819,9 +895,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "13",
-      "rank_numeric": 13,
-      "rank_sort": 13,
+      "rank_label": "15",
+      "rank_numeric": 15,
+      "rank_sort": 15,
       "model": "deepseek-v4-pro",
       "tier": "open_source_pro",
       "cw_pct": 60.7,
@@ -857,9 +933,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "14",
-      "rank_numeric": 14,
-      "rank_sort": 14,
+      "rank_label": "16",
+      "rank_numeric": 16,
+      "rank_sort": 16,
       "model": "qwen3.6-plus",
       "tier": "closed_source",
       "cw_pct": 60.3,
@@ -895,9 +971,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "15",
-      "rank_numeric": 15,
-      "rank_sort": 15,
+      "rank_label": "17",
+      "rank_numeric": 17,
+      "rank_sort": 17,
       "model": "gemini-2.5-pro",
       "tier": "closed_source",
       "cw_pct": 60.2,
@@ -933,9 +1009,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "16",
-      "rank_numeric": 16,
-      "rank_sort": 16,
+      "rank_label": "18",
+      "rank_numeric": 18,
+      "rank_sort": 18,
       "model": "kimi-k2.6",
       "tier": "open_source_pro",
       "cw_pct": 59.6,
@@ -971,9 +1047,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "17",
-      "rank_numeric": 17,
-      "rank_sort": 17,
+      "rank_label": "19",
+      "rank_numeric": 19,
+      "rank_sort": 19,
       "model": "claude-sonnet-4.5",
       "tier": "closed_source",
       "cw_pct": 59.4,
@@ -1009,9 +1085,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "18",
-      "rank_numeric": 18,
-      "rank_sort": 18,
+      "rank_label": "20",
+      "rank_numeric": 20,
+      "rank_sort": 20,
       "model": "deepseek-v4-flash",
       "tier": "open_source_pro",
       "cw_pct": 58.1,
@@ -1047,9 +1123,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "19",
-      "rank_numeric": 19,
-      "rank_sort": 19,
+      "rank_label": "21",
+      "rank_numeric": 21,
+      "rank_sort": 21,
       "model": "gpt-5.5",
       "tier": "closed_source",
       "cw_pct": 57.4,
@@ -1085,9 +1161,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "20",
-      "rank_numeric": 20,
-      "rank_sort": 20,
+      "rank_label": "22",
+      "rank_numeric": 22,
+      "rank_sort": 22,
       "model": "glm-5",
       "tier": "open_source_pro",
       "cw_pct": 57.2,
@@ -1123,9 +1199,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "21",
-      "rank_numeric": 21,
-      "rank_sort": 21,
+      "rank_label": "23",
+      "rank_numeric": 23,
+      "rank_sort": 23,
       "model": "grok-4.3",
       "tier": "closed_source",
       "cw_pct": 57.0,
@@ -1161,9 +1237,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "22",
-      "rank_numeric": 22,
-      "rank_sort": 22,
+      "rank_label": "24",
+      "rank_numeric": 24,
+      "rank_sort": 24,
       "model": "claude-sonnet-4.6",
       "tier": "closed_source",
       "cw_pct": 56.3,
@@ -1199,9 +1275,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "23",
-      "rank_numeric": 23,
-      "rank_sort": 23,
+      "rank_label": "25",
+      "rank_numeric": 25,
+      "rank_sort": 25,
       "model": "qwen3-235b-a22b",
       "tier": "open_source_pro",
       "cw_pct": 55.8,
@@ -1237,9 +1313,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "24",
-      "rank_numeric": 24,
-      "rank_sort": 24,
+      "rank_label": "26",
+      "rank_numeric": 26,
+      "rank_sort": 26,
       "model": "claude-haiku-4.5",
       "tier": "closed_source",
       "cw_pct": 55.6,
@@ -1275,9 +1351,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "25",
-      "rank_numeric": 25,
-      "rank_sort": 25,
+      "rank_label": "27",
+      "rank_numeric": 27,
+      "rank_sort": 27,
       "model": "qwen3.6-flash",
       "tier": "closed_source",
       "cw_pct": 55.2,
@@ -1313,9 +1389,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "26",
-      "rank_numeric": 26,
-      "rank_sort": 26,
+      "rank_label": "28",
+      "rank_numeric": 28,
+      "rank_sort": 28,
       "model": "deepseek-v3.2",
       "tier": "open_source_pro",
       "cw_pct": 54.4,
@@ -1351,9 +1427,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "27",
-      "rank_numeric": 27,
-      "rank_sort": 27,
+      "rank_label": "29",
+      "rank_numeric": 29,
+      "rank_sort": 29,
       "model": "grok-4.20",
       "tier": "closed_source",
       "cw_pct": 54.1,
@@ -1389,9 +1465,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "28",
-      "rank_numeric": 28,
-      "rank_sort": 28,
+      "rank_label": "30",
+      "rank_numeric": 30,
+      "rank_sort": 30,
       "model": "qwen3.5-9b",
       "tier": "open_source_consumer",
       "cw_pct": 53.7,
@@ -1427,9 +1503,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "29",
-      "rank_numeric": 29,
-      "rank_sort": 29,
+      "rank_label": "31",
+      "rank_numeric": 31,
+      "rank_sort": 31,
       "model": "qwen35-397b",
       "tier": "open_source_pro",
       "cw_pct": 53.7,
@@ -1465,9 +1541,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "30",
-      "rank_numeric": 30,
-      "rank_sort": 30,
+      "rank_label": "32",
+      "rank_numeric": 32,
+      "rank_sort": 32,
       "model": "grok-4-openrouter",
       "tier": "closed_source",
       "cw_pct": 53.6,
@@ -1503,9 +1579,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "31",
-      "rank_numeric": 31,
-      "rank_sort": 31,
+      "rank_label": "33",
+      "rank_numeric": 33,
+      "rank_sort": 33,
       "model": "deepseek-v3.1",
       "tier": "open_source_pro",
       "cw_pct": 53.5,
@@ -1541,9 +1617,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "32",
-      "rank_numeric": 32,
-      "rank_sort": 32,
+      "rank_label": "34",
+      "rank_numeric": 34,
+      "rank_sort": 34,
       "model": "minimax-m2.7",
       "tier": "open_source_pro",
       "cw_pct": 53.5,
@@ -1579,9 +1655,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "33",
-      "rank_numeric": 33,
-      "rank_sort": 33,
+      "rank_label": "35",
+      "rank_numeric": 35,
+      "rank_sort": 35,
       "model": "gemini-2.5-flash",
       "tier": "closed_source",
       "cw_pct": 52.3,
@@ -1617,9 +1693,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "34",
-      "rank_numeric": 34,
-      "rank_sort": 34,
+      "rank_label": "36",
+      "rank_numeric": 36,
+      "rank_sort": 36,
       "model": "gpt-5",
       "tier": "closed_source",
       "cw_pct": 51.9,
@@ -1655,9 +1731,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "35",
-      "rank_numeric": 35,
-      "rank_sort": 35,
+      "rank_label": "37",
+      "rank_numeric": 37,
+      "rank_sort": 37,
       "model": "nemotron-3-super-120b",
       "tier": "open_source_pro",
       "cw_pct": 50.6,
@@ -1693,9 +1769,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "36",
-      "rank_numeric": 36,
-      "rank_sort": 36,
+      "rank_label": "38",
+      "rank_numeric": 38,
+      "rank_sort": 38,
       "model": "gpt-5.4-mini",
       "tier": "closed_source",
       "cw_pct": 49.7,
@@ -1731,9 +1807,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "37",
-      "rank_numeric": 37,
-      "rank_sort": 37,
+      "rank_label": "39",
+      "rank_numeric": 39,
+      "rank_sort": 39,
       "model": "llama-3.1-70b",
       "tier": "open_source_consumer",
       "cw_pct": 49.7,
@@ -1769,9 +1845,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "38",
-      "rank_numeric": 38,
-      "rank_sort": 38,
+      "rank_label": "40",
+      "rank_numeric": 40,
+      "rank_sort": 40,
       "model": "gpt-5.4",
       "tier": "closed_source",
       "cw_pct": 48.3,
@@ -1807,9 +1883,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "39",
-      "rank_numeric": 39,
-      "rank_sort": 39,
+      "rank_label": "41",
+      "rank_numeric": 41,
+      "rank_sort": 41,
       "model": "gpt-5-mini",
       "tier": "closed_source",
       "cw_pct": 47.6,
@@ -1845,9 +1921,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "40",
-      "rank_numeric": 40,
-      "rank_sort": 40,
+      "rank_label": "42",
+      "rank_numeric": 42,
+      "rank_sort": 42,
       "model": "devstral-small",
       "tier": "open_source_consumer",
       "cw_pct": 44.1,
@@ -1883,9 +1959,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "41",
-      "rank_numeric": 41,
-      "rank_sort": 41,
+      "rank_label": "43",
+      "rank_numeric": 43,
+      "rank_sort": 43,
       "model": "mercury-2",
       "tier": "closed_source",
       "cw_pct": 43.1,
@@ -1921,9 +1997,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "42",
-      "rank_numeric": 42,
-      "rank_sort": 42,
+      "rank_label": "44",
+      "rank_numeric": 44,
+      "rank_sort": 44,
       "model": "gpt-5-nano",
       "tier": "closed_source",
       "cw_pct": 38.8,
@@ -1959,9 +2035,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "43",
-      "rank_numeric": 43,
-      "rank_sort": 43,
+      "rank_label": "45",
+      "rank_numeric": 45,
+      "rank_sort": 45,
       "model": "mistral-nemo",
       "tier": "open_source_consumer",
       "cw_pct": 35.6,
@@ -1997,9 +2073,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "44",
-      "rank_numeric": 44,
-      "rank_sort": 44,
+      "rank_label": "46",
+      "rank_numeric": 46,
+      "rank_sort": 46,
       "model": "gpt-5.4-nano",
       "tier": "closed_source",
       "cw_pct": 33.1,
@@ -2035,9 +2111,9 @@
       "llm_error_rate_all_findings": 0.0
     },
     {
-      "rank_label": "45",
-      "rank_numeric": 45,
-      "rank_sort": 45,
+      "rank_label": "47",
+      "rank_numeric": 47,
+      "rank_sort": 47,
       "model": "llama-3.1-8b",
       "tier": "open_source_consumer",
       "cw_pct": 32.6,
@@ -2075,7 +2151,7 @@
     {
       "rank_label": "baseline",
       "rank_numeric": null,
-      "rank_sort": 1045,
+      "rank_sort": 1047,
       "model": "always-fp",
       "tier": "baseline",
       "cw_pct": 30.1,
@@ -2113,7 +2189,7 @@
     {
       "rank_label": "baseline",
       "rank_numeric": null,
-      "rank_sort": 1046,
+      "rank_sort": 1048,
       "model": "always-inc",
       "tier": "baseline",
       "cw_pct": 22.1,
@@ -2151,7 +2227,7 @@
     {
       "rank_label": "baseline",
       "rank_numeric": null,
-      "rank_sort": 1047,
+      "rank_sort": 1049,
       "model": "always-tp",
       "tier": "baseline",
       "cw_pct": 16.9,
