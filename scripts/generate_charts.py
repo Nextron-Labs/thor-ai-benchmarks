@@ -50,10 +50,10 @@ for tier_key, tier_data in tiers_config.items():
 
 
 def resolve_tier(model_row):
-    if model_row.get("tier") in tiers_config:
-        return model_row["tier"]
     if model_row["model"] in tier_lookup:
         return tier_lookup[model_row["model"]]
+    if model_row.get("tier") in tiers_config:
+        return model_row["tier"]
     raise SystemExit(
         f"Model {model_row['model']} is missing a known tier in leaderboard data and scripts/model_tiers.json"
     )

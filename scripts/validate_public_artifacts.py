@@ -32,20 +32,47 @@ def load_json(path: Path):
         return json.load(f)
 
 
+def tier_lookup(tiers_payload):
+    lookup = {}
+    duplicates = {}
+    for tier_key, tier_data in tiers_payload["tiers"].items():
+        for model in tier_data["models"]:
+            if model in lookup:
+                duplicates.setdefault(model, []).extend([lookup[model], tier_key])
+            lookup[model] = tier_key
+    if duplicates:
+        raise SystemExit(f"Duplicate model tier assignments: {duplicates}")
+    return lookup
+
+
 def main() -> int:
     leaderboard = load_json(COMBINED / "leaderboard.json")
     results = load_json(COMBINED / "results-combined.json")
     dropped_path = COMBINED / "dropped-models.json"
     dropped = load_json(dropped_path) if dropped_path.exists() else []
-    tier_keys = set(load_json(TIERS_PATH)["tiers"])
+    tiers_payload = load_json(TIERS_PATH)
+    tier_keys = set(tiers_payload["tiers"])
+    canonical_tiers = tier_lookup(tiers_payload)
     pricing_snapshot = load_pricing_snapshot()
 
     real_leaderboard = [m for m in leaderboard if m.get("rank") != "baseline"]
-    bad_tiers = sorted(
-        m["model"] for m in real_leaderboard if m.get("tier") not in tier_keys
+    missing_tiers = sorted(
+        m["model"] for m in real_leaderboard if m["model"] not in canonical_tiers
     )
+    if missing_tiers:
+        raise SystemExit(f"Public leaderboard contains models missing canonical tiers: {missing_tiers}")
+
+    stale_tiers = sorted(
+        (m["model"], m.get("tier"), canonical_tiers[m["model"]])
+        for m in real_leaderboard
+        if m.get("tier") != canonical_tiers[m["model"]]
+    )
+    if stale_tiers:
+        raise SystemExit(f"Public leaderboard contains stale tier assignments: {stale_tiers}")
+
+    bad_tiers = sorted(m["model"] for m in real_leaderboard if m.get("tier") not in tier_keys)
     if bad_tiers:
-        raise SystemExit(f"Public leaderboard contains models with unknown tiers: {bad_tiers}")
+        raise SystemExit(f"Public leaderboard contains unknown tier keys: {bad_tiers}")
 
     bad_lb = [
         m["model"] for m in real_leaderboard

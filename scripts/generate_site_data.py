@@ -16,6 +16,7 @@ LEADERBOARD_PATH = REPO_ROOT / "combined" / "leaderboard.json"
 OUTPUT_PATH = REPO_ROOT / "docs" / "data" / "leaderboard-explorer.json"
 DOCS_CHARTS_DIR = REPO_ROOT / "docs" / "charts"
 OPERATIONAL_SUMMARY_BY_TIER_PATH = REPO_ROOT / "combined" / "operational-profile-summary-by-tier.csv"
+TIERS_PATH = REPO_ROOT / "scripts" / "model_tiers.json"
 
 PROFILE_META = {
     "high_safety": {
@@ -135,6 +136,15 @@ def load_csv(path):
         return list(csv.DictReader(handle))
 
 
+def load_tier_lookup():
+    payload = json.loads(TIERS_PATH.read_text())
+    lookup = {}
+    for tier_key, tier_data in payload.get("tiers", {}).items():
+        for model in tier_data["models"]:
+            lookup[model] = tier_key
+    return lookup
+
+
 def build_leader_reason(profile_key, tier_scope, row):
     critical_miss = row.get("critical_miss_rate") or row.get("critical_miss") or "0.0"
     if profile_key in ("high_safety", "balanced_soc"):
@@ -203,6 +213,7 @@ def copy_gallery_charts():
 def main():
     rows = json.loads(LEADERBOARD_PATH.read_text())
     pricing_snapshot = load_pricing_snapshot()
+    tier_lookup = load_tier_lookup()
 
     models = []
     for index, row in enumerate(rows):
@@ -220,7 +231,7 @@ def main():
             "rank_numeric": rank_numeric,
             "rank_sort": rank_numeric if rank_numeric is not None else 1000 + index,
             "model": row["model"],
-            "tier": row["tier"],
+            "tier": tier_lookup.get(row["model"], row["tier"]),
             "cw_pct": parse_float(row.get("cw_pct")),
             "ots_pct": parse_float(row.get("ots_pct")),
             "ots_macro": parse_float(row.get("ots_macro")),

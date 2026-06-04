@@ -23,6 +23,10 @@ def main():
     with open(TIERS_PATH) as f:
         tiers_config = json.load(f)
     excluded = set(tiers_config.get("excluded", []))
+    tier_lookup = {}
+    for tier_key, tier_data in tiers_config.get("tiers", {}).items():
+        for model in tier_data["models"]:
+            tier_lookup[model] = tier_key
 
     # Load leaderboard
     lb_path = COMBINED_DIR / "leaderboard.json"
@@ -35,7 +39,7 @@ def main():
         if name in excluded:
             continue
         cw_pct = float(m['cw_pct'])
-        tier = m['tier']
+        tier = tier_lookup.get(name, m['tier'])
         avg_s = float(m.get('avg_seconds_per_event', 0))
         if avg_s <= 0:
             continue

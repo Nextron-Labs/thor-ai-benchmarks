@@ -170,7 +170,7 @@
     "total_tokens": "716851",
     "total_llm_errors": "0",
     "rank": "6",
-    "tier": "open_source_pro",
+    "tier": "closed_source",
     "incomplete": false
   },
   {
@@ -199,7 +199,7 @@
     "total_tokens": "1614322",
     "total_llm_errors": "3",
     "rank": "7",
-    "tier": "open_source_pro",
+    "tier": "closed_source",
     "incomplete": false
   },
   {
@@ -257,7 +257,7 @@
     "total_tokens": "953991",
     "total_llm_errors": "2",
     "rank": "9",
-    "tier": "open_source_pro",
+    "tier": "closed_source",
     "incomplete": false
   },
   {
@@ -402,7 +402,7 @@
     "total_tokens": "915707",
     "total_llm_errors": "0",
     "rank": "14",
-    "tier": "open_source_pro",
+    "tier": "closed_source",
     "incomplete": false
   },
   {
@@ -721,7 +721,7 @@
     "total_tokens": "917039",
     "total_llm_errors": "4",
     "rank": "25",
-    "tier": "open_source_pro",
+    "tier": "closed_source",
     "incomplete": false
   },
   {
@@ -924,7 +924,7 @@
     "total_tokens": "666440",
     "total_llm_errors": "0",
     "rank": "32",
-    "tier": "closed_source",
+    "tier": "open_source_pro",
     "incomplete": false
   },
   {
@@ -1243,7 +1243,7 @@
     "total_tokens": "540074",
     "total_llm_errors": "1",
     "rank": "43",
-    "tier": "open_source_pro",
+    "tier": "open_source_consumer",
     "incomplete": false
   },
   {

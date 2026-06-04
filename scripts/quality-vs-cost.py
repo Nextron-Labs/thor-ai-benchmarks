@@ -57,7 +57,7 @@ def main():
         if m.get('tier') == 'baseline':
             continue
         cw_pct = float(m['cw_pct'])
-        tier = m['tier']
+        tier = tier_lookup.get(name, m['tier'])
         total_tokens = int(m.get('total_tokens', 0))
         if name not in model_prices:
             missing_price.append(name)

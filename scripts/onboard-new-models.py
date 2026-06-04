@@ -159,13 +159,32 @@ def infer_tier(bench_name, or_id=None):
     """Infer tier from model name or OpenRouter ID."""
     name = bench_name.lower()
 
+    closed_vendor_models = {
+        "mimo-v2-pro", "mercury-2", "step-3.5-flash",
+        "ernie-4.5-thinking", "grok-4-fast", "grok-4.1-fast",
+    }
+    if name in closed_vendor_models:
+        return "closed_source"
+
+    if name.startswith("qwen") and any(
+        suffix in name for suffix in ("-max", ".max", "-plus", ".plus", "-flash", ".flash")
+    ):
+        return "closed_source"
+
     # Open source consumer (can run on consumer hardware)
     consumer_models = {
         "gemma4-31b", "qwen3.6-35b", "qwen3.5-9b", "devstral-small",
-        "llama-3.1-8b", "llama-3.1-70b"
+        "llama-3.1-8b", "llama-3.1-70b", "mistral-nemo", "gpt-oss-20b",
+        "gpt-oss-120b", "ministral-14b",
     }
     if name in consumer_models:
         return "open_source_consumer"
+
+    open_pro_models = {
+        "hy3-preview", "minimax-m2.7", "ring-2.6-1t",
+    }
+    if name in open_pro_models:
+        return "open_source_pro"
 
     # Check for indicators
     if any(x in name for x in ["70b", "120b", "235b", "397b", "pro-", "max-"]):

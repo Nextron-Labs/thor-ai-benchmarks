@@ -120,12 +120,12 @@ def load_tiers():
 
 
 def resolve_tier(model, tiers, tier_lookup):
-    row_tier = model.get("tier")
-    if row_tier in tiers:
-        return row_tier
     fallback_tier = tier_lookup.get(model["model"])
     if fallback_tier in tiers:
         return fallback_tier
+    row_tier = model.get("tier")
+    if row_tier in tiers:
+        return row_tier
     raise KeyError(model["model"])
 
 

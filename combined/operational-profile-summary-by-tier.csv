@@ -1,10 +1,10 @@
 tier,profile,recommended_model,cw_pct,balanced_ots,critical_miss_rate,threat_capture_rate,false_review_load,false_escalation_rate,cost_per_run,avg_seconds_per_event,recommendation_status,exclusion_reason_if_none
 Closed Source (Vendor API),High-safety,gemini-3.1-flash-lite,67.8,70.8,0.0,100.0,33.0,3.1,$0.24,2.07,profile leader under current constraints,
 Closed Source (Vendor API),Balanced SOC,gemini-3.1-flash-lite,67.8,70.8,0.0,100.0,33.0,3.1,$0.24,2.07,profile leader under current constraints,
-Closed Source (Vendor API),Noise-reduction,gemini-3.5-flash,69.6,68.8,1.8,98.2,30.9,5.2,$2.22,9.23,profile leader under current constraints,
+Closed Source (Vendor API),Noise-reduction,qwen3.6-max,65.4,50.1,12.7,87.3,22.7,8.2,$2.94,95.29,profile leader under current constraints,
 Open Source (Pro Hardware),High-safety,glm-5.1,65.3,69.6,0.0,100.0,39.2,10.3,$0.84,36.35,profile leader under current constraints,
 Open Source (Pro Hardware),Balanced SOC,glm-5.1,65.3,69.6,0.0,100.0,39.2,10.3,$0.84,36.35,profile leader under current constraints,
-Open Source (Pro Hardware),Noise-reduction,qwen3.6-max,65.4,50.1,12.7,87.3,22.7,8.2,$2.94,95.29,profile leader under current constraints,
+Open Source (Pro Hardware),Noise-reduction,kimi-k2.6,59.6,58.2,1.8,98.2,35.1,5.2,$1.11,77.60,profile leader under current constraints,
 Open Source (Consumer Hardware),High-safety,gemma4-31b,65.7,68.5,0.0,100.0,39.2,5.2,$0.09,22.45,profile leader under current constraints,
 Open Source (Consumer Hardware),Balanced SOC,gemma4-31b,65.7,68.5,0.0,100.0,39.2,5.2,$0.09,22.45,profile leader under current constraints,
 Open Source (Consumer Hardware),Noise-reduction,qwen3.5-9b,53.7,49.0,10.9,89.1,38.1,4.1,$0.05,25.04,profile leader under current constraints,

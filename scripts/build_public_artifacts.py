@@ -12,6 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 STEPS = [
+    "scripts/sync_model_tiers.py",
     "scripts/operational_profiles.py",
     "scripts/generate_charts.py",
     "scripts/quality-vs-speed.py",

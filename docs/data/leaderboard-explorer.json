@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-26T10:40:41.170834+00:00",
+  "generated_at": "2026-06-04T00:15:49.836034+00:00",
   "source": {
     "leaderboard": "combined/leaderboard.json",
     "operational_summary_by_tier": "combined/operational-profile-summary-by-tier.csv"
@@ -220,7 +220,7 @@
         "profile_label": "Noise-reduction",
         "use_case": "Noise reduction / high-volume triage",
         "model": "qwen3.6-max",
-        "tier": "open_source_pro",
+        "tier": "closed_source",
         "reason": "Lowest False Review Load overall among models that cleared the guardrails; low review load."
       }
     ],
@@ -246,7 +246,7 @@
           "profile_key": "noise_reduction",
           "profile_label": "Noise-reduction",
           "use_case": "Noise reduction / high-volume triage",
-          "model": "gemini-3.5-flash",
+          "model": "qwen3.6-max",
           "tier": "closed_source",
           "reason": "Lowest False Review Load in this tier among models that cleared the guardrails; low review load."
         }
@@ -272,7 +272,7 @@
           "profile_key": "noise_reduction",
           "profile_label": "Noise-reduction",
           "use_case": "Noise reduction / high-volume triage",
-          "model": "qwen3.6-max",
+          "model": "kimi-k2.6",
           "tier": "open_source_pro",
           "reason": "Lowest False Review Load in this tier among models that cleared the guardrails; low review load."
         }
@@ -557,7 +557,7 @@
       "rank_numeric": 6,
       "rank_sort": 6,
       "model": "qwen3.7-max",
-      "tier": "open_source_pro",
+      "tier": "closed_source",
       "cw_pct": 65.7,
       "ots_pct": 63.5,
       "ots_macro": 65.4,
@@ -595,7 +595,7 @@
       "rank_numeric": 7,
       "rank_sort": 7,
       "model": "qwen3.6-max",
-      "tier": "open_source_pro",
+      "tier": "closed_source",
       "cw_pct": 65.4,
       "ots_pct": 56.8,
       "ots_macro": 60.6,
@@ -671,7 +671,7 @@
       "rank_numeric": 9,
       "rank_sort": 9,
       "model": "qwen3.5-plus-20260420",
-      "tier": "open_source_pro",
+      "tier": "closed_source",
       "cw_pct": 63.7,
       "ots_pct": 59.1,
       "ots_macro": 63.5,
@@ -861,7 +861,7 @@
       "rank_numeric": 14,
       "rank_sort": 14,
       "model": "qwen3.6-plus",
-      "tier": "open_source_pro",
+      "tier": "closed_source",
       "cw_pct": 60.3,
       "ots_pct": 54.3,
       "ots_macro": 57.2,
@@ -1279,7 +1279,7 @@
       "rank_numeric": 25,
       "rank_sort": 25,
       "model": "qwen3.6-flash",
-      "tier": "open_source_pro",
+      "tier": "closed_source",
       "cw_pct": 55.2,
       "ots_pct": 45.4,
       "ots_macro": 51.6,
@@ -1545,7 +1545,7 @@
       "rank_numeric": 32,
       "rank_sort": 32,
       "model": "minimax-m2.7",
-      "tier": "closed_source",
+      "tier": "open_source_pro",
       "cw_pct": 53.5,
       "ots_pct": 53.4,
       "ots_macro": 54.2,
@@ -1963,7 +1963,7 @@
       "rank_numeric": 43,
       "rank_sort": 43,
       "model": "mistral-nemo",
-      "tier": "open_source_pro",
+      "tier": "open_source_consumer",
       "cw_pct": 35.6,
       "ots_pct": 26.7,
       "ots_macro": 33.6,
