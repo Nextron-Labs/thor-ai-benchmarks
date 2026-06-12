@@ -139,6 +139,16 @@ def main() -> int:
     if missing_site:
         raise SystemExit(f"Missing required site artifacts: {missing_site}")
 
+    site_data = load_json(DOCS / "data" / "leaderboard-explorer.json")
+    site_models = {m["model"] for m in site_data.get("models", [])}
+    leaderboard_models = {m["model"] for m in leaderboard}
+    if site_models != leaderboard_models:
+        raise SystemExit(
+            "Site data/leaderboard model mismatch: "
+            f"site-only={sorted(site_models - leaderboard_models)}, "
+            f"leaderboard-only={sorted(leaderboard_models - site_models)}"
+        )
+
     readme_text = README.read_text()
     missing_markers = [marker for marker in GENERATED_MARKERS if marker not in readme_text]
     if missing_markers:
