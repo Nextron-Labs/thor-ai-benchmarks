@@ -70,6 +70,12 @@ CHART_GALLERY = [
         "description": "Shows how each model's classifications split into exact matches, near misses, and hard errors.",
     },
     {
+        "key": "classification-breakdown-recent",
+        "title": "Classification Breakdown — Recent Additions",
+        "filename": "classification-breakdown-recent.png",
+        "description": "Shows the classification breakdown with recently added benchmark models highlighted.",
+    },
+    {
         "key": "quality-vs-speed",
         "title": "Quality vs Speed",
         "filename": "quality-vs-speed.png",

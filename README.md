@@ -2,7 +2,7 @@
 
 This benchmark evaluates LLMs on THOR finding triage. It focuses on security event and forensic finding assessment, not generic reasoning, coding, or vulnerability research.
 
-The current public result set covers **50 complete models**, **10 THOR reports**, and **189 expert-classified findings**. Models are compared against human expert ground truth and are evaluated on both classification quality and operational usefulness.
+The current public result set covers **66 complete models**, **10 THOR reports**, and **189 expert-classified findings**. Models are compared against human expert ground truth and are evaluated on both classification quality and operational usefulness.
 
 Interactive companion: [THOR Finding Triage Benchmark](https://nextron-labs.github.io/thor-ai-benchmarks/) for hoverable scatter plots, tier filters, leader tables, and the chart gallery. Use it whenever the static charts below get too dense to read.
 
@@ -206,6 +206,12 @@ This chart shows how each model’s decisions break down. Green is exact agreeme
 
 The stacked bars sum to 100% for each complete model over the current full R1-R10 finding set. Incomplete or invalid model attempts are dropped from public charts and listed separately. For absolute counts of only the operational error classes, see [operational-error-breakdown.png](charts/operational-error-breakdown.png).
 
+### 8a. Classification Breakdown — Recent Additions
+
+![Classification Breakdown — Recent Additions](charts/classification-breakdown-recent.png)
+
+This is the same classification breakdown with recently added benchmark models highlighted. The highlighted list is configured in `scripts/model_tiers.json` so new candidate batches can be called out without changing the chart logic.
+
 ### 9. CW% Leaderboard
 
 ![CW% Leaderboard](charts/cw-leaderboard.png)
@@ -248,12 +254,12 @@ Naive baselines can appear strong on individual metrics, especially safety metri
 | 4 | `gemini-3.5-flash` | 69.6% | 68.8% | 1.8% | 98.2% | 30.9% | 5.2% | $2.22 | 9.23s |
 | 5 | `gemma4-31b` | 65.7% | 68.5% | 0.0% | 100.0% | 39.2% | 5.2% | $0.09 | 22.45s |
 | 6 | `gemini-3.1-pro` | 66.2% | 66.3% | 1.8% | 98.2% | 37.1% | 3.1% | $4.47 | 22.33s |
-| 7 | `claude-opus-4.6` | 62.4% | 64.8% | 0.0% | 100.0% | 43.3% | 9.3% | $4.91 | 11.93s |
-| 8 | `qwen3-235b-a22b` | 55.8% | 64.2% | 0.0% | 100.0% | 54.6% | 6.2% | $0.08 | 29.90s |
-| 9 | `gpt-5.5` | 57.4% | 63.8% | 0.0% | 100.0% | 44.3% | 5.2% | $6.15 | 84.81s |
-| 10 | `gemma4-26b-a4b` | 63.5% | 62.8% | 0.0% | 100.0% | 40.2% | 11.3% | — | 12.78s |
+| 7 | `glm-5.2` | 60.9% | 65.1% | 0.0% | 100.0% | 46.4% | 7.2% | $1.28 | 18.38s |
+| 8 | `claude-opus-4.6` | 62.4% | 64.8% | 0.0% | 100.0% | 43.3% | 9.3% | $4.91 | 11.93s |
+| 9 | `claude-opus-4.8` | 62.6% | 64.7% | 0.0% | 100.0% | 33.0% | 4.1% | $6.97 | 9.10s |
+| 10 | `nex-n2-pro` | 56.1% | 64.2% | 0.0% | 100.0% | 49.5% | 5.2% | $0.00 | 16.53s |
 
-**Shown:** top 10 / 32 matched models. **Matched:** 32 / 50 complete models.
+**Shown:** top 10 / 41 matched models. **Matched:** 41 / 66 complete models.
 
 **Interpretation:** Under these constraints, `gemini-3.1-flash-lite` is the current profile leader. Values in this section are generated from `combined/operational-profile-high-safety.csv`.
 
@@ -273,12 +279,12 @@ Naive baselines can appear strong on individual metrics, especially safety metri
 | 4 | `gemini-3.5-flash` | 69.6% | 68.8% | 1.8% | 98.2% | 30.9% | 5.2% | $2.22 | 9.23s |
 | 5 | `gemma4-31b` | 65.7% | 68.5% | 0.0% | 100.0% | 39.2% | 5.2% | $0.09 | 22.45s |
 | 6 | `gemini-3.1-pro` | 66.2% | 66.3% | 1.8% | 98.2% | 37.1% | 3.1% | $4.47 | 22.33s |
-| 7 | `claude-opus-4.6` | 62.4% | 64.8% | 0.0% | 100.0% | 43.3% | 9.3% | $4.91 | 11.93s |
-| 8 | `qwen3-235b-a22b` | 55.8% | 64.2% | 0.0% | 100.0% | 54.6% | 6.2% | $0.08 | 29.90s |
-| 9 | `gpt-5.5` | 57.4% | 63.8% | 0.0% | 100.0% | 44.3% | 5.2% | $6.15 | 84.81s |
-| 10 | `gemma4-26b-a4b` | 63.5% | 62.8% | 0.0% | 100.0% | 40.2% | 11.3% | — | 12.78s |
+| 7 | `glm-5.2` | 60.9% | 65.1% | 0.0% | 100.0% | 46.4% | 7.2% | $1.28 | 18.38s |
+| 8 | `claude-opus-4.6` | 62.4% | 64.8% | 0.0% | 100.0% | 43.3% | 9.3% | $4.91 | 11.93s |
+| 9 | `claude-opus-4.8` | 62.6% | 64.7% | 0.0% | 100.0% | 33.0% | 4.1% | $6.97 | 9.10s |
+| 10 | `nex-n2-pro` | 56.1% | 64.2% | 0.0% | 100.0% | 49.5% | 5.2% | $0.00 | 16.53s |
 
-**Shown:** top 10 / 46 matched models. **Matched:** 46 / 50 complete models.
+**Shown:** top 10 / 57 matched models. **Matched:** 57 / 66 complete models.
 
 **Interpretation:** Under these constraints, `gemini-3.1-flash-lite` is the current profile leader. Values in this section are generated from `combined/operational-profile-balanced-soc.csv`.
 
@@ -298,12 +304,12 @@ Naive baselines can appear strong on individual metrics, especially safety metri
 | 4 | `qwen3.6-27b` | 63.7% | 56.8% | 7.3% | 92.7% | 27.8% | 3.1% | — | 52.29s |
 | 5 | `qwen3.6-flash` | 55.2% | 37.7% | 18.2% | 81.8% | 29.9% | 3.1% | $0.30 | 17.61s |
 | 6 | `gemini-3.5-flash` | 69.6% | 68.8% | 1.8% | 98.2% | 30.9% | 5.2% | $2.22 | 9.23s |
-| 7 | `mimo-v2-pro` | 61.2% | 49.7% | 5.5% | 94.5% | 30.9% | 16.5% | $0.69 | 9.85s |
-| 8 | `qwen3.7-max` | 65.7% | 61.7% | 0.0% | 100.0% | 32.0% | 6.2% | — | 12.72s |
-| 9 | `gemini-3.1-flash-lite` | 67.8% | 70.8% | 0.0% | 100.0% | 33.0% | 3.1% | $0.24 | 2.07s |
-| 10 | `claude-opus-4.5` | 66.3% | 69.0% | 1.8% | 98.2% | 35.1% | 12.4% | $4.81 | 9.42s |
+| 7 | `qwen3.7-plus` | 62.7% | 60.1% | 3.6% | 96.4% | 30.9% | 5.2% | $0.36 | 32.30s |
+| 8 | `mimo-v2-pro` | 61.2% | 49.7% | 5.5% | 94.5% | 30.9% | 16.5% | $0.69 | 9.85s |
+| 9 | `qwen3.7-max` | 65.7% | 61.7% | 0.0% | 100.0% | 32.0% | 6.2% | — | 12.72s |
+| 10 | `gemini-3.1-flash-lite` | 67.8% | 70.8% | 0.0% | 100.0% | 33.0% | 3.1% | $0.24 | 2.07s |
 
-**Shown:** top 10 / 42 matched models. **Matched:** 42 / 50 complete models.
+**Shown:** top 10 / 51 matched models. **Matched:** 51 / 66 complete models.
 
 **Interpretation:** Under these constraints, `qwen3.6-max` is the current profile leader. Values in this section are generated from `combined/operational-profile-noise-reduction.csv`.
 

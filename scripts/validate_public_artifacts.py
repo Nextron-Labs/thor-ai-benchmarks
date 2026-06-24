@@ -113,6 +113,7 @@ def main() -> int:
 
     required_charts = [
         "classification-breakdown.png",
+        "classification-breakdown-recent.png",
         "operational-error-breakdown.png",
         "cw-leaderboard.png",
         "critical-miss-vs-false-review.png",
@@ -130,6 +131,7 @@ def main() -> int:
     site_artifacts = [
         DOCS / "data" / "leaderboard-explorer.json",
         DOCS / "charts" / "classification-breakdown.png",
+        DOCS / "charts" / "classification-breakdown-recent.png",
         DOCS / "charts" / "quality-vs-cost.png",
         DOCS / "charts" / "quality-vs-speed.png",
         DOCS / "charts" / "operational-profile-summary.png",

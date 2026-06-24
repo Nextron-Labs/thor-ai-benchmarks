@@ -3,208 +3,273 @@
   "fetched_at": "2026-05-15T11:04:28.028682+00:00",
   "models": {
     "anthropic/claude-haiku-4.5": {
-      "prompt": 1e-06,
-      "completion": 5e-06
+      "completion": 5e-06,
+      "prompt": 1e-06
     },
     "anthropic/claude-opus-4.5": {
-      "prompt": 5e-06,
-      "completion": 2.5e-05
+      "completion": 2.5e-05,
+      "prompt": 5e-06
     },
     "anthropic/claude-opus-4.6": {
-      "prompt": 5e-06,
-      "completion": 2.5e-05
+      "completion": 2.5e-05,
+      "prompt": 5e-06
+    },
+    "anthropic/claude-opus-4.8": {
+      "completion": 2.5e-05,
+      "prompt": 5e-06
     },
     "anthropic/claude-sonnet-4.5": {
-      "prompt": 3e-06,
-      "completion": 1.5e-05
+      "completion": 1.5e-05,
+      "prompt": 3e-06
     },
     "anthropic/claude-sonnet-4.6": {
-      "prompt": 3e-06,
-      "completion": 1.5e-05
+      "completion": 1.5e-05,
+      "prompt": 3e-06
     },
     "deepseek/deepseek-chat": {
-      "prompt": 3.2e-07,
-      "completion": 8.9e-07
+      "completion": 8.9e-07,
+      "prompt": 3.2e-07
     },
     "deepseek/deepseek-chat-v3-0324": {
-      "prompt": 2e-07,
-      "completion": 7.7e-07
+      "completion": 7.7e-07,
+      "prompt": 2e-07
     },
     "deepseek/deepseek-chat-v3.1": {
-      "prompt": 2.1e-07,
-      "completion": 7.9e-07
+      "completion": 7.9e-07,
+      "prompt": 2.1e-07
     },
     "google/gemini-2.5-flash": {
-      "prompt": 3e-07,
-      "completion": 2.5e-06
+      "completion": 2.5e-06,
+      "prompt": 3e-07
+    },
+    "google/gemini-2.5-flash-lite": {
+      "completion": 4e-07,
+      "prompt": 1e-07
     },
     "google/gemini-2.5-pro": {
-      "prompt": 1.25e-06,
-      "completion": 1e-05
+      "completion": 1e-05,
+      "prompt": 1.25e-06
     },
     "google/gemini-3.1-flash-lite": {
-      "prompt": 2.5e-07,
-      "completion": 1.5e-06
+      "completion": 1.5e-06,
+      "prompt": 2.5e-07
     },
     "google/gemini-3.1-pro-preview": {
-      "prompt": 2e-06,
-      "completion": 1.2e-05
+      "completion": 1.2e-05,
+      "prompt": 2e-06
     },
     "google/gemini-3.5-flash": {
-      "prompt": 1.5e-06,
-      "completion": 9e-06
+      "completion": 9e-06,
+      "prompt": 1.5e-06
+    },
+    "google/gemma-3-12b-it": {
+      "completion": 1.5e-07,
+      "prompt": 5e-08
+    },
+    "google/gemma-3-27b-it": {
+      "completion": 1.6e-07,
+      "prompt": 8e-08
+    },
+    "google/gemma-3-4b-it": {
+      "completion": 1e-07,
+      "prompt": 5e-08
+    },
+    "google/gemma-3n-e4b-it": {
+      "completion": 1.2e-07,
+      "prompt": 6e-08
     },
     "google/gemma-4-31b-it": {
-      "prompt": 1.2e-07,
-      "completion": 3.7e-07
+      "completion": 3.7e-07,
+      "prompt": 1.2e-07
     },
     "inception/mercury-2": {
-      "prompt": 2.5e-07,
-      "completion": 7.5e-07
+      "completion": 7.5e-07,
+      "prompt": 2.5e-07
     },
     "meta-llama/llama-3.1-70b-instruct": {
-      "prompt": 4e-07,
-      "completion": 4e-07
+      "completion": 4e-07,
+      "prompt": 4e-07
     },
     "meta-llama/llama-3.1-8b-instruct": {
-      "prompt": 2e-08,
-      "completion": 5e-08
+      "completion": 5e-08,
+      "prompt": 2e-08
     },
     "minimax/minimax-m2.5": {
-      "prompt": 1.5e-07,
-      "completion": 1.15e-06
+      "completion": 1.15e-06,
+      "prompt": 1.5e-07
     },
     "minimax/minimax-m2.7": {
-      "prompt": 2.79e-07,
-      "completion": 1.2e-06
+      "completion": 1.2e-06,
+      "prompt": 2.79e-07
+    },
+    "minimax/minimax-m3": {
+      "completion": 1.2e-06,
+      "prompt": 3e-07
     },
     "mistralai/devstral-small": {
-      "prompt": 1e-07,
-      "completion": 3e-07
+      "completion": 3e-07,
+      "prompt": 1e-07
     },
     "mistralai/ministral-14b-2512": {
-      "prompt": 2e-07,
-      "completion": 2e-07
+      "completion": 2e-07,
+      "prompt": 2e-07
     },
     "mistralai/mistral-nemo": {
-      "prompt": 2e-08,
-      "completion": 3e-08
+      "completion": 3e-08,
+      "prompt": 2e-08
     },
     "moonshotai/kimi-k2.5": {
-      "prompt": 4e-07,
-      "completion": 1.9e-06
+      "completion": 1.9e-06,
+      "prompt": 4e-07
     },
     "moonshotai/kimi-k2.6": {
-      "prompt": 7.3e-07,
-      "completion": 3.49e-06
+      "completion": 3.49e-06,
+      "prompt": 7.3e-07
     },
     "moonshotai/kimi-k2.7-code": {
-      "prompt": 9.5e-07,
-      "completion": 4e-06
+      "completion": 4e-06,
+      "prompt": 9.5e-07
+    },
+    "nex-agi/nex-n2-pro:free": {
+      "completion": 0.0,
+      "prompt": 0.0
     },
     "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free": {
-      "prompt": 0.0,
-      "completion": 0.0
+      "completion": 0.0,
+      "prompt": 0.0
     },
     "nvidia/nemotron-3-super-120b-a12b": {
-      "prompt": 9e-08,
-      "completion": 4.5e-07
+      "completion": 4.5e-07,
+      "prompt": 9e-08
     },
     "nvidia/nemotron-3-ultra-550b-a55b": {
-      "prompt": 5e-07,
-      "completion": 2.5e-06
+      "completion": 2.2e-06,
+      "prompt": 5e-07
+    },
+    "openai/gpt-4o-mini": {
+      "completion": 6e-07,
+      "prompt": 1.5e-07
     },
     "openai/gpt-5": {
-      "prompt": 1.25e-06,
-      "completion": 1e-05
+      "completion": 1e-05,
+      "prompt": 1.25e-06
     },
     "openai/gpt-5-mini": {
-      "prompt": 2.5e-07,
-      "completion": 2e-06
+      "completion": 2e-06,
+      "prompt": 2.5e-07
     },
     "openai/gpt-5-nano": {
-      "prompt": 5e-08,
-      "completion": 4e-07
+      "completion": 4e-07,
+      "prompt": 5e-08
     },
     "openai/gpt-5.4": {
-      "prompt": 2.5e-06,
-      "completion": 1.5e-05
+      "completion": 1.5e-05,
+      "prompt": 2.5e-06
     },
     "openai/gpt-5.4-mini": {
-      "prompt": 7.5e-07,
-      "completion": 4.5e-06
+      "completion": 4.5e-06,
+      "prompt": 7.5e-07
     },
     "openai/gpt-5.4-nano": {
-      "prompt": 2e-07,
-      "completion": 1.25e-06
+      "completion": 1.25e-06,
+      "prompt": 2e-07
     },
     "openai/gpt-5.5": {
-      "prompt": 5e-06,
-      "completion": 3e-05
+      "completion": 3e-05,
+      "prompt": 5e-06
     },
     "openai/gpt-oss-120b": {
-      "prompt": 3.9e-08,
-      "completion": 1.8e-07
+      "completion": 1.8e-07,
+      "prompt": 3.9e-08
     },
     "openai/gpt-oss-20b": {
-      "prompt": 3e-08,
-      "completion": 1.4e-07
+      "completion": 1.4e-07,
+      "prompt": 3e-08
+    },
+    "openrouter/owl-alpha": {
+      "completion": 0.0,
+      "prompt": 0.0
+    },
+    "poolside/laguna-m.1:free": {
+      "completion": 0.0,
+      "prompt": 0.0
     },
     "qwen/qwen3-235b-a22b-2507": {
-      "prompt": 7.1e-08,
-      "completion": 1e-07
+      "completion": 1e-07,
+      "prompt": 7.1e-08
     },
     "qwen/qwen3.5-397b-a17b": {
-      "prompt": 3.9e-07,
-      "completion": 2.34e-06
+      "completion": 2.34e-06,
+      "prompt": 3.9e-07
     },
     "qwen/qwen3.5-9b": {
-      "prompt": 4e-08,
-      "completion": 1.5e-07
+      "completion": 1.5e-07,
+      "prompt": 4e-08
     },
     "qwen/qwen3.5-plus-20260420": {
-      "prompt": 3e-07,
-      "completion": 1.8e-06
+      "completion": 1.8e-06,
+      "prompt": 3e-07
+    },
+    "qwen/qwen3.6-35b-a3b": {
+      "completion": 1e-06,
+      "prompt": 1.5e-07
     },
     "qwen/qwen3.6-flash": {
-      "prompt": 1.875e-07,
-      "completion": 1.125e-06
+      "completion": 1.125e-06,
+      "prompt": 1.875e-07
     },
     "qwen/qwen3.6-max-preview": {
-      "prompt": 1.04e-06,
-      "completion": 6.24e-06
+      "completion": 6.24e-06,
+      "prompt": 1.04e-06
+    },
+    "qwen/qwen3.7-plus": {
+      "completion": 1.28e-06,
+      "prompt": 3.2e-07
     },
     "x-ai/grok-4": {
-      "prompt": 3e-06,
-      "completion": 1.5e-05
+      "completion": 1.5e-05,
+      "prompt": 3e-06
     },
     "x-ai/grok-4-fast": {
-      "prompt": 2e-07,
-      "completion": 5e-07
+      "completion": 5e-07,
+      "prompt": 2e-07
     },
     "x-ai/grok-4.1-fast": {
-      "prompt": 2e-07,
-      "completion": 5e-07
+      "completion": 5e-07,
+      "prompt": 2e-07
     },
     "x-ai/grok-4.20": {
-      "prompt": 1.25e-06,
-      "completion": 2.5e-06
+      "completion": 2.5e-06,
+      "prompt": 1.25e-06
     },
     "x-ai/grok-4.3": {
-      "prompt": 1.25e-06,
-      "completion": 2.5e-06
+      "completion": 2.5e-06,
+      "prompt": 1.25e-06
     },
     "xiaomi/mimo-v2-pro": {
-      "prompt": 1e-06,
-      "completion": 3e-06
+      "completion": 3e-06,
+      "prompt": 1e-06
+    },
+    "xiaomi/mimo-v2.5": {
+      "completion": 2.8e-07,
+      "prompt": 1.4e-07
+    },
+    "xiaomi/mimo-v2.5-pro": {
+      "completion": 8.7e-07,
+      "prompt": 4.35e-07
     },
     "z-ai/glm-5": {
-      "prompt": 6e-07,
-      "completion": 1.92e-06
+      "completion": 1.92e-06,
+      "prompt": 6e-07
     },
     "z-ai/glm-5.1": {
-      "prompt": 9.8e-07,
-      "completion": 3.08e-06
+      "completion": 3.08e-06,
+      "prompt": 9.8e-07
+    },
+    "z-ai/glm-5.2": {
+      "completion": 4.4e-06,
+      "prompt": 1.4e-06
     }
-  }
+  },
+  "source": "https://openrouter.ai/api/v1/models"
 }

@@ -40,6 +40,7 @@ with open(tiers_path) as f:
     tiers_payload = json.load(f)
 tiers_config = tiers_payload["tiers"]
 excluded = set(tiers_payload.get("excluded", []))
+recent_additions = set(tiers_payload.get("highlights", {}).get("recent_additions", []))
 
 # Build tier lookup
 tier_lookup = {}
@@ -244,6 +245,50 @@ ax.text(
 plt.tight_layout()
 fig.savefig(charts_dir / 'classification-breakdown.png', dpi=150, bbox_inches='tight')
 print(f"✓ classification-breakdown.png")
+
+recent_in_breakdown = [b['model'] for b in breakdown if b['model'] in recent_additions]
+if recent_in_breakdown:
+    fig, ax = plt.subplots(figsize=(15, 12))
+    y_pos = range(len(names))
+    for i, b in enumerate(breakdown):
+        if b['model'] in recent_additions:
+            ax.axhspan(i - 0.48, i + 0.48, color='#FFF3BF', alpha=0.75, zorder=0)
+
+    left = np.zeros(len(breakdown))
+    for key, label, color in visible_cats:
+        vals = [100.0 * b[key] / b['total'] for b in breakdown]
+        ax.barh(
+            y_pos, vals, left=left, color=color, edgecolor='white',
+            linewidth=0.45, label=label, zorder=2
+        )
+        left += np.array(vals)
+
+    ax.set_yticks(y_pos)
+    ax.set_yticklabels(names, fontsize=9)
+    for tick, model_name in zip(ax.get_yticklabels(), names):
+        if model_name in recent_additions:
+            tick.set_fontweight('bold')
+            tick.set_color('#6B4E00')
+    ax.invert_yaxis()
+    ax.set_xlabel('Share of scored findings and invalid responses (%)', fontsize=12)
+    ax.set_xlim(0, 100)
+    ax.set_title('Classification Breakdown by Model — Recent Additions Highlighted', fontsize=14, fontweight='bold')
+
+    handles, labels = ax.get_legend_handles_labels()
+    handles.append(mpatches.Patch(facecolor='#FFF3BF', edgecolor='#B08D00', label='Recent addition'))
+    labels.append('Recent addition')
+    ax.legend(handles, labels, loc='center left', bbox_to_anchor=(1.01, 0.5), fontsize=9, framealpha=0.94)
+    ax.grid(axis='x', alpha=0.2)
+    ax.text(
+        0.01, 0.015,
+        f'Highlighted models: {", ".join(recent_in_breakdown)}.\n'
+        f'Bars sum to 100% per model over {report_key}. Incomplete model attempts are excluded from public charts.',
+        transform=ax.transAxes, fontsize=8.5, ha='left', va='bottom',
+        bbox=dict(boxstyle='round,pad=0.35', facecolor='white', edgecolor='lightgray', alpha=0.9)
+    )
+    plt.tight_layout()
+    fig.savefig(charts_dir / 'classification-breakdown-recent.png', dpi=150, bbox_inches='tight')
+    print(f"✓ classification-breakdown-recent.png")
 
 # Companion chart: operational errors only, absolute counts for easier comparison.
 fig, ax = plt.subplots(figsize=(14, 12))
