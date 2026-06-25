@@ -1,5 +1,5 @@
 rank,model,cw_pct,balanced_ots,critical_miss,threat_capture,false_review,false_escalation,cost_per_run,avg_seconds_per_event,n,incomplete
-1,qwen3.6-27b,63.7,56.8,7.3,92.7,27.8,3.1,,52.29,189,False
-2,qwen3.5-9b,53.7,49.0,10.9,89.1,38.1,4.1,0.05,25.04,189,False
+1,qwen3.6-27b,66.1,61.3,5.5,94.5,24.7,2.1,,49.18,189,False
+2,qwen3.5-9b,57.6,55.0,9.1,90.9,33.0,4.1,0.05,36.96,189,False
 3,gemma4-31b,65.7,68.5,0.0,100.0,39.2,5.2,0.09,22.45,189,False
 4,gemma4-26b-a4b,63.5,62.8,0.0,100.0,40.2,11.3,,12.78,189,False

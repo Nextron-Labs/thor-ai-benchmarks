@@ -45,7 +45,7 @@ Deployment constraints matter. A vendor API model may be easy to test, but some 
 |---|---|---|
 | High-safety triage | `gemma4-31b` | Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss. |
 | Balanced SOC triage | `gemma4-31b` | Profile leader under current constraints by Balanced OTS; 0.0% Critical Miss. |
-| Noise reduction / high-volume triage | `qwen3.6-27b` | Lowest False Review Load in this tier among models that cleared the guardrails; low review load; slower than many candidates. |
+| Noise reduction / high-volume triage | `qwen3.6-27b` | Lowest False Review Load in this tier among models that cleared the guardrails; low review load. |
 
 ### Why model tiers matter
 
@@ -253,13 +253,13 @@ Naive baselines can appear strong on individual metrics, especially safety metri
 | 3 | `claude-opus-4.5` | 66.3% | 69.0% | 1.8% | 98.2% | 35.1% | 12.4% | $4.81 | 9.42s |
 | 4 | `gemini-3.5-flash` | 69.6% | 68.8% | 1.8% | 98.2% | 30.9% | 5.2% | $2.22 | 9.23s |
 | 5 | `gemma4-31b` | 65.7% | 68.5% | 0.0% | 100.0% | 39.2% | 5.2% | $0.09 | 22.45s |
-| 6 | `gemini-3.1-pro` | 66.2% | 66.3% | 1.8% | 98.2% | 37.1% | 3.1% | $4.47 | 22.33s |
-| 7 | `glm-5.2` | 60.9% | 65.1% | 0.0% | 100.0% | 46.4% | 7.2% | $1.28 | 18.38s |
-| 8 | `claude-opus-4.6` | 62.4% | 64.8% | 0.0% | 100.0% | 43.3% | 9.3% | $4.91 | 11.93s |
-| 9 | `claude-opus-4.8` | 62.6% | 64.7% | 0.0% | 100.0% | 33.0% | 4.1% | $6.97 | 9.10s |
-| 10 | `nex-n2-pro` | 56.1% | 64.2% | 0.0% | 100.0% | 49.5% | 5.2% | $0.00 | 16.53s |
+| 6 | `kimi-k2.7-code` | 64.0% | 67.7% | 1.8% | 98.2% | 36.1% | 7.2% | $1.05 | 26.45s |
+| 7 | `gemini-3.1-pro` | 66.2% | 66.3% | 1.8% | 98.2% | 37.1% | 3.1% | $4.47 | 22.33s |
+| 8 | `glm-5` | 64.2% | 65.5% | 1.8% | 98.2% | 37.1% | 12.4% | $0.75 | 34.96s |
+| 9 | `claude-opus-4.6` | 62.4% | 64.8% | 0.0% | 100.0% | 43.3% | 9.3% | $4.91 | 11.93s |
+| 10 | `claude-opus-4.8` | 62.6% | 64.7% | 0.0% | 100.0% | 33.0% | 4.1% | $6.97 | 9.10s |
 
-**Shown:** top 10 / 41 matched models. **Matched:** 41 / 66 complete models.
+**Shown:** top 10 / 40 matched models. **Matched:** 40 / 66 complete models.
 
 **Interpretation:** Under these constraints, `gemini-3.1-flash-lite` is the current profile leader. Values in this section are generated from `combined/operational-profile-high-safety.csv`.
 
@@ -278,11 +278,11 @@ Naive baselines can appear strong on individual metrics, especially safety metri
 | 3 | `claude-opus-4.5` | 66.3% | 69.0% | 1.8% | 98.2% | 35.1% | 12.4% | $4.81 | 9.42s |
 | 4 | `gemini-3.5-flash` | 69.6% | 68.8% | 1.8% | 98.2% | 30.9% | 5.2% | $2.22 | 9.23s |
 | 5 | `gemma4-31b` | 65.7% | 68.5% | 0.0% | 100.0% | 39.2% | 5.2% | $0.09 | 22.45s |
-| 6 | `gemini-3.1-pro` | 66.2% | 66.3% | 1.8% | 98.2% | 37.1% | 3.1% | $4.47 | 22.33s |
-| 7 | `glm-5.2` | 60.9% | 65.1% | 0.0% | 100.0% | 46.4% | 7.2% | $1.28 | 18.38s |
-| 8 | `claude-opus-4.6` | 62.4% | 64.8% | 0.0% | 100.0% | 43.3% | 9.3% | $4.91 | 11.93s |
-| 9 | `claude-opus-4.8` | 62.6% | 64.7% | 0.0% | 100.0% | 33.0% | 4.1% | $6.97 | 9.10s |
-| 10 | `nex-n2-pro` | 56.1% | 64.2% | 0.0% | 100.0% | 49.5% | 5.2% | $0.00 | 16.53s |
+| 6 | `kimi-k2.7-code` | 64.0% | 67.7% | 1.8% | 98.2% | 36.1% | 7.2% | $1.05 | 26.45s |
+| 7 | `gemini-3.1-pro` | 66.2% | 66.3% | 1.8% | 98.2% | 37.1% | 3.1% | $4.47 | 22.33s |
+| 8 | `glm-5` | 64.2% | 65.5% | 1.8% | 98.2% | 37.1% | 12.4% | $0.75 | 34.96s |
+| 9 | `claude-opus-4.6` | 62.4% | 64.8% | 0.0% | 100.0% | 43.3% | 9.3% | $4.91 | 11.93s |
+| 10 | `claude-opus-4.8` | 62.6% | 64.7% | 0.0% | 100.0% | 33.0% | 4.1% | $6.97 | 9.10s |
 
 **Shown:** top 10 / 57 matched models. **Matched:** 57 / 66 complete models.
 
@@ -300,14 +300,14 @@ Naive baselines can appear strong on individual metrics, especially safety metri
 |---:|---|---:|---:|---:|---:|---:|---:|---:|---:|
 | 1 | `qwen3.6-max` | 65.4% | 50.1% | 12.7% | 87.3% | 22.7% | 8.2% | $2.94 | 95.29s |
 | 2 | `qwen3.5-plus-20260420` | 63.7% | 52.8% | 7.3% | 92.7% | 23.7% | 7.2% | $0.50 | 45.82s |
-| 3 | `qwen3.6-plus` | 60.3% | 47.5% | 9.1% | 90.9% | 26.8% | 3.1% | $1.67 | 41.64s |
-| 4 | `qwen3.6-27b` | 63.7% | 56.8% | 7.3% | 92.7% | 27.8% | 3.1% | — | 52.29s |
-| 5 | `qwen3.6-flash` | 55.2% | 37.7% | 18.2% | 81.8% | 29.9% | 3.1% | $0.30 | 17.61s |
-| 6 | `gemini-3.5-flash` | 69.6% | 68.8% | 1.8% | 98.2% | 30.9% | 5.2% | $2.22 | 9.23s |
-| 7 | `qwen3.7-plus` | 62.7% | 60.1% | 3.6% | 96.4% | 30.9% | 5.2% | $0.36 | 32.30s |
-| 8 | `mimo-v2-pro` | 61.2% | 49.7% | 5.5% | 94.5% | 30.9% | 16.5% | $0.69 | 9.85s |
-| 9 | `qwen3.7-max` | 65.7% | 61.7% | 0.0% | 100.0% | 32.0% | 6.2% | — | 12.72s |
-| 10 | `gemini-3.1-flash-lite` | 67.8% | 70.8% | 0.0% | 100.0% | 33.0% | 3.1% | $0.24 | 2.07s |
+| 3 | `qwen3.6-27b` | 66.1% | 61.3% | 5.5% | 94.5% | 24.7% | 2.1% | — | 49.18s |
+| 4 | `qwen3.6-plus` | 60.3% | 47.5% | 9.1% | 90.9% | 26.8% | 3.1% | $1.67 | 41.64s |
+| 5 | `qwen3.7-plus` | 63.8% | 61.0% | 3.6% | 96.4% | 28.9% | 4.1% | $0.37 | 33.58s |
+| 6 | `qwen3.6-flash` | 55.2% | 37.7% | 18.2% | 81.8% | 29.9% | 3.1% | $0.30 | 17.61s |
+| 7 | `gemini-3.5-flash` | 69.6% | 68.8% | 1.8% | 98.2% | 30.9% | 5.2% | $2.22 | 9.23s |
+| 8 | `kimi-k2.6` | 63.6% | 61.2% | 3.6% | 96.4% | 30.9% | 4.1% | $1.21 | 72.45s |
+| 9 | `mimo-v2-pro` | 61.2% | 49.7% | 5.5% | 94.5% | 30.9% | 16.5% | $0.69 | 9.85s |
+| 10 | `qwen3.7-max` | 65.7% | 61.7% | 0.0% | 100.0% | 32.0% | 6.2% | — | 12.72s |
 
 **Shown:** top 10 / 51 matched models. **Matched:** 51 / 66 complete models.
 

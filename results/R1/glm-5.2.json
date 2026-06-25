@@ -14,9 +14,9 @@
   "ordinal_total": 28,
   "ordinal_max": 32,
   "ordinal_pct": 87.5,
-  "cw_total": 24.11,
+  "cw_total": 24.155,
   "cw_max": 32.0,
-  "cw_pct": 75.3,
+  "cw_pct": 75.5,
   "ots_total": 24.6,
   "ots_max": 32.0,
   "ots_pct": 76.9,
@@ -37,18 +37,18 @@
     "FP-FP": 4,
     "FP-TP": 1
   },
-  "mae": 14.4,
-  "rmse": 21.4,
+  "mae": 9.4,
+  "rmse": 12.9,
   "n_scored": 16,
   "errors": [
     "line 14 (output finding #14): no stable ground-truth mapping for R1",
     "line 20 (output finding #18): no stable ground-truth mapping for R1",
     "line 21 (output finding #19): no stable ground-truth mapping for R1"
   ],
-  "elapsed_seconds": 334.762487783,
+  "elapsed_seconds": 631.031295354,
   "events_reviewed": 19,
-  "total_tokens": 65454,
-  "llm_errors": 1,
-  "result_path": "/home/neo/.openclaw/workspace/mjolnir-ai-benchmarking/runs/glm-5.2/thor-demo-report-1/mjolnir-report_2026-06-16T2051.json",
+  "total_tokens": 75111,
+  "llm_errors": 0,
+  "result_path": "/home/neo/.openclaw/workspace/mjolnir-ai-benchmarking/runs/glm-5.2/thor-demo-report-1/mjolnir-report_2026-06-24T1636.json",
   "report_dir": "/home/neo/.openclaw/workspace/mjolnir-ai-benchmarking/runs/glm-5.2/thor-demo-report-1"
 }
