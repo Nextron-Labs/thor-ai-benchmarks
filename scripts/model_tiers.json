@@ -1,6 +1,11 @@
 {
   "highlights": {
     "recent_additions": [
+      "qwen3.8-omni-flash",
+      "qwen3.8-flash",
+      "qwen3-32b",
+      "qwen3-14b",
+      "qwen3-8b",
       "gemini-3.8-flash",
       "muse-spark-1.3",
       "ox-alpha",
@@ -104,7 +109,9 @@
         "glm-5.3",
         "ox-alpha",
         "muse-spark-1.3",
-        "gemini-3.8-flash"
+        "gemini-3.8-flash",
+        "qwen3.8-flash",
+        "qwen3.8-omni-flash"
       ]
     },
     "open_source_pro": {
@@ -132,7 +139,8 @@
         "nemotron-3-ultra-550b",
         "nemotron-3-ultra",
         "nemotron-3-nano-omni",
-        "ring-2.6-1t"
+        "ring-2.6-1t",
+        "qwen3-32b"
       ]
     },
     "open_source_consumer": {
@@ -153,7 +161,9 @@
         "gpt-oss-120b",
         "mistral-nemo",
         "llama-3.1-8b",
-        "llama-3.1-70b"
+        "llama-3.1-70b",
+        "qwen3-8b",
+        "qwen3-14b"
       ]
     }
   }
