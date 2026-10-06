@@ -48477,5 +48477,23 @@
     "elapsed_seconds": 7108.456168998,
     "llm_errors": 0,
     "incomplete": false
+  },
+  "mistral-large-4/R1+R10+R2+R3+R4+R5+R6+R7+R8+R9": {
+    "model": "mistral-large-4",
+    "cw_pct": 54.9,
+    "cw_total": 207.542,
+    "cw_max": 378.0,
+    "ots_pct": 52.2,
+    "ots_total": 197.2,
+    "ots_max": 378.0,
+    "n_matched": 189,
+    "n_expected": 189,
+    "n_errors": 0,
+    "mae": 0,
+    "rmse": 0,
+    "total_tokens": 568475,
+    "elapsed_seconds": 1676.47274403,
+    "llm_errors": 0,
+    "incomplete": false
   }
 }

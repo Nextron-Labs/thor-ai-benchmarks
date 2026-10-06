@@ -2574,5 +2574,33 @@
     "total_llm_errors": "0",
     "tier": "closed_source",
     "incomplete": false
+  },
+  {
+    "model": "mistral-large-4",
+    "cw_pct": "54.9",
+    "ots_pct": "52.2",
+    "ots_macro": "52.2",
+    "balanced_ots": "45.6",
+    "threat_capture": "81.34",
+    "critical_miss": "3.32",
+    "anomaly_capture": "69.78",
+    "anomaly_suppression": "18.06",
+    "false_review": "44.92",
+    "false_escalation": "7.66",
+    "ord_pct": "76.2",
+    "mae": "0",
+    "rmse": "0",
+    "exact": "108",
+    "minor": "72",
+    "hard": "9",
+    "hard_miss": "0",
+    "hard_over": "0",
+    "n_errors": "0",
+    "n": "189",
+    "avg_seconds_per_event": "8.87",
+    "total_tokens": "568475",
+    "total_llm_errors": "0",
+    "tier": "closed_source",
+    "incomplete": false
   }
 ]
