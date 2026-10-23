@@ -1,4 +1,5 @@
 rank,model,cw_pct,balanced_ots,critical_miss,threat_capture,false_review,false_escalation,cost_per_run,avg_seconds_per_event,n,incomplete
 1,gemma4-31b,65.7,68.5,0.0,100.0,39.2,5.2,0.09,22.45,189,False
-2,gemma4-26b-a4b,63.5,62.8,0.0,100.0,40.2,11.3,,12.78,189,False
-3,llama-3.1-70b,49.7,53.4,1.8,98.2,59.8,30.9,0.20,13.79,189,False
+2,deepseek-v4.1-flash-1017,64.7,66.1,1.8,98.2,33.0,4.1,0.29,19.23,189,False
+3,gemma4-26b-a4b,63.5,62.8,0.0,100.0,40.2,11.3,,12.78,189,False
+4,llama-3.1-70b,49.7,53.4,1.8,98.2,59.8,30.9,0.20,13.79,189,False

@@ -40,6 +40,9 @@ BENCH_TO_OPENROUTER = {
     "grok-4.1-fast": "x-ai/grok-4.1-fast",
     "grok-4-fast": "x-ai/grok-4-fast",
     "gpt-5": "openai/gpt-5",
+    "claude-haiku-5.5": "anthropic/claude-haiku-5.5",
+    "nemotron-3.5-super-vl": "nvidia/nemotron-3.5-super-vl",
+    "deepseek-v4.1-flash-1017": "deepseek/deepseek-v4.1-flash-1017",
     "claude-opus-4.6": "anthropic/claude-opus-4.6",
     "grok-4-openrouter": "x-ai/grok-4",
     "qwen3.6-plus": "qwen/qwen3.6-max-preview",
@@ -111,5 +114,7 @@ def estimate_run_cost_cents(model_name, total_tokens, pricing_by_id=None):
 
     total_input = total_tokens * INPUT_RATIO
     total_output = total_tokens * OUTPUT_RATIO
-    cost = (total_input * price["prompt"]) + (total_output * price["completion"])
+    prompt_price = float(price["prompt"])
+    completion_price = float(price["completion"])
+    cost = (total_input * prompt_price) + (total_output * completion_price)
     return round(cost * 100, 4)

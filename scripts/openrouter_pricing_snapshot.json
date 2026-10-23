@@ -1,6 +1,6 @@
 {
   "source": "https://openrouter.ai/api/v1/models",
-  "fetched_at": "2026-05-15T11:04:28.028682+00:00",
+  "fetched_at": "2026-10-23T07:12:45.780200+00:00",
   "models": {
     "anthropic/claude-haiku-4.5": {
       "completion": 5e-06,
@@ -269,7 +269,1650 @@
     "z-ai/glm-5.2": {
       "completion": 4.4e-06,
       "prompt": 1.4e-06
+    },
+    "recursive/flint-v1.0:free": {
+      "prompt": "0",
+      "completion": "0"
+    },
+    "minimax/minimax-m3.1-flash": {
+      "prompt": "0.00000015",
+      "completion": "0.0000006"
+    },
+    "deepseek/deepseek-v4.1-flash-1017": {
+      "prompt": "0.0000003",
+      "completion": "0.0000012"
+    },
+    "elorian/glimpse": {
+      "prompt": "0.0000006",
+      "completion": "0.000003"
+    },
+    "xingchen-agi/xing4.0-29b-a4b:free": {
+      "prompt": "0",
+      "completion": "0"
+    },
+    "reflection/beam-1.0-501b-a23b": {
+      "prompt": "0.00000025",
+      "completion": "0.000001"
+    },
+    "inception/mercury-3": {
+      "prompt": "0.0000001",
+      "completion": "0.00000035"
+    },
+    "moondream/moondream3-preview": {
+      "prompt": "0.0000003",
+      "completion": "0.0000025"
+    },
+    "moondream/moondream3.1-9b-a2b": {
+      "prompt": "0.0000003",
+      "completion": "0.0000025"
+    },
+    "meta/muse-spark-open": {
+      "prompt": "0.00000125",
+      "completion": "0.00000425"
+    },
+    "nvidia/nemotron-3.5-super-vl": {
+      "prompt": "0.00000015",
+      "completion": "0.0000005"
+    },
+    "nvidia/nemotron-3.5-super-vl:free": {
+      "prompt": "0",
+      "completion": "0"
+    },
+    "unbiased/pareto-26.10": {
+      "prompt": "0.0000008",
+      "completion": "0.0000032"
+    },
+    "~unbiased/pareto-latest": {
+      "prompt": "0.0000008",
+      "completion": "0.0000032"
+    },
+    "unbiased/pareto-26.9": {
+      "prompt": "0.0000025",
+      "completion": "0.0000075"
+    },
+    "liquid/lfm-2.5-24b-a2b": {
+      "prompt": "0.00000005",
+      "completion": "0.0000007"
+    },
+    "google/gemini-4-argon": {
+      "prompt": "0.000002",
+      "completion": "0.00001"
+    },
+    "google/gemini-4-argon:batch": {
+      "prompt": "0.000001",
+      "completion": "0.000005"
+    },
+    "scaledown/summarize": {
+      "prompt": "0.00000004",
+      "completion": "0"
+    },
+    "scaledown/extract": {
+      "prompt": "0.00000004",
+      "completion": "0"
+    },
+    "meta/muse-wonder": {
+      "prompt": "0.000004",
+      "completion": "0.00002"
+    },
+    "stepfun/step-5-preview": {
+      "prompt": "0.000001",
+      "completion": "0.0000027"
+    },
+    "anthropic/claude-haiku-5.5": {
+      "prompt": "0.0000001",
+      "completion": "0.0000005"
+    },
+    "anthropic/claude-haiku-5.5:batch": {
+      "prompt": "0.00000005",
+      "completion": "0.00000025"
+    },
+    "google/gemini-nano-banana-2.1": {
+      "prompt": "0.0000015",
+      "completion": "0.0000075"
+    },
+    "mistralai/mistral-large-4-0": {
+      "prompt": "0.00000136",
+      "completion": "0.00000418"
+    },
+    "inclusionai/ling-3.1-flash": {
+      "prompt": "0.000000075",
+      "completion": "0.000000225"
+    },
+    "openai/gpt-6.1-sol-pro": {
+      "prompt": "0.000002",
+      "completion": "0.00001"
+    },
+    "openai/gpt-6.1-sol-pro:batch": {
+      "prompt": "0.000001",
+      "completion": "0.000005"
+    },
+    "openai/gpt-6.1-sol": {
+      "prompt": "0.000002",
+      "completion": "0.00001"
+    },
+    "openai/gpt-6.1-sol:batch": {
+      "prompt": "0.000001",
+      "completion": "0.000005"
+    },
+    "anthropic/claude-sonnet-5.5": {
+      "prompt": "0.000002",
+      "completion": "0.00001"
+    },
+    "anthropic/claude-sonnet-5.5:batch": {
+      "prompt": "0.000001",
+      "completion": "0.000005"
+    },
+    "typesafe/jev-router": {
+      "prompt": "-1",
+      "completion": "-1"
+    },
+    "perceptron/perceptron-mk1.5": {
+      "prompt": "0.00000015",
+      "completion": "0.0000015"
+    },
+    "fireworks/ember-1": {
+      "prompt": "0.000003",
+      "completion": "0.000015"
+    },
+    "z-ai/glm-5.3-prime": {
+      "prompt": "0.0000028",
+      "completion": "0.0000088"
+    },
+    "qwen/qwen3.8-max-prime": {
+      "prompt": "0.000004",
+      "completion": "0.000012"
+    },
+    "aion-labs/aion-3.5-mini": {
+      "prompt": "0.0000007",
+      "completion": "0.0000014"
+    },
+    "aion-labs/aion-3.5": {
+      "prompt": "0.000003",
+      "completion": "0.000006"
+    },
+    "upstage/solar-mini4": {
+      "prompt": "0.00000005",
+      "completion": "0.0000002"
+    },
+    "cohere/command-a-plus": {
+      "prompt": "0.0000003",
+      "completion": "0.0000015"
+    },
+    "openai/gpt-6-luna-pro": {
+      "prompt": "0.0000001",
+      "completion": "0.0000005"
+    },
+    "openai/gpt-6-luna-pro:batch": {
+      "prompt": "0.00000005",
+      "completion": "0.00000025"
+    },
+    "openai/gpt-6-luna": {
+      "prompt": "0.0000001",
+      "completion": "0.0000005"
+    },
+    "openai/gpt-6-luna:batch": {
+      "prompt": "0.00000005",
+      "completion": "0.00000025"
+    },
+    "openai/gpt-6-sol-pro": {
+      "prompt": "0.000002",
+      "completion": "0.00001"
+    },
+    "openai/gpt-6-sol-pro:batch": {
+      "prompt": "0.000001",
+      "completion": "0.000005"
+    },
+    "openai/gpt-6-sol": {
+      "prompt": "0.000002",
+      "completion": "0.00001"
+    },
+    "openai/gpt-6-sol:batch": {
+      "prompt": "0.000001",
+      "completion": "0.000005"
+    },
+    "anthropic/claude-opus-5.5": {
+      "prompt": "0.000004",
+      "completion": "0.00002"
+    },
+    "anthropic/claude-opus-5.5:batch": {
+      "prompt": "0.000002",
+      "completion": "0.00001"
+    },
+    "nvidia/switchyard": {
+      "prompt": "-1",
+      "completion": "-1"
+    },
+    "xiaomi/mimo-v2.6-pro-ultraspeed": {
+      "prompt": "0.00000435",
+      "completion": "0.0000087"
+    },
+    "xiaomi/mimo-v2.6-flash": {
+      "prompt": "0.00000014",
+      "completion": "0.00000028"
+    },
+    "xiaomi/mimo-v2.6-pro": {
+      "prompt": "0.000000435",
+      "completion": "0.00000087"
+    },
+    "x-ai/grok-4.7": {
+      "prompt": "0.000002",
+      "completion": "0.000006"
+    },
+    "qwen/qwen3.8-omni-flash": {
+      "prompt": "0.00000015",
+      "completion": "0.00000047"
+    },
+    "prism-ml/ternary-bonsai-2-27b": {
+      "prompt": "0.000000075",
+      "completion": "0.0000005"
+    },
+    "z-ai/glm-5.3-flashx": {
+      "prompt": "0.00000037",
+      "completion": "0.00000125"
+    },
+    "~deepseek/deepseek-pro-latest": {
+      "prompt": "0.0000002247",
+      "completion": "0.000008"
+    },
+    "~deepseek/deepseek-flash-latest": {
+      "prompt": "0.00000007",
+      "completion": "0.0000005"
+    },
+    "inference-net/schematron-v2-turbo": {
+      "prompt": "0.00000003",
+      "completion": "0.00000015"
+    },
+    "inference-net/schematron-v2-small": {
+      "prompt": "0.00000005",
+      "completion": "0.00000023"
+    },
+    "~openai/gpt-astra-latest": {
+      "prompt": "0.00001",
+      "completion": "0.00005"
+    },
+    "~openai/gpt-sol-latest": {
+      "prompt": "0.000002",
+      "completion": "0.00001"
+    },
+    "~openai/gpt-terra-latest": {
+      "prompt": "0.000002",
+      "completion": "0.000012"
+    },
+    "~openai/gpt-luna-latest": {
+      "prompt": "0.0000001",
+      "completion": "0.0000005"
+    },
+    "sakana/fugu-ultra-v2": {
+      "prompt": "0.000005",
+      "completion": "0.00003"
+    },
+    "sakana/fugu-max": {
+      "prompt": "0.000002",
+      "completion": "0.000006"
+    },
+    "inclusionai/ling-3.0-flash-vl": {
+      "prompt": "0.00000006",
+      "completion": "0.00000018"
+    },
+    "deepseek/deepseek-v4.1-flash": {
+      "prompt": "0.000000165",
+      "completion": "0.00000066"
+    },
+    "deepseek/deepseek-v4.1-flash:batch": {
+      "prompt": "0.00000005",
+      "completion": "0.00000015"
+    },
+    "inception/mercury-2.5": {
+      "prompt": "0.00000004",
+      "completion": "0.00000015"
+    },
+    "nex-agi/nex-n2.5-mini": {
+      "prompt": "0.000000025",
+      "completion": "0.0000001"
+    },
+    "nex-agi/nex-n2.5-pro": {
+      "prompt": "0.000000075",
+      "completion": "0.00000025"
+    },
+    "openai/gpt-6-astra": {
+      "prompt": "0.00001",
+      "completion": "0.00005"
+    },
+    "openai/gpt-6-astra:batch": {
+      "prompt": "0.000005",
+      "completion": "0.000025"
+    },
+    "openai/gpt-6-astra-pro": {
+      "prompt": "0.00001",
+      "completion": "0.00005"
+    },
+    "openai/gpt-6-astra-pro:batch": {
+      "prompt": "0.000005",
+      "completion": "0.000025"
+    },
+    "qwen/qwen3.8-max-0902": {
+      "prompt": "0.000002",
+      "completion": "0.000006"
+    },
+    "meta/muse-spark-1.3-contributor": {
+      "prompt": "0.0000001",
+      "completion": "0.0000002"
+    },
+    "meta/muse-spark-1.3": {
+      "prompt": "0.00000125",
+      "completion": "0.00000425"
+    },
+    "google/gemini-3.8-flash": {
+      "prompt": "0.000000825",
+      "completion": "0.000004125"
+    },
+    "google/gemini-3.8-flash:batch": {
+      "prompt": "0.000000375",
+      "completion": "0.000001875"
+    },
+    "anthropic/claude-fable-5.1": {
+      "prompt": "0.00001",
+      "completion": "0.00005"
+    },
+    "anthropic/claude-fable-5.1:batch": {
+      "prompt": "0.000005",
+      "completion": "0.000025"
+    },
+    "ibm-granite/granite-4.2-8b": {
+      "prompt": "0.00000006",
+      "completion": "0.00000025"
+    },
+    "tencent/hy4-preview": {
+      "prompt": "0.000000834",
+      "completion": "0.000002501"
+    },
+    "~z-ai/glm-flash-latest": {
+      "prompt": "0.0000000052",
+      "completion": "0.0000001985"
+    },
+    "qwen/qwen3.8-flash": {
+      "prompt": "0.00000015",
+      "completion": "0.00000047"
+    },
+    "z-ai/glm-5.3-flash": {
+      "prompt": "0.0000000052",
+      "completion": "0.0000001985"
+    },
+    "z-ai/glm-5.3-flash:batch": {
+      "prompt": "0.00000005",
+      "completion": "0.00000018"
+    },
+    "meta/muse-spark-1.2-contributor": {
+      "prompt": "0.0000001",
+      "completion": "0.0000002"
+    },
+    "deepseek/deepseek-v4-flash-vision-exp": {
+      "prompt": "0.0000002156",
+      "completion": "0.0000006468"
+    },
+    "tencent/hy-mt2-1.8b": {
+      "prompt": "0.000000044",
+      "completion": "0.000000177"
+    },
+    "tencent/hy-mt2-30b-a3b": {
+      "prompt": "0.000000074",
+      "completion": "0.000000295"
+    },
+    "~z-ai/glm-latest": {
+      "prompt": "0.000000079",
+      "completion": "0.0000014"
+    },
+    "tencent/hy-mt2-7b": {
+      "prompt": "0.000000074",
+      "completion": "0.000000295"
+    },
+    "z-ai/glm-5.3": {
+      "prompt": "0.000000079",
+      "completion": "0.0000014"
+    },
+    "z-ai/glm-5.3:batch": {
+      "prompt": "0.00000045",
+      "completion": "0.000002"
+    },
+    "qwen/qwen3.8-27b": {
+      "prompt": "0.0000002",
+      "completion": "0.0000025"
+    },
+    "dots-studio/dots-3-note-preview:free": {
+      "prompt": "0",
+      "completion": "0"
+    },
+    "google/gemini-3.7-flash": {
+      "prompt": "0.00000075",
+      "completion": "0.00000375"
+    },
+    "google/gemini-3.7-flash:batch": {
+      "prompt": "0.000000375",
+      "completion": "0.000001875"
+    },
+    "bytedance-seed/seed-2-1-turbo": {
+      "prompt": "0.0000005",
+      "completion": "0.0000025"
+    },
+    "qwen/qwen3.8-2.4t-a95b": {
+      "prompt": "0.000002",
+      "completion": "0.000006"
+    },
+    "bytedance-seed/seed-2.0-code": {
+      "prompt": "0.0000005",
+      "completion": "0.000003"
+    },
+    "deepseek/deepseek-v4-pro-0813": {
+      "prompt": "0.00000132",
+      "completion": "0.00000396"
+    },
+    "x-ai/grok-4.6": {
+      "prompt": "0.000002",
+      "completion": "0.000006"
+    },
+    "liquid/lfm-2.5-2.6b:free": {
+      "prompt": "0",
+      "completion": "0"
+    },
+    "nvidia/nemotron-3.5-lightning": {
+      "prompt": "0.00000007",
+      "completion": "0.0000002"
+    },
+    "nvidia/nemotron-3.5-lightning:free": {
+      "prompt": "0",
+      "completion": "0"
+    },
+    "sakana/sakana-namazu": {
+      "prompt": "0.00000095",
+      "completion": "0.000004"
+    },
+    "upstage/solar-pro4": {
+      "prompt": "0.00000015",
+      "completion": "0.0000006"
+    },
+    "meta/muse-glimmer-30b": {
+      "prompt": "0.0000003",
+      "completion": "0.0000012"
+    },
+    "meta/muse-spark-1.2": {
+      "prompt": "0.00000125",
+      "completion": "0.00000425"
+    },
+    "~deepseek/deepseek-v4-flash-latest": {
+      "prompt": "0.0000000475",
+      "completion": "0.0000001568"
+    },
+    "deepseek/deepseek-v4-flash-0731": {
+      "prompt": "0.00000044",
+      "completion": "0.00000132"
+    },
+    "thinkingmachines/inkling-small": {
+      "prompt": "0.00000045",
+      "completion": "0.0000012"
+    },
+    "thinkingmachines/inkling-small:free": {
+      "prompt": "0",
+      "completion": "0"
+    },
+    "qwen/qwen3.7-flash": {
+      "prompt": "0.00000003",
+      "completion": "0.00000013"
+    },
+    "anthropic/claude-opus-5": {
+      "prompt": "0.000005",
+      "completion": "0.000025"
+    },
+    "anthropic/claude-opus-5:batch": {
+      "prompt": "0.0000025",
+      "completion": "0.0000125"
+    },
+    "inclusionai/ling-3.0-flash": {
+      "prompt": "0.000000021",
+      "completion": "0.000000063"
+    },
+    "poolside/laguna-s-2.1": {
+      "prompt": "0.00000009",
+      "completion": "0.00000018"
+    },
+    "poolside/laguna-s-2.1:free": {
+      "prompt": "0",
+      "completion": "0"
+    },
+    "google/gemini-3.6-flash": {
+      "prompt": "0.00000075",
+      "completion": "0.00000375"
+    },
+    "google/gemini-3.6-flash:batch": {
+      "prompt": "0.000000375",
+      "completion": "0.000001875"
+    },
+    "google/gemini-3.5-flash-lite": {
+      "prompt": "0.0000003",
+      "completion": "0.0000025"
+    },
+    "google/gemini-3.5-flash-lite:batch": {
+      "prompt": "0.00000015",
+      "completion": "0.00000125"
+    },
+    "meituan/longcat-2.0": {
+      "prompt": "0.0000003",
+      "completion": "0.0000012"
+    },
+    "thinkingmachines/inkling": {
+      "prompt": "0.000001",
+      "completion": "0.00000405"
+    },
+    "thinkingmachines/inkling:free": {
+      "prompt": "0",
+      "completion": "0"
+    },
+    "openrouter/auto-beta": {
+      "prompt": "-1",
+      "completion": "-1"
+    },
+    "moonshotai/kimi-k3": {
+      "prompt": "0.000000239",
+      "completion": "0.000011936"
+    },
+    "moonshotai/kimi-k3:batch": {
+      "prompt": "0.00000228",
+      "completion": "0.0000114"
+    },
+    "meta/muse-spark-1.1": {
+      "prompt": "0.00000125",
+      "completion": "0.00000425"
+    },
+    "openai/gpt-5.6-luna-pro": {
+      "prompt": "0.0000002",
+      "completion": "0.0000012"
+    },
+    "openai/gpt-5.6-luna-pro:batch": {
+      "prompt": "0.0000001",
+      "completion": "0.0000006"
+    },
+    "openai/gpt-5.6-luna": {
+      "prompt": "0.0000002",
+      "completion": "0.0000012"
+    },
+    "openai/gpt-5.6-luna:batch": {
+      "prompt": "0.0000001",
+      "completion": "0.0000006"
+    },
+    "openai/gpt-5.6-terra-pro": {
+      "prompt": "0.000002",
+      "completion": "0.000012"
+    },
+    "openai/gpt-5.6-terra-pro:batch": {
+      "prompt": "0.000001",
+      "completion": "0.000006"
+    },
+    "openai/gpt-5.6-terra": {
+      "prompt": "0.000002",
+      "completion": "0.000012"
+    },
+    "openai/gpt-5.6-terra:batch": {
+      "prompt": "0.000001",
+      "completion": "0.000006"
+    },
+    "openai/gpt-5.6-sol-pro": {
+      "prompt": "0.000004",
+      "completion": "0.00002"
+    },
+    "openai/gpt-5.6-sol-pro:batch": {
+      "prompt": "0.000002",
+      "completion": "0.00001"
+    },
+    "openai/gpt-5.6-sol": {
+      "prompt": "0.000004",
+      "completion": "0.00002"
+    },
+    "openai/gpt-5.6-sol:batch": {
+      "prompt": "0.000002",
+      "completion": "0.00001"
+    },
+    "x-ai/grok-4.5": {
+      "prompt": "0.000002",
+      "completion": "0.000006"
+    },
+    "~x-ai/grok-latest": {
+      "prompt": "0.000002",
+      "completion": "0.000006"
+    },
+    "aion-labs/aion-3.0-mini": {
+      "prompt": "0.0000007",
+      "completion": "0.0000014"
+    },
+    "aion-labs/aion-3.0": {
+      "prompt": "0.000003",
+      "completion": "0.000006"
+    },
+    "tencent/hy3": {
+      "prompt": "0.000000132",
+      "completion": "0.000000528"
+    },
+    "poolside/laguna-xs-2.1": {
+      "prompt": "0.00000006",
+      "completion": "0.00000012"
+    },
+    "poolside/laguna-xs-2.1:free": {
+      "prompt": "0",
+      "completion": "0"
+    },
+    "anthropic/claude-sonnet-5": {
+      "prompt": "0.000002",
+      "completion": "0.00001"
+    },
+    "anthropic/claude-sonnet-5:batch": {
+      "prompt": "0.000001",
+      "completion": "0.000005"
+    },
+    "google/gemini-3.1-flash-lite-image": {
+      "prompt": "0.00000025",
+      "completion": "0.0000015"
+    },
+    "sakana/fugu-ultra": {
+      "prompt": "0.000005",
+      "completion": "0.00003"
+    },
+    "google/gemini-3.1-flash-image": {
+      "prompt": "0.0000005",
+      "completion": "0.000003"
+    },
+    "google/gemini-3-pro-image": {
+      "prompt": "0.000002",
+      "completion": "0.000012"
+    },
+    "cohere/north-mini-code:free": {
+      "prompt": "0",
+      "completion": "0"
+    },
+    "openrouter/fusion": {
+      "prompt": "-1",
+      "completion": "-1"
+    },
+    "~anthropic/claude-fable-latest": {
+      "prompt": "0.00001",
+      "completion": "0.00005"
+    },
+    "anthropic/claude-fable-5": {
+      "prompt": "0.00001",
+      "completion": "0.00005"
+    },
+    "anthropic/claude-fable-5:batch": {
+      "prompt": "0.000005",
+      "completion": "0.000025"
+    },
+    "nvidia/nemotron-3.5-content-safety": {
+      "prompt": "0.0000002",
+      "completion": "0.0000002"
+    },
+    "nvidia/nemotron-3.5-content-safety:free": {
+      "prompt": "0",
+      "completion": "0"
+    },
+    "nvidia/nemotron-3-ultra-550b-a55b:free": {
+      "prompt": "0",
+      "completion": "0"
+    },
+    "qwen/qwen3.7-plus:batch": {
+      "prompt": "0.00000023",
+      "completion": "0.00000092"
+    },
+    "stepfun/step-3.7-flash": {
+      "prompt": "0.0000002",
+      "completion": "0.00000115"
+    },
+    "anthropic/claude-opus-4.8:batch": {
+      "prompt": "0.0000025",
+      "completion": "0.0000125"
+    },
+    "qwen/qwen3.7-max": {
+      "prompt": "0.000001475",
+      "completion": "0.000004425"
+    },
+    "x-ai/grok-build-0.1": {
+      "prompt": "0.000001",
+      "completion": "0.000002"
+    },
+    "google/gemini-3.5-flash:batch": {
+      "prompt": "0.00000075",
+      "completion": "0.0000045"
+    },
+    "perceptron/perceptron-mk1": {
+      "prompt": "0.00000015",
+      "completion": "0.0000015"
+    },
+    "google/gemini-3.1-flash-lite:batch": {
+      "prompt": "0.000000125",
+      "completion": "0.00000075"
+    },
+    "openai/gpt-chat-latest": {
+      "prompt": "0.000005",
+      "completion": "0.00003"
+    },
+    "x-ai/grok-4.3:batch": {
+      "prompt": "0.000001",
+      "completion": "0.000002"
+    },
+    "mistralai/mistral-medium-3-5": {
+      "prompt": "0.0000015",
+      "completion": "0.0000075"
+    },
+    "mistralai/mistral-medium-3-5:batch": {
+      "prompt": "0.00000075",
+      "completion": "0.00000375"
+    },
+    "~anthropic/claude-haiku-latest": {
+      "prompt": "0.0000001",
+      "completion": "0.0000005"
+    },
+    "~openai/gpt-mini-latest": {
+      "prompt": "0.00000075",
+      "completion": "0.0000045"
+    },
+    "~google/gemini-pro-latest": {
+      "prompt": "0.000002",
+      "completion": "0.00001"
+    },
+    "~moonshotai/kimi-latest": {
+      "prompt": "0.000000238",
+      "completion": "0.000016"
+    },
+    "~google/gemini-flash-latest": {
+      "prompt": "0.00000075",
+      "completion": "0.00000375"
+    },
+    "~anthropic/claude-sonnet-latest": {
+      "prompt": "0.000002",
+      "completion": "0.00001"
+    },
+    "qwen/qwen3.6-27b": {
+      "prompt": "0.00000025",
+      "completion": "0.000002"
+    },
+    "openai/gpt-5.5-pro": {
+      "prompt": "0.00003",
+      "completion": "0.00018"
+    },
+    "openai/gpt-5.5-pro:batch": {
+      "prompt": "0.000015",
+      "completion": "0.00009"
+    },
+    "openai/gpt-5.5:batch": {
+      "prompt": "0.0000025",
+      "completion": "0.000015"
+    },
+    "deepseek/deepseek-v4-pro": {
+      "prompt": "0.00000095526",
+      "completion": "0.00000191052"
+    },
+    "deepseek/deepseek-v4-flash": {
+      "prompt": "0.000000091",
+      "completion": "0.000000182"
+    },
+    "tencent/hy3-preview": {
+      "prompt": "0.00000018",
+      "completion": "0.0000006"
+    },
+    "openai/gpt-5.4-image-2": {
+      "prompt": "0.000008",
+      "completion": "0.000015"
+    },
+    "~anthropic/claude-opus-latest": {
+      "prompt": "0.000004",
+      "completion": "0.00002"
+    },
+    "openrouter/pareto-code": {
+      "prompt": "-1",
+      "completion": "-1"
+    },
+    "anthropic/claude-opus-4.7": {
+      "prompt": "0.000005",
+      "completion": "0.000025"
+    },
+    "anthropic/claude-opus-4.7:batch": {
+      "prompt": "0.0000025",
+      "completion": "0.0000125"
+    },
+    "google/gemma-4-26b-a4b-it": {
+      "prompt": "0.00000009",
+      "completion": "0.0000003"
+    },
+    "google/gemma-4-26b-a4b-it:free": {
+      "prompt": "0",
+      "completion": "0"
+    },
+    "google/gemma-4-31b-it:free": {
+      "prompt": "0",
+      "completion": "0"
+    },
+    "qwen/qwen3.6-plus": {
+      "prompt": "0.000000325",
+      "completion": "0.00000195"
+    },
+    "z-ai/glm-5v-turbo": {
+      "prompt": "0.0000012",
+      "completion": "0.000004"
+    },
+    "arcee-ai/trinity-large-thinking": {
+      "prompt": "0.00000025",
+      "completion": "0.0000008"
+    },
+    "x-ai/grok-4.20-multi-agent": {
+      "prompt": "0.00000125",
+      "completion": "0.0000025"
+    },
+    "google/lyria-3-pro-preview": {
+      "prompt": "0",
+      "completion": "0"
+    },
+    "google/lyria-3-clip-preview": {
+      "prompt": "0",
+      "completion": "0"
+    },
+    "rekaai/reka-edge": {
+      "prompt": "0.0000001",
+      "completion": "0.0000001"
+    },
+    "openai/gpt-5.4-nano:batch": {
+      "prompt": "0.0000001",
+      "completion": "0.000000625"
+    },
+    "openai/gpt-5.4-mini:batch": {
+      "prompt": "0.000000375",
+      "completion": "0.00000225"
+    },
+    "mistralai/mistral-small-2603": {
+      "prompt": "0.00000015",
+      "completion": "0.0000006"
+    },
+    "mistralai/mistral-small-2603:batch": {
+      "prompt": "0.000000075",
+      "completion": "0.0000003"
+    },
+    "z-ai/glm-5-turbo": {
+      "prompt": "0.0000012",
+      "completion": "0.000004"
+    },
+    "nvidia/nemotron-3-super-120b-a12b:free": {
+      "prompt": "0",
+      "completion": "0"
+    },
+    "bytedance-seed/seed-2.0-lite": {
+      "prompt": "0.00000025",
+      "completion": "0.000002"
+    },
+    "openai/gpt-5.4-pro": {
+      "prompt": "0.00003",
+      "completion": "0.00018"
+    },
+    "openai/gpt-5.4-pro:batch": {
+      "prompt": "0.000015",
+      "completion": "0.00009"
+    },
+    "openai/gpt-5.4:batch": {
+      "prompt": "0.00000125",
+      "completion": "0.0000075"
+    },
+    "google/gemini-3.1-flash-lite-preview": {
+      "prompt": "0.00000025",
+      "completion": "0.0000015"
+    },
+    "bytedance-seed/seed-2.0-mini": {
+      "prompt": "0.0000001",
+      "completion": "0.0000004"
+    },
+    "google/gemini-3.1-flash-image-preview": {
+      "prompt": "0.0000005",
+      "completion": "0.000003"
+    },
+    "qwen/qwen3.5-35b-a3b": {
+      "prompt": "0.00000014",
+      "completion": "0.000001"
+    },
+    "qwen/qwen3.5-27b": {
+      "prompt": "0.00000027",
+      "completion": "0.00000216"
+    },
+    "qwen/qwen3.5-122b-a10b": {
+      "prompt": "0.0000004",
+      "completion": "0.0000032"
+    },
+    "qwen/qwen3.5-flash-02-23": {
+      "prompt": "0.000000065",
+      "completion": "0.00000026"
+    },
+    "google/gemini-3.1-pro-preview-customtools": {
+      "prompt": "0.000002",
+      "completion": "0.000012"
+    },
+    "openai/gpt-5.3-codex": {
+      "prompt": "0.00000175",
+      "completion": "0.000014"
+    },
+    "aion-labs/aion-2.0": {
+      "prompt": "0.0000008",
+      "completion": "0.0000016"
+    },
+    "google/gemini-3.1-pro-preview:batch": {
+      "prompt": "0.000001",
+      "completion": "0.000006"
+    },
+    "anthropic/claude-sonnet-4.6:batch": {
+      "prompt": "0.0000015",
+      "completion": "0.0000075"
+    },
+    "qwen/qwen3.5-plus-02-15": {
+      "prompt": "0.00000026",
+      "completion": "0.00000156"
+    },
+    "anthropic/claude-opus-4.6:batch": {
+      "prompt": "0.0000025",
+      "completion": "0.0000125"
+    },
+    "qwen/qwen3-coder-next": {
+      "prompt": "0.00000012",
+      "completion": "0.0000008"
+    },
+    "openrouter/free": {
+      "prompt": "0",
+      "completion": "0"
+    },
+    "stepfun/step-3.5-flash": {
+      "prompt": "0.0000001",
+      "completion": "0.0000003"
+    },
+    "upstage/solar-pro-3": {
+      "prompt": "0.00000015",
+      "completion": "0.0000006"
+    },
+    "minimax/minimax-m2-her": {
+      "prompt": "0.0000003",
+      "completion": "0.0000012"
+    },
+    "writer/palmyra-x5": {
+      "prompt": "0.0000006",
+      "completion": "0.000006"
+    },
+    "openai/gpt-audio": {
+      "prompt": "0.0000025",
+      "completion": "0.00001"
+    },
+    "openai/gpt-audio-mini": {
+      "prompt": "0.0000006",
+      "completion": "0.0000024"
+    },
+    "z-ai/glm-4.7-flash": {
+      "prompt": "0.0000000605",
+      "completion": "0.0000004"
+    },
+    "openai/gpt-5.2-codex": {
+      "prompt": "0.00000175",
+      "completion": "0.000014"
+    },
+    "bytedance-seed/seed-1.6-flash": {
+      "prompt": "0.000000075",
+      "completion": "0.0000003"
+    },
+    "bytedance-seed/seed-1.6": {
+      "prompt": "0.00000025",
+      "completion": "0.000002"
+    },
+    "minimax/minimax-m2.1": {
+      "prompt": "0.0000003",
+      "completion": "0.0000012"
+    },
+    "z-ai/glm-4.7": {
+      "prompt": "0.00000054",
+      "completion": "0.00000198"
+    },
+    "google/gemini-3-flash-preview": {
+      "prompt": "0.0000005",
+      "completion": "0.000003"
+    },
+    "google/gemini-3-flash-preview:batch": {
+      "prompt": "0.00000025",
+      "completion": "0.0000015"
+    },
+    "nvidia/nemotron-3-nano-30b-a3b": {
+      "prompt": "0.00000006",
+      "completion": "0.00000024"
+    },
+    "openai/gpt-5.2-chat": {
+      "prompt": "0.00000175",
+      "completion": "0.000014"
+    },
+    "openai/gpt-5.2-pro": {
+      "prompt": "0.000021",
+      "completion": "0.000168"
+    },
+    "openai/gpt-5.2-pro:batch": {
+      "prompt": "0.0000105",
+      "completion": "0.000084"
+    },
+    "openai/gpt-5.2": {
+      "prompt": "0.00000175",
+      "completion": "0.000014"
+    },
+    "openai/gpt-5.2:batch": {
+      "prompt": "0.000000875",
+      "completion": "0.000007"
+    },
+    "mistralai/devstral-2512": {
+      "prompt": "0.0000004",
+      "completion": "0.000002"
+    },
+    "relace/relace-search": {
+      "prompt": "0.000001",
+      "completion": "0.000003"
+    },
+    "z-ai/glm-4.6v": {
+      "prompt": "0.0000003",
+      "completion": "0.0000009"
+    },
+    "openrouter/bodybuilder": {
+      "prompt": "-1",
+      "completion": "-1"
+    },
+    "openai/gpt-5.1-codex-max": {
+      "prompt": "0.00000125",
+      "completion": "0.00001"
+    },
+    "amazon/nova-2-lite-v1": {
+      "prompt": "0.0000003",
+      "completion": "0.0000025"
+    },
+    "mistralai/ministral-8b-2512": {
+      "prompt": "0.00000015",
+      "completion": "0.00000015"
+    },
+    "mistralai/ministral-8b-2512:batch": {
+      "prompt": "0.000000075",
+      "completion": "0.000000075"
+    },
+    "mistralai/ministral-3b-2512": {
+      "prompt": "0.0000001",
+      "completion": "0.0000001"
+    },
+    "mistralai/mistral-large-2512": {
+      "prompt": "0.0000005",
+      "completion": "0.0000015"
+    },
+    "mistralai/mistral-large-2512:batch": {
+      "prompt": "0.00000025",
+      "completion": "0.00000075"
+    },
+    "deepseek/deepseek-v3.2": {
+      "prompt": "0.00000028",
+      "completion": "0.00000042"
+    },
+    "anthropic/claude-opus-4.5:batch": {
+      "prompt": "0.0000025",
+      "completion": "0.0000125"
+    },
+    "google/gemini-3-pro-image-preview": {
+      "prompt": "0.000002",
+      "completion": "0.000012"
+    },
+    "openai/gpt-5.1": {
+      "prompt": "0.00000125",
+      "completion": "0.00001"
+    },
+    "openai/gpt-5.1:batch": {
+      "prompt": "0.000000625",
+      "completion": "0.000005"
+    },
+    "openai/gpt-5.1-codex": {
+      "prompt": "0.00000125",
+      "completion": "0.00001"
+    },
+    "openai/gpt-5.1-codex-mini": {
+      "prompt": "0.00000025",
+      "completion": "0.000002"
+    },
+    "moonshotai/kimi-k2-thinking": {
+      "prompt": "0.0000006",
+      "completion": "0.0000025"
+    },
+    "amazon/nova-premier-v1": {
+      "prompt": "0.0000025",
+      "completion": "0.0000125"
+    },
+    "perplexity/sonar-pro-search": {
+      "prompt": "0.000003",
+      "completion": "0.000015"
+    },
+    "mistralai/voxtral-small-24b-2507": {
+      "prompt": "0.0000001",
+      "completion": "0.0000003"
+    },
+    "openai/gpt-oss-safeguard-20b": {
+      "prompt": "0.000000075",
+      "completion": "0.0000003"
+    },
+    "minimax/minimax-m2": {
+      "prompt": "0.000000255",
+      "completion": "0.00000102"
+    },
+    "ibm-granite/granite-4.0-h-micro": {
+      "prompt": "0.000000017",
+      "completion": "0.000000112"
+    },
+    "openai/gpt-5-image-mini": {
+      "prompt": "0.0000025",
+      "completion": "0.000002"
+    },
+    "anthropic/claude-haiku-4.5:batch": {
+      "prompt": "0.0000005",
+      "completion": "0.0000025"
+    },
+    "qwen/qwen3-vl-8b-instruct": {
+      "prompt": "0.00000025",
+      "completion": "0.00000075"
+    },
+    "openai/gpt-5-image": {
+      "prompt": "0.00001",
+      "completion": "0.00001"
+    },
+    "google/gemini-2.5-flash-image": {
+      "prompt": "0.0000003",
+      "completion": "0.0000025"
+    },
+    "qwen/qwen3-vl-30b-a3b-thinking": {
+      "prompt": "0.00000029",
+      "completion": "0.000001"
+    },
+    "qwen/qwen3-vl-30b-a3b-instruct": {
+      "prompt": "0.00000015",
+      "completion": "0.0000006"
+    },
+    "openai/gpt-5-pro": {
+      "prompt": "0.000015",
+      "completion": "0.00012"
+    },
+    "openai/gpt-5-pro:batch": {
+      "prompt": "0.0000075",
+      "completion": "0.00006"
+    },
+    "z-ai/glm-4.6": {
+      "prompt": "0.00000055",
+      "completion": "0.0000022"
+    },
+    "anthropic/claude-sonnet-4.5:batch": {
+      "prompt": "0.0000015",
+      "completion": "0.0000075"
+    },
+    "deepseek/deepseek-v3.2-exp": {
+      "prompt": "0.00000027",
+      "completion": "0.00000041"
+    },
+    "thedrummer/cydonia-24b-v4.1": {
+      "prompt": "0.0000003",
+      "completion": "0.0000005"
+    },
+    "relace/relace-apply-3": {
+      "prompt": "0.00000085",
+      "completion": "0.00000125"
+    },
+    "qwen/qwen3-vl-235b-a22b-instruct": {
+      "prompt": "0.00000021",
+      "completion": "0.0000019"
+    },
+    "deepseek/deepseek-v3.1-terminus": {
+      "prompt": "0.00000027",
+      "completion": "0.000001"
+    },
+    "qwen/qwen3-coder-flash": {
+      "prompt": "0.000000195",
+      "completion": "0.000000975"
+    },
+    "qwen/qwen3-next-80b-a3b-thinking": {
+      "prompt": "0.00000015",
+      "completion": "0.0000012"
+    },
+    "qwen/qwen3-next-80b-a3b-instruct": {
+      "prompt": "0.00000009",
+      "completion": "0.0000011"
+    },
+    "moonshotai/kimi-k2-0905": {
+      "prompt": "0.0000006",
+      "completion": "0.0000025"
+    },
+    "nousresearch/hermes-4-405b": {
+      "prompt": "0.000001",
+      "completion": "0.000003"
+    },
+    "mistralai/mistral-medium-3.1": {
+      "prompt": "0.0000004",
+      "completion": "0.000002"
+    },
+    "mistralai/mistral-medium-3.1:batch": {
+      "prompt": "0.0000002",
+      "completion": "0.000001"
+    },
+    "z-ai/glm-4.5v": {
+      "prompt": "0.0000006",
+      "completion": "0.0000018"
+    },
+    "openai/gpt-5:batch": {
+      "prompt": "0.000000625",
+      "completion": "0.000005"
+    },
+    "openai/gpt-5-mini:batch": {
+      "prompt": "0.000000125",
+      "completion": "0.000001"
+    },
+    "openai/gpt-5-nano:batch": {
+      "prompt": "0.000000025",
+      "completion": "0.0000002"
+    },
+    "openai/gpt-oss-120b:batch": {
+      "prompt": "0.0000000296",
+      "completion": "0.000000136"
+    },
+    "openai/gpt-oss-20b:batch": {
+      "prompt": "0.000000024",
+      "completion": "0.000000112"
+    },
+    "anthropic/claude-opus-4.1": {
+      "prompt": "0.000015",
+      "completion": "0.000075"
+    },
+    "anthropic/claude-opus-4.1:batch": {
+      "prompt": "0.0000075",
+      "completion": "0.0000375"
+    },
+    "mistralai/codestral-2508": {
+      "prompt": "0.0000003",
+      "completion": "0.0000009"
+    },
+    "mistralai/codestral-2508:batch": {
+      "prompt": "0.00000015",
+      "completion": "0.00000045"
+    },
+    "qwen/qwen3-coder-30b-a3b-instruct": {
+      "prompt": "0.00000007",
+      "completion": "0.00000028"
+    },
+    "qwen/qwen3-30b-a3b-instruct-2507": {
+      "prompt": "0.00000009",
+      "completion": "0.0000003"
+    },
+    "z-ai/glm-4.5": {
+      "prompt": "0.0000006",
+      "completion": "0.0000022"
+    },
+    "z-ai/glm-4.5-air": {
+      "prompt": "0.00000013",
+      "completion": "0.00000085"
+    },
+    "qwen/qwen3-235b-a22b-thinking-2507": {
+      "prompt": "0.00000045",
+      "completion": "0.0000035"
+    },
+    "qwen/qwen3-coder": {
+      "prompt": "0.0000003",
+      "completion": "0.000001"
+    },
+    "bytedance/ui-tars-1.5-7b": {
+      "prompt": "0.0000001",
+      "completion": "0.0000002"
+    },
+    "moonshotai/kimi-k2": {
+      "prompt": "0.00000057",
+      "completion": "0.0000023"
+    },
+    "cognitivecomputations/dolphin-mistral-24b-venice-edition": {
+      "prompt": "0.0000002",
+      "completion": "0.0000009"
+    },
+    "tencent/hunyuan-a13b-instruct": {
+      "prompt": "0.00000014",
+      "completion": "0.00000057"
+    },
+    "morph/morph-v3-large": {
+      "prompt": "0.0000009",
+      "completion": "0.0000019"
+    },
+    "morph/morph-v3-fast": {
+      "prompt": "0.0000008",
+      "completion": "0.0000012"
+    },
+    "mistralai/mistral-small-3.2-24b-instruct": {
+      "prompt": "0.000000075",
+      "completion": "0.0000002"
+    },
+    "minimax/minimax-m1": {
+      "prompt": "0.00000055",
+      "completion": "0.0000022"
+    },
+    "openai/o3-pro": {
+      "prompt": "0.00002",
+      "completion": "0.00008"
+    },
+    "google/gemini-2.5-pro-preview": {
+      "prompt": "0.00000125",
+      "completion": "0.00001"
+    },
+    "deepseek/deepseek-r1-0528": {
+      "prompt": "0.0000005",
+      "completion": "0.00000215"
+    },
+    "mistralai/mistral-medium-3": {
+      "prompt": "0.0000004",
+      "completion": "0.000002"
+    },
+    "meta-llama/llama-guard-4-12b": {
+      "prompt": "0.00000018",
+      "completion": "0.00000018"
+    },
+    "qwen/qwen3-30b-a3b": {
+      "prompt": "0.00000012",
+      "completion": "0.0000005"
+    },
+    "qwen/qwen3-14b": {
+      "prompt": "0.00000012",
+      "completion": "0.00000024"
+    },
+    "qwen/qwen3-32b": {
+      "prompt": "0.00000008",
+      "completion": "0.00000028"
+    },
+    "openai/o4-mini-high": {
+      "prompt": "0.0000011",
+      "completion": "0.0000044"
+    },
+    "openai/o3": {
+      "prompt": "0.000002",
+      "completion": "0.000008"
+    },
+    "openai/o3:batch": {
+      "prompt": "0.000001",
+      "completion": "0.000004"
+    },
+    "openai/o4-mini": {
+      "prompt": "0.0000011",
+      "completion": "0.0000044"
+    },
+    "openai/o4-mini:batch": {
+      "prompt": "0.00000055",
+      "completion": "0.0000022"
+    },
+    "openai/gpt-4.1": {
+      "prompt": "0.000002",
+      "completion": "0.000008"
+    },
+    "openai/gpt-4.1:batch": {
+      "prompt": "0.000001",
+      "completion": "0.000004"
+    },
+    "openai/gpt-4.1-mini": {
+      "prompt": "0.0000004",
+      "completion": "0.0000016"
+    },
+    "openai/gpt-4.1-mini:batch": {
+      "prompt": "0.0000002",
+      "completion": "0.0000008"
+    },
+    "openai/gpt-4.1-nano": {
+      "prompt": "0.0000001",
+      "completion": "0.0000004"
+    },
+    "openai/gpt-4.1-nano:batch": {
+      "prompt": "0.00000005",
+      "completion": "0.0000002"
+    },
+    "meta-llama/llama-4-maverick": {
+      "prompt": "0.0000001875",
+      "completion": "0.0000006525"
+    },
+    "meta-llama/llama-4-scout": {
+      "prompt": "0.0000001",
+      "completion": "0.0000003"
+    },
+    "openai/o1-pro": {
+      "prompt": "0.00015",
+      "completion": "0.0006"
+    },
+    "mistralai/mistral-small-3.1-24b-instruct": {
+      "prompt": "0.000000351",
+      "completion": "0.000000555"
+    },
+    "cohere/command-a": {
+      "prompt": "0.0000025",
+      "completion": "0.00001"
+    },
+    "rekaai/reka-flash-3": {
+      "prompt": "0.0000001",
+      "completion": "0.0000002"
+    },
+    "thedrummer/skyfall-36b-v2": {
+      "prompt": "0.00000055",
+      "completion": "0.0000008"
+    },
+    "perplexity/sonar-reasoning-pro": {
+      "prompt": "0.000002",
+      "completion": "0.000008"
+    },
+    "perplexity/sonar-pro": {
+      "prompt": "0.000003",
+      "completion": "0.000015"
+    },
+    "perplexity/sonar-deep-research": {
+      "prompt": "0.000002",
+      "completion": "0.000008"
+    },
+    "mistralai/mistral-saba": {
+      "prompt": "0.0000002",
+      "completion": "0.0000006"
+    },
+    "openai/o3-mini-high": {
+      "prompt": "0.0000011",
+      "completion": "0.0000044"
+    },
+    "aion-labs/aion-rp-llama-3.1-8b": {
+      "prompt": "0.0000008",
+      "completion": "0.0000016"
+    },
+    "qwen/qwen2.5-vl-72b-instruct": {
+      "prompt": "0.0000008",
+      "completion": "0.000001"
+    },
+    "qwen/qwen-plus": {
+      "prompt": "0.00000026",
+      "completion": "0.00000078"
+    },
+    "openai/o3-mini": {
+      "prompt": "0.0000011",
+      "completion": "0.0000044"
+    },
+    "openai/o3-mini:batch": {
+      "prompt": "0.00000055",
+      "completion": "0.0000022"
+    },
+    "mistralai/mistral-small-24b-instruct-2501": {
+      "prompt": "0.00000005",
+      "completion": "0.00000008"
+    },
+    "perplexity/sonar": {
+      "prompt": "0.000001",
+      "completion": "0.000001"
+    },
+    "minimax/minimax-01": {
+      "prompt": "0.0000002",
+      "completion": "0.0000011"
+    },
+    "microsoft/phi-4": {
+      "prompt": "0.00000007",
+      "completion": "0.00000014"
+    },
+    "openai/o1": {
+      "prompt": "0.000015",
+      "completion": "0.00006"
+    },
+    "cohere/command-r7b-12-2024": {
+      "prompt": "0.0000000375",
+      "completion": "0.00000015"
+    },
+    "meta-llama/llama-3.3-70b-instruct": {
+      "prompt": "0.0000001",
+      "completion": "0.00000032"
+    },
+    "amazon/nova-lite-v1": {
+      "prompt": "0.00000006",
+      "completion": "0.00000024"
+    },
+    "amazon/nova-micro-v1": {
+      "prompt": "0.000000035",
+      "completion": "0.00000014"
+    },
+    "amazon/nova-pro-v1": {
+      "prompt": "0.0000008",
+      "completion": "0.0000032"
+    },
+    "openai/gpt-4o-2024-11-20": {
+      "prompt": "0.0000025",
+      "completion": "0.00001"
+    },
+    "mistralai/mistral-large-2407": {
+      "prompt": "0.000002",
+      "completion": "0.000006"
+    },
+    "qwen/qwen-2.5-coder-32b-instruct": {
+      "prompt": "0.00000066",
+      "completion": "0.000001"
+    },
+    "thedrummer/unslopnemo-12b": {
+      "prompt": "0.0000004",
+      "completion": "0.0000004"
+    },
+    "anthracite-org/magnum-v4-72b": {
+      "prompt": "0.0000025",
+      "completion": "0.000005"
+    },
+    "qwen/qwen-2.5-7b-instruct": {
+      "prompt": "0.0000001",
+      "completion": "0.0000002"
+    },
+    "meta-llama/llama-3.2-1b-instruct": {
+      "prompt": "0.000000027",
+      "completion": "0.000000201"
+    },
+    "meta-llama/llama-3.2-3b-instruct": {
+      "prompt": "0.0000000509",
+      "completion": "0.000000335"
+    },
+    "qwen/qwen-2.5-72b-instruct": {
+      "prompt": "0.00000036",
+      "completion": "0.0000004"
+    },
+    "cohere/command-r-08-2024": {
+      "prompt": "0.00000015",
+      "completion": "0.0000006"
+    },
+    "cohere/command-r-plus-08-2024": {
+      "prompt": "0.0000025",
+      "completion": "0.00001"
+    },
+    "sao10k/l3.1-euryale-70b": {
+      "prompt": "0.00000085",
+      "completion": "0.00000085"
+    },
+    "nousresearch/hermes-3-llama-3.1-70b": {
+      "prompt": "0.0000007",
+      "completion": "0.0000007"
+    },
+    "nousresearch/hermes-3-llama-3.1-405b": {
+      "prompt": "0.000001",
+      "completion": "0.000001"
+    },
+    "sao10k/l3-lunaris-8b": {
+      "prompt": "0.00000004",
+      "completion": "0.00000005"
+    },
+    "openai/gpt-4o-2024-08-06": {
+      "prompt": "0.0000025",
+      "completion": "0.00001"
+    },
+    "openai/gpt-4o-mini-2024-07-18": {
+      "prompt": "0.00000015",
+      "completion": "0.0000006"
+    },
+    "openai/gpt-4o-mini:batch": {
+      "prompt": "0.000000075",
+      "completion": "0.0000003"
+    },
+    "google/gemma-2-27b-it": {
+      "prompt": "0.00000065",
+      "completion": "0.00000065"
+    },
+    "openai/gpt-4o": {
+      "prompt": "0.0000025",
+      "completion": "0.00001"
+    },
+    "openai/gpt-4o-2024-05-13": {
+      "prompt": "0.000005",
+      "completion": "0.000015"
+    },
+    "openai/gpt-4o:batch": {
+      "prompt": "0.00000125",
+      "completion": "0.000005"
+    },
+    "mistralai/mixtral-8x22b-instruct": {
+      "prompt": "0.000002",
+      "completion": "0.000006"
+    },
+    "openai/gpt-4-turbo": {
+      "prompt": "0.00001",
+      "completion": "0.00003"
+    },
+    "openai/gpt-4-turbo:batch": {
+      "prompt": "0.000005",
+      "completion": "0.000015"
+    },
+    "mistralai/mistral-large": {
+      "prompt": "0.000002",
+      "completion": "0.000006"
+    },
+    "openai/gpt-3.5-turbo-0613": {
+      "prompt": "0.000001",
+      "completion": "0.000002"
+    },
+    "openrouter/auto": {
+      "prompt": "-1",
+      "completion": "-1"
+    },
+    "openai/gpt-3.5-turbo-instruct": {
+      "prompt": "0.0000015",
+      "completion": "0.000002"
+    },
+    "openai/gpt-3.5-turbo-16k": {
+      "prompt": "0.000003",
+      "completion": "0.000004"
+    },
+    "mancer/weaver": {
+      "prompt": "0.0000004",
+      "completion": "0.00000075"
+    },
+    "undi95/remm-slerp-l2-13b": {
+      "prompt": "0.00000035",
+      "completion": "0.00000065"
+    },
+    "gryphe/mythomax-l2-13b": {
+      "prompt": "0.00000008",
+      "completion": "0.00000011"
+    },
+    "openai/gpt-3.5-turbo": {
+      "prompt": "0.0000005",
+      "completion": "0.0000015"
+    },
+    "openai/gpt-3.5-turbo:batch": {
+      "prompt": "0.00000025",
+      "completion": "0.00000075"
+    },
+    "openai/gpt-4": {
+      "prompt": "0.00003",
+      "completion": "0.00006"
     }
-  },
-  "source": "https://openrouter.ai/api/v1/models"
+  }
 }

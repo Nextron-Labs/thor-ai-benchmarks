@@ -65,7 +65,7 @@ def main():
         p = model_prices[name]
         total_input = total_tokens * INPUT_RATIO
         total_output = total_tokens * OUTPUT_RATIO
-        cost = (total_input * p['prompt']) + (total_output * p['completion'])
+        cost = (total_input * float(p['prompt'])) + (total_output * float(p['completion']))
         cost_cents = cost * 100
         results.append({'model': name, 'cw_pct': cw_pct, 'cost_cents': cost_cents, 'tier': tier})
     if missing_price:
